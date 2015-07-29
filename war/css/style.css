@@ -1,0 +1,44 @@
+/**
+* Partial UI done. With homepage, view tasks page,
+* Add task page and search task page.
+* @author Janna Tapitha S. Pedrano
+* @version 0.01
+* @as of July 7, 2015 1:45AM
+*/
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+.header_name {
+  color: #2AB5A7;
+  font-weight: 500; }
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://fonts.gstatic.com/s/materialicons/v7/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');
+}
+
+.material-icons-small {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  color:  #f3989b;
+  font-size: 19px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  word-wrap: normal;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+.finished_tasks  {
+    font-weight: 300;
+}

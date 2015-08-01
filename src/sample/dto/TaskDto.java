@@ -28,6 +28,7 @@ public class TaskDto {
     private long userId;
     private int doneRatio;
     private float estHours;
+    private String content;
     
     
     public List<String> getErrorList() {
@@ -41,6 +42,14 @@ public class TaskDto {
     }
     public String getPhase(){
         return phase;
+    }
+    
+    public String getContent(){
+        return content;
+    }
+    
+    public void setContent(String content){
+        this.content = content;
     }
     
     public void setPhase(String phase){

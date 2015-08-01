@@ -1,8 +1,17 @@
 package sample.meta;
 
-//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-08-01 22:25:10")
+//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-08-02 00:35:22")
 /** */
 public final class TaskMeta extends org.slim3.datastore.ModelMeta<sample.model.Task> {
+
+    /** */
+    public final org.slim3.datastore.StringAttributeMeta<sample.model.Task> content = new org.slim3.datastore.StringAttributeMeta<sample.model.Task>(this, "content", "content");
+
+    /** */
+    public final org.slim3.datastore.StringAttributeMeta<sample.model.Task> createdDate = new org.slim3.datastore.StringAttributeMeta<sample.model.Task>(this, "createdDate", "createdDate");
+
+    /** */
+    public final org.slim3.datastore.CoreAttributeMeta<sample.model.Task, java.lang.Long> id = new org.slim3.datastore.CoreAttributeMeta<sample.model.Task, java.lang.Long>(this, "id", "id", java.lang.Long.class);
 
     /** */
     public final org.slim3.datastore.CoreAttributeMeta<sample.model.Task, com.google.appengine.api.datastore.Key> key = new org.slim3.datastore.CoreAttributeMeta<sample.model.Task, com.google.appengine.api.datastore.Key>(this, "__key__", "key", com.google.appengine.api.datastore.Key.class);
@@ -27,6 +36,9 @@ public final class TaskMeta extends org.slim3.datastore.ModelMeta<sample.model.T
     @Override
     public sample.model.Task entityToModel(com.google.appengine.api.datastore.Entity entity) {
         sample.model.Task model = new sample.model.Task();
+        model.setContent((java.lang.String) entity.getProperty("content"));
+        model.setCreatedDate((java.lang.String) entity.getProperty("createdDate"));
+        model.setId((java.lang.Long) entity.getProperty("id"));
         model.setKey(entity.getKey());
         model.setVersion((java.lang.Long) entity.getProperty("version"));
         return model;
@@ -41,6 +53,9 @@ public final class TaskMeta extends org.slim3.datastore.ModelMeta<sample.model.T
         } else {
             entity = new com.google.appengine.api.datastore.Entity(kind);
         }
+        entity.setProperty("content", m.getContent());
+        entity.setProperty("createdDate", m.getCreatedDate());
+        entity.setProperty("id", m.getId());
         entity.setProperty("version", m.getVersion());
         entity.setProperty("slim3.schemaVersion", 1);
         return entity;
@@ -104,6 +119,18 @@ public final class TaskMeta extends org.slim3.datastore.ModelMeta<sample.model.T
         sample.model.Task m = (sample.model.Task) model;
         writer.beginObject();
         org.slim3.datastore.json.Default encoder0 = new org.slim3.datastore.json.Default();
+        if(m.getContent() != null){
+            writer.setNextPropertyName("content");
+            encoder0.encode(writer, m.getContent());
+        }
+        if(m.getCreatedDate() != null){
+            writer.setNextPropertyName("createdDate");
+            encoder0.encode(writer, m.getCreatedDate());
+        }
+        if(m.getId() != null){
+            writer.setNextPropertyName("id");
+            encoder0.encode(writer, m.getId());
+        }
         if(m.getKey() != null){
             writer.setNextPropertyName("key");
             encoder0.encode(writer, m.getKey());
@@ -120,6 +147,12 @@ public final class TaskMeta extends org.slim3.datastore.ModelMeta<sample.model.T
         sample.model.Task m = new sample.model.Task();
         org.slim3.datastore.json.JsonReader reader = null;
         org.slim3.datastore.json.Default decoder0 = new org.slim3.datastore.json.Default();
+        reader = rootReader.newObjectReader("content");
+        m.setContent(decoder0.decode(reader, m.getContent()));
+        reader = rootReader.newObjectReader("createdDate");
+        m.setCreatedDate(decoder0.decode(reader, m.getCreatedDate()));
+        reader = rootReader.newObjectReader("id");
+        m.setId(decoder0.decode(reader, m.getId()));
         reader = rootReader.newObjectReader("key");
         m.setKey(decoder0.decode(reader, m.getKey()));
         reader = rootReader.newObjectReader("version");

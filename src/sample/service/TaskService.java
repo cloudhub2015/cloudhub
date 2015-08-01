@@ -1,5 +1,6 @@
 package sample.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import sample.dao.TaskDao;
@@ -27,14 +28,14 @@ public class TaskService {
      * @return TaskDto - if transaction was unsuccessful, contains list of errors.
      */
     public TaskDto addTask(TaskDto input) {
-        /*Task tweet = new Tweet();
-        tweet.setCreatedDate(input.getCreatedDate());
-        tweet.setContent(input.getContent());
+        Task task = new Task();
+        task.setCreatedDate(input.getCreatedDate());
+        task.setContent(input.getContent());
 
-        if(!this.dao.saveTweet(tweet)) {
+        if(!this.dao.saveTask(task)) {
             input.setErrorList(new ArrayList<String>());
             input.getErrorList().add("database error!");
-        }*/
+        }
         return input;
     }
 

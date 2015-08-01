@@ -9,6 +9,7 @@ import org.slim3.datastore.Datastore;
 
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.Transaction;
 
 import sample.meta.TaskMeta;
 import sample.model.Task;
@@ -39,9 +40,21 @@ public class TaskDao {
      */
     public boolean saveTask(Task taskModel) {
         boolean result = true;
+        try {
+            Transaction tx = Datastore.beginTransaction();
+            //Manually allocate key
+            Key key = Datastore.allocateId(KeyFactory.createKey("Account", "Default"), "Task");
+            taskModel.setKey(key);
+            taskModel.setId(key.getId());
+            Datastore.put(taskModel);
+            tx.commit();
+        } catch (Exception e) {
+            result = false;
+        }
         return result;
     }
     
+
     /**
      * Method used to update a task
      * @param taskModel - task to be updated

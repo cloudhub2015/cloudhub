@@ -1,6 +1,7 @@
 package sample.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import com.google.appengine.api.datastore.Key;
 
@@ -17,6 +18,15 @@ public class Task implements Serializable {
 
     @Attribute(version = true)
     private Long version;
+    
+    private Long id;
+    
+    private String content;
+    
+    /**
+     * Task created date.
+     */
+    private String createdDate = new Date().toString();
     
     /**
      * Returns the key.
@@ -36,6 +46,23 @@ public class Task implements Serializable {
     public void setKey(Key key) {
         this.key = key;
     }
+    
+    /**
+     * Returns the id.
+     *
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+    
+    /**
+     * Sets the id.
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
 
     /**
      * Returns the version.
@@ -44,6 +71,36 @@ public class Task implements Serializable {
      */
     public Long getVersion() {
         return version;
+    }
+    
+    /**
+     * Get createdDate.
+     */
+    public String getCreatedDate() {
+        return createdDate;
+    }
+    
+    
+    /**
+     * Get content.
+     */
+    public String getContent() {
+        return content;
+    }
+    
+    /**
+     * Set content.
+     */
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    /**
+     * Set createdDate.
+     * @param createdDate the createdDate to set
+     */
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
     }
 
     /**

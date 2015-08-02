@@ -29,11 +29,11 @@
       <p><h4 class="header_name">Hey, Riri!</h4></p>
     </li>
   
-    <li class="active"><a href="masterlist.html">Masterlist</a></li>
-    <li class="bold"><a href="todays_tasks.html" class="waves-effect waves-teal">Today's Tasks</a></li>
-    <li class="bold"><a href="create_task.html" class="waves-effect waves-teal">Create Task</a></li>
-    <li class="bold"><a href="search_task.html" class="waves-effect waves-teal">Search Task</a></li>
-    <li class="bold"><a href="index.html" class="waves-effect waves-teal">Log Out </a></li>
+    <li class="active"><a href="masterlist.jsp">Masterlist</a></li>
+    <li class="bold"><a href="todays_tasks.jsp" class="waves-effect waves-teal">Today's Tasks</a></li>
+    <li class="bold"><a href="create_task.jsp" class="waves-effect waves-teal">Create Task</a></li>
+    <li class="bold"><a href="search_task.jsp" class="waves-effect waves-teal">Search Task</a></li>
+    <li class="bold"><a href="index.jsp" class="waves-effect waves-teal">Log Out </a></li>
 </ul>
 </header>
 

@@ -30,7 +30,7 @@ public class IndexController extends Controller {
     public Navigation run() throws Exception {
         //List<Tweet> tweetList = service.getTweetList();
         //requestScope("tweetList", tweetList);
-        return forward("index.jsp");
+        return forward("masterlist.jsp");
     }
 
 }

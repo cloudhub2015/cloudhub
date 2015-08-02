@@ -27,6 +27,7 @@ public class AddTaskController extends Controller {
         TaskDto taskDto = new TaskDto();
         BeanUtil.copy(input, taskDto);
         service.addTask(taskDto);
-        return redirect(this.basePath);
+        //return redirect(this.basePath);
+        return forward("create_task.jsp");
     }
 }

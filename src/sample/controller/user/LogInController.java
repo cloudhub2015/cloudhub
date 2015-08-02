@@ -15,7 +15,7 @@ public class LogInController extends Controller {
     @Override
     protected Navigation run() throws Exception {
         // TODO Auto-generated method stub
-        return null;
+        return forward("index.jsp");
     }
 
 }

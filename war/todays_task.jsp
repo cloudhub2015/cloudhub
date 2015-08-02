@@ -30,11 +30,11 @@
       <p><h4 class="header_name">Hey, Riri!</h4></p>
     </li>
   
-    <li class="bold"><a href="masterlist.html">Masterlist</a></li>
-    <li class="active"><a href="todays_task.html" class="waves-effect waves-teal">Today's Tasks</a></li>
-    <li class="bold"><a href="create_task.html" class="waves-effect waves-teal">Create Task</a></li>
-    <li class="bold"><a href="search_task.html" class="waves-effect waves-teal">Search Task</a></li>
-    <li class="bold"><a href="index.html" class="waves-effect waves-teal">Log Out </a></li>
+    <li class="bold"><a href="masterlist.jsp">Masterlist</a></li>
+    <li class="active"><a href="todays_task.jsp" class="waves-effect waves-teal">Today's Tasks</a></li>
+    <li class="bold"><a href="create_task.jsp" class="waves-effect waves-teal">Create Task</a></li>
+    <li class="bold"><a href="search_task.jsp" class="waves-effect waves-teal">Search Task</a></li>
+    <li class="bold"><a href="index.jsp" class="waves-effect waves-teal">Log Out </a></li>
 </ul>
 </header>
 
@@ -68,7 +68,7 @@
               <td><center>8 Hours</center></td>
               <td>July 2, 2015</td>
               <td>July 3, 2015</td>
-			         <td><a href="update_task.html">Update Task</a>
+			         <td><a href="update_task.jsp">Update Task</a>
 					</tbody>
         </table>
 
@@ -94,7 +94,7 @@
               <td><center>8 Hours</center></td>
               <td>July 2, 2015</td>
               <td>July 3, 2015</td>
-               <td><a href="update_task.html">Update Task</a>
+               <td><a href="update_task.jsp">Update Task</a>
           </tbody>
         </table>
 

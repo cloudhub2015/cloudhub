@@ -15,6 +15,7 @@ public class RegisterController extends Controller {
     @Override
     protected Navigation run() throws Exception {
         // TODO Auto-generated method stub
+    //    return forward("signup.jsp");
         return null;
     }
 

@@ -31,8 +31,16 @@ public class TaskService {
      */
     public TaskDto addTask(TaskDto input) {
         Task task = new Task();
+        task.setName(input.getName());
+        task.setId(input.getId());
+        task.setEstHours(input.getEstHours());
+        task.setPhase(input.getPhase());
+  
         task.setCreatedDate(input.getCreatedDate());
         task.setContent(input.getContent());
+        task.setStartDate(input.getStartDate());
+        task.setDueDate(input.getDueDate());
+        
 
         if(!this.dao.saveTask(task)) {
             input.setErrorList(new ArrayList<String>());
@@ -43,7 +51,7 @@ public class TaskService {
 
     /**
      * Method used to retrieve list of tasks.
-     * @return List<Task> - list of tweets.
+     * @return List<Task> - list of Tasks.
      */
     public List<Task> getTaskList() {
         return this.dao.getAllTasks();

@@ -1,7 +1,10 @@
 package sample.service;
 
+import java.util.ArrayList;
+
 import sample.dao.UserDao;
 import sample.dto.UserDto;
+import sample.model.User;
 
 /**
  * DAO used to access the datastore for user transactions
@@ -23,15 +26,20 @@ public class UserService {
      * @param input - user to add.
      * @return UserDto - if transaction was unsuccessful, contains list of errors.
      */
-    public UserDto addUser(UserDto input) {
-        /*Task tweet = new Tweet();
-        tweet.setCreatedDate(input.getCreatedDate());
-        tweet.setContent(input.getContent());
-
-        if(!this.dao.saveTweet(tweet)) {
+    public UserDto addUser(UserDto input) {        
+        User user = new User();
+        user.setEmail(input.getEmail());
+        user.setFirstName(user.getFirstName());
+        user.setLastName(input.getLastName());
+        user.setUsername(input.getUsername());
+        user.setPassword(input.getPassword());
+        user.setTelephone(input.getTelephone());
+        
+        if(!this.dao.saveUser(user)) {
             input.setErrorList(new ArrayList<String>());
             input.getErrorList().add("database error!");
-        }*/
+        }
+        
         return input;
     }
 

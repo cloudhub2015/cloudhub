@@ -68,7 +68,7 @@
   <!--Registration Form-->
   <div class="container">
     <div class="row center">
-      <form class="col s12 offset-s4">
+      <form class="col s12 offset-s4" method="post" action="register">
         <div class="row">
           <div class="input-field col s4">
             <i class="material-icons prefix">perm_identity </i>
@@ -108,7 +108,8 @@
         </div>
         <div class="row">
           <div class="input-field col s4">
-          <a href="#" id="download-button" class="btn-large waves-effect waves-light purple">Sign Up</a>
+          <!--  <a href="#" id="download-button" class="btn-large waves-effect waves-light purple">Sign Up</a> -->
+          <button class="waves-effect waves-light btn" type="submit"  value="Register User" name="registerUser"><i class="material-icons left">note_add</i>Sign Up</button>
           </div>
         </div>
       </form>

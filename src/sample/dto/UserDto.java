@@ -1,5 +1,7 @@
 package sample.dto;
 
+import java.util.List;
+
 /**
  * DTO used to store a single user information for
  * client side operations.
@@ -18,8 +20,16 @@ public class UserDto {
         private String lastName;
         private String telephone;
         private String email;
+        private List<String> errorList;
         
         public UserDto(){}
+        
+        public List<String> getErrorList() {
+            return errorList;
+        }
+        public void setErrorList(List<String> errorList) {
+            this.errorList = errorList;
+        }
         
         public String getUsername(){
             return username;

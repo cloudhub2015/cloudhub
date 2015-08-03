@@ -1,11 +1,32 @@
 package sample.meta;
 
-//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-08-02 13:12:37")
+//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-08-03 22:22:43")
 /** */
 public final class UserMeta extends org.slim3.datastore.ModelMeta<sample.model.User> {
 
     /** */
+    public final org.slim3.datastore.StringAttributeMeta<sample.model.User> email = new org.slim3.datastore.StringAttributeMeta<sample.model.User>(this, "email", "email");
+
+    /** */
+    public final org.slim3.datastore.StringAttributeMeta<sample.model.User> firstName = new org.slim3.datastore.StringAttributeMeta<sample.model.User>(this, "firstName", "firstName");
+
+    /** */
+    public final org.slim3.datastore.CoreAttributeMeta<sample.model.User, java.lang.Long> id = new org.slim3.datastore.CoreAttributeMeta<sample.model.User, java.lang.Long>(this, "id", "id", long.class);
+
+    /** */
     public final org.slim3.datastore.CoreAttributeMeta<sample.model.User, com.google.appengine.api.datastore.Key> key = new org.slim3.datastore.CoreAttributeMeta<sample.model.User, com.google.appengine.api.datastore.Key>(this, "__key__", "key", com.google.appengine.api.datastore.Key.class);
+
+    /** */
+    public final org.slim3.datastore.StringAttributeMeta<sample.model.User> lastName = new org.slim3.datastore.StringAttributeMeta<sample.model.User>(this, "lastName", "lastName");
+
+    /** */
+    public final org.slim3.datastore.StringAttributeMeta<sample.model.User> password = new org.slim3.datastore.StringAttributeMeta<sample.model.User>(this, "password", "password");
+
+    /** */
+    public final org.slim3.datastore.StringAttributeMeta<sample.model.User> telephone = new org.slim3.datastore.StringAttributeMeta<sample.model.User>(this, "telephone", "telephone");
+
+    /** */
+    public final org.slim3.datastore.StringAttributeMeta<sample.model.User> username = new org.slim3.datastore.StringAttributeMeta<sample.model.User>(this, "username", "username");
 
     /** */
     public final org.slim3.datastore.CoreAttributeMeta<sample.model.User, java.lang.Long> version = new org.slim3.datastore.CoreAttributeMeta<sample.model.User, java.lang.Long>(this, "version", "version", java.lang.Long.class);
@@ -27,7 +48,14 @@ public final class UserMeta extends org.slim3.datastore.ModelMeta<sample.model.U
     @Override
     public sample.model.User entityToModel(com.google.appengine.api.datastore.Entity entity) {
         sample.model.User model = new sample.model.User();
+        model.setEmail((java.lang.String) entity.getProperty("email"));
+        model.setFirstName((java.lang.String) entity.getProperty("firstName"));
+        model.setId(longToPrimitiveLong((java.lang.Long) entity.getProperty("id")));
         model.setKey(entity.getKey());
+        model.setLastName((java.lang.String) entity.getProperty("lastName"));
+        model.setPassword((java.lang.String) entity.getProperty("password"));
+        model.setTelephone((java.lang.String) entity.getProperty("telephone"));
+        model.setUsername((java.lang.String) entity.getProperty("username"));
         model.setVersion((java.lang.Long) entity.getProperty("version"));
         return model;
     }
@@ -41,6 +69,13 @@ public final class UserMeta extends org.slim3.datastore.ModelMeta<sample.model.U
         } else {
             entity = new com.google.appengine.api.datastore.Entity(kind);
         }
+        entity.setProperty("email", m.getEmail());
+        entity.setProperty("firstName", m.getFirstName());
+        entity.setProperty("id", m.getId());
+        entity.setProperty("lastName", m.getLastName());
+        entity.setProperty("password", m.getPassword());
+        entity.setProperty("telephone", m.getTelephone());
+        entity.setProperty("username", m.getUsername());
         entity.setProperty("version", m.getVersion());
         entity.setProperty("slim3.schemaVersion", 1);
         return entity;
@@ -104,9 +139,35 @@ public final class UserMeta extends org.slim3.datastore.ModelMeta<sample.model.U
         sample.model.User m = (sample.model.User) model;
         writer.beginObject();
         org.slim3.datastore.json.Default encoder0 = new org.slim3.datastore.json.Default();
+        if(m.getEmail() != null){
+            writer.setNextPropertyName("email");
+            encoder0.encode(writer, m.getEmail());
+        }
+        if(m.getFirstName() != null){
+            writer.setNextPropertyName("firstName");
+            encoder0.encode(writer, m.getFirstName());
+        }
+        writer.setNextPropertyName("id");
+        encoder0.encode(writer, m.getId());
         if(m.getKey() != null){
             writer.setNextPropertyName("key");
             encoder0.encode(writer, m.getKey());
+        }
+        if(m.getLastName() != null){
+            writer.setNextPropertyName("lastName");
+            encoder0.encode(writer, m.getLastName());
+        }
+        if(m.getPassword() != null){
+            writer.setNextPropertyName("password");
+            encoder0.encode(writer, m.getPassword());
+        }
+        if(m.getTelephone() != null){
+            writer.setNextPropertyName("telephone");
+            encoder0.encode(writer, m.getTelephone());
+        }
+        if(m.getUsername() != null){
+            writer.setNextPropertyName("username");
+            encoder0.encode(writer, m.getUsername());
         }
         if(m.getVersion() != null){
             writer.setNextPropertyName("version");
@@ -120,8 +181,22 @@ public final class UserMeta extends org.slim3.datastore.ModelMeta<sample.model.U
         sample.model.User m = new sample.model.User();
         org.slim3.datastore.json.JsonReader reader = null;
         org.slim3.datastore.json.Default decoder0 = new org.slim3.datastore.json.Default();
+        reader = rootReader.newObjectReader("email");
+        m.setEmail(decoder0.decode(reader, m.getEmail()));
+        reader = rootReader.newObjectReader("firstName");
+        m.setFirstName(decoder0.decode(reader, m.getFirstName()));
+        reader = rootReader.newObjectReader("id");
+        m.setId(decoder0.decode(reader, m.getId()));
         reader = rootReader.newObjectReader("key");
         m.setKey(decoder0.decode(reader, m.getKey()));
+        reader = rootReader.newObjectReader("lastName");
+        m.setLastName(decoder0.decode(reader, m.getLastName()));
+        reader = rootReader.newObjectReader("password");
+        m.setPassword(decoder0.decode(reader, m.getPassword()));
+        reader = rootReader.newObjectReader("telephone");
+        m.setTelephone(decoder0.decode(reader, m.getTelephone()));
+        reader = rootReader.newObjectReader("username");
+        m.setUsername(decoder0.decode(reader, m.getUsername()));
         reader = rootReader.newObjectReader("version");
         m.setVersion(decoder0.decode(reader, m.getVersion()));
         return m;

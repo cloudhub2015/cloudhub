@@ -29,6 +29,10 @@ public class TaskDto {
     private int doneRatio;
     private float estHours;
     private String content;
+    private String startDate;
+    private String dueDate;
+    
+    
     
     
     public List<String> getErrorList() {
@@ -42,6 +46,22 @@ public class TaskDto {
     }
     public String getPhase(){
         return phase;
+    }
+    
+    public String getStartDate(){
+        return startDate;
+    }
+    
+    public String getDueDate(){
+        return dueDate;
+    }
+    
+    public void setStartDate(String startDate){
+        this.startDate = startDate;
+    }
+    
+    public void setDueDate(String dueDate){
+        this.dueDate = dueDate;
     }
     
     public String getContent(){

@@ -73,20 +73,20 @@
 
               <div class="row">
                 <div class="input-field col s6">
-                  <input id="start_date" name="start_date" type="date" class="datepicker picker__input">
+                  <input id="start_date" name="startDate" type="date" class="datepicker picker__input">
                 <label for="start_date"></label>
                 </div>
               </div>
 
               <div class="row">
                 <div class="input-field col s6">
-                  <input id="due_date" name="due_date" type="date" class="datepicker picker__input">
+                  <input id="due_date" name="dueDate" type="date" class="datepicker picker__input">
                  <label for="due_date"></label>
                 </div>
               </div>
 
                <!-- <a class="waves-effect waves-light btn"><i class="material-icons left">note_add</i>Create Task</a> -->
-             <button class="waves-effect waves-light btn" type="submit"  value="Create Task" name="createTask"><i class="material-icons left">note_add</i></button>
+             <button class="waves-effect waves-light btn" type="submit"  value="Create Task" name="createTask"><i class="material-icons left">note_add</i>Create Task</button>
               &nbsp;&nbsp;&nbsp;
               <a class="waves-effect waves-light btn" name="clearField"><i class="material-icons left">clear_all</i>Clear Fields</a>
             </form>

@@ -2,6 +2,7 @@ package sample.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import com.google.appengine.api.datastore.Key;
 
@@ -22,12 +23,84 @@ public class Task implements Serializable {
     private Long id;
     
     private String content;
+    private List<String> errorList;
+    private String name;
+    private String phase;
+    private long userId;
+    private int doneRatio;
+    private float estHours;
+    private String startDate;
+    private String dueDate;
     
     /**
      * Task created date.
      */
     private String createdDate = new Date().toString();
     
+    public List<String> getErrorList() {
+        return errorList;
+    }
+    public void setErrorList(List<String> errorList) {
+        this.errorList = errorList;
+    }
+    public String getTaskName() {
+        return name;
+    }
+    public String getPhase(){
+        return phase;
+    }
+    
+    public String getStartDate(){
+        return startDate;
+    }
+    
+    public String getDueDate(){
+        return dueDate;
+    }
+    
+    public void setStartDate(String startDate){
+        this.startDate = startDate;
+    }
+    
+    public void setDueDate(String dueDate){
+        this.dueDate = dueDate;
+    }
+
+    public void setPhase(String phase){
+        this.phase = phase;
+    }
+    
+    public void setTaskName(String name) {
+        this.name = name;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public long getUserId() {
+        return userId;
+    }
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+    public int getDoneRatio() {
+        return doneRatio;
+    }
+    public void setDoneRatio(int doneRatio) {
+        this.doneRatio = doneRatio;
+    }
+    public float getEstHours() {
+        return estHours;
+    }
+    public void setEstHours(float estHours) {
+        this.estHours = estHours;
+    }
     /**
      * Returns the key.
      *

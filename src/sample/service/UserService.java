@@ -29,7 +29,7 @@ public class UserService {
     public UserDto addUser(UserDto input) {        
         User user = new User();
         user.setEmail(input.getEmail());
-        user.setFirstName(user.getFirstName());
+        user.setFirstName(input.getFirstName());
         user.setLastName(input.getLastName());
         user.setUsername(input.getUsername());
         user.setPassword(input.getPassword());

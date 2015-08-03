@@ -23,12 +23,12 @@ public class LogInController extends Controller {
     private UserService service = new UserService();
     @Override
     public Navigation run() throws Exception {
-        Map<String,Object> input = new RequestMap(this.request);
-        UserDto userDto = new UserDto();
-        BeanUtil.copy(input, userDto);
-        service.addUser(userDto);
+     //   Map<String,Object> input = new RequestMap(this.request);
+     //   UserDto userDto = new UserDto();
+     //   BeanUtil.copy(input, userDto);
+     //   service.addUser(userDto);
         //return redirect(this.basePath);
-        return forward("../index.jsp");
+        return forward("/");
     }
 
 }

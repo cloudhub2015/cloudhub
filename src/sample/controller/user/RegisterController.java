@@ -1,7 +1,14 @@
 package sample.controller.user;
 
+import java.util.Map;
+
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
+import org.slim3.util.BeanUtil;
+import org.slim3.util.RequestMap;
+
+import sample.dto.UserDto;
+import sample.service.UserService;
 
 /**
  * Controller to register a user
@@ -11,12 +18,14 @@ import org.slim3.controller.Navigation;
  * [07/27/2015] 0.01 - Jacquelyn Amaya - Initial codes
  */
 public class RegisterController extends Controller {
-
+    private UserService service = new UserService();
     @Override
-    protected Navigation run() throws Exception {
-        // TODO Auto-generated method stub
-    //    return forward("signup.jsp");
-        return null;
+    public Navigation run() throws Exception {
+        Map<String,Object> input = new RequestMap(this.request);
+        UserDto userDto = new UserDto();
+        BeanUtil.copy(input, userDto);
+        service.addUser(userDto);
+        //return redirect(this.basePath);
+        return forward("signup.jsp");
     }
-
 }

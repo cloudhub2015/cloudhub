@@ -1,5 +1,11 @@
 package sample.dao;
 
+import org.slim3.datastore.Datastore;
+
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.Transaction;
+
 import sample.model.User;
 
 /**
@@ -17,6 +23,17 @@ public class UserDao {
      */
     public boolean saveUser(User userModel) {
         boolean result = true;
+        try {
+            Transaction tx = Datastore.beginTransaction();
+            //Manually allocate key
+            Key key = Datastore.allocateId(KeyFactory.createKey("Account", "Default"), "User");
+            userModel.setKey(key);
+            userModel.setId(key.getId());
+            Datastore.put(userModel);
+            tx.commit();
+        } catch (Exception e) {
+            result = false;
+        }
         return result;
     }
 }

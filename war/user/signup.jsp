@@ -73,21 +73,21 @@
           <div class="input-field col s4">
             <i class="material-icons prefix">perm_identity </i>
               <label for="first_name">Name</label>
-            <input id="icon_prefix" placeholder="First Name" id="first_name" type="text" class="validate">
-            <input placeholder="Last Name" id="last_name" type="text" class="validate">
+            <input id="icon_prefix" placeholder="First Name" name="firstName" id="first_name" type="text" class="validate">
+            <input placeholder="Last Name" id="last_name" name="lastName" type="text" class="validate">
           </div>
         </div>
         <div class="row">
           <div class="input-field col s4">
             <i class="material-icons prefix">account_circle </i>
-            <input id="icon_prefix" placeholder="Username" id="user_name" type="text" class="validate">
+            <input id="icon_prefix" placeholder="Username" id="user_name" name="username" type="text" class="validate">
             <label for="user_name">Username</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s4">
             <i class="material-icons prefix">info</i>
-            <input id="password" type="password" class="validate" placeholder="Password">
+            <input id="password" type="password" class="validate" placeholder="Password" name="password">
               <label for="password">Password</label>
             <input id="confirm_password" type="password" class="validate" placeholder="Confirm Password">
           </div>
@@ -95,21 +95,21 @@
         <div class="row">
           <div class="input-field col s4">
             <i class="material-icons prefix">phone</i>
-            <input id="tel" type="tel" class="validate">
+            <input id="tel" type="tel" name="telephone" class="validate">
             <label for="tel">Telephone</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s4">
             <i class="material-icons prefix">email</i>
-            <input id="email" type="email" class="validate" placeholder="Email">
+            <input id="email" type="email" name="email" class="validate" placeholder="Email">
             <label for="email">Email</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s4">
           <!--  <a href="#" id="download-button" class="btn-large waves-effect waves-light purple">Sign Up</a> -->
-          <button class="waves-effect waves-light btn" type="submit"  value="Register User" name="registerUser"><i class="material-icons left">note_add</i>Sign Up</button>
+          <button class="waves-effect waves-light btn" type="submit" href="/"  value="Register User" name="registerUser"><i class="material-icons left">note_add</i>Sign Up</button>
           </div>
         </div>
       </form>

@@ -1,8 +1,11 @@
 package sample.meta;
 
-//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-08-02 13:12:37")
+//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-08-04 03:44:25")
 /** */
 public final class TaskDayMeta extends org.slim3.datastore.ModelMeta<sample.model.TaskDay> {
+
+    /** */
+    public final org.slim3.datastore.CoreAttributeMeta<sample.model.TaskDay, java.lang.Long> id = new org.slim3.datastore.CoreAttributeMeta<sample.model.TaskDay, java.lang.Long>(this, "id", "id", java.lang.Long.class);
 
     /** */
     public final org.slim3.datastore.CoreAttributeMeta<sample.model.TaskDay, com.google.appengine.api.datastore.Key> key = new org.slim3.datastore.CoreAttributeMeta<sample.model.TaskDay, com.google.appengine.api.datastore.Key>(this, "__key__", "key", com.google.appengine.api.datastore.Key.class);
@@ -27,6 +30,7 @@ public final class TaskDayMeta extends org.slim3.datastore.ModelMeta<sample.mode
     @Override
     public sample.model.TaskDay entityToModel(com.google.appengine.api.datastore.Entity entity) {
         sample.model.TaskDay model = new sample.model.TaskDay();
+        model.setId((java.lang.Long) entity.getProperty("id"));
         model.setKey(entity.getKey());
         model.setVersion((java.lang.Long) entity.getProperty("version"));
         return model;
@@ -41,6 +45,7 @@ public final class TaskDayMeta extends org.slim3.datastore.ModelMeta<sample.mode
         } else {
             entity = new com.google.appengine.api.datastore.Entity(kind);
         }
+        entity.setProperty("id", m.getId());
         entity.setProperty("version", m.getVersion());
         entity.setProperty("slim3.schemaVersion", 1);
         return entity;
@@ -104,6 +109,10 @@ public final class TaskDayMeta extends org.slim3.datastore.ModelMeta<sample.mode
         sample.model.TaskDay m = (sample.model.TaskDay) model;
         writer.beginObject();
         org.slim3.datastore.json.Default encoder0 = new org.slim3.datastore.json.Default();
+        if(m.getId() != null){
+            writer.setNextPropertyName("id");
+            encoder0.encode(writer, m.getId());
+        }
         if(m.getKey() != null){
             writer.setNextPropertyName("key");
             encoder0.encode(writer, m.getKey());
@@ -120,6 +129,8 @@ public final class TaskDayMeta extends org.slim3.datastore.ModelMeta<sample.mode
         sample.model.TaskDay m = new sample.model.TaskDay();
         org.slim3.datastore.json.JsonReader reader = null;
         org.slim3.datastore.json.Default decoder0 = new org.slim3.datastore.json.Default();
+        reader = rootReader.newObjectReader("id");
+        m.setId(decoder0.decode(reader, m.getId()));
         reader = rootReader.newObjectReader("key");
         m.setKey(decoder0.decode(reader, m.getKey()));
         reader = rootReader.newObjectReader("version");

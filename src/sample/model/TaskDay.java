@@ -17,6 +17,20 @@ public class TaskDay implements Serializable {
 
     @Attribute(version = true)
     private Long version;
+    private Long id;
+    
+    
+    public void setId(Long id) {
+        this.id = id;
+    }
+    /**
+     * Returns the id.
+     *
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
 
     /**
      * Returns the key.

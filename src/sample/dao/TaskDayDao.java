@@ -6,6 +6,7 @@ import org.slim3.datastore.Datastore;
 
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.Transaction;
 
 import sample.meta.TaskMeta;
 import sample.model.Task;
@@ -18,6 +19,7 @@ import sample.model.TaskDay;
  * @version 0.01 
  * Version History
  * [07/27/2015] 0.01 - Jacquelyn Amaya - Initial codes
+ * [08/04/2015] 0.02 - David Ramirez   - 
  */
 public class TaskDayDao {
     
@@ -28,6 +30,17 @@ public class TaskDayDao {
      */
     public boolean saveTaskDay(TaskDay taskDayModel) {
         boolean result = true;
+        try {
+            Transaction tx = Datastore.beginTransaction();
+            //Manually allocate key
+            Key key = Datastore.allocateId(KeyFactory.createKey("Account", "Default"), "TaskDay");
+            taskDayModel.setKey(key);
+            taskDayModel.setId(key.getId());
+            Datastore.put(taskDayModel);
+            tx.commit();
+        } catch (Exception e) {
+            result = false;
+        }
         return result;
     }
     
@@ -51,6 +64,10 @@ public class TaskDayDao {
         return result;
     }
     
+    /**
+     * Method used to retrieve all the tasks
+     * @return List<Task> - list of all tasks
+     */
     public List<Task> getAllTTasks() {
         TaskMeta t = new TaskMeta();
         Key parentKey = KeyFactory.createKey("Account", "Default");

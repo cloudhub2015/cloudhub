@@ -9,7 +9,9 @@ import org.slim3.datastore.Datastore;
 
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Transaction;
+import com.google.appengine.api.datastore.Query.FilterOperator;
 
 import sample.meta.TaskMeta;
 import sample.model.Task;
@@ -62,6 +64,23 @@ public class TaskDao {
      */
     public boolean updateTask(Task taskModel) {
         boolean result = true;
+        TaskMeta tm = new TaskMeta();
+        Query.Filter mainFilter = new Query.FilterPredicate("id", FilterOperator.EQUAL, taskModel.getId());
+
+        try {
+            Task originalTaskModel = Datastore.query(tm).filter(mainFilter).asSingle();
+            if (originalTaskModel != null) {
+                originalTaskModel.setCreatedDate(taskModel.getCreatedDate());
+                originalTaskModel.setContent(taskModel.getContent());
+                Transaction tx = Datastore.beginTransaction();
+                Datastore.put(originalTaskModel);
+                tx.commit();
+            } else {
+                result = false;
+            }
+        } catch (Exception e) {
+            result = false;
+        }
         return result;
     }
     
@@ -72,6 +91,21 @@ public class TaskDao {
      */
     public boolean deleteTask(Task taskModel) {
         boolean result = true;
+        TaskMeta tm = new TaskMeta();
+        Query.Filter mainFilter = new Query.FilterPredicate("id", FilterOperator.EQUAL, taskModel.getId());
+
+        try {
+            Task originalTaskModel = Datastore.query(tm).filter(mainFilter).asSingle();
+            if (originalTaskModel != null) {
+                Transaction tx = Datastore.beginTransaction();
+                Datastore.delete(originalTaskModel.getKey());
+                tx.commit();
+            } else {
+                result = false;
+            }
+        } catch (Exception e) {
+            result = false;
+        }
         return result;
     }
 }

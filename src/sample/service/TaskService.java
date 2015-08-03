@@ -36,7 +36,7 @@ public class TaskService {
         task.setEstHours(input.getEstHours());
         task.setPhase(input.getPhase());
   
-        task.setCreatedDate(input.getCreatedDate());
+        task.setCreatedDate(Calendar.getInstance().getTime().toString());
         task.setContent(input.getContent());
         task.setStartDate(input.getStartDate());
         task.setDueDate(input.getDueDate());
@@ -67,20 +67,16 @@ public class TaskService {
         task.setId(input.getId());
         task.setCreatedDate(Calendar.getInstance().getTime().toString());
         task.setContent(input.getContent());
+        task.setName(input.getName());
+        task.setEstHours(input.getEstHours());
+        task.setPhase(input.getPhase());
+        task.setStartDate(input.getStartDate());
+        task.setDueDate(input.getDueDate());
         
         if(!this.dao.updateTask(task)){
             input.setErrorList(new ArrayList<String>());
             input.getErrorList().add("database error!");
         }
-        /*Tweet tweet = new Tweet();
-        tweet.setId(input.getId());
-        tweet.setCreatedDate(Calendar.getInstance().getTime().toString());
-        tweet.setContent(input.getContent());
-
-        if(!this.dao.updateTask(tweet)) {
-            input.setErrorList(new ArrayList<String>());
-            input.getErrorList().add("database error!");
-        }*/
 
         return input;
     }

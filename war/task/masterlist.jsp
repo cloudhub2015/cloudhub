@@ -88,7 +88,8 @@
       					&nbsp;&nbsp;&nbsp;
       					<a href="edit_task.jsp"><i class="material-icons">assignment</i></a>
       					&nbsp;&nbsp;&nbsp;
-      					<a href="#"><i class="material-icons">delete</i></a>
+      				<a  href="deleteTweet('form_${f:h(e.id)}')"><i class="material-icons">delete</i></a> 
+      				<!--	<button class="material-icons" onClick="deleteTweet('form_${f:h(e.id)}')">Delete</button> -->
                 &nbsp;&nbsp;&nbsp;
                 <a href="../taskstoday/"><i class="material-icons">add</i></a>
                  <!-- <span><a href = "#">Done</a></span> |

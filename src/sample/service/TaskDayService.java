@@ -1,7 +1,11 @@
 package sample.service;
 
+import java.util.List;
+
 import sample.dao.TaskDayDao;
 import sample.dto.TaskDayDto;
+import sample.model.Task;
+import sample.model.TaskDay;
 
 /**
  * DAO used to access the datastore for task day transactions
@@ -71,5 +75,10 @@ public class TaskDayService {
         }*/
 
         return input;
+    }
+
+    public List<TaskDay> getTasksTodayList() {
+      //   return this.dao.getAll;
+        return null;
     }
 }

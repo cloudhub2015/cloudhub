@@ -1,5 +1,14 @@
 package sample.dao;
 
+import java.util.List;
+
+import org.slim3.datastore.Datastore;
+
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
+
+import sample.meta.TaskMeta;
+import sample.model.Task;
 import sample.model.TaskDay;
 
 
@@ -40,5 +49,11 @@ public class TaskDayDao {
     public boolean deleteTaskDay(TaskDay taskDayModel) {
         boolean result = true;
         return result;
+    }
+    
+    public List<Task> getAllTTasks() {
+        TaskMeta t = new TaskMeta();
+        Key parentKey = KeyFactory.createKey("Account", "Default");
+        return Datastore.query(t ,parentKey).asList();
     }
 }

@@ -3,13 +3,13 @@
  */
 package sample.controller.task;
 
-//import java.util.List;
+import java.util.List;
 
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 
-//import sample.model.Tweet;
-//import sample.service.TaskService;
+import sample.model.Task;
+import sample.service.TaskService;
 
 /**
  * Initial Controller
@@ -24,12 +24,12 @@ public class IndexController extends Controller {
      * The TwitterService to use.
      * Holds the method for retrieving list of tweets.
      */
-    //TwitterService service = new TwitterService();
+    TaskService service = new TaskService();
 
     @Override
     public Navigation run() throws Exception {
-        //List<Tweet> tweetList = service.getTweetList();
-        //requestScope("tweetList", tweetList);
+        List<Task> taskList = service.getTaskList();
+        requestScope("taskList", taskList);
         return forward("masterlist.jsp");
     }
 

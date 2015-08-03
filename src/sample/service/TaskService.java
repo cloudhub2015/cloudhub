@@ -1,6 +1,7 @@
 package sample.service;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import sample.dao.TaskDao;
@@ -13,6 +14,7 @@ import sample.model.Task;
  * @version 0.01 
  * Version History
  * [07/27/2015] 0.01 - Jacquelyn Amaya - Initial codes
+ * [08/02/2015] 0.02 - David Ramirez   - add, update and delete tasks
  */
 public class TaskService {
     /**
@@ -53,6 +55,15 @@ public class TaskService {
      * @return TaskDto - if transaction was unsuccessful, contains list of errors.
      */
     public TaskDto updateTask(TaskDto input) {
+        Task task = new Task();
+        task.setId(input.getId());
+        task.setCreatedDate(Calendar.getInstance().getTime().toString());
+        task.setContent(input.getContent());
+        
+        if(!this.dao.updateTask(task)){
+            input.setErrorList(new ArrayList<String>());
+            input.getErrorList().add("database error!");
+        }
         /*Tweet tweet = new Tweet();
         tweet.setId(input.getId());
         tweet.setCreatedDate(Calendar.getInstance().getTime().toString());
@@ -72,6 +83,16 @@ public class TaskService {
      * @return TaskDto - if transaction was unsuccessful, contains list of errors.
      */
     public TaskDto deleteTask(TaskDto input) {
+        Task task = new Task();
+        task.setId(input.getId());
+        task.setCreatedDate(Calendar.getInstance().getTime().toString());
+        task.setContent(input.getContent());
+        
+        if(!this.dao.deleteTask(task)){
+            input.setErrorList(new ArrayList<String>());
+            input.getErrorList().add("database error!");
+        }
+        
         /*Tweet tweet = new Tweet();
         tweet.setId(input.getId());
         tweet.setCreatedDate(input.getCreatedDate());

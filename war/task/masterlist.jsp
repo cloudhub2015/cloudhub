@@ -73,7 +73,7 @@
             </tr>
           </thead>
           <tbody>
-          <c:forEach var="e" items="${tweetList}">
+          <c:forEach var="e" items="${taskList}">
             <tr>
               <td>
                 <input type="checkbox" id="status" />
@@ -97,50 +97,6 @@
       			  </td>
             </tr>
             </c:forEach>
-            <tr>
-              <td>
-                <input type="checkbox" id="status2" />
-                <label for="status2">Task Management Function 1</label>
-              </td>
-              <td>Coding</td>
-              <td><center>8 Hours</center></td>
-              <td>July 2, 2015</td>
-              <td>July 3, 2015</td>
-			  <td>
-          <a href="#"><i class="material-icons">done</i></a>
-					&nbsp;&nbsp;&nbsp;
-					<a href="edit_task.jsp"><i class="material-icons">assignment</i></a>
-					&nbsp;&nbsp;&nbsp;
-					<a href="#"><i class="material-icons">delete</i></a>
-          &nbsp;&nbsp;&nbsp;
-          <a href="../taskstoday/"><i class="material-icons">add</i></a>
-           <!--<span><a href = "#">Done</a></span> |
-            <span><a href = "edit_task.html">Edit</a></span> |
-            <span><a href = "#">Delete</a></span>-->
-			  </td>
-            </tr>
-            <tr>
-              <td>
-                <input type="checkbox" id="status3" />
-                <label for="status3">Task Management Function 2</label>
-              </td>
-              <td>Testing</td>
-              <td><center>8 Hours</center></td>
-              <td>July 2, 2015</td>
-              <td>July 3, 2015</td>
-			  <td><a href="#"><i class="material-icons">done</i></a>
-					&nbsp;&nbsp;&nbsp;
-					<a href="edit_task.jsp"><i class="material-icons">assignment</i></a>
-					&nbsp;&nbsp;&nbsp;
-					<a href="#"><i class="material-icons">delete</i></a>
-          &nbsp;&nbsp;&nbsp;
-          <a href="../taskstoday/"><i class="material-icons">add</i></a>
-            <!--<span><a href = "#">Done</a></span> |
-            <span><a href = "edit_task.html">Edit</a></span> |
-            <span><a href = "#">Delete</a></span>-->
-
-			  </td>
-            </tr>
           </tbody>
         </table>
         </p>

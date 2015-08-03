@@ -7,6 +7,13 @@
 */
 -->
 
+<%@page pageEncoding="UTF-8" isELIgnored="false"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="f" uri="http://www.slim3.org/functions"%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,15 +73,16 @@
             </tr>
           </thead>
           <tbody>
+          <c:forEach var="e" items="${tweetList}">
             <tr>
               <td>
                 <input type="checkbox" id="status" />
-                <label for="status">Task Management Design</label>
+                <label for="status">${f:h(e.name)}</label>
               </td>
-              <td>Design</td>
-              <td><center>8 Hours</center></td>
-              <td>July 2, 2015</td>
-              <td>July 3, 2015</td>
+              <td>${f:h(e.phase)}</td>
+              <td><center>${f:h(e.estHours)} Hours</center></td>
+              <td>${f:h(e.startDate)}</td>
+              <td>${f:h(e.dueDate)}</td>
       			  <td>
                 <a href="#"><i class="material-icons">done</i></a>
       					&nbsp;&nbsp;&nbsp;
@@ -88,6 +96,7 @@
                   <span><a href = "#">Delete</a></span>-->
       			  </td>
             </tr>
+            </c:forEach>
             <tr>
               <td>
                 <input type="checkbox" id="status2" />

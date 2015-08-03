@@ -37,10 +37,10 @@
     </li>
 
     <li class="active"><a href="../task/">Masterlist</a></li>
-    <li class="bold"><a href="todays_task.jsp" class="waves-effect waves-teal">Today's Tasks</a></li>
+    <li class="bold"><a href="../taskstoday/" class="waves-effect waves-teal">Today's Tasks</a></li>
     <li class="bold"><a href="addTask" class="waves-effect waves-teal">Create Task</a></li>
     <li class="bold"><a href="SearchTask" class="waves-effect waves-teal">Search Task</a></li>
-    <li class="bold"><a href="index.jsp" class="waves-effect waves-teal">Log Out </a></li>
+    <li class="bold"><a href="../" class="waves-effect waves-teal">Log Out </a></li>
 </ul>
 </header>
 
@@ -90,7 +90,7 @@
       					&nbsp;&nbsp;&nbsp;
       					<a href="#"><i class="material-icons">delete</i></a>
                 &nbsp;&nbsp;&nbsp;
-                <a href="#"><i class="material-icons">add</i></a>
+                <a href="../taskstoday/"><i class="material-icons">add</i></a>
                  <!-- <span><a href = "#">Done</a></span> |
                   <span><a href = "edit_task.html">Edit</a></span> |
                   <span><a href = "#">Delete</a></span>-->
@@ -113,7 +113,7 @@
 					&nbsp;&nbsp;&nbsp;
 					<a href="#"><i class="material-icons">delete</i></a>
           &nbsp;&nbsp;&nbsp;
-          <a href="#"><i class="material-icons">add</i></a>
+          <a href="../taskstoday/"><i class="material-icons">add</i></a>
            <!--<span><a href = "#">Done</a></span> |
             <span><a href = "edit_task.html">Edit</a></span> |
             <span><a href = "#">Delete</a></span>-->
@@ -134,7 +134,7 @@
 					&nbsp;&nbsp;&nbsp;
 					<a href="#"><i class="material-icons">delete</i></a>
           &nbsp;&nbsp;&nbsp;
-          <a href="#"><i class="material-icons">add</i></a>
+          <a href="../taskstoday/"><i class="material-icons">add</i></a>
             <!--<span><a href = "#">Done</a></span> |
             <span><a href = "edit_task.html">Edit</a></span> |
             <span><a href = "#">Delete</a></span>-->

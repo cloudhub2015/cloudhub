@@ -23,10 +23,12 @@ public class AddTaskController extends Controller {
     private TaskService service = new TaskService();
     @Override
     public Navigation run() throws Exception {
+        if(super.isPost()){
         Map<String,Object> input = new RequestMap(this.request);
         TaskDto taskDto = new TaskDto();
         BeanUtil.copy(input, taskDto);
         service.addTask(taskDto);
+        }
         //return redirect(this.basePath);
         return forward("create_task.jsp");
     }

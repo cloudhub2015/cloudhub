@@ -30,6 +30,7 @@ public class IndexController extends Controller {
     public Navigation run() throws Exception {
         List<Task> taskList = service.getTaskList();
         requestScope("taskList", taskList);
+        System.out.println();
         return forward("masterlist.jsp");
     }
 

@@ -22,8 +22,6 @@ public class UserDto {
         private String email;
         private List<String> errorList;
         
-        public UserDto(){}
-        
         public List<String> getErrorList() {
             return errorList;
         }

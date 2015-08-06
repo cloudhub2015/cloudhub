@@ -88,7 +88,13 @@
                 <input type="checkbox" id="status" />
                 <label for="status">${f:h(e.name)}</label>
               </td>
-              <td>${f:h(e.phase)}</td>
+              <td>
+              	<c:choose>
+			    <c:when test="${e.phase == 1}">Testing</c:when>
+			    <c:when test="${e.phase == 2}">Coding</c:when>
+			    <c:when test="${e.phase == 3}">Design</c:when>
+				</c:choose>
+			 </td>
               <td><center>${f:h(e.estHours)} Hours</center></td>
               <td>${f:h(e.startDate)}</td>
               <td>${f:h(e.dueDate)}</td>

@@ -68,7 +68,7 @@
         </div>
         <div class="row center">
           <div class="col s4">
-          <a href="user/" id="download-button" class="btn-large waves-effect waves-light purple">Log In</a>
+          <a href="task/" id="download-button" class="btn-large waves-effect waves-light purple">Log In</a>
           </div>
         </div>
       </form>

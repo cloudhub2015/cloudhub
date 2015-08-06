@@ -58,8 +58,62 @@ public class TaskDto {
      *  Expected Due Date
      */
     private String  dueDate;
+    /*
+     *  Finish Flag
+     */
+    private boolean isFinished;
+    /*
+     *  Pending Flag
+     */
+    private boolean isPending;
+    /*
+     *  Today Flag
+     */
+    private boolean isToday;
+    /*
+     * Hours spent by this task
+     */
+    private int spentOn;
+    
+    /*
+     *  @return isPending - returns TRUE if task is PENDING otherwise FALSE
+     */
+    public boolean isPending(){
+        return isPending;
+    }
+    /*
+     *  @param isPending - if Task is PENDING return TRUE otherwise FALSE
+     */
+    public void setPending(boolean isPending){
+        this.isPending = isPending;
+    }
+    
+    /*
+     *  @return isToday - returns TRUE if task is TODAY otherwise FALSE
+     */
+    public boolean isToday(){
+        return isToday;
+    }
+    /*
+     *  @param isToday - if Task is TODAY return TRUE otherwise FALSE
+     */
+    public void setToday(boolean isToday){
+        this.isToday = isToday;
+    }
     
     
+    /*
+     *  @return isFinished - returns TRUE if task is finished otherwise FALSE
+     */
+    public boolean isFinished(){
+        return isFinished;
+    }
+    /*
+     *  @param isFinished - if Task is FINISHED return TRUE otherwise FALSE
+     */
+    public void setFinished(boolean isFinished){
+        this.isFinished = isFinished;
+    }
     
     /*
      *  @return errorList - returns a List Objects 

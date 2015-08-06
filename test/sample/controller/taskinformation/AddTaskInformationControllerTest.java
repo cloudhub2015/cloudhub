@@ -3,7 +3,7 @@ package sample.controller.taskinformation;
 import org.slim3.tester.ControllerTestCase;
 import org.junit.Test;
 
-import sample.controller.task.AddTaskController;
+import taskmanagement.controller.task.AddTaskController;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 

@@ -54,7 +54,7 @@
   <!--Form-->
   <div class="container">
     <div class="row center">
-      <form class="col s12 offset-s4">
+      <form class="col s12 offset-s4" method="post" action="verifyUser">
         <div class="row center">
           <div class="input-field col s4">
             <i class="material-icons prefix">account_circle </i>
@@ -68,7 +68,7 @@
         </div>
         <div class="row center">
           <div class="col s4">
-          <a href="task/" id="download-button" class="btn-large waves-effect waves-light purple">Log In</a>
+          <a href="user/" id="download-button" class="btn-large waves-effect waves-light purple">Log In</a>
           </div>
         </div>
       </form>

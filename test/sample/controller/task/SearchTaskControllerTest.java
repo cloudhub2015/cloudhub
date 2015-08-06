@@ -2,6 +2,8 @@ package sample.controller.task;
 
 import org.slim3.tester.ControllerTestCase;
 import org.junit.Test;
+
+import taskmanagement.controller.task.SearchTaskController;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 

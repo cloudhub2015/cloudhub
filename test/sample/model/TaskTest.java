@@ -2,6 +2,8 @@ package sample.model;
 
 import org.slim3.tester.AppEngineTestCase;
 import org.junit.Test;
+
+import taskmanagement.model.Task;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 

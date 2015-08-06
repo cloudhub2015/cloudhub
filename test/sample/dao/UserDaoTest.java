@@ -2,6 +2,8 @@ package sample.dao;
 
 import org.slim3.tester.AppEngineTestCase;
 import org.junit.Test;
+
+import taskmanagement.dao.UserDao;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 

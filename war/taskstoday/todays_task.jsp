@@ -16,6 +16,7 @@
   <title>Welcome to CloudHub!</title>
 
   <!-- CSS  -->
+  <link rel="stylesheet" href="../css/base.css" type="text/css" media="screen,projection"/>
   <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="../css/materialize_content.css" type="text/css" rel="stylesheet" media="screen,projection"/>
@@ -45,8 +46,9 @@
       <div id="right" class="section scrollspy">
         <h2 class="header"><img src="../images/view.jpg" width="5%">&nbsp;&nbsp;Today's Tasks</h2>
         <p class="caption">Here is a list of tasks you have to accomplish within this day.</p>
-		  
-      <table class="unfinished_tasks">
+		  <!-- mod start 0.0.3 -->
+      <table class="table_wrapper table_even unfinished_tasks">
+      <!-- mod end 0.0.3 -->
           <thead>
             <p class="caption" style="color: red;"><b>Unfinished Tasks</b></p>
             <tr>
@@ -68,11 +70,11 @@
               <td><center>8 Hours</center></td>
               <td>July 2, 2015</td>
               <td>July 3, 2015</td>
-			         <td><a href="update_task.html">Update Task</a>
+			         <td><a href="updateTask">Update Task</a>
 					</tbody>
         </table>
 
-         <table class="todays_tasks">
+         <table class="table_wrapper table_even todays_tasks">
           <thead>
             <p class="caption" style="color: blue;"><b>Today's Tasks</b></p>
             <tr>
@@ -94,11 +96,11 @@
               <td><center>8 Hours</center></td>
               <td>July 2, 2015</td>
               <td>July 3, 2015</td>
-               <td><a href="update_task.html">Update Task</a>
+               <td><a href="updateTask">Update Task</a>
           </tbody>
         </table>
 
-        <table class="pending_tasks">
+        <table class="table_wrapper table_even pending_tasks">
           <thead>
             <p class="caption" style="color: violet;"><b>Pending Tasks</b></p>
             <tr>
@@ -136,5 +138,21 @@
   <script src="../../bin/materialize.js"></script>
   <script src="../js/init.js"></script>
   
+   <!-- mod start 0.0.3 -->
+   <script src="../jquery/jquery-1.8.2.js"></script>
+  <script src="../jquery/jquery.ui.effect.js"></script> 
+  <script>
+    $(function() {
+      
+      $('.table_wrapper').find('tr').on('hover', function() {
+        $(this).toggleClass('wrapper_odd', 200);
+      });
+      
+      $('.table_wrapper').find('tr').on('click', function() {
+        $(this).toggleClass('wrapper_action', 200);
+      });
+    });
+  </script>
+  <!-- mod end 0.0.3 -->
   </body>
 </html>

@@ -18,6 +18,6 @@ public class IndexController extends Controller {
         String masterListPage = "../task/masterlist.jsp";
         List<User> userList = service.getUsersList();
  
-        return forward(masterListPage);
+        return forward("signup.jsp");
     }
 }

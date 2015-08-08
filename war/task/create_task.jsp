@@ -5,6 +5,7 @@
 * @version 0.01
 * @as of July 7, 2015 1:45AM
 */
+  0.0.1 - [08/09/15] - David Ramirez - Error Blank Field Warning
 -->
 
 <!DOCTYPE html>
@@ -15,6 +16,9 @@
   <title>Welcome to CloudHub!</title>
 
   <!-- CSS  -->
+  <!-- 0.0.1 start mod -->
+  <link rel="stylesheet" href="../css/base.css" type="text/css" media="screen,projection"/>
+  <!-- 0.0.1 end mod -->
   <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="../css/materialize_content.css" type="text/css" rel="stylesheet" media="screen,projection"/>
@@ -47,8 +51,10 @@
           <div class="row">
             <form class="col s12" method="post" action="addTask">
               <div class="row">
+              <!-- 0.0.1 mod start -->
                 <div class="input-field col s6">
-                  <input id="task_name" name="name" type="text" class="validate">
+                <!-- 0.0.1 end start -->
+                  <input id="task_name" name="name" type="text" class="validate text_default">
                   <label for="task_name">Task Name</label>
                 </div>
               </div>
@@ -86,7 +92,7 @@
               </div>
 
                <!-- <a class="waves-effect waves-light btn"><i class="material-icons left">note_add</i>Create Task</a> -->
-             <button class="waves-effect waves-light btn" type="submit"  value="Create Task" name="createTask"><i class="material-icons left">note_add</i>Create Task</button>
+             <button class="waves-effect waves-light btn button_default button_action" type="submit"  value="create_task" name="createTask"><i class="material-icons left">note_add</i>Create Task</button>
               &nbsp;&nbsp;&nbsp;
               <a class="waves-effect waves-light btn" name="clearField"><i class="material-icons left">clear_all</i>Clear Fields</a>
             </form>
@@ -102,6 +108,45 @@
   <script src="../../bin/materialize.js"></script>
   <script src="../js/init.js"></script>
 
+  <!-- 0.0.1 start mod -->
+  <script src="../jquery/jquery-1.8.2.js"></script>
+  <script src="../jquery/jquery.ui.effect.js"></script>
+  <!--
+  <script>
+    $(function() {
+          $('button').on('click', function() {
+                if ('create_task' == $(this).val()) {
+                  for (var i = 0; i < $('input.validate').length; i++) {
+                    if ("" == $('input.validate').eq(i).val()) {
+                      $('input.validate').eq(i).addClass('text_error');
+                    } else {
+                      $('input.validate').eq(i).removeClass('text_error');
+                    }
+                  }
+                  
+                  for (var i = 0; i < $('.textarea_default').length; i++) {
+                    if ("" == $('.textarea_default').eq(i).val()) {
+                      $('.textarea_default').eq(i).addClass('text_error');
+                    } else {
+                      $('.textarea_default').eq(i).removeClass('text_error');
+                    }
+                  }
+                } else if ('Cancel' == $(this).val()) {
+                  $('.text_default').val('').removeClass('text_error');
+                  $('.textarea_default').val('').removeClass('text_error');
+                }
+                
+                if ($(this).hasClass('button_action')) {  
+                  $(this).closest('.wrapper').toggleClass('wrapper_action', 200).toggleClass('wrapper_action', 200);
+                } else if( $(this).hasClass('button_danger')) {
+                  $(this).closest('.wrapper').toggleClass('wrapper_danger', 200).toggleClass('wrapper_danger', 200);
+                }
+                return false;
+              });
+      });
+  </script>
+  -->
+  <!-- 0.0.1 end mod -->
   </body>
   </html>
 

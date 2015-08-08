@@ -70,7 +70,8 @@
 
 				</p>
       <!-- mod start 0.0.2 -->
-		  <table class="unfinished_tasks table_wrapper"> <!-- mod start 0.0.2 -->
+      <div class="table_wrapper table_even">
+		  <table class="unfinished_tasks"> <!-- mod start 0.0.2 -->
           <thead>
             <tr>
                 <th data-field="status"><center>Task Name</center></th>
@@ -78,7 +79,7 @@
                 <th data-field="time_allotment"><center>Estimated Time Allotment</center></th>
                 <th data-field="start_date"><center>Start Date</center></th>
                 <th data-field="due_date"><center>Due Date</center></th>
-				<th data-field="action"><center>Action</center></th>
+				        <th data-field="action"><center>Action</center></th>
             </tr>
           </thead>
           <tbody>
@@ -115,6 +116,7 @@
             </c:forEach>
           </tbody>
         </table>
+        </div>
         </p>
 
         <br>
@@ -123,7 +125,7 @@
         <h2 class="header" style="color: green;"><img src="../images/view.jpg" width="5%">&nbsp;&nbsp;Completed Tasks</h2>
         <p class="caption">Here is a list of tasks you have accomplished.
 
-          <table class="finished_tasks table_wrapper">
+          <table class="finished_tasks table_wrapper table_even">
           <thead>
             <tr>
                 <th data-field="status"><center>Task Name</center></th>

@@ -46,7 +46,7 @@
 
     <li class="active"><a href="../task/">Masterlist</a></li>
     <li class="bold"><a href="../taskstoday/" class="waves-effect waves-teal">Today's Tasks</a></li>
-    <li class="bold"><a href="addTask" class="waves-effect waves-teal">Create Task</a></li>
+    <li class="bold"><a href="../task/viewTaskForm" class="waves-effect waves-teal">Create Task</a></li>
     <li class="bold"><a href="SearchTask" class="waves-effect waves-teal">Search Task</a></li>
     <li class="bold"><a href="../" class="waves-effect waves-teal">Log Out </a></li>
 </ul>
@@ -103,7 +103,7 @@
       					&nbsp;&nbsp;&nbsp;
       					<a href="edit_task.jsp"><i class="material-icons">assignment</i></a>
       					&nbsp;&nbsp;&nbsp;
-      				<a  href="deleteTweet('form_${f:h(e.id)}')"><i class="material-icons">delete</i></a> 
+      				<a  href="deleteTask('form_${f:h(e.id)}')"><i class="material-icons">delete</i></a> 
       				<!--	<button class="material-icons" onClick="deleteTweet('form_${f:h(e.id)}')">Delete</button> -->
                 &nbsp;&nbsp;&nbsp;
                 <a href="../taskstoday/"><i class="material-icons">add</i></a>

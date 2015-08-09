@@ -1,6 +1,5 @@
 package taskmanagement.dao;
 
-import java.util.List;
 
 import org.slim3.datastore.Datastore;
 
@@ -10,9 +9,7 @@ import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Transaction;
 import com.google.appengine.api.datastore.Query.FilterOperator;
 
-import taskmanagement.meta.TaskMeta;
 import taskmanagement.meta.UserMeta;
-import taskmanagement.model.Task;
 import taskmanagement.model.User;
 
 /**
@@ -43,66 +40,7 @@ public class UserDao {
         }
         return result;
     }
-    
-    /**
-     * Method used to update a user
-     * @param userModel - task to be updated
-     * @return Boolean - true, if task is updated; otherwise, false.
-     */
-    
-    public boolean updateUser(User userModel) {
-        boolean result = true;
-        TaskMeta tm = new TaskMeta();
-        Query.Filter mainFilter = new Query.FilterPredicate("id", FilterOperator.EQUAL, userModel.getId());
-
-        try {
-            Task originalUserModel = Datastore.query(tm).filter(mainFilter).asSingle();
-            if (originalUserModel != null) {
-          //      originalUserModel.setCreatedDate(userModel.getCreatedDate());
-          //      originalUserModel.setContent(userModel.getContent());
-                Transaction tx = Datastore.beginTransaction();
-                Datastore.put(originalUserModel);
-                tx.commit();
-            } else {
-                result = false;
-            }
-        } catch (Exception e) {
-            result = false;
-        }
-        return result;
-    }
-    
-    /**
-     * Method used to delete a user
-     * @param userModel - user to be deleted
-     * @return Boolean - true, if task is deleted; otherwise, false.
-     */
-    public boolean deleteUser(User userModel) {
-        boolean result = true;
-        UserMeta tm = new UserMeta();
-        Query.Filter mainFilter = new Query.FilterPredicate("id", FilterOperator.EQUAL, userModel.getId());
-
-        try {
-            User originalUserModel = Datastore.query(tm).filter(mainFilter).asSingle();
-            if (originalUserModel != null) {
-                Transaction tx = Datastore.beginTransaction();
-                Datastore.delete(originalUserModel.getKey());
-                tx.commit();
-            } else {
-                result = false;
-            }
-        } catch (Exception e) {
-            result = false;
-        }
-        return result;
-    }
-
-    public List<User> getAllUsers() {
-        UserMeta t = new UserMeta();
-        Key parentKey = KeyFactory.createKey("Account", "Default");
-        return Datastore.query(t ,parentKey).asList();
-    }
-    
+        
     public boolean checkUser(User userModel) {
         boolean result = false;
         UserMeta tm = new UserMeta();

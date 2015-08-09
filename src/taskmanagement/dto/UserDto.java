@@ -44,11 +44,7 @@ public class UserDto {
         public String getLastName(){
             return lastName;
         }
-        
-        public String getTelephoneContact(){
-            return telephone;
-        }
-        
+                
         public String getEmail(){
             return email;
         }
@@ -68,11 +64,7 @@ public class UserDto {
         public void setLastName(String lastName){
             this.lastName = lastName;
         }
-        
-        public void setTelephoneContact(String telephone){
-            this.telephone = telephone;
-        }
-        
+                
         public void setEmail(String email){
             this.email = email;
         }

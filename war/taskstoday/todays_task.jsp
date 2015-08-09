@@ -32,7 +32,7 @@
   
     <li class="bold"><a href="../task/">Masterlist</a></li>
     <li class="active"><a href="../taskstoday/" class="waves-effect waves-teal">Today's Tasks</a></li>
-    <li class="bold"><a href="../task/addTask" class="waves-effect waves-teal">Create Task</a></li>
+    <li class="bold"><a href="../task/viewTaskForm" class="waves-effect waves-teal">Create Task</a></li>
     <li class="bold"><a href="../task/searchTask" class="waves-effect waves-teal">Search Task</a></li>
     <li class="bold"><a href="../" class="waves-effect waves-teal">Log Out </a></li>
 </ul>

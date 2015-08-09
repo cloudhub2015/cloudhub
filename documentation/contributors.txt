@@ -1,8 +1,0 @@
-CloudHub 2015
-
-David Ramirez	 	- Team Lead
-Janna Tapitha	 	- UI Designer
-Jacquelyn Amaya 	- Backend Developer
-Vine Deiparine	 	- UI Designer
-Nelson Ruiz 		- UI Designer
-Prince Garces	 	- Backend Developer

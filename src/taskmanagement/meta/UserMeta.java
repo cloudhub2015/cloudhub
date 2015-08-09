@@ -1,11 +1,8 @@
 package taskmanagement.meta;
 
-//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-08-06 15:42:11")
+//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-08-09 10:33:50")
 /** */
 public final class UserMeta extends org.slim3.datastore.ModelMeta<taskmanagement.model.User> {
-
-    /** */
-    public final org.slim3.datastore.StringAttributeMeta<taskmanagement.model.User> email = new org.slim3.datastore.StringAttributeMeta<taskmanagement.model.User>(this, "email", "email");
 
     /** */
     public final org.slim3.datastore.StringAttributeMeta<taskmanagement.model.User> firstName = new org.slim3.datastore.StringAttributeMeta<taskmanagement.model.User>(this, "firstName", "firstName");
@@ -21,9 +18,6 @@ public final class UserMeta extends org.slim3.datastore.ModelMeta<taskmanagement
 
     /** */
     public final org.slim3.datastore.StringAttributeMeta<taskmanagement.model.User> password = new org.slim3.datastore.StringAttributeMeta<taskmanagement.model.User>(this, "password", "password");
-
-    /** */
-    public final org.slim3.datastore.StringAttributeMeta<taskmanagement.model.User> telephone = new org.slim3.datastore.StringAttributeMeta<taskmanagement.model.User>(this, "telephone", "telephone");
 
     /** */
     public final org.slim3.datastore.StringAttributeMeta<taskmanagement.model.User> username = new org.slim3.datastore.StringAttributeMeta<taskmanagement.model.User>(this, "username", "username");
@@ -48,13 +42,11 @@ public final class UserMeta extends org.slim3.datastore.ModelMeta<taskmanagement
     @Override
     public taskmanagement.model.User entityToModel(com.google.appengine.api.datastore.Entity entity) {
         taskmanagement.model.User model = new taskmanagement.model.User();
-        model.setEmail((java.lang.String) entity.getProperty("email"));
         model.setFirstName((java.lang.String) entity.getProperty("firstName"));
         model.setId(longToPrimitiveLong((java.lang.Long) entity.getProperty("id")));
         model.setKey(entity.getKey());
         model.setLastName((java.lang.String) entity.getProperty("lastName"));
         model.setPassword((java.lang.String) entity.getProperty("password"));
-        model.setTelephone((java.lang.String) entity.getProperty("telephone"));
         model.setUsername((java.lang.String) entity.getProperty("username"));
         model.setVersion((java.lang.Long) entity.getProperty("version"));
         return model;
@@ -69,12 +61,10 @@ public final class UserMeta extends org.slim3.datastore.ModelMeta<taskmanagement
         } else {
             entity = new com.google.appengine.api.datastore.Entity(kind);
         }
-        entity.setProperty("email", m.getEmail());
         entity.setProperty("firstName", m.getFirstName());
         entity.setProperty("id", m.getId());
         entity.setProperty("lastName", m.getLastName());
         entity.setProperty("password", m.getPassword());
-        entity.setProperty("telephone", m.getTelephone());
         entity.setProperty("username", m.getUsername());
         entity.setProperty("version", m.getVersion());
         entity.setProperty("slim3.schemaVersion", 1);
@@ -139,10 +129,6 @@ public final class UserMeta extends org.slim3.datastore.ModelMeta<taskmanagement
         taskmanagement.model.User m = (taskmanagement.model.User) model;
         writer.beginObject();
         org.slim3.datastore.json.Default encoder0 = new org.slim3.datastore.json.Default();
-        if(m.getEmail() != null){
-            writer.setNextPropertyName("email");
-            encoder0.encode(writer, m.getEmail());
-        }
         if(m.getFirstName() != null){
             writer.setNextPropertyName("firstName");
             encoder0.encode(writer, m.getFirstName());
@@ -161,10 +147,6 @@ public final class UserMeta extends org.slim3.datastore.ModelMeta<taskmanagement
             writer.setNextPropertyName("password");
             encoder0.encode(writer, m.getPassword());
         }
-        if(m.getTelephone() != null){
-            writer.setNextPropertyName("telephone");
-            encoder0.encode(writer, m.getTelephone());
-        }
         if(m.getUsername() != null){
             writer.setNextPropertyName("username");
             encoder0.encode(writer, m.getUsername());
@@ -181,8 +163,6 @@ public final class UserMeta extends org.slim3.datastore.ModelMeta<taskmanagement
         taskmanagement.model.User m = new taskmanagement.model.User();
         org.slim3.datastore.json.JsonReader reader = null;
         org.slim3.datastore.json.Default decoder0 = new org.slim3.datastore.json.Default();
-        reader = rootReader.newObjectReader("email");
-        m.setEmail(decoder0.decode(reader, m.getEmail()));
         reader = rootReader.newObjectReader("firstName");
         m.setFirstName(decoder0.decode(reader, m.getFirstName()));
         reader = rootReader.newObjectReader("id");
@@ -193,8 +173,6 @@ public final class UserMeta extends org.slim3.datastore.ModelMeta<taskmanagement
         m.setLastName(decoder0.decode(reader, m.getLastName()));
         reader = rootReader.newObjectReader("password");
         m.setPassword(decoder0.decode(reader, m.getPassword()));
-        reader = rootReader.newObjectReader("telephone");
-        m.setTelephone(decoder0.decode(reader, m.getTelephone()));
         reader = rootReader.newObjectReader("username");
         m.setUsername(decoder0.decode(reader, m.getUsername()));
         reader = rootReader.newObjectReader("version");

@@ -1,11 +1,9 @@
 package taskmanagement.service;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import taskmanagement.dao.UserDao;
 import taskmanagement.dto.UserDto;
-import taskmanagement.model.Task;
 import taskmanagement.model.User;
 
 /**
@@ -30,12 +28,13 @@ public class UserService {
      */
     public UserDto addUser(UserDto input) {        
         User user = new User();
-        user.setEmail(input.getEmail());
+        
         user.setFirstName(input.getFirstName());
         user.setLastName(input.getLastName());
         user.setUsername(input.getUsername());
         user.setPassword(input.getPassword());
-        user.setTelephone(input.getTelephone());
+        //user.setTelephone(input.getTelephone());
+      //user.setEmail(input.getEmail());
         
         if(!this.dao.saveUser(user)) {
             input.setErrorList(new ArrayList<String>());
@@ -46,12 +45,12 @@ public class UserService {
     
     public UserDto validateUser(UserDto input) {        
         User user = new User();
-        user.setEmail(input.getEmail());
+        //user.setEmail(input.getEmail());
         user.setFirstName(input.getFirstName());
         user.setLastName(input.getLastName());
         user.setUsername(input.getUsername());
         user.setPassword(input.getPassword());
-        user.setTelephone(input.getTelephone());
+        //user.setTelephone(input.getTelephone());
         
         if(!this.dao.checkUser(user)) {
             input.setErrorList(new ArrayList<String>());
@@ -59,13 +58,4 @@ public class UserService {
         }
         return input;
     }
-    
-    /**
-     * Method used to retrieve list of tasks.
-     * @return List<Task> - list of Tasks.
-     */
-    public List<User> getUsersList() {
-        return this.dao.getAllUsers();
-    }
-
 }

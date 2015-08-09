@@ -68,7 +68,12 @@
   <!--Registration Form-->
   <div class="container">
     <div class="row center">
-      <form class="col s12 offset-s4" method="post" action="register">
+      <!-- <form class="col s12 offset-s4" method="post" action="register"> -->
+      <div class="col s12 offset-s4">
+      	<div class="row">
+      		<div id="messageDisplay" class="input-field col s4">
+      		</div>
+      	</div>
         <div class="row">
           <div class="input-field col s4">
             <i class="material-icons prefix">perm_identity </i>
@@ -92,6 +97,7 @@
             <input id="confirm_password" type="password" class="validate" placeholder="Confirm Password">
           </div>
         </div>
+        <!-- 
         <div class="row">
           <div class="input-field col s4">
             <i class="material-icons prefix">phone</i>
@@ -106,13 +112,16 @@
             <label for="email">Email</label>
           </div>
         </div>
+         -->
         <div class="row">
           <div class="input-field col s4">
           <!--  <a href="#" id="download-button" class="btn-large waves-effect waves-light purple">Sign Up</a> -->
-          <button class="waves-effect waves-light btn" type="submit" href="/"  value="Register User" name="registerUser"><i class="material-icons left">note_add</i>Sign Up</button>
+          <!-- <button id="btnSignUp" class="waves-effect waves-light btn" value="Register User" name="registerUser"><i class="material-icons left">note_add</i>Sign Up</button> -->
+          <button id="btnSignUp" class="waves-effect waves-light btn" value="Register User" name="registerUser"><i class="material-icons left">note_add</i>Sign Up</button>
           </div>
         </div>
-      </form>
+      <!-- </form> -->
+      </div>
     </div>
   </div>
 
@@ -123,14 +132,15 @@
     </div>
   </footer>
 
-
-  <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="../js/materialize.js"></script>
+  </body>
+  
+  <!--  Scripts -->
+  <script src="../js/materialize.js"></script> 
   <script src="../js/init.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script type="text/javascript" src="js/materialize.min.js"></script>
-  </body>
+  <script type="text/javascript" src="../js/materialize.min.js"></script>
+  <script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
+  <script type="text/javascript" src="../js/user.js"></script>
 
 </html>
 <!-- mod end 0.0.1 -->

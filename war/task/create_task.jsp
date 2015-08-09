@@ -131,15 +131,23 @@
 		        $('.browser-default').eq(i).removeClass('text_error');
 		      }
 		    }
+		  	//for start and due dates
+		    for (var i = 0; i < $('.datepicker').length; i++) {
+		      if ("" == $('.datepicker').eq(i).val()) {
+		        $('.datepicker').eq(i).addClass('invalid');
+		      } else {
+		        $('.datepicker').eq(i).removeClass('invalid');
+		      }
+		    }
 		  } else if ('Cancel' == $(this).val()) {
 				$('.validate').val('').removeClass('invalid');
 				$('.browser-default').val('').removeClass('text_error');
-			}
-		  
-		});
+				$('.datepicker').val('').removeClass('invalid');
+			}		  
+	});
   });
   </script>   
-  
+  <!-- 0.0.1 end mod -->
   </body>
   </html>
 

@@ -1,6 +1,7 @@
 <!-- REVISION HISTORY-->
 
-<!-- 0.0.1 - July 06, 2015 - Vine Deiparine - Initial Draft -->
+<!-- 0.0.1 - July 06, 2015   - Vine Deiparine     - Initial Draft -->
+<!-- 0.0.2 - August 09, 2015 - Nelson Jr. F. Ruiz - Added jQuery codes: empty textfield warning -->
 
 <!------------------------------------------------------------------------------------------------------------------------------>
 
@@ -130,7 +131,27 @@
   <script src="../js/init.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
-  </body>
+  <!-- 0.0.2 start mod -->
+  <script src="../jquery/jquery-1.8.2.js"></script>
+  <script src="../jquery/jquery.ui.effect.js"></script> 
+  <script>
+  $(function() {	  
+	  $('button.btn').click(function(event) {
+		  event.preventDefault();
+		  if ('Register User' == $(this).val()) {
+		    for (var i = 0; i < $('.validate').length; i++) {
+		      if ("" == $('.validate').eq(i).val()) {
+		        $('.validate').eq(i).addClass('invalid');
+		      } else {
+		        $('.validate').eq(i).removeClass('invalid');
+		      }
+		    }
+		  }
+	  });
+  });
+  </script>
+  <!-- 0.0.2 end mod -->
+</body>
 
 </html>
 <!-- mod end 0.0.1 -->

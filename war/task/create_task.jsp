@@ -5,7 +5,7 @@
 * @version 0.01
 * @as of July 7, 2015 1:45AM
 */
-  0.0.1 - [08/09/15] - David Ramirez - Error Blank Field Warning
+  0.0.1 - [08/09/15] - Nelson F. Ruiz Jr. - Empty Text Field Warning and Clear Text Fields
 -->
 
 <!DOCTYPE html>
@@ -54,8 +54,8 @@
               <!-- 0.0.1 mod start -->
                 <div class="input-field col s6">
                 <!-- 0.0.1 end start -->
-                  <input id="task_name" name="name" type="text" class="validate text_default">
-                  <label for="task_name">Task Name</label>
+                  <input name="name" type="text" class="validate">
+                  <label class="active" for="task_name">Task Name</label>
                 </div>
               </div>
 
@@ -72,29 +72,29 @@
 
               <div class="row">
                 <div class="input-field col s6">
-                  <input id="estimated_time" name="estHours" type="text" class="validate">
-                  <label for="estimated_time">Estimated Time Allotment</label>
+                  <input id="estimated_time" name="estHours" type="text" class="validate" placeHolder="number of hours">
+                  <label class="active" for="estimated_time" >Estimated Time Allotment</label>
                 </div>
               </div>
 
               <div class="row">
                 <div class="input-field col s6">
-                  <input id="start_date" name="startDate" type="date" class="datepicker picker__input">
+                  <input id="start_date" name="startDate" type="date" class="datepicker picker__input" placeholder="Start Date">
                 <label for="start_date"></label>
                 </div>
               </div>
 
               <div class="row">
                 <div class="input-field col s6">
-                  <input id="due_date" name="dueDate" type="date" class="datepicker picker__input">
+                  <input id="due_date" name="dueDate" type="date" class="datepicker picker__input" placeholder="Due Date">
                  <label for="due_date"></label>
                 </div>
               </div>
 
                <!-- <a class="waves-effect waves-light btn"><i class="material-icons left">note_add</i>Create Task</a> -->
-             <button class="waves-effect waves-light btn button_default button_action" type="submit"  value="create_task" name="createTask"><i class="material-icons left">note_add</i>Create Task</button>
+             <button class="btn waves-effect waves-light" type="submit"  value="create_task" name="createTask"><i class="material-icons left">note_add</i>Create Task</button>
               &nbsp;&nbsp;&nbsp;
-              <a class="waves-effect waves-light btn" name="clearField"><i class="material-icons left">clear_all</i>Clear Fields</a>
+              <button class="waves-effect waves-light btn" name="clearField" value="Cancel"><i class="material-icons left">clear_all</i>Clear Fields</button>
             </form>
           </div>
         </p>
@@ -110,43 +110,36 @@
 
   <!-- 0.0.1 start mod -->
   <script src="../jquery/jquery-1.8.2.js"></script>
-  <script src="../jquery/jquery.ui.effect.js"></script>
-  <!--
+  <script src="../jquery/jquery.ui.effect.js"></script> 
   <script>
-    $(function() {
-          $('button').on('click', function() {
-                if ('create_task' == $(this).val()) {
-                  for (var i = 0; i < $('input.validate').length; i++) {
-                    if ("" == $('input.validate').eq(i).val()) {
-                      $('input.validate').eq(i).addClass('text_error');
-                    } else {
-                      $('input.validate').eq(i).removeClass('text_error');
-                    }
-                  }
-                  
-                  for (var i = 0; i < $('.textarea_default').length; i++) {
-                    if ("" == $('.textarea_default').eq(i).val()) {
-                      $('.textarea_default').eq(i).addClass('text_error');
-                    } else {
-                      $('.textarea_default').eq(i).removeClass('text_error');
-                    }
-                  }
-                } else if ('Cancel' == $(this).val()) {
-                  $('.text_default').val('').removeClass('text_error');
-                  $('.textarea_default').val('').removeClass('text_error');
-                }
-                
-                if ($(this).hasClass('button_action')) {  
-                  $(this).closest('.wrapper').toggleClass('wrapper_action', 200).toggleClass('wrapper_action', 200);
-                } else if( $(this).hasClass('button_danger')) {
-                  $(this).closest('.wrapper').toggleClass('wrapper_danger', 200).toggleClass('wrapper_danger', 200);
-                }
-                return false;
-              });
-      });
-  </script>
-  -->
-  <!-- 0.0.1 end mod -->
+  $(function() {	  
+	  $('button.btn').click(function(event) {
+		  event.preventDefault();
+		  if ('create_task' == $(this).val()) {
+		    for (var i = 0; i < $('.validate').length; i++) {
+		      if ("" == $('.validate').eq(i).val()) {
+		        $('.validate').eq(i).addClass('invalid');
+		      } else {
+		        $('.validate').eq(i).removeClass('invalid');
+		      }
+		    }
+		    //for phases
+		    for (var i = 0; i < $('.browser-default').length; i++) {
+		      if ("" == $('.browser-default').eq(i).val()) {
+		        $('.browser-default').eq(i).addClass('text_error');
+		      } else {
+		        $('.browser-default').eq(i).removeClass('text_error');
+		      }
+		    }
+		  } else if ('Cancel' == $(this).val()) {
+				$('.validate').val('').removeClass('invalid');
+				$('.browser-default').val('').removeClass('text_error');
+			}
+		  
+		});
+  });
+  </script>   
+  
   </body>
   </html>
 

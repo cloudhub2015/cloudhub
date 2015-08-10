@@ -7,6 +7,7 @@
 */
 -->
 
+<%@page import="org.apache.jasper.tagplugins.jstl.core.If"%>
 <%@page pageEncoding="UTF-8" isELIgnored="false" session="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -53,15 +54,16 @@
           <div class="row">
             <div class="input-field col s6">
               
-              <input id="search_bar" type="text" class="validate">
-              <label for="search_bar"><i class="material-icons left">search</i>Search Task Name</label>
+              <input name="search_bar_name" id="search_bar" type="text" class="validate" value="lol">
+              <label class="active" for="search_bar">Search Task Name</label>
+              <!--<label for="search_bar"><i class="material-icons left">search</i>Search Task Name</label>-->
             </div>
       
         
       
             <div class="input-field col s6">
               <div class="col s6">
-              <select class="browser-default">
+              <select name="sel" id="sel_id "class="browser-default">
                  <option value="" disabled selected>Choose Filter</option>
                  <option value="1">Phase</option>
                  <option value="2">Start Date</option>
@@ -74,14 +76,53 @@
           <table>
           <thead>
             <tr>
-                <th data-field="status">Task Name</th>
-                <th data-field="name">Phase</th>
-                <th data-field="time_allotment">Estimated Time Allotment</th>
-                <th data-field="start_date">Start Date</th>
-                <th data-field="due_date">Due Date</th>
+                <th data-field="status"><center>Task Name</center></th>
+                <th data-field="name"><center>Phase</center></th>
+                <th data-field="time_allotment"><center>Estimated Time Allotment</center></th>
+                <th data-field="start_date"><center>Start Date</center></th>
+                <th data-field="due_date"><center>Due Date</center></th>
+                <th data-field="action"><center>Action</center></th>
             </tr>
           </thead>
           <tbody>
+          <c:forEach var="e" items="${taskList}">
+            <tr>
+              <c:choose>
+              <c:when test="${f:h(e.name) == 'PHP'}">
+              <td><!-- name -->
+                <input type="checkbox" id="status" />
+                <label for="status">${f:h(e.name)}</label>
+              </td>
+              <td><!-- phase -->
+              	<c:choose>
+			    <c:when test="${e.phase == 1}">Testing</c:when>
+			    <c:when test="${e.phase == 2}">Coding</c:when>
+			    <c:when test="${e.phase == 3}">Design</c:when>
+				</c:choose>
+			 </td><!-- hours -->
+              <td><center>${f:h(e.estHours)} Hours</center></td>
+              <td>${f:h(e.startDate)}</td><!-- start date -->
+              <td>${f:h(e.dueDate)}</td><!-- due date -->
+      			  <td>
+                <a href="#"><i class="material-icons">done</i></a>
+      					&nbsp;&nbsp;&nbsp;
+      					<a href="edit_task.jsp"><i class="material-icons">assignment</i></a>
+      					&nbsp;&nbsp;&nbsp;
+      				<a  href="deleteTweet('form_${f:h(e.id)}')"><i class="material-icons">delete</i></a> 
+      				<!--	<button class="material-icons" onClick="deleteTweet('form_${f:h(e.id)}')">Delete</button> -->
+                &nbsp;&nbsp;&nbsp;
+                <a href="../taskstoday/"><i class="material-icons">add</i></a>
+                 <!-- <span><a href = "#">Done</a></span> |
+                  <span><a href = "edit_task.html">Edit</a></span> |
+                  <span><a href = "#">Delete</a></span>-->
+      			  </td>
+              </c:when>
+              </c:choose>
+            </tr>
+            </c:forEach>
+            
+            <!-- sample -->
+            
             <tr>
               <td></td>
               <td></td>
@@ -115,6 +156,10 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="../../bin/materialize.js"></script>
   <script src="../js/init.js"></script>
+  
+  <sript>
+  
+  </sript>
   
   </body>
   </html>

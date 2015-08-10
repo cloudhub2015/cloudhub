@@ -139,6 +139,10 @@
 		        $('.datepicker').eq(i).removeClass('invalid');
 		      }
 		    }
+		    // Submit if there are no errors
+            if ($('.invalid').length == 0) { 
+                $('form').submit();
+            }
 		  } else if ('Cancel' == $(this).val()) {
 				$('.validate').val('').removeClass('invalid');
 				$('.browser-default').val('').removeClass('text_error');

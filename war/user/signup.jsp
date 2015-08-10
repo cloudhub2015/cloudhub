@@ -136,7 +136,7 @@
   <script src="../jquery/jquery.ui.effect.js"></script> 
   <script>
   $(function() {	  
-	  $('button.btn').click(function(event) {
+	  $('button.btn').on('click', function(event) {
 		  event.preventDefault();
 		  if ('Register User' == $(this).val()) {
 		    for (var i = 0; i < $('.validate').length; i++) {
@@ -146,6 +146,10 @@
 		        $('.validate').eq(i).removeClass('invalid');
 		      }
 		    }
+		 // Submit if there are no errors
+            if ($('.invalid').length == 0) { 
+                $('form').submit();
+            }
 		  }
 	  });
   });

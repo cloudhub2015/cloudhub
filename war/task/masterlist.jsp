@@ -44,7 +44,7 @@
       <p><h4 class="header_name">Hey, Riri!</h4></p>
     </li>
 
-    <li class="active"><a href="../task/">Masterlist</a></li>
+    <li class="active"><a href="../task/display">Masterlist</a></li>
     <li class="bold"><a href="../taskstoday/" class="waves-effect waves-teal">Today's Tasks</a></li>
     <li class="bold"><a href="addTask" class="waves-effect waves-teal">Create Task</a></li>
     <li class="bold"><a href="SearchTask" class="waves-effect waves-teal">Search Task</a></li>
@@ -71,7 +71,7 @@
 				</p>
       <!-- mod start 0.0.2 -->
       <div class="table_wrapper table_even">
-		  <table class="unfinished_tasks"> <!-- mod start 0.0.2 -->
+		  <table class="unfinished_tasks" id="unfinished_tasks"> <!-- mod start 0.0.2 -->
           <thead>
             <tr>
                 <th data-field="status"><center>Task Name</center></th>
@@ -83,7 +83,9 @@
             </tr>
           </thead>
           <tbody>
-          <c:forEach var="e" items="${taskList}">
+          <div id="taskList">
+          </div>
+          <!--<c:forEach var="e" items="${taskList}">
             <tr>
               <td>
                 <input type="checkbox" id="status" />
@@ -105,15 +107,12 @@
       					<a href="edit_task.jsp"><i class="material-icons">assignment</i></a>
       					&nbsp;&nbsp;&nbsp;
       				<a  href="deleteTweet('form_${f:h(e.id)}')"><i class="material-icons">delete</i></a> 
-      				<!--	<button class="material-icons" onClick="deleteTweet('form_${f:h(e.id)}')">Delete</button> -->
-                &nbsp;&nbsp;&nbsp;
-                <a href="../taskstoday/"><i class="material-icons">add</i></a>
-                 <!-- <span><a href = "#">Done</a></span> |
-                  <span><a href = "edit_task.html">Edit</a></span> |
-                  <span><a href = "#">Delete</a></span>-->
-      			  </td>
+      				
+                <!-- &nbsp;&nbsp;&nbsp;
+                <a href="../taskstoday/"><i class="material-icons">add</i></a> -->
+      			  <!-- </td>
             </tr>
-            </c:forEach>
+            </c:forEach> -->
           </tbody>
         </table>
         </div>
@@ -143,21 +142,24 @@
               <td><center>July 11, 2015</center></td>
               <td><center>July 21, 2015</center></td>
             </tr>
+          </tbody>
+          </table>
+           
   </div>
 </div>
 </main>
-
+</body>
   <!--  Scripts-->
+  
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="../../bin/materialize.js"></script>
-  <script src="../js/init.js"></script>
-
-  </body>
-
-  <!-- mod start 0.0.2 -->
-  <!-- jQuery -->
   <script src="../jquery/jquery-1.8.2.js"></script>
   <script src="../jquery/jquery.ui.effect.js"></script> 
+  <script src="../js/materialize.js"></script>
+  <script src="../js/init.js"></script>
+  <script src="../js/display.js"></script>
+  <!-- mod start 0.0.2 -->
+  <!-- jQuery -->
+ 
   <script>
     $(function() {
       

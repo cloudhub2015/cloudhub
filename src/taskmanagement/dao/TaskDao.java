@@ -1,6 +1,3 @@
-/**
- * 
- */
 package taskmanagement.dao;
 
 import java.util.List;
@@ -22,9 +19,14 @@ import taskmanagement.model.Task;
  * @version 0.01 
  * Version History
  * [07/27/2015] 0.01 - Jacquelyn Amaya - Initial codes
+ * [08/07/2015] 0.02 - Jacquelyn Amaya - Added searchTasks method and methods for taskstoday controllers
  */
 public class TaskDao {
-    
+/**
+ * --------------------------------------------------------------------
+ * For Task Controllers
+ * --------------------------------------------------------------------
+ */    
     /**
      * Method used to retrieve list of tasks.
      * @return List<Task> - list of tasks.
@@ -33,6 +35,16 @@ public class TaskDao {
         TaskMeta t = new TaskMeta();
         Key parentKey = KeyFactory.createKey("Account", "Default");
         return Datastore.query(t ,parentKey).asList();
+    }
+    
+    /**
+     * Method used to retrieve tasks searched by the client.
+     * @return List<Task> - list of tasks.
+     */
+    public List<Task> searchTasks(String name) {
+        TaskMeta t = new TaskMeta();
+        Query.Filter mainFilter = new Query.FilterPredicate("name", FilterOperator.IN, name);
+        return Datastore.query(t).filter(mainFilter).asList();
     }
     
     /**
@@ -70,8 +82,15 @@ public class TaskDao {
         try {
             Task originalTaskModel = Datastore.query(tm).filter(mainFilter).asSingle();
             if (originalTaskModel != null) {
-                originalTaskModel.setCreatedDate(taskModel.getCreatedDate());
-                originalTaskModel.setContent(taskModel.getContent());
+                originalTaskModel.setName(taskModel.getName());
+                originalTaskModel.setPhase(taskModel.getPhase());
+                originalTaskModel.setEstHours(taskModel.getEstHours());
+                originalTaskModel.setStartDate(taskModel.getStartDate());
+                originalTaskModel.setDueDate(taskModel.getDueDate());
+                originalTaskModel.setSpentHours(taskModel.getSpentHours());
+                originalTaskModel.setFinished(taskModel.isFinished());
+                originalTaskModel.setPending(taskModel.isPending());
+                originalTaskModel.setToday(taskModel.isToday());
                 Transaction tx = Datastore.beginTransaction();
                 Datastore.put(originalTaskModel);
                 tx.commit();
@@ -107,5 +126,40 @@ public class TaskDao {
             result = false;
         }
         return result;
+    }
+
+/**
+ * --------------------------------------------------------------------
+ * For Tasks Today Controllers
+ * --------------------------------------------------------------------
+ */
+    /**
+     * Method used to retrieve tasks for today
+     * @return List<Task> - list of tasks.
+     */
+    public List<Task> getTodaysTasks() {
+        TaskMeta t = new TaskMeta();
+        Query.Filter mainFilter = new Query.FilterPredicate("today", FilterOperator.EQUAL, true);
+        return Datastore.query(t).filter(mainFilter).asList();
+    }
+    
+    /**
+     * Method used to retrieve pending tasks
+     * @return List<Task> - list of tasks.
+     */
+    public List<Task> getPendingTasks() {
+        TaskMeta t = new TaskMeta();
+        Query.Filter mainFilter = new Query.FilterPredicate("pending", FilterOperator.EQUAL, true);
+        return Datastore.query(t).filter(mainFilter).asList();
+    }
+    
+    /**
+     * Method used to retrieve finished tasks
+     * @return List<Task> - list of tasks.
+     */
+    public List<Task> getFinishedTasks() {
+        TaskMeta t = new TaskMeta();
+        Query.Filter mainFilter = new Query.FilterPredicate("finished", FilterOperator.EQUAL, true);
+        return Datastore.query(t).filter(mainFilter).asList();
     }
 }

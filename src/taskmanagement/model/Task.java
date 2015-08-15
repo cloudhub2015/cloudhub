@@ -1,106 +1,97 @@
 package taskmanagement.model;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 
 import com.google.appengine.api.datastore.Key;
 
 import org.slim3.datastore.Attribute;
 import org.slim3.datastore.Model;
-
+/**
+ * Model for Task kind
+ * @author David Ramirez
+ * @version 0.01
+ * Version History
+ * [07/26/2015] 0.01 – David Ramirez – Initial codes
+ * [07/27/2015] 0.02 - Jacquelyn Amaya - Added userId, doneRatio, and estRatio members with getters and setters
+ * [08/07/2015] 0.03 - Jacquelyn Amaya - Added data members (spentHours, isFinished, isPending, isToday) and comments
+ **/
 @Model(schemaVersion = 1)
 public class Task implements Serializable {
-
+/**
+ * -------------------------------------------------------
+ * PRIVATE MEMBERS
+ * -------------------------------------------------------
+ */
     private static final long serialVersionUID = 1L;
-
+    /**
+     * Task primary key
+     */
     @Attribute(primaryKey = true)
     private Key key;
 
     @Attribute(version = true)
     private Long version;
     
+    /**
+     * Task attribute id
+     */
     private Long id;
     
-    private String content;
-    private List<String> errorList;
-    private String name;
-    private String phase;
+    /**
+     * User's id
+     */
     private long userId;
-    private int doneRatio;
-    private float estHours;
+    
+    /**
+     * Task name
+     */
+    private String name;
+    
+    /**
+     * Task phase
+     */
+    private String phase;
+    
+    /**
+     * Estimated hours of Task
+     */
+    private double estHours;
+    
+    /**
+     * Start Date of Task
+     */
     private String startDate;
+    
+    /**
+     * Due Date of Task
+     */
     private String dueDate;
     
     /**
-     * Task created date.
+     * Task spent hours
      */
-    private String createdDate = new Date().toString();
+    private double spentHours;
     
-    public List<String> getErrorList() {
-        return errorList;
-    }
-    public void setErrorList(List<String> errorList) {
-        this.errorList = errorList;
-    }
-    public String getTaskName() {
-        return name;
-    }
-    public String getPhase(){
-        return phase;
-    }
+    /**
+     * Task isFinished
+     */
+    private boolean isFinished;
     
-    public String getStartDate(){
-        return startDate;
-    }
+    /**
+     * Task isPending
+     */
+    private boolean isPending;
     
-    public String getDueDate(){
-        return dueDate;
-    }
-    
-    public void setStartDate(String startDate){
-        this.startDate = startDate;
-    }
-    
-    public void setDueDate(String dueDate){
-        this.dueDate = dueDate;
-    }
+    /**
+     * Task isToday
+     */
+    private boolean isToday;
 
-    public void setPhase(String phase){
-        this.phase = phase;
-    }
-    
-    public void setTaskName(String name) {
-        this.name = name;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public long getUserId() {
-        return userId;
-    }
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-    public int getDoneRatio() {
-        return doneRatio;
-    }
-    public void setDoneRatio(int doneRatio) {
-        this.doneRatio = doneRatio;
-    }
-    public float getEstHours() {
-        return estHours;
-    }
-    public void setEstHours(float estHours) {
-        this.estHours = estHours;
-    }
+/**
+ * -------------------------------------------------------
+ * GETTERS AND SETTERS
+ * -------------------------------------------------------
+ */
     /**
      * Returns the key.
      *
@@ -119,23 +110,6 @@ public class Task implements Serializable {
     public void setKey(Key key) {
         this.key = key;
     }
-    
-    /**
-     * Returns the id.
-     *
-     * @return the id
-     */
-    public Long getId() {
-        return id;
-    }
-    
-    /**
-     * Sets the id.
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
-    
 
     /**
      * Returns the version.
@@ -144,36 +118,6 @@ public class Task implements Serializable {
      */
     public Long getVersion() {
         return version;
-    }
-    
-    /**
-     * Get createdDate.
-     */
-    public String getCreatedDate() {
-        return createdDate;
-    }
-    
-    
-    /**
-     * Get content.
-     */
-    public String getContent() {
-        return content;
-    }
-    
-    /**
-     * Set content.
-     */
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    /**
-     * Set createdDate.
-     * @param createdDate the createdDate to set
-     */
-    public void setCreatedDate(String createdDate) {
-        this.createdDate = createdDate;
     }
 
     /**
@@ -214,5 +158,185 @@ public class Task implements Serializable {
             return false;
         }
         return true;
+    }
+    
+    /**
+     * returns id of task
+     * @return id
+     */
+    public Long getId() {
+        return id;
+    }
+    
+    /**
+     * sets id of task with param id
+     * @param id
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    /**
+     * returns id of user
+     * @return userId
+     */
+    public long getUserId() {
+        return userId;
+    }
+    
+    /**
+     * sets id of user
+     * @param userId
+     */
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+    
+    /**
+     * returns name of task
+     * @return name
+     */
+    public String getName() {
+        return name;
+    }
+    
+    /**
+     * sets name of task
+     * @param name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    /**
+     * returns phase of task
+     * @return phase
+     */
+    public String getPhase() {
+        return phase;
+    }
+    
+    /**
+     * sets phase of task
+     * @param phase
+     */
+    public void setPhase(String phase) {
+        this.phase = phase;
+    }
+        
+    /**
+     * returns estimated hours of task
+     * @return estHours
+     */
+    public double getEstHours() {
+        return estHours;
+    }
+    
+    /**
+     * sets estimated hours of task
+     * @param estHours
+     */
+    public void setEstHours(double estHours) {
+        this.estHours = estHours;
+    }
+    
+    /**
+     * returns start date of task
+     * @return startDate
+     */
+    public String getStartDate() {
+        return startDate;
+    }
+    
+    /**
+     * sets start date of task
+     * @param startDate
+     */
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+    
+    /**
+     * returns due date of task
+     * @return dueDate
+     */
+    public String getDueDate() {
+        return dueDate;
+    }
+    
+    /**
+     * sets due date of task
+     * @param dueDate
+     */
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
+    }
+    
+    /**
+     * returns spent hours of task
+     * @return spentHours
+     */
+    public double getSpentHours() {
+        return spentHours;
+    }
+    
+    /**
+     * sets spent hours of task
+     * @param spentHours
+     */
+    public void setSpentHours(double spentHours) {
+        this.spentHours = spentHours;
+    }
+    
+    /**
+     * returns true if task is finished; else, returns false
+     * @return isFinished
+     */
+    public boolean isFinished() {
+        return isFinished;
+    }
+    
+    /**
+     * sets isFinished to true or false
+     * @param isFinished
+     */
+    public void setFinished(boolean isFinished) {
+        this.isFinished = isFinished;
+    }
+    
+    /**
+     * returns true if task is pending; else, returns false
+     * @return
+     */
+    public boolean isPending() {
+        return isPending;
+    }
+    
+    /**
+     * sets isPending to true or false
+     * @param isPending
+     */
+    public void setPending(boolean isPending) {
+        this.isPending = isPending;
+    }
+    
+    /**
+     * returns true if task is today; else, returns false
+     * @return
+     */
+    public boolean isToday() {
+        return isToday;
+    }
+    
+    /**
+     * sets isToday to true or false
+     * @param isToday
+     */
+    public void setToday(boolean isToday) {
+        this.isToday = isToday;
+    }
+    
+    public static long getSerialversionuid() {
+        return serialVersionUID;
     }
 }

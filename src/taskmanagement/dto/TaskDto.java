@@ -1,6 +1,5 @@
 package taskmanagement.dto;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -10,14 +9,20 @@ import java.util.List;
  * @version 0.01
  * Version History
  * [07/26/2015] 0.01 – David Ramirez – Initial codes.
- * [07/27/2015] 0.02 - Jacquelyn Amaya - Added userId, doneRation, and estRatio members with getters and setters
+ * [07/27/2015] 0.02 - Jacquelyn Amaya - Added userId, doneRatio, and estRatio members with getters and setters
  * [08/05/2015] 0.03 - David Ramirez - Comments
+ * [08/07/2015] 0.04 - Jacquelyn Amaya - Added spentHours member
  **/
 public class TaskDto {
+/**
+ * -------------------------------------------------------
+ * PRIVATE MEMBERS
+ * -------------------------------------------------------
+ */
     /*
      *  Task ID 
      */
-    private long          id;
+    private long id;
     /*
      *  List of Errors
      */
@@ -25,31 +30,20 @@ public class TaskDto {
     /*
      *  Task Name
      */
-    private String        name;
-    /*
-     *  Date Created
-     */
-    private String        createdDate = new Date().toString();
+    private String name;
     /*
      *  Task Phase
      */
-    private String  phase;
+    private String phase;
     /*
      *  User ID 
      */
-    private long    userId;
-    /*
-     *  Done Ratio
-     */
-    private int     doneRatio;
+    private long userId;
     /*
      *  Estimated Hours to Accomplish
      */
-    private float   estHours;
-    /*
-     *  Content manage
-     */
-    private String  content;
+    private double estHours;
+    
     /*
      *  Date Started
      */
@@ -58,6 +52,10 @@ public class TaskDto {
      *  Expected Due Date
      */
     private String  dueDate;
+    /*
+     * Hours spent by this task
+     */
+    private double spentHours;
     /*
      *  Finish Flag
      */
@@ -70,10 +68,12 @@ public class TaskDto {
      *  Today Flag
      */
     private boolean isToday;
-    /*
-     * Hours spent by this task
-     */
-    private int spentOn;
+
+ /**
+ * -------------------------------------------------------
+ * GETTERS AND SETTERS
+ * -------------------------------------------------------
+ */    
     
     /*
      *  @return isPending - returns TRUE if task is PENDING otherwise FALSE
@@ -164,18 +164,6 @@ public class TaskDto {
         this.dueDate = dueDate;
     }
     /*
-     *  @param content - retrieves the content of the Task Class
-     */
-    public String getContent(){
-        return content;
-    }
-    /*
-     *  @param content - sets the content of the Task Class
-     */
-    public void setContent(String content){
-        this.content = content;
-    }
-    /*
      *  @param phase - sets the current phase of the task
      */
     public void setPhase(String phase){
@@ -186,18 +174,6 @@ public class TaskDto {
      */
     public void setTaskName(String name) {
         this.name = name;
-    }
-    /*
-     *  @return createdDate - retrieves the creation day of the task
-     */
-    public String getCreatedDate() {
-        return createdDate;
-    }
-    /*
-     *  @param createdDate - sets the creation day of the task
-     */
-    public void setCreatedDate(String createdDate) {
-        this.createdDate = createdDate;
     }
     /*
      *  @return id - retrieves the ID of the task
@@ -236,27 +212,28 @@ public class TaskDto {
         this.userId = userId;
     }
     /*
-     *  @return doneRatio - retrieves the done ratio of the task
-     */
-    public int getDoneRatio() {
-        return doneRatio;
-    }
-    /*
-     *  @param doneRatio - sets the doneRatio of the task
-     */
-    public void setDoneRatio(int doneRatio) {
-        this.doneRatio = doneRatio;
-    }
-    /*
      *  @return estHours - retrieves the estimated hours of the task
      */
-    public float getEstHours() {
+    public double getEstHours() {
         return estHours;
     }
     /*
      *  @param userId - sets the estimated hours of the task
      */
-    public void setEstHours(float estHours) {
+    public void setEstHours(double estHours) {
         this.estHours = estHours;
+    }
+    /*
+     * @return spentHours of task
+     */
+    public double getSpentHours() {
+        return spentHours;
+    }
+    /*
+     * @param spentHours
+     * sets the spent hours of task
+     */
+    public void setSpentHours(double spentHours) {
+        this.spentHours = spentHours;
     }
 }

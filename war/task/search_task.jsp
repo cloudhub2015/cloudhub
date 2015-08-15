@@ -35,7 +35,7 @@
       <p><h4 class="header_name">Hey, Riri!</h4></p>
     </li>
   
-    <li class="bold"><a href="../task/" class="waves-effect waves-teal">Masterlist</a></li>
+    <li class="bold"><a href="../task/display" class="waves-effect waves-teal">Masterlist</a></li>
     <li class="bold"><a href="../taskstoday/" class="waves-effect waves-teal">Today's Tasks</a></li>
     <li class="bold"><a href="addTask" class="waves-effect waves-teal">Create Task</a></li>
     <li class="active"><a href="searchTask" class="waves-effect waves-teal">Search Task</a></li>
@@ -88,7 +88,7 @@
           <c:forEach var="e" items="${taskList}">
             <tr>
               <c:choose>
-              <c:when test="${f:h(e.name) == 'PHP'}">
+              <c:when test="${f:h(e.name) == 'JSP'}">
               <td><!-- name -->
                 <input type="checkbox" id="status" />
                 <label for="status">${f:h(e.name)}</label>
@@ -141,7 +141,7 @@
         </table>
         </p>
         <p>Select task to edit, delete or mark as done.</p>
-        <a class="waves-effect waves-light btn"><i class="material-icons left">done</i>Done</a>
+        <button  id="hehe" class="waves-effect waves-light btn"><i class="material-icons left">done</i>Done</button>
         &nbsp;&nbsp;&nbsp;
         <a class="waves-effect waves-light btn"><i class="material-icons left">assignment</i>Edit</a>
         &nbsp;&nbsp;&nbsp;
@@ -154,12 +154,19 @@
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="../../bin/materialize.js"></script>
+  <script src="../js/materialize.js"></script>
   <script src="../js/init.js"></script>
   
-  <sript>
   
-  </sript>
+  <script src="../jquery/jquery-1.8.2.js"></script>
+  <script src="../jquery/jquery.ui.effect.js"></script> 
+  <script>
+  $(function() {	  
+	  $('button#hehe').click(function(event) {
+	  	alert($("#search_bar").val()+" yeah!");
+	  }); 
+  });
+  </script>
   
   </body>
   </html>

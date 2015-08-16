@@ -1,54 +1,112 @@
-/*var deleteTask = function(formID) {
-			document[formID].action = "delete";
-			document[formID].submit();
-}*/
 /* ------------------------------------------------------------------------------
  * Javascript for creating task (with AJAX)
  * @author Jacquelyn Amaya
  * @version 0.01
  * Version History
  * [08/07/2015] 0.01 - Jacquelyn Amaya - Function for clicking the button Create Task
+ * [08/17/2015] 0.02 - David Ramirez - retrieveTaskList working
  * --------------------------------------------------------------------------- */
-$(document).ready(function() {
-	//retrieveTweetList();
-	
-	//Add User
-	$('#btnSignUp').click(function() {
-		$('#messageDisplay').empty();
-		//$('.updateErrorDisplay').empty();
-		var confirmPassword = $('#confirm_password').val();
+$(function() {
+	retrieveTaskList();
+	console.log("Display.js");
+	$('#btnCreateTask').click(function() {
+	//	$('#errorDisplay').empty();
+	//	$('.updateErrorDisplay').empty();
 
 		jsonData = {
 				data: JSON.stringify({
-				firstname: $('#first_name').val(),
-				lastname: $('#last_name').val(),
-				username: $('#username').val(),
-				password: $('#password').val()
+				name: $('#txtName').val(),
+				phase: $('#selectPhase').val(),
+				estHours: $('#txtEstHours').val(),
+				startDate: $('#startDate').val(),
+				dueDate: $('dueDate').val(),
 				})
 		};
 		
 		$.ajax({
-			url: 'register',
+			url: '/task/addTask',
 			type: 'POST',
 			data: jsonData,
 			dataType: 'json',
 			success: function(data, status, jqXHR){
-				if(data.errorList.length == 0 && (confirmPassword == data.password)) {
-					//$('#txtContent').val('');
-					$('#messageDisplay').html("User successfully saved!");
-					//alert("User successfully saved!");
-					//retrieveTweetList('Entry saved successfully!');
+				console.log(data);
+				if(data.errorList.length == 0) {
+					$('#txtName').val('');
+					$('#selectPhase').val('');
+					$('#txtEstHours').val('');
+					$('#startDate').val('');
+					$('#dueDate').val('');
+				//	retrieveTaskList('Entry saved successfully!');
 				} else {
 					var msg = "";
 					for (var i = 0; i < data.errorList.length; i++)
 						msg += data.errorList[i] + "\n";
-					$('#messageDisplay').html(msg);
-					//alert(msg);
+				//	$('#errorDisplay').html(msg);
 				}
 			},
 			error: function(jqXHR, status, error) {
 				
 			}
 		});
-	}); // end of adding user
+	});
+		
 });
+
+/**
+ * Method used to retrieve list of tweets.
+ * @param successMessage - success message to display
+ * 		if the transaction is successful.
+ */
+function retrieveTaskList(successMessage) {
+	$("#taskList").empty();
+	
+	$.ajax({
+		url: '/task/display',
+		type: 'GET',
+		success: function(data, status, jqXHR){
+			console.log(data);
+			if(data.errorList.length == 0) {
+				var formattedTaskList = "";
+				$.each(data.taskList, function(index, value) {
+					formattedTaskList += '<tr>' +
+		              '<td>' +
+		              '  <input type="checkbox" id="status" />' +
+		              '  <label for="status">' + value.taskName + '</label>' +
+		              '</td>' +
+		              '<td>' + value.phase +
+		              '</td>' +
+		              '<td><center>' + value.estHours + 'hrs </center></td>' +
+		              '<td>' + value.startDate + '</td>' +
+		              '<td>' + value.dueDate + '</td>' +
+		      		  '<td>' +
+		                '<a href="#"><i class="material-icons">done</i></a>' +
+		      					'&nbsp;&nbsp;&nbsp;' +
+		      					'<a href="edit_task.jsp"><i class="material-icons">assignment</i></a>' +
+		      					'&nbsp;&nbsp;&nbsp;' +
+		      				'<a  href="#"><i class="material-icons">delete</i></a>' + 
+		      				'&nbsp;&nbsp;&nbsp;' +
+		                '<a href="../taskstoday/"><i class="material-icons">add</i></a>' +
+		      			  '</td>' +
+		            '</tr>';
+					
+					//$('#taskList').find('tbody').append(formattedTaskList);
+					$('#taskList').append(formattedTaskList);
+					
+				});
+				
+				if (formattedTaskList == "") {
+					formattedTaskList = "<div>Add tasks! :)</div>";
+				}
+				$("#taskList").html(formattedTaskList);
+				if (undefined != successMessage && "" != successMessage) {
+					alert(successMessage);
+				}
+			} else {
+				alert('Failed to retrieve tasks!');
+			}
+		},
+		error: function(jqXHR, status, error) {
+			
+		}
+	});
+}

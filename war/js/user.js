@@ -36,8 +36,8 @@ $(document).ready(function() {
 					//retrieveTweetList('Entry saved successfully!');
 				} else {
 					var msg = "";
-					for (var i = 0; i < data.errorList.length; i++)
-						msg += data.errorList[i] + "\n";
+										for (var i = 0; i < data.errorList.length; i++)
+	msg += data.errorList[i] + "\n";
 					$('#messageDisplay').html(msg);
 					//alert(msg);
 				}

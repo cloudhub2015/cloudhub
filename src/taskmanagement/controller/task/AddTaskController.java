@@ -29,7 +29,7 @@ public class AddTaskController extends Controller {
     @Override
     public Navigation run() throws Exception {
         TaskDto dto = new TaskDto();
-        /*JSONObject json = null;
+        JSONObject json = null;
         try {
             json = new JSONObject((String)this.requestScope("data"));
 
@@ -44,7 +44,7 @@ public class AddTaskController extends Controller {
                 dto = this.service.addTask(dto);
             }
         } catch (Exception e) {
-            dto.getErrorList().add("Server controller error: " + e.getMessage());
+    //        dto.getErrorList().add("Server controller error: " + e.getMessage());
             if (json == null) {
                 json = new JSONObject();
             }
@@ -53,13 +53,13 @@ public class AddTaskController extends Controller {
         json.put("errorList", dto.getErrorList());
         response.setContentType("application/json");
         response.getWriter().write(json.toString());
-        return forward("create_task.jsp");*/
-        if(super.isPost()){
+        return forward("create_task.jsp");
+      /*  if(super.isPost()){
         Map<String,Object> input = new RequestMap(this.request);
         TaskDto taskDto = new TaskDto();
         BeanUtil.copy(input, taskDto);
         service.addTask(taskDto);
         }
-        return forward("create_task.jsp");
+        return forward("create_task.jsp");*/
     }
 }

@@ -68,7 +68,7 @@
         </div>
         <div class="row center">
           <div class="col s4">
-          <a href="task/display" id="download-button" class="btn-large waves-effect waves-light purple">Log In</a>
+          <a href="task/masterlist" id="download-button" class="btn-large waves-effect waves-light purple">Log In</a>
           </div>
         </div>
       </form>
@@ -89,7 +89,7 @@
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="../../bin/materialize.js"></script>
+  <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
 
   </body>

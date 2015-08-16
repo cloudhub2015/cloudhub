@@ -27,10 +27,6 @@ public class DisplayController extends Controller {
         json.put("errorList", taskList.getErrorList());
         response.setContentType("application/json");
         response.getWriter().write(json.toString());
-        return forward("masterlist.jsp");
-      //  return null;
-        /*List<Task> taskList = service.getTaskList();
-        requestScope("taskList", taskList);
-        return forward("masterlist.jsp");*/
+        return null;
     }
 }

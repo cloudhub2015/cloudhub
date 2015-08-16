@@ -33,7 +33,7 @@
       <p><h4 class="header_name">Hey, Riri!</h4></p>
     </li>
 
-    <li class="bold"><a href="../task/display" class="waves-effect waves-teal">Masterlist</a></li>
+    <li class="bold"><a href="../task/masterlist" class="waves-effect waves-teal">Masterlist</a></li>
     <li class="bold"><a href="../taskstoday/" class="waves-effect waves-teal">Today's Tasks</a></li>
     <li class="active"><a href="addTask" class="waves-effect waves-teal">Create Task</a></li>
     <li class="bold"><a href="searchTask" class="waves-effect waves-teal">Search Task</a></li>
@@ -49,19 +49,19 @@
         <h2 class="header"><img src="../images/add.jpg" width="5%">&nbsp;&nbsp;Create Task</h2>
         <p class="caption">Complete all needed information to add task.
           <div class="row">
-            <form class="col s12" method="post" action="addTask">
+            <form class="col s12">
               <div class="row">
               <!-- 0.0.1 mod start -->
                 <div class="input-field col s6">
                 <!-- 0.0.1 end start -->
-                  <input name="name" type="text" class="validate">
+                  <input name="name" type="text" class="validate" id="txtName">
                   <label class="active" for="task_name">Task Name</label>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col s6">
-                  <select class="browser-default" name="phase">
+                  <select class="browser-default" name="phase" id="selectPhase">
                     <option value="" disabled selected>Choose Phase</option>
                     <option value="1" name="testing">Testing</option>
                     <option value="2" name="coding">Coding</option>
@@ -72,29 +72,29 @@
 
               <div class="row">
                 <div class="input-field col s6">
-                  <input id="estimated_time" name="estHours" type="text" class="validate" placeHolder="number of hours">
+                  <input id="estimated_time" name="estHours" type="text" id="txtEstHours" class="validate" placeHolder="number of hours">
                   <label class="active" for="estimated_time" >Estimated Time Allotment</label>
                 </div>
               </div>
 
               <div class="row">
                 <div class="input-field col s6">
-                  <input id="start_date" name="startDate" type="date" class="datepicker picker__input" placeholder="Start Date">
+                  <input id="start_date" name="startDate" id="startDate" type="date" class="datepicker picker__input" placeholder="Start Date">
                 <label for="start_date"></label>
                 </div>
               </div>
 
               <div class="row">
                 <div class="input-field col s6">
-                  <input id="due_date" name="dueDate" type="date" class="datepicker picker__input" placeholder="Due Date">
+                  <input id="due_date" name="dueDate" id="dueDate" type="date" class="datepicker picker__input" placeholder="Due Date">
                  <label for="due_date"></label>
                 </div>
               </div>
 
                <!-- <a class="waves-effect waves-light btn"><i class="material-icons left">note_add</i>Create Task</a> -->
-             <button class="btn waves-effect waves-light" type="submit"  value="create_task" name="createTask"><i class="material-icons left">note_add</i>Create Task</button>
+             <button class="btn waves-effect waves-light" type="submit"  value="create_task" name="btnCreateTask" id="btnCreateTask"><i class="material-icons left">note_add</i>Create Task</button>
               &nbsp;&nbsp;&nbsp;
-              <button class="waves-effect waves-light btn" name="clearField" value="Cancel"><i class="material-icons left">clear_all</i>Clear Fields</button>
+              <button class="waves-effect waves-light btn" name="clearField" value="Cancel"><i class="material-icons left" id="btnClearAllInfo">clear_all</i>Clear Fields</button>
             </form>
           </div>
         </p>
@@ -111,6 +111,7 @@
   <!-- 0.0.1 start mod -->
   <script src="../jquery/jquery-1.8.2.js"></script>
   <script src="../jquery/jquery.ui.effect.js"></script> 
+  <script src="../js/task.js"></script>
   <script>
   $(function() {	  
 	  $('button.btn').click(function(event) {

@@ -44,7 +44,7 @@
       <p><h4 class="header_name">Hey, Riri!</h4></p>
     </li>
 
-    <li class="active"><a href="../task/display">Masterlist</a></li>
+    <li class="active"><a href="../task/masterlist">Masterlist</a></li>
     <li class="bold"><a href="../taskstoday/" class="waves-effect waves-teal">Today's Tasks</a></li>
     <li class="bold"><a href="addTask" class="waves-effect waves-teal">Create Task</a></li>
     <li class="bold"><a href="SearchTask" class="waves-effect waves-teal">Search Task</a></li>
@@ -156,7 +156,7 @@
   <script src="../jquery/jquery.ui.effect.js"></script> 
   <script src="../js/materialize.js"></script>
   <script src="../js/init.js"></script>
-  <script src="../js/display.js"></script>
+  <script src="../js/task.js"></script>
   <!-- mod start 0.0.2 -->
   <!-- jQuery -->
  

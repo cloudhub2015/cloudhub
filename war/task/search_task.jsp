@@ -35,7 +35,7 @@
       <p><h4 class="header_name">Hey, Riri!</h4></p>
     </li>
   
-    <li class="bold"><a href="../task/display" class="waves-effect waves-teal">Masterlist</a></li>
+    <li class="bold"><a href="../task/masterlist" class="waves-effect waves-teal">Masterlist</a></li>
     <li class="bold"><a href="../taskstoday/" class="waves-effect waves-teal">Today's Tasks</a></li>
     <li class="bold"><a href="addTask" class="waves-effect waves-teal">Create Task</a></li>
     <li class="active"><a href="searchTask" class="waves-effect waves-teal">Search Task</a></li>

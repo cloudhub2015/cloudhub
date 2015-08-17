@@ -78,21 +78,21 @@
           <div class="input-field col s4">
             <i class="material-icons prefix">perm_identity </i>
               <label for="first_name">Name</label>
-            <input id="icon_prefix" placeholder="First Name" name="firstName" id="first_name" type="text" class="validate">
-            <input placeholder="Last Name" id="last_name" name="lastName" type="text" class="validate">
+            <input  placeholder="First Name" name="firstName" id="txtFirstName" type="text" class="validate">
+            <input  placeholder="Last Name" id="txtLastName" name="lastName" type="text" class="validate">
           </div>
         </div>
         <div class="row">
           <div class="input-field col s4">
             <i class="material-icons prefix">account_circle </i>
-            <input id="icon_prefix" placeholder="Username" id="user_name" name="username" type="text" class="validate">
+            <input placeholder="Username" id="txtUsername" name="username" type="text" class="validate">
             <label for="user_name">Username</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s4">
             <i class="material-icons prefix">info</i>
-            <input id="password" type="password" class="validate" placeholder="Password" name="password">
+            <input id="txtPassword" type="password" class="validate" placeholder="Password" name="txtPassword">
               <label for="password">Password</label>
             <input id="confirm_password" type="password" class="validate" placeholder="Confirm Password">
           </div>
@@ -135,12 +135,13 @@
   </body>
   
   <!--  Scripts -->
+   
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="../jquery/jquery-1.8.2.js"></script>
+  <script src="../jquery/jquery.ui.effect.js"></script> 
   <script src="../js/materialize.js"></script>
   <script src="../js/init.js"></script>
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script type="text/javascript" src="../js/materialize.min.js"></script>
-  <script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
-  <script type="text/javascript" src="../js/user.js"></script>
+  <script src="../js/user.js"></script>
 
 </html>
 <!-- mod end 0.0.1 -->

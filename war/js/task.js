@@ -4,7 +4,8 @@
  * @version 0.01
  * Version History
  * [08/07/2015] 0.01 - Jacquelyn Amaya - Function for clicking the button Create Task
- * [08/17/2015] 0.02 - David Ramirez - retrieveTaskList working
+ * [08/17/2015] 0.02 - David Ramirez - retrieveTaskList and createTask working
+ * 
  * --------------------------------------------------------------------------- */
 $(function() {
 	retrieveTaskList();

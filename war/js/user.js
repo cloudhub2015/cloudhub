@@ -5,26 +5,24 @@
  * Version History
  * [08/07/2015] 0.01 - Jacquelyn Amaya - Function for clicking the button Sign Up
  * --------------------------------------------------------------------------- */
-$(document).ready(function() {
-	//retrieveTweetList();
-	
+$(function() {
+	console.log("USER.js");
 	//Add User
 	$('#btnSignUp').click(function() {
-		$('#messageDisplay').empty();
-		//$('.updateErrorDisplay').empty();
+		//$('#messageDisplay').empty();
 		var confirmPassword = $('#confirm_password').val();
-
+		
 		jsonData = {
 				data: JSON.stringify({
-				firstname: $('#first_name').val(),
-				lastname: $('#last_name').val(),
-				username: $('#username').val(),
-				password: $('#password').val()
+				firstname: $('#txtFirstName').val(),
+				lastname: $('#txtLastName').val(),
+				username: $('#txtUsername').val(),
+				password: $('#txtPassword').val()
 				})
 		};
-		
+		console.log(jsonData);
 		$.ajax({
-			url: 'register',
+			url: '/user/register',
 			type: 'POST',
 			data: jsonData,
 			dataType: 'json',
@@ -36,8 +34,8 @@ $(document).ready(function() {
 					//retrieveTweetList('Entry saved successfully!');
 				} else {
 					var msg = "";
-										for (var i = 0; i < data.errorList.length; i++)
-	msg += data.errorList[i] + "\n";
+					for (var i = 0; i < data.errorList.length; i++)
+						msg += data.errorList[i] + "\n";
 					$('#messageDisplay').html(msg);
 					//alert(msg);
 				}

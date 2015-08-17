@@ -6,7 +6,13 @@ import org.slim3.repackaged.org.json.JSONObject;
 
 import taskmanagement.dto.TaskClientDto;
 import taskmanagement.service.TaskService;
-
+/**
+ * Initial Controller
+ * @author David Ramirez
+ * @version 0.01
+ * Version History
+ * [08/17/2015] 0.01 - David Ramirez - Initial codes
+ */
 public class MasterlistController extends Controller {
 
     TaskService service = new TaskService();
@@ -14,9 +20,5 @@ public class MasterlistController extends Controller {
     public Navigation run() throws Exception {
 
         return forward("masterlist.jsp");
-      //  return null;
-        /*List<Task> taskList = service.getTaskList();
-        requestScope("taskList", taskList);
-        return forward("masterlist.jsp");*/
     }
 }

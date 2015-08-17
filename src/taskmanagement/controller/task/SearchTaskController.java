@@ -10,6 +10,15 @@ import taskmanagement.dto.TaskClientDto;
 import taskmanagement.model.Task;
 import taskmanagement.service.TaskService;
 
+
+/**
+ * Search Task Controller
+ * @author Prince Niko Garces
+ * @version 0.01
+ * Version History
+ * [08/17/2015] 0.01 - David Ramirez - Initial codes
+ */
+
 public class SearchTaskController extends Controller {
     TaskService service = new TaskService();
     String a = "haha";

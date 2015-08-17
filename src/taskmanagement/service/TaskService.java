@@ -17,6 +17,7 @@ import taskmanagement.model.Task;
  * [08/02/2015] 0.02 - David Ramirez   - add, update and delete tasks
  * [08/08/2015] 0.03 - Jacquelyn Amaya - Updated addTask function, modified getTaskList method,
  *                                     - Added methods to retrieve today's, pending, and finished tasks
+ * [08/17/2015] 0.04 - David Ramirez   - Code Documentation
  */
 public class TaskService {
 /**
@@ -158,7 +159,7 @@ public class TaskService {
         return input;
     }
     /**
-     * Method used to delete a task.
+     * Method used to set a today's task
      * @param input - task to delete.
      * @return TaskDto - if transaction was unsuccessful, contains list of errors.
      */

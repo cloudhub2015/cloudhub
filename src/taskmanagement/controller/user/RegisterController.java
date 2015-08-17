@@ -1,14 +1,8 @@
 package taskmanagement.controller.user;
 
-import java.util.Map;
-
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 import org.slim3.repackaged.org.json.JSONObject;
-import org.slim3.util.BeanUtil;
-import org.slim3.util.RequestMap;
-
-import taskmanagement.dto.TaskDto;
 import taskmanagement.dto.UserDto;
 import taskmanagement.service.UserService;
 
@@ -21,7 +15,9 @@ import taskmanagement.service.UserService;
  * [08/17/2015] 0.02 - David Ramirez - Implemented JSON codes
  */
 public class RegisterController extends Controller {
+    
     private UserService service = new UserService();
+
     @Override
     public Navigation run() throws Exception {
         UserDto dto = new UserDto();

@@ -5,7 +5,6 @@ import java.util.List;
 
 import taskmanagement.dao.UserDao;
 import taskmanagement.dto.UserDto;
-import taskmanagement.model.Task;
 import taskmanagement.model.User;
 
 /**

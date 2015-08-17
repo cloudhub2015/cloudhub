@@ -1,7 +1,5 @@
 package taskmanagement.controller.task;
 
-import java.io.Console;
-
 /**
  * Controller to display a task
  * @author David Ramirez
@@ -17,7 +15,14 @@ import org.slim3.repackaged.org.json.JSONObject;
 
 import taskmanagement.dto.TaskClientDto;
 import taskmanagement.service.TaskService;
-
+/**
+ * Controller for the user to login
+ * @author David Ramirez
+ * @version 0.02
+ * Version History
+ * [08/16/2015] 0.01 - David Ramirez - Display task working
+ * [08/17/2015] 0.02 - David Ramirez - Code documentation
+ */
 public class DisplayController extends Controller {
 
     TaskService service = new TaskService();

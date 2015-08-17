@@ -6,9 +6,6 @@ package taskmanagement.controller.task;
 
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
-import org.slim3.repackaged.org.json.JSONObject;
-
-import taskmanagement.dto.TaskClientDto;
 import taskmanagement.service.TaskService;
 
 /**
@@ -21,7 +18,7 @@ import taskmanagement.service.TaskService;
 public class IndexController extends Controller {
 
     /**
-     * The TwitterService to use.
+     * The TaskService to use.
      * Holds the method for retrieving list of tasks.
      */
     TaskService service = new TaskService();

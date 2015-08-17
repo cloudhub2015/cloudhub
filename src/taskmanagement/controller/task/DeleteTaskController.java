@@ -14,7 +14,6 @@ public class DeleteTaskController extends Controller {
 
     @Override
     protected Navigation run() throws Exception {
-        // TODO Auto-generated method stub
         return null;
     }
 

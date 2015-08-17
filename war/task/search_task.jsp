@@ -14,7 +14,7 @@
 <%@taglib prefix="f" uri="http://www.slim3.org/functions"%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
@@ -156,7 +156,7 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="../js/materialize.js"></script>
   <script src="../js/init.js"></script>
-  
+  <script src="../js/angular.js"></script>
   
   <script src="../jquery/jquery-1.8.2.js"></script>
   <script src="../jquery/jquery.ui.effect.js"></script> 

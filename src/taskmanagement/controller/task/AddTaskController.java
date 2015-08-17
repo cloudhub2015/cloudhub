@@ -26,6 +26,7 @@ public class AddTaskController extends Controller {
      * Holds the method addTask()
      */
     private TaskService service = new TaskService();
+    
     @Override
     public Navigation run() throws Exception {
         TaskDto dto = new TaskDto();

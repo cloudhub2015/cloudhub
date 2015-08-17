@@ -72,22 +72,22 @@
 
               <div class="row">
                 <div class="input-field col s6">
-                  <input id="estimated_time" name="estHours" type="text" id="txtEstHours" class="validate" placeHolder="number of hours">
-                  <label class="active" for="estimated_time" >Estimated Time Allotment</label>
+                  <input name="estHours" type="text" id="txtEstHours" class="validate" placeHolder="number of hours">
+                  <label class="active" for="txtEstHours" >Estimated Time Allotment</label>
                 </div>
               </div>
 
               <div class="row">
                 <div class="input-field col s6">
-                  <input id="start_date" name="startDate" id="startDate" type="date" class="datepicker picker__input" placeholder="Start Date">
-                <label for="start_date"></label>
+                  <input id="startDate" name="startDate" type="date" class="datepicker picker__input" placeholder="Start Date">
+                <label for="startDate"></label>
                 </div>
               </div>
 
               <div class="row">
                 <div class="input-field col s6">
-                  <input id="due_date" name="dueDate" id="dueDate" type="date" class="datepicker picker__input" placeholder="Due Date">
-                 <label for="due_date"></label>
+                  <input id="dueDate" name="dueDate" id="dueDate" type="date" class="datepicker picker__input" placeholder="Due Date">
+                 <label for="dueDate"></label>
                 </div>
               </div>
 

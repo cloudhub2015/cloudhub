@@ -15,9 +15,9 @@
   <title>Welcome to CloudHub!</title>
 
   <!-- CSS  -->
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize_content.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../css/materialize_content.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
 </head>
 
@@ -25,15 +25,15 @@
 <header>
 <ul id="nav-mobile" class="side-nav fixed" style="left: 0px;">
     <li class="logo">
-      <img src="images/avatar.png" class="responsive-img">
+      <img src="../images/avatar.png" class="responsive-img">
       <p><h4 class="header_name">Hey, Riri!</h4></p>
     </li>
 
-    <li class="bold"><a href="masterlist.jsp" class="waves-effect waves-teal">Masterlist</a></li>
-    <li class="bold"><a href="todays_task.jsp" class="waves-effect waves-teal">Today's Tasks</a></li>
-    <li class="active"><a href="add_task.jsp" class="waves-effect waves-teal">Create Task</a></li>
-    <li class="bold"><a href="search_task.jsp" class="waves-effect waves-teal">Search Task</a></li>
-    <li class="bold"><a href="index.jsp" class="waves-effect waves-teal">Log Out </a></li>
+    <li class="active"><a href="../task/masterlist" class="waves-effect waves-teal">Masterlist</a></li>
+    <li class="bold"><a href="../taskstoday/" class="waves-effect waves-teal">Today's Tasks</a></li>
+    <li class="bold"><a href="../task/addTask" class="waves-effect waves-teal">Create Task</a></li>
+    <li class="bold"><a href="../task/searchTask" class="waves-effect waves-teal">Search Task</a></li>
+    <li class="bold"><a href="../" class="waves-effect waves-teal">Log Out </a></li>
 </ul>
 </header>
 
@@ -42,8 +42,8 @@
   <div class="row">
     <div class="col s12 m9 l10">
       <div id="right" class="section scrollspy">
-        <h2 class="header"><img src="images/add.jpg" width="5%">&nbsp;&nbsp;Create Task</h2>
-        <p class="caption">Complete all needed information to add task.
+        <h2 class="header"><img src="../images/edit.jpg" width="5%">&nbsp;&nbsp;Edit Task Information</h2>
+        <p class="caption">Edit fields to edit task information.
           <div class="row">
             <form class="col s12">
               <div class="row">
@@ -85,10 +85,9 @@
                 </div>
               </div>
 
-             <!-- <a class="waves-effect waves-light btn"><i class="material-icons left">note_add</i>Create Task</a> -->
-             <button class="waves-effect waves-light btn" type="submit"  value="Create Task" name="createTask"><i class="material-icons left">note_add</i></button>
+              <a class="waves-effect waves-light btn"><i class="material-icons left">edit</i>Edit Task</a>
               &nbsp;&nbsp;&nbsp;
-              <a class="waves-effect waves-light btn"><i class="material-icons left">clear_all</i>Clear Fields</a>
+              <a href ="masterlist" class="waves-effect waves-light btn"><i class="material-icons left">clear_all</i>Go Back to Masterlist</a>
             </form>
           </div>
         </p>
@@ -99,8 +98,8 @@
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="../../bin/materialize.js"></script>
-  <script src="js/init.js"></script>
+  <script src="../js/materialize.js"></script>
+  <script src="../js/init.js"></script>
 
   </body>
   </html>

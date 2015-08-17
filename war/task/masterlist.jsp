@@ -83,40 +83,15 @@
             </tr>
           </thead>
           <tbody>
-          <div id="taskList">
-          </div>
-          <!--<c:forEach var="e" items="${taskList}">
-            <tr>
-              <td>
-                <input type="checkbox" id="status" />
-                <label for="status">${f:h(e.name)}</label>
-              </td>
-              <td>
-              	<c:choose>
-			    <c:when test="${e.phase == 1}">Testing</c:when>
-			    <c:when test="${e.phase == 2}">Coding</c:when>
-			    <c:when test="${e.phase == 3}">Design</c:when>
-				</c:choose>
-			 </td>
-              <td><center>${f:h(e.estHours)} Hours</center></td>
-              <td>${f:h(e.startDate)}</td>
-              <td>${f:h(e.dueDate)}</td>
-      			  <td>
-                <a href="#"><i class="material-icons">done</i></a>
-      					&nbsp;&nbsp;&nbsp;
-      					<a href="edit_task.jsp"><i class="material-icons">assignment</i></a>
-      					&nbsp;&nbsp;&nbsp;
-      				<a  href="deleteTweet('form_${f:h(e.id)}')"><i class="material-icons">delete</i></a> 
-      				
-                <!-- &nbsp;&nbsp;&nbsp;
-                <a href="../taskstoday/"><i class="material-icons">add</i></a> -->
-      			  <!-- </td>
-            </tr>
-            </c:forEach> -->
+          
+           
           </tbody>
         </table>
         </div>
+        
         </p>
+         <div id="taskList">
+          </div>
 
         <br>
 

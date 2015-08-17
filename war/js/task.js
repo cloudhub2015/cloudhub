@@ -9,20 +9,22 @@
 $(function() {
 	retrieveTaskList();
 	console.log("Display.js");
+	//console.log("TASK NAME: " + $('#txtName').val());
 	$('#btnCreateTask').click(function() {
 	//	$('#errorDisplay').empty();
 	//	$('.updateErrorDisplay').empty();
 
 		jsonData = {
 				data: JSON.stringify({
-				name: $('#txtName').val(),
-				phase: $('#selectPhase').val(),
-				estHours: $('#txtEstHours').val(),
-				startDate: $('#startDate').val(),
-				dueDate: $('dueDate').val(),
+					name: $('#txtName').val(),
+					phase: $('#selectPhase').val(),
+					estHours: $('#txtEstHours').val(),
+					startDate: $('#startDate').val(),
+					dueDate: $('#dueDate').val(),
 				})
 		};
-		
+		console.log(jsonData);
+		console.log($('#txtEstHours').val());
 		$.ajax({
 			url: '/task/addTask',
 			type: 'POST',
@@ -81,7 +83,7 @@ function retrieveTaskList(successMessage) {
 		      		  '<td>' +
 		                '<a href="#"><i class="material-icons">done</i></a>' +
 		      					'&nbsp;&nbsp;&nbsp;' +
-		      					'<a href="edit_task.jsp"><i class="material-icons">assignment</i></a>' +
+		      					'<a href="editTask"><i class="material-icons">assignment</i></a>' +
 		      					'&nbsp;&nbsp;&nbsp;' +
 		      				'<a  href="#"><i class="material-icons">delete</i></a>' + 
 		      				'&nbsp;&nbsp;&nbsp;' +
@@ -89,8 +91,8 @@ function retrieveTaskList(successMessage) {
 		      			  '</td>' +
 		            '</tr>';
 					
-					//$('#taskList').find('tbody').append(formattedTaskList);
-					$('#taskList').append(formattedTaskList);
+					$('#taskList').find('tbody').append(formattedTaskList);
+					//$('#taskList').append(formattedTaskList);
 					
 				});
 				

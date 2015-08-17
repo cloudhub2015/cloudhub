@@ -42,7 +42,7 @@ public class UpdateTaskController extends Controller {
                 dto = this.service.updateTask(dto);
             }
         } catch (Exception e) {
-            dto.getErrorList().add("Server controller error: " + e.getMessage());
+          //  dto.getErrorList().add("Server controller error: " + e.getMessage());
             if (json == null) {
                 json = new JSONObject();
             }
@@ -51,7 +51,7 @@ public class UpdateTaskController extends Controller {
         json.put("errorList", dto.getErrorList());
         response.setContentType("application/json");
         response.getWriter().write(json.toString());
-        return null;
+        return forward("update_task.jsp");
     }
 
 }

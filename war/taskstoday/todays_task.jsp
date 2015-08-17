@@ -70,7 +70,7 @@
               <td><center>8 Hours</center></td>
               <td>July 2, 2015</td>
               <td>July 3, 2015</td>
-			         <td><a href="updateTask">Update Task</a>
+			         <td><a href="../taskstoday/updateTask">Update Task</a>
 					</tbody>
         </table>
 
@@ -96,7 +96,7 @@
               <td><center>8 Hours</center></td>
               <td>July 2, 2015</td>
               <td>July 3, 2015</td>
-               <td><a href="updateTask">Update Task</a>
+               <td><a href="../taskstoday/updateTask">Update Task</a>
           </tbody>
         </table>
 
@@ -126,8 +126,6 @@
           </tbody>
         </table>
         </p>
-       
-
         <br>
   </div>
 </div>

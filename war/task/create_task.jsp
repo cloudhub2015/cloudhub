@@ -105,13 +105,15 @@
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="../js/materialize.js"></script>
-  <script src="../js/init.js"></script>
-  <script src="../js/angular.js"></script>
-
-  <!-- 0.0.1 start mod -->
   <script src="../jquery/jquery-1.8.2.js"></script>
   <script src="../jquery/jquery.ui.effect.js"></script> 
+   <script src="../js/materialize.js"></script>
+  <script src="../js/init.js"></script>
+  <script src="../js/angular.js"></script>
+ 
+
+  <!-- 0.0.1 start mod -->
+ 
   <script src="../js/task.js"></script>
   <script>
   $(function() {	  

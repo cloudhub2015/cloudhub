@@ -3,6 +3,8 @@ package taskmanagement.controller.task;
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 
+import taskmanagement.dto.TaskDto;
+
 /**
  * Controller to delete task
  * @author Jacquelyn Amaya
@@ -14,6 +16,7 @@ public class DeleteTaskController extends Controller {
 
     @Override
     protected Navigation run() throws Exception {
+        TaskDto dto = new TaskDto();
         return null;
     }
 

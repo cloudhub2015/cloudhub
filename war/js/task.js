@@ -5,6 +5,7 @@
  * Version History
  * [08/07/2015] 0.01 - Jacquelyn Amaya - Function for clicking the button Create Task
  * [08/17/2015] 0.02 - David Ramirez - retrieveTaskList and createTask working
+ * [08/18/2015] 0.03 - Jacquelyn Amaya - Function for clicking the buttons Create Task
  * 
  * --------------------------------------------------------------------------- */
 $(function() {
@@ -52,7 +53,93 @@ $(function() {
 			}
 		});
 	});
+	
+	//Delete Tweet
+	$(document).on('click', '#tweetList .btnDelete', function(){
+		$('#errorDisplay').empty();
+		$('.updateErrorDisplay').empty();
 		
+		//var errorDisplay = '';//TODO: (optional) use jQuery traversals to get the correct updateErrorDisplay div.
+		var errorDisplay = $(this).siblings().filter('.updateErrorDisplay');
+		
+		//var idValue = '';//TODO: use jQuery traversals to get correct id value to be passed in json object.
+		var idValue = $(this).siblings().filter('.id').val();
+
+		//var contentValue = '';//TODO: use jQuery traversals to get correct content value to be passed in json object.
+		var contentValue = $(this).siblings().filter('.content').val();
+		
+		//var createdDateValue = '';//TODO: use jQuery traversals to get correct createdDate value to be passed in json object.
+		var createdDateValue = $(this).siblings().filter('.createdDate').val();
+		
+		jsonData = {
+				data: JSON.stringify({
+					id: idValue,
+					content: contentValue,
+					createdDate: createdDateValue,
+				})
+		};
+		
+		$.ajax({
+			url: 'delete',//TODO: Provide proper url to call for deleting a tweet
+			type: 'POST',
+			data: jsonData,
+			dataType: 'json',
+			success: function(data, status, jqXHR){
+				if(data.errorList.length == 0) {
+					retrieveTweetList('Entry deleted successfully!');
+				} else {
+					var msg = "";
+					for (var i = 0; i < data.errorList.length; i++) {
+						msg += data.errorList[i] + "\n";
+					}
+					//TODO: (optional) use the errorDisplay to display the msg string there.
+				}
+			},
+			error: function(jqXHR, status, error) {
+				
+			}
+		});
+	});
+	
+	//Update Tweet
+	$(document).on('click', '#tweetList .btnUpdate', function(){
+		//TODO: code jQuery code for updating tweet. hint: refer to your code for deleting tweets.
+		$('#errorDisplay').empty();
+		$('.updateErrorDisplay').empty();
+		
+		var errorDisplay = $(this).siblings().filter('.updateErrorDisplay');
+		var idValue = $(this).siblings().filter('.id').val();
+		var contentValue = $(this).siblings().filter('.content').val();
+		var createdDateValue = $(this).siblings().filter('.createdDate').val();
+		
+		jsonData = {
+				data: JSON.stringify({
+					id: idValue,
+					content: contentValue,
+					createdDate: createdDateValue,
+				})
+		};
+		
+		$.ajax({
+			url: 'update',
+			type: 'POST',
+			data: jsonData,
+			dataType: 'json',
+			success: function(data, status, jqXHR){
+				if(data.errorList.length == 0) {
+					retrieveTweetList('Entry updated successfully!');
+				} else {
+					var msg = "";
+					for (var i = 0; i < data.errorList.length; i++)
+						msg += data.errorList[i] + "\n";
+					errorDisplay.html(msg);
+				}
+			},
+			error: function(jqXHR, status, error) {
+				
+			}
+		});
+	});
 });
 
 /**
@@ -71,9 +158,10 @@ function retrieveTaskList(successMessage) {
 			if(data.errorList.length == 0) {
 				var formattedTaskList = "";
 				$.each(data.taskList, function(index, value) {
+					if(value.taskName == 'Objective C'){
 					formattedTaskList += '<tr>' +
 		              '<td>' +
-		              '  <input type="checkbox" id="status" />' +
+		              '  <input type="hidden" id="status" />' +
 		              '  <label for="status">' + value.taskName + '</label>' +
 		              '</td>' +
 		              '<td>' + value.phase +
@@ -83,14 +171,15 @@ function retrieveTaskList(successMessage) {
 		              '<td>' + value.dueDate + '</td>' +
 		      		  '<td>' +
 		                '<a href="#"><i class="material-icons">done</i></a>' +
-		      					'&nbsp;&nbsp;&nbsp;' +
-		      					'<a href="editTask"><i class="material-icons">assignment</i></a>' +
-		      					'&nbsp;&nbsp;&nbsp;' +
-		      				'<a  href="#"><i class="material-icons">delete</i></a>' + 
 		      				'&nbsp;&nbsp;&nbsp;' +
-		                '<a href="../taskstoday/"><i class="material-icons">add</i></a>' +
-		      			  '</td>' +
+		      			'<a href="editTask"><i class="material-icons">assignment</i></a>' +
+		      				'&nbsp;&nbsp;&nbsp;' +
+		      			'<a  href="#"><i class="material-icons">delete</i></a>' + 
+		      				'&nbsp;&nbsp;&nbsp;' +
+		              '</td>' +
 		            '</tr>';
+					}
+					
 					
 					$('#taskList').find('tbody').append(formattedTaskList);
 					//$('#taskList').append(formattedTaskList);

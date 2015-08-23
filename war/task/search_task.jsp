@@ -54,7 +54,7 @@
           <div class="row">
             <div class="input-field col s6">
               
-              <input name="search_bar_name" id="search_bar" type="text" class="validate" value="lol">
+              <input name="search_bar_name" id="search_bar" type="text" class="validate" ng-model='input.text' value="lol">
               <label class="active" for="search_bar">Search Task Name</label>
               <!--<label for="search_bar"><i class="material-icons left">search</i>Search Task Name</label>-->
             </div>
@@ -84,61 +84,13 @@
                 <th data-field="action"><center>Action</center></th>
             </tr>
           </thead>
-          <tbody>
-          <c:forEach var="e" items="${taskList}">
-            <tr>
-              <c:choose>
-              <c:when test="${f:h(e.name) == 'JSP'}">
-              <td><!-- name -->
-                <input type="checkbox" id="status" />
-                <label for="status">${f:h(e.name)}</label>
-              </td>
-              <td><!-- phase -->
-              	<c:choose>
-			    <c:when test="${e.phase == 1}">Testing</c:when>
-			    <c:when test="${e.phase == 2}">Coding</c:when>
-			    <c:when test="${e.phase == 3}">Design</c:when>
-				</c:choose>
-			 </td><!-- hours -->
-              <td><center>${f:h(e.estHours)} Hours</center></td>
-              <td>${f:h(e.startDate)}</td><!-- start date -->
-              <td>${f:h(e.dueDate)}</td><!-- due date -->
-      			  <td>
-                <a href="#"><i class="material-icons">done</i></a>
-      					&nbsp;&nbsp;&nbsp;
-      					<a href="edit_task.jsp"><i class="material-icons">assignment</i></a>
-      					&nbsp;&nbsp;&nbsp;
-      				<a  href="deleteTweet('form_${f:h(e.id)}')"><i class="material-icons">delete</i></a> 
-      				<!--	<button class="material-icons" onClick="deleteTweet('form_${f:h(e.id)}')">Delete</button> -->
-                &nbsp;&nbsp;&nbsp;
-                <a href="../taskstoday/"><i class="material-icons">add</i></a>
-                 <!-- <span><a href = "#">Done</a></span> |
-                  <span><a href = "edit_task.html">Edit</a></span> |
-                  <span><a href = "#">Delete</a></span>-->
-      			  </td>
-              </c:when>
-              </c:choose>
-            </tr>
-            </c:forEach>
-            
-            <!-- sample -->
-            
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
+          
         </table>
+          <p>
+          	<div id="taskList">
+          	</div>
+          </p>
+          	  {{input.text}} is the value of the search bar.
         </p>
         <p>Select task to edit, delete or mark as done.</p>
         <button  id="hehe" class="waves-effect waves-light btn"><i class="material-icons left">done</i>Done</button>
@@ -154,12 +106,13 @@
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="../jquery/jquery-1.8.2.js"></script>
+  <script src="../jquery/jquery.ui.effect.js"></script> 
+  <script src="../js/task.js"></script>
   <script src="../js/materialize.js"></script>
   <script src="../js/init.js"></script>
   <script src="../js/angular.js"></script>
   
-  <script src="../jquery/jquery-1.8.2.js"></script>
-  <script src="../jquery/jquery.ui.effect.js"></script> 
   <script>
   $(function() {	  
 	  $('button#hehe').click(function(event) {

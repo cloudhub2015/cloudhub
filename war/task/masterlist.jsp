@@ -65,10 +65,8 @@
 						<i class="material-icons-small">assignment</i>&nbsp;&nbsp;&nbsp;Edit
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<i class="material-icons-small">delete</i>&nbsp;&nbsp;&nbsp;Delete
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <i class="material-icons-small">add</i>&nbsp;&nbsp;&nbsp;Add to Today's Tasks
-
-				</p>
+            			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       			</p>
       <!-- mod start 0.0.2 -->
       <div class="table_wrapper table_even">
 		  <table class="unfinished_tasks" id="unfinished_tasks"> <!-- mod start 0.0.2 -->
@@ -79,7 +77,7 @@
                 <th data-field="time_allotment"><center>Estimated Time Allotment</center></th>
                 <th data-field="start_date"><center>Start Date</center></th>
                 <th data-field="due_date"><center>Due Date</center></th>
-				        <th data-field="action"><center>Action</center></th>
+				<th data-field="action"><center>Action</center></th>
             </tr>
           </thead>
           <tbody>
@@ -126,13 +124,17 @@
 </body>
   <!--  Scripts-->
   
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="../jquery/jquery-1.8.2.js"></script>
   <script src="../jquery/jquery.ui.effect.js"></script> 
   <script src="../js/materialize.js"></script>
   <script src="../js/init.js"></script>
-  <script src="../js/task.js"></script>
   <script src="../js/angular.js"></script>
+  <script src="../js/task.js"></script>
+  
+
+  
+  
   <!-- mod start 0.0.2 -->
   <!-- jQuery -->
  

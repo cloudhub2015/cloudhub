@@ -10,6 +10,7 @@
  * --------------------------------------------------------------------------- */
 $(function() {
 	retrieveTaskList();
+	retrieveCompletedTasks();
 	$('#btnCreateTask').click(function() {
 
 		jsonData = {
@@ -83,7 +84,7 @@ $(function() {
 	});
 	
 	/**
-	 * Function to update a task
+	 * Function to edit a task
 	 * finds the table which has an id 'tasks'
 	 */
 	$(document).on('click', '#tasks .btnEdit', function(){
@@ -121,6 +122,52 @@ $(function() {
 			}
 		});*/
 	});
+	
+	/**
+	 * Function to complete a task
+	 * finds the table which has an id 'tasks'
+	 */
+	$(document).on('click', '#tasks .btnDone', function(){
+		
+		var idValue = $(this).parent().siblings().filter('.id').val();
+		/*var taskNameValue = $(this).parent().siblings().filter('.taskName').html();
+		var phaseValue = $(this).parent().siblings().filter('.phase').html();
+		var estHoursValue = $(this).parent().siblings().filter('.estHours').html();
+		var startDateValue = $(this).parent().siblings().filter('.startDate').html();
+		var dueDateValue = $(this).parent().siblings().filter('.dueDate').html();*/
+		
+		jsonData = {
+				data: JSON.stringify({
+					id: idValue/*,
+					name: taskNameValue,
+					phase: phaseValue,
+					estHours: estHoursValue,
+					startDate: startDateValue,
+					dueDate: dueDateValue,*/
+				})
+		};
+		alert(jsonData.data);
+		
+		$.ajax({
+			url: 'completeTask',
+			type: 'POST',
+			data: jsonData,
+			dataType: 'json',
+			success: function(data, status, jqXHR){
+				if(data.errorList.length == 0) {
+					retrieveCompletedTasks('Task updated successfully!');
+				} else {
+					var msg = "";
+					for (var i = 0; i < data.errorList.length; i++)
+						msg += data.errorList[i] + "\n";
+					errorDisplay.html(msg);
+				}
+			},
+			error: function(jqXHR, status, error) {
+				
+			}
+		});
+	});
 });
 
 /**
@@ -144,11 +191,11 @@ function retrieveTaskList(successMessage) {
 		              '<td  class="taskName">' +
 		              value.taskName + 
 		              '</td>' +
-		              '<td>' + value.phase +
-		              '</td>' +
-		              '<td><center>' + value.estHours + 'hrs </center></td>' +
-		              '<td>' + value.startDate + '</td>' +
-		              '<td>' + value.dueDate + '</td>' +
+		              '<td class="phase">' + value.phase +
+		              '</td >' +
+		              '<td><center class="estHours">' + value.estHours + '</center></td>' +
+		              '<td class="startDate">' + value.startDate + '</td>' +
+		              '<td class="dueDate">' + value.dueDate + '</td>' +
 		      		  '<td>' +
 		                '<a href="" class="btnDone"><i class="material-icon-action">done</i></a>' +
 		      				'&nbsp;&nbsp;&nbsp;' +
@@ -169,6 +216,54 @@ function retrieveTaskList(successMessage) {
 				}
 				else{
 					$('#tasks').find('tbody').append(formattedTaskList);
+				}
+				if (undefined != successMessage && "" != successMessage) {
+					alert(successMessage);
+				}
+			} else {
+				alert('Failed to retrieve tasks!');
+			}
+		},
+		error: function(jqXHR, status, error) {
+			
+		}
+	});
+}
+
+/**
+ * Method used to retrieve list of completed tasks.
+ * @param successMessage - success message to display
+ * 		if the transaction is successful.
+ */
+function retrieveCompletedTasks(successMessage) {
+	$("#taskList").empty();
+	
+	$.ajax({
+		url: '/task/completedTasks',
+		type: 'GET',
+		success: function(data, status, jqXHR){
+			console.log(data);
+			if(data.errorList.length == 0) {
+				var formattedTaskList = "";
+				$.each(data.taskList, function(index, value) {
+					formattedTaskList += '<tr>' +
+		              '<input type="hidden" class="id" name="id" value="' + value.id + '"/>' +
+		              '<td  class="taskName">' +
+		              value.taskName + 
+		              '</td>' +
+		              '<td><center>' + value.phase + '</center></td>' +
+		              '<td><center>' + value.estHours + 'hrs </center></td>' +
+		              '<td><center>' + value.startDate + '</center></td>' +
+		              '<td><center>' + value.dueDate + '</center></td>' +
+		            '</tr>';
+				});
+				
+				
+				if (formattedTaskList == "") {
+					formattedTaskList = "<div>Add tasks! :)</div>";
+				}
+				else{
+					$('#finished_tasks').find('tbody').append(formattedTaskList);
 				}
 				if (undefined != successMessage && "" != successMessage) {
 					alert(successMessage);

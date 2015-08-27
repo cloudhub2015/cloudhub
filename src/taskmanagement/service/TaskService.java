@@ -89,12 +89,11 @@ public class TaskService {
     
     /**
      * Method used to retrieve a task.
-     * @return List<Task> - list of Tasks.
+     * @return Task
      */
     public TaskDto selectTask(TaskDto input) {
         Task taskModel = new Task();
         taskModel = this.dao.selectTask(input.getId());
-        input.setId(taskModel.getId());
         input.setUserId(taskModel.getUserId());
         input.setName(taskModel.getName());
         input.setPhase(taskModel.getPhase());
@@ -107,7 +106,7 @@ public class TaskService {
         input.setToday(taskModel.isToday());
         return input;
     }
-    
+        
     /**
      * Method used to retrieve list of tasks.
      * @return List<Task> - list of Tasks.
@@ -188,6 +187,32 @@ public class TaskService {
         Task task = new Task();
         task.setId(input.getId());
         task.setToday(input.isToday());
+        
+        if(!this.dao.updateTask(task)){
+            input.setErrorList(new ArrayList<String>());
+            input.getErrorList().add("database error!");
+        }
+
+        return input;
+    }
+    
+    /**
+     * Method used to finish the task
+     * @param input - task to be finished.
+     * @return TaskDto - if transaction was unsuccessful, contains list of errors.
+     */
+    public TaskDto finishTask(TaskDto input) {
+        Task task = new Task();
+        TaskDto selectedTask = selectTask(input);
+        task.setFinished(true);
+        task.setName(selectedTask.getName());
+        task.setEstHours(selectedTask.getEstHours());
+        task.setPhase(selectedTask.getPhase());
+        task.setStartDate(selectedTask.getStartDate());
+        task.setDueDate(selectedTask.getDueDate());
+        task.setSpentHours(selectedTask.getSpentHours());
+        task.setToday(selectedTask.isToday());
+        task.setPending(selectedTask.isPending());
         
         if(!this.dao.updateTask(task)){
             input.setErrorList(new ArrayList<String>());

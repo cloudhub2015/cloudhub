@@ -47,7 +47,7 @@
     <li class="active"><a href="../task/masterlist">Masterlist</a></li>
     <li class="bold"><a href="../taskstoday/" class="waves-effect waves-teal">Today's Tasks</a></li>
     <li class="bold"><a href="addTask" class="waves-effect waves-teal">Create Task</a></li>
-    <li class="bold"><a href="/task/settings" class="waves-effect waves-teal">Settings</a></li>
+    <li class="bold"><a href="../user/settings" class="waves-effect waves-teal">Settings</a></li>
     <li class="bold"><a href="../" class="waves-effect waves-teal">Log Out </a></li>
 </ul>
 </header>
@@ -98,7 +98,7 @@
         <h2 class="header" style="color: green;"><img src="../images/view.jpg" width="5%">&nbsp;&nbsp;Completed Tasks</h2>
         <p class="caption">Here is a list of tasks you have accomplished.
 
-          <table class="finished_tasks table_wrapper table_even">
+          <table class="finished_tasks table_wrapper table_even" id="finished_tasks">
           <thead>
             <tr>
                 <th data-field="status"><center>Task Name</center></th>
@@ -109,13 +109,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <!-- <tr>
               <td><center>Graphic User Interface Layout</center></td>
               <td><center>Design</center></td>
               <td><center>8 Hours</center></td>
               <td><center>July 11, 2015</center></td>
               <td><center>July 21, 2015</center></td>
-            </tr>
+            </tr> -->
           </tbody>
           </table>
            

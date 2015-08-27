@@ -48,6 +48,33 @@ public class TaskDao {
     }
     
     /**
+     * Method used to set isFinished attribute of task to true
+     * @return boolean
+     */
+    public boolean setCompletedTask(Long id) {
+        boolean result=true;
+        TaskMeta t = new TaskMeta();
+        Task task = new Task();
+        Query.Filter mainFilter = new Query.FilterPredicate("id", FilterOperator.EQUAL, id);
+        
+        try {
+            task = Datastore.query(t).filter(mainFilter).asSingle();
+            
+            if (task != null) {
+                Transaction tx = Datastore.beginTransaction();
+                task.setFinished(true);
+                Datastore.put(task);
+                tx.commit();
+            } else {
+                result = false;
+            }
+        } catch (Exception e) {
+            result = false;
+        }
+        return result;
+    }
+    
+    /**
      * Method used to retrieve tasks searched by the client.
      * @return List<Task> - list of tasks.
      */

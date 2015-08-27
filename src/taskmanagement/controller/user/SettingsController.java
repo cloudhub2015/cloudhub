@@ -1,4 +1,4 @@
-package taskmanagement.controller.task;
+package taskmanagement.controller.user;
 
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;

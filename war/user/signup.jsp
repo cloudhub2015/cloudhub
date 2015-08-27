@@ -34,9 +34,9 @@
   <title>Sign Up - CloudHub</title>
 
   <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../material-icons/material-icons.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -76,7 +76,7 @@
       	</div>
         <div class="row">
           <div class="input-field col s4">
-            <i class="material-icons prefix">perm_identity </i>
+            <i class="material-icon prefix">perm_identity </i>
               <label for="first_name">Name</label>
             <input  placeholder="First Name" name="firstName" id="txtFirstName" type="text" class="validate">
             <input  placeholder="Last Name" id="txtLastName" name="lastName" type="text" class="validate">
@@ -84,14 +84,14 @@
         </div>
         <div class="row">
           <div class="input-field col s4">
-            <i class="material-icons prefix">account_circle </i>
+            <i class="material-icon prefix">account_circle </i>
             <input placeholder="Username" id="txtUsername" name="username" type="text" class="validate">
             <label for="user_name">Username</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s4">
-            <i class="material-icons prefix">info</i>
+            <i class="material-icon prefix">info</i>
             <input id="txtPassword" type="password" class="validate" placeholder="Password" name="txtPassword">
               <label for="password">Password</label>
             <input id="confirm_password" type="password" class="validate" placeholder="Confirm Password">
@@ -117,7 +117,7 @@
           <div class="input-field col s4">
           <!--  <a href="#" id="download-button" class="btn-large waves-effect waves-light purple">Sign Up</a> -->
           <!-- <button id="btnSignUp" class="waves-effect waves-light btn" value="Register User" name="registerUser"><i class="material-icons left">note_add</i>Sign Up</button> -->
-          <button id="btnSignUp" class="waves-effect waves-light btn" value="Register User" name="registerUser"><i class="material-icons left">note_add</i>Sign Up</button>
+          <button id="btnSignUp" class="waves-effect waves-light btn" value="Register User" name="registerUser"><i class="material-icon left">note_add</i>Sign Up</button>
           </div>
         </div>
       <!-- </form> -->

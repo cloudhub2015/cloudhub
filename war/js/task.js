@@ -170,11 +170,11 @@ function retrieveTaskList(successMessage) {
 		              '<td>' + value.startDate + '</td>' +
 		              '<td>' + value.dueDate + '</td>' +
 		      		  '<td>' +
-		                '<a href="#"><i class="material-icons">done</i></a>' +
+		                '<a href="#"><i class="material-icon-action">done</i></a>' +
 		      				'&nbsp;&nbsp;&nbsp;' +
-		      			'<a href="editTask"><i class="material-icons">assignment</i></a>' +
+		      			'<a href="editTask"><i class="material-icon-action">assignment</i></a>' +
 		      				'&nbsp;&nbsp;&nbsp;' +
-		      			'<a  href="#"><i class="material-icons">delete</i></a>' + 
+		      			'<a  href="#"><i class="material-icon-action">delete</i></a>' + 
 		      				'&nbsp;&nbsp;&nbsp;' +
 		              '</td>' +
 		            '</tr>';

@@ -24,9 +24,9 @@
   <title>CloudHub: Your Task Manager</title>
 
   <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../material-icons/material-icons.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -57,11 +57,11 @@
       <form class="col s12 offset-s4" method="post" action="verifyUser">
         <div class="row center">
           <div class="input-field col s4">
-            <i class="material-icons prefix">account_circle </i>
+            <i class="material-icon prefix">account_circle </i>
             <input id="icon_prefix" type="text" class="validate" placeholder="Username">
             <!--<label for="icon_prefix">Username</label>-->
             <br>
-            <i class="material-icons prefix">lock</i>
+            <i class="material-icon prefix">lock</i>
             <input id="icon_telephone" type="tel" class="validate" placeholder="Password">
              <!--<label for="icon_telephone">Password</label>-->
           </div>

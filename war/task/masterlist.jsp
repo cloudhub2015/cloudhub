@@ -31,8 +31,8 @@
   <!-- CSS  -->
   <link rel="stylesheet" href="../css/base.css" type="text/css" media="screen,projection"/> <!-- mod end 0.0.2 -->
   <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="../css/materialize_content.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../material-icons/material-icons.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -60,11 +60,11 @@
         <h2 class="header"><img src="../images/view.jpg" width="5%">&nbsp;&nbsp;List of Tasks</h2>
         <p class="caption">Here is a list of tasks you have to accomplish.
 				<p><b>Legend:</b> <br/><br/>
-						<i class="material-icons-small">done</i>&nbsp;&nbsp;&nbsp;Done
+						<i class="material-icon-action">done</i>&nbsp;&nbsp;&nbsp;Done
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<i class="material-icons-small">assignment</i>&nbsp;&nbsp;&nbsp;Edit
+						<i class="material-icon-action">assignment</i>&nbsp;&nbsp;&nbsp;Edit
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<i class="material-icons-small">delete</i>&nbsp;&nbsp;&nbsp;Delete
+						<i class="material-icon-action">delete</i>&nbsp;&nbsp;&nbsp;Delete
             			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
        			</p>
       <!-- mod start 0.0.2 -->

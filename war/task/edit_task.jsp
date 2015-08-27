@@ -16,8 +16,8 @@
 
   <!-- CSS  -->
   <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="../css/materialize_content.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../material-icons/material-icons.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -85,9 +85,9 @@
                 </div>
               </div>
 
-              <a class="waves-effect waves-light btn"><i class="material-icons left">edit</i>Edit Task</a>
+              <a class="waves-effect waves-light btn"><i class="material-icon left">edit</i>Edit Task</a>
               &nbsp;&nbsp;&nbsp;
-              <a href ="masterlist" class="waves-effect waves-light btn"><i class="material-icons left">clear_all</i>Go Back to Masterlist</a>
+              <a href ="masterlist" class="waves-effect waves-light btn"><i class="material-icon left">clear_all</i>Go Back to Masterlist</a>
             </form>
           </div>
         </p>

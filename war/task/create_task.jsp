@@ -20,8 +20,8 @@
   <link rel="stylesheet" href="../css/base.css" type="text/css" media="screen,projection"/>
   <!-- 0.0.1 end mod -->
   <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="../css/materialize_content.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../material-icons/material-icons.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -92,9 +92,9 @@
               </div>
 
                <!-- <a class="waves-effect waves-light btn"><i class="material-icons left">note_add</i>Create Task</a> -->
-             <button class="btn waves-effect waves-light" type="submit"  value="create_task" name="btnCreateTask" id="btnCreateTask"><i class="material-icons left">note_add</i>Create Task</button>
+             <button class="btn waves-effect waves-light" type="submit"  value="create_task" name="btnCreateTask" id="btnCreateTask"><i class="material-icon left">note_add</i>Create Task</button>
               &nbsp;&nbsp;&nbsp;
-              <button class="waves-effect waves-light btn" name="clearField" value="Cancel"><i class="material-icons left" id="btnClearAllInfo">clear_all</i>Clear Fields</button>
+              <button class="waves-effect waves-light btn" name="clearField" value="Cancel"><i class="material-icon left" id="btnClearAllInfo">clear_all</i>Clear Fields</button>
             </form>
           </div>
         </p>

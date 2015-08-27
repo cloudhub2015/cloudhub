@@ -47,7 +47,7 @@
     <li class="active"><a href="../task/masterlist">Masterlist</a></li>
     <li class="bold"><a href="../taskstoday/" class="waves-effect waves-teal">Today's Tasks</a></li>
     <li class="bold"><a href="addTask" class="waves-effect waves-teal">Create Task</a></li>
-    <li class="bold"><a href="SearchTask" class="waves-effect waves-teal">Settings</a></li>
+    <li class="bold"><a href="/task/settings" class="waves-effect waves-teal">Settings</a></li>
     <li class="bold"><a href="../" class="waves-effect waves-teal">Log Out </a></li>
 </ul>
 </header>

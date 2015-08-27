@@ -77,7 +77,7 @@
        			</p>
       <!-- mod start 0.0.2 -->
       <div class="table_wrapper table_even">
-		  <table class="unfinished_tasks" id="unfinished_tasks"> <!-- mod start 0.0.2 -->
+		  <table class="unfinished_tasks" id="tasks"> <!-- mod start 0.0.2 -->
           <thead>
             <tr>
                 <th data-field="status"><center>Task Name</center></th>
@@ -88,16 +88,9 @@
 				<th data-field="action"><center>Action</center></th>
             </tr>
           </thead>
-          <tbody>
-          
-           
-          </tbody>
+          <tbody></tbody>
         </table>
         </div>
-        
-        </p>
-         <div id="taskList">
-          </div>
 
         <br>
 

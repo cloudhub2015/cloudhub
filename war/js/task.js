@@ -10,7 +10,6 @@
  * --------------------------------------------------------------------------- */
 $(function() {
 	retrieveTaskList();
-	console.log("Display.js");
 	//console.log("TASK NAME: " + $('#txtName').val());
 	$('#btnCreateTask').click(function() {
 	//	$('#errorDisplay').empty();
@@ -178,16 +177,17 @@ function retrieveTaskList(successMessage) {
 		              '</td>' +
 		            '</tr>';
 					
-					
-					$('#taskList').find('tbody').append(formattedTaskList);
 					//$('#taskList').append(formattedTaskList);
 					
 				});
 				
+				
 				if (formattedTaskList == "") {
 					formattedTaskList = "<div>Add tasks! :)</div>";
 				}
-				$("#taskList").html(formattedTaskList);
+				else{
+					$('#tasks').find('tbody').append(formattedTaskList);
+				}
 				if (undefined != successMessage && "" != successMessage) {
 					alert(successMessage);
 				}

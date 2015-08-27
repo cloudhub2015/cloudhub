@@ -49,8 +49,6 @@ public class UserService {
      */
     public UserDto validateUser(UserDto input) {        
         User user = new User();
-        user.setFirstName(input.getFirstName());
-        user.setLastName(input.getLastName());
         user.setUsername(input.getUsername());
         user.setPassword(input.getPassword());
         

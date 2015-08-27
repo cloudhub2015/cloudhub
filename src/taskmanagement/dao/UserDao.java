@@ -106,12 +106,12 @@ public class UserDao {
     public boolean checkUser(User userModel) {
         boolean result = false;
         UserMeta tm = new UserMeta();
-        Query.Filter userFilter = new Query.FilterPredicate("username", FilterOperator.EQUAL, userModel.getUsername());
+        Query.Filter userFilter = new Query.FilterPredicate("id", FilterOperator.EQUAL, userModel.getId());
         //Query.Filter passwordFilter = new Query.FilterPredicate("password", FilterOperator.EQUAL, userModel.getPassword());
         try {
             User originalUserModel = Datastore.query(tm).filter(userFilter).asSingle();
             //User originalPasswordModel = Datastore.query(tm).filter(passwordFilter).asSingle();
-            if (originalUserModel.getUsername() == userModel.getUsername() && originalUserModel.getPassword() == userModel.getPassword()) {
+            if ((originalUserModel.getUsername() == userModel.getUsername()) && (originalUserModel.getPassword() == userModel.getPassword())) {
                 result = true;
             } else {
                 result = false;

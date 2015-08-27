@@ -55,20 +55,24 @@
   <div class="container">
     <div class="row center">
       <form class="col s12 offset-s4" method="post" action="verifyUser">
+      	<div class="row center">
+      		<div class="col s4" id="errorMessage">
+      		</div>
+      	</div>
         <div class="row center">
           <div class="input-field col s4">
             <i class="material-icon prefix">account_circle </i>
-            <input id="icon_prefix" type="text" class="validate" placeholder="Username">
+            <input id="txtUsername" type="text" class="validate" placeholder="Username">
             <!--<label for="icon_prefix">Username</label>-->
             <br>
             <i class="material-icon prefix">lock</i>
-            <input id="icon_telephone" type="tel" class="validate" placeholder="Password">
+            <input id="txtPassword" type="password" class="validate" placeholder="Password">
              <!--<label for="icon_telephone">Password</label>-->
           </div>
         </div>
         <div class="row center">
           <div class="col s4">
-          <a href="user/logIn" id="download-button" class="btn-large waves-effect waves-light purple">Log In</a>
+          	<a id="download-button" class="btn-large waves-effect waves-light purple">Log In</a>
           </div>
         </div>
       </form>
@@ -88,11 +92,12 @@
 
 
   <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
   <script src="/jquery/jquery-1.8.2.js"></script>
   <script src="/jquery/jquery.ui.effect.js"></script> 
   <script src="/js/materialize.js"></script>
   <script src="/js/angular.js"></script>
   <script src="/js/init.js"></script>
+  <script src="/js/login.js"></script>
   </body>
 </html>

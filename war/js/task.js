@@ -10,10 +10,7 @@
  * --------------------------------------------------------------------------- */
 $(function() {
 	retrieveTaskList();
-	//console.log("TASK NAME: " + $('#txtName').val());
 	$('#btnCreateTask').click(function() {
-	//	$('#errorDisplay').empty();
-	//	$('.updateErrorDisplay').empty();
 
 		jsonData = {
 				data: JSON.stringify({
@@ -24,8 +21,6 @@ $(function() {
 					dueDate: $('#dueDate').val(),
 				})
 		};
-		console.log(jsonData);
-		console.log($('#txtEstHours').val());
 		$.ajax({
 			url: '/task/addTask',
 			type: 'POST',
@@ -39,12 +34,10 @@ $(function() {
 					$('#txtEstHours').val('');
 					$('#startDate').val('');
 					$('#dueDate').val('');
-				//	retrieveTaskList('Entry saved successfully!');
 				} else {
 					var msg = "";
 					for (var i = 0; i < data.errorList.length; i++)
 						msg += data.errorList[i] + "\n";
-				//	$('#errorDisplay').html(msg);
 				}
 			},
 			error: function(jqXHR, status, error) {
@@ -53,24 +46,17 @@ $(function() {
 		});
 	});
 	
-	//Delete Task
+	/**
+	 * Function to delete a task
+	 * finds the table which has an id 'tasks'
+	 */
 	$(document).on('click', '#tasks .btnDelete', function(){
 		
 		var idValue = $(this).parent().siblings().filter('.id').val();
-		/*var nameValue = $(this).parent().siblings().filter('.taskName').val();
-		var phaseValue = $(this).parent().siblings().filter('.phase').val();
-		var estHoursValue = $(this).parent().siblings().filter('.estHours').val();
-		var startDateValue = $(this).parent().siblings().filter('.startDate').val();
-		var dueDateValue = $(this).parent().siblings().filter('.dueDate').val();*/
 		
 		jsonData = {
 				data: JSON.stringify({
-					id: idValue/*,
-					name: nameValue,
-					phase: phaseValue,
-					estHours: estHoursValue,
-					startDate: startDateValue,
-					dueDate: dueDateValue*/
+					id: idValue
 				})
 		};
 		
@@ -97,7 +83,7 @@ $(function() {
 	});
 	
 	//Update Tweet
-	$(document).on('click', '#tweetList .btnUpdate', function(){
+	$(document).on('click', '#tasks .btnEdit', function(){
 		
 		var errorDisplay = $(this).siblings().filter('.updateErrorDisplay');
 		var idValue = $(this).siblings().filter('.id').val();

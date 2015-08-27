@@ -95,12 +95,16 @@
 	    </div>
 	    <div class="modal-footer">
 	      <!--  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Add to Today's Task</a> -->
-	       <button class="btn waves-effect waves-light" type="submit" ><i class="material-icon left">note_add</i>Add</button>
+	       <button class="btn waves-effect waves-light red" type="submit" ><i class="material-icon left">cancel</i>Cancel</button>
+	       <button class="btn waves-effect waves-light" type="submit" style="margin-right: 10px;"><i class="material-icon left">note_add</i>Add</button>
+	       
 	    </div>
 	  </div>
 </div>
 </div>
 </main>
+
+
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

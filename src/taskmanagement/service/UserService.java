@@ -13,6 +13,7 @@ import taskmanagement.model.User;
  * @version 0.01 
  * Version History
  * [07/27/2015] 0.01 - Jacquelyn Amaya - Initial codes
+ * [08/27/2015] 0.02 - Jacquelyn Amaya - Edited validateUser() method
  */
 public class UserService {
     /**
@@ -29,12 +30,10 @@ public class UserService {
      */
     public UserDto addUser(UserDto input) {        
         User user = new User();
-        user.setEmail(input.getEmail());
         user.setFirstName(input.getFirstName());
         user.setLastName(input.getLastName());
         user.setUsername(input.getUsername());
         user.setPassword(input.getPassword());
-        user.setTelephone(input.getTelephone());
         
         if(!this.dao.saveUser(user)) {
             input.setErrorList(new ArrayList<String>());
@@ -43,14 +42,17 @@ public class UserService {
         return input;
     }
     
+    /**
+     * Method used to validate user when logging in
+     * @param input
+     * @return UserDto - if transaction was unsuccessful, contains list of errors.
+     */
     public UserDto validateUser(UserDto input) {        
         User user = new User();
-        user.setEmail(input.getEmail());
         user.setFirstName(input.getFirstName());
         user.setLastName(input.getLastName());
         user.setUsername(input.getUsername());
         user.setPassword(input.getPassword());
-        user.setTelephone(input.getTelephone());
         
         if(!this.dao.checkUser(user)) {
             input.setErrorList(new ArrayList<String>());

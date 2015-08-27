@@ -18,8 +18,6 @@ public class UserDto {
         private String password;
         private String firstName;
         private String lastName;
-        private String telephone;
-        private String email;
         private List<String> errorList;
         
         public List<String> getErrorList() {
@@ -45,14 +43,6 @@ public class UserDto {
             return lastName;
         }
         
-        public String getTelephoneContact(){
-            return telephone;
-        }
-        
-        public String getEmail(){
-            return email;
-        }
-        
         public void setUsername(String username){
             this.username = username;
         }
@@ -69,27 +59,11 @@ public class UserDto {
             this.lastName = lastName;
         }
         
-        public void setTelephoneContact(String telephone){
-            this.telephone = telephone;
-        }
-        
-        public void setEmail(String email){
-            this.email = email;
-        }
-
         public long getId() {
             return id;
         }
 
         public void setId(long id) {
             this.id = id;
-        }
-
-        public String getTelephone() {
-            return telephone;
-        }
-
-        public void setTelephone(String telephone) {
-            this.telephone = telephone;
         }
 }

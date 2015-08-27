@@ -158,7 +158,6 @@ function retrieveTaskList(successMessage) {
 			if(data.errorList.length == 0) {
 				var formattedTaskList = "";
 				$.each(data.taskList, function(index, value) {
-					if(value.taskName == 'Objective C'){
 					formattedTaskList += '<tr>' +
 		              '<td>' +
 		              '  <input type="hidden" id="status" />' +
@@ -178,7 +177,6 @@ function retrieveTaskList(successMessage) {
 		      				'&nbsp;&nbsp;&nbsp;' +
 		              '</td>' +
 		            '</tr>';
-					}
 					
 					
 					$('#taskList').find('tbody').append(formattedTaskList);

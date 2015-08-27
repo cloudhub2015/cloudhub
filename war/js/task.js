@@ -186,7 +186,7 @@ function retrieveTaskList(successMessage) {
 					formattedTaskList = "<div>Add tasks! :)</div>";
 				}
 				else{
-					$('table').find('tbody').append(formattedTaskList);
+					$('#tasks').find('tbody').append(formattedTaskList);
 				}
 				if (undefined != successMessage && "" != successMessage) {
 					alert(successMessage);

@@ -30,7 +30,20 @@ public class AddTaskController extends Controller {
             json = new JSONObject((String)this.requestScope("data"));
 
             dto.setName(json.getString("name"));
-            dto.setPhase(json.getString("phase"));
+            int phase = json.getInt("phase"); 
+            switch (phase) {
+                case 1:
+                    dto.setPhase("Testing");
+                    break;
+                case 2:
+                    dto.setPhase("Coding");
+                    break;
+                case 3:
+                    dto.setPhase("Design");
+                    break;
+                default:
+                    dto.setPhase("Testing");
+            }
             dto.setEstHours(json.getDouble("estHours"));
             dto.setStartDate(json.getString("startDate"));
             dto.setDueDate(json.getString("dueDate"));

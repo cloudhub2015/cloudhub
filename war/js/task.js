@@ -82,30 +82,33 @@ $(function() {
 		});
 	});
 	
-	//Update Tweet
+	/**
+	 * Function to update a task
+	 * finds the table which has an id 'tasks'
+	 */
 	$(document).on('click', '#tasks .btnEdit', function(){
 		
-		var errorDisplay = $(this).siblings().filter('.updateErrorDisplay');
-		var idValue = $(this).siblings().filter('.id').val();
-		var contentValue = $(this).siblings().filter('.content').val();
+		var idValue = $(this).parent().siblings().filter('.id').val();
+		window.location.href="taskToEdit";
+		/*var contentValue = $(this).siblings().filter('.content').val();
 		var createdDateValue = $(this).siblings().filter('.createdDate').val();
 		
 		jsonData = {
 				data: JSON.stringify({
 					id: idValue,
-					content: contentValue,
-					createdDate: createdDateValue,
+					//content: contentValue,
+					//createdDate: createdDateValue,
 				})
 		};
 		
 		$.ajax({
-			url: 'update',
+			url: 'taskToEdit',
 			type: 'POST',
 			data: jsonData,
 			dataType: 'json',
 			success: function(data, status, jqXHR){
 				if(data.errorList.length == 0) {
-					retrieveTweetList('Entry updated successfully!');
+					//retrieveTweetList('Entry updated successfully!');
 				} else {
 					var msg = "";
 					for (var i = 0; i < data.errorList.length; i++)
@@ -116,12 +119,12 @@ $(function() {
 			error: function(jqXHR, status, error) {
 				
 			}
-		});
+		});*/
 	});
 });
 
 /**
- * Method used to retrieve list of tweets.
+ * Method used to retrieve list of tasks.
  * @param successMessage - success message to display
  * 		if the transaction is successful.
  */
@@ -139,7 +142,7 @@ function retrieveTaskList(successMessage) {
 					formattedTaskList += '<tr>' +
 		              '<input type="hidden" class="id" name="id" value="' + value.id + '"/>' +
 		              '<td  class="taskName">' +
-		              '  <label for="status">' + value.taskName + '</label>' +
+		              value.taskName + 
 		              '</td>' +
 		              '<td>' + value.phase +
 		              '</td>' +

@@ -88,6 +88,27 @@ public class TaskService {
     }
     
     /**
+     * Method used to retrieve a task.
+     * @return List<Task> - list of Tasks.
+     */
+    public TaskDto selectTask(TaskDto input) {
+        Task taskModel = new Task();
+        taskModel = this.dao.selectTask(input.getId());
+        input.setId(taskModel.getId());
+        input.setUserId(taskModel.getUserId());
+        input.setName(taskModel.getName());
+        input.setPhase(taskModel.getPhase());
+        input.setEstHours(taskModel.getEstHours());
+        input.setStartDate(taskModel.getStartDate());
+        input.setDueDate(taskModel.getDueDate());
+        input.setSpentHours(taskModel.getSpentHours());
+        input.setFinished(taskModel.isFinished());
+        input.setPending(taskModel.isPending());
+        input.setToday(taskModel.isToday());
+        return input;
+    }
+    
+    /**
      * Method used to retrieve list of tasks.
      * @return List<Task> - list of Tasks.
      */

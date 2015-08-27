@@ -38,6 +38,16 @@ public class TaskDao {
     }
     
     /**
+     * Method used to retrieve a task to edit
+     * @return List<Task> - list of tasks.
+     */
+    public Task selectTask(Long id) {
+        TaskMeta t = new TaskMeta();
+        Query.Filter mainFilter = new Query.FilterPredicate("id", FilterOperator.EQUAL, id);
+        return Datastore.query(t).filter(mainFilter).asSingle();
+    }
+    
+    /**
      * Method used to retrieve tasks searched by the client.
      * @return List<Task> - list of tasks.
      */

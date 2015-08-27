@@ -4,6 +4,8 @@
 * @author Janna Tapitha S. Pedrano
 * @version 0.01
 * @as of July 7, 2015 1:45AM
+* @version 0.02 Addition - added codes for UI development by Nelson F. Ruiz Jr.
+* @as of August 28, 2015 3:44AM
 */
 
 .icon-block {
@@ -27,3 +29,14 @@
 .finished_tasks  {
     font-weight: 300;
 }
+
+/**Mod 0.2 Start**/
+.tasklist td {
+	padding: 0px;
+}
+
+.my-offset-s4 {
+	margin-right: 33.3333%;
+}
+
+/**Mod 0.2 End**/

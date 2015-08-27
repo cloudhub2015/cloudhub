@@ -5,6 +5,10 @@
 * @version 0.01
 * @version 0.02 Revision - Fixed Bug by David Ramirez
 * @as of July 7, 2015 1:45AM
+* Add floating button and modal.
+* @author Janna Tapitha S. Pedrano and Nelson F. Ruiz Jr.
+* @version 0.03
+* @as of August 28, 2015 2:10AM
 */
 -->
 
@@ -85,21 +89,39 @@
 
 </div>
 <div class="row">
-	<a class="btn-floating btn-large waves-effect waves-light red right modal-trigger" href="#modal1"><i class="material-icon">add</i></a>
- 	 <!-- Modal Structure -->
-	  <div id="modal1" class="modal">
-	    <div class="modal-content">
-	      <h4>Masterlist of Tasks</h4>
-	      <p>Select tasks to be added for today:</p>
-	      
-	    </div>
-	    <div class="modal-footer">
-	      <!--  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Add to Today's Task</a> -->
-	       <button class="btn waves-effect waves-light red" type="submit" ><i class="material-icon left">cancel</i>Cancel</button>
-	       <button class="btn waves-effect waves-light" type="submit" style="margin-right: 10px;"><i class="material-icon left">note_add</i>Add</button>
-	       
-	    </div>
-	  </div>
+		<a class="btn-floating btn-large waves-effect waves-light red right modal-trigger" href="#modal1"><i class="material-icon">add</i></a>
+	 	 <!-- Modal Structure -->
+		  <div id="modal1" class="modal modal-fixed-footer">
+		    <div class="modal-content">
+		      <h4>Masterlist of Tasks</h4>
+		      <p>Select tasks to be added for today:</p>
+		      <table class ="tasklist" style = "width: 100%;">
+		      	<tr>
+		      		<td>
+	                	<input type="checkbox" id="status2" />
+	                	<label for="status2">Tasm Management Design</label>
+	              	</td>
+		      	</tr>
+		      	<tr>
+		      		<td>
+	                	<input type="checkbox" id="status2" />
+	                	<label for="status2">Tasm Management Design</label>
+	              	</td>
+		      	</tr>
+		      	<tr>
+		      		<td>
+	                	<input type="checkbox" id="status2" />
+	                	<label for="status2">Tasm Management Design</label>
+	              	</td>
+		      	</tr>
+		      
+		      </table>
+		    </div>
+		    <div class="modal-footer">
+		       <button class="btn waves-effect waves-light red modal-close" type="submit" ><i class="material-icon left">cancel</i>Cancel</button>
+		       <button class="btn waves-effect waves-light" type="submit" style="margin-right: 10px;"><i class="material-icon left">note_add</i>Add</button>		       
+		    </div>
+		  </div>
 </div>
 </div>
 </main>

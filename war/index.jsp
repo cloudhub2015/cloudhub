@@ -55,6 +55,10 @@
   <div class="container">
     <div class="row center">
       <form class="col s12 offset-s4" method="post" action="verifyUser">
+      	<div class="row center">
+      		<div class="col s4" id="errorMessage">
+      		</div>
+      	</div>
         <div class="row center">
           <div class="input-field col s4">
             <i class="material-icon prefix">account_circle </i>
@@ -68,7 +72,7 @@
         </div>
         <div class="row center">
           <div class="col s4">
-          <a href="user/logIn" id="download-button" class="btn-large waves-effect waves-light purple">Log In</a>
+          	<a href="" id="download-button" class="btn-large waves-effect waves-light purple">Log In</a>
           </div>
         </div>
       </form>
@@ -94,5 +98,6 @@
   <script src="/js/materialize.js"></script>
   <script src="/js/angular.js"></script>
   <script src="/js/init.js"></script>
+  <script src="/js/user.js"></script>
   </body>
 </html>

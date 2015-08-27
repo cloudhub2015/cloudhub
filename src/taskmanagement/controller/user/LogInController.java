@@ -46,7 +46,8 @@ public class LogInController extends Controller {
         json.put("errorList", dto.getErrorList());
         response.setContentType("application/json");
         response.getWriter().write(json.toString());
-        return forward("signup.jsp");
+        //return redirect("../task/masterlist.jsp");
+        return forward("../task/masterlist.jsp");
         /*if(super.isPost()){
             List<User> userList = service.getUsersList();
             requestScope("userList", userList);

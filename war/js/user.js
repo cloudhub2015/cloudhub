@@ -46,14 +46,15 @@ $(function() {
 		});
 	}); // end of adding user
 	
-	$('#download-button').click(function() {		
+	$('#download-button').click(function() {	
+		alert("Ni click ko sa log in");
 		jsonData = {
 				data: JSON.stringify({
 				username: $('#txtUsername').val(),
 				password: $('#txtPassword').val()
 				})
 		};
-		$.ajax({
+		jquery.ajax({
 			url: '/user/logIn',
 			type: 'POST',
 			data: jsonData,

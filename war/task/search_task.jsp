@@ -38,7 +38,7 @@
     <li class="bold"><a href="../task/masterlist" class="waves-effect waves-teal">Masterlist</a></li>
     <li class="bold"><a href="../taskstoday/" class="waves-effect waves-teal">Today's Tasks</a></li>
     <li class="bold"><a href="addTask" class="waves-effect waves-teal">Create Task</a></li>
-    <li class="active"><a href="searchTask" class="waves-effect waves-teal">Search Task</a></li>
+    <li class="active"><a href="searchTask" class="waves-effect waves-teal">Settings</a></li>
     <li class="bold"><a href="../" class="waves-effect waves-teal">Log Out </a></li>
 </ul>
 </header>
@@ -48,59 +48,44 @@
   <div class="row">
     <div class="col s12 m9 l10">
       <div id="right" class="section scrollspy">
-        <h2 class="header"><img src="../images/search.jpg" width="5%">&nbsp;&nbsp;Search Task</h2>
-        <p class="caption">Search by Task name or select filter.
-          
-          <div class="row">
-            <div class="input-field col s6">
-              
-              <input name="search_bar_name" id="search_bar" type="text" class="validate" ng-model='input.text' value="lol">
-              <label class="active" for="search_bar">Search Task Name</label>
-              <!--<label for="search_bar"><i class="material-icons left">search</i>Search Task Name</label>-->
-            </div>
-      
+        <h2 class="header"><img src="../images/settings.png" width="5%">&nbsp;&nbsp;Settings</h2>
+        <p class="caption">View / edit account information.</p>
         
-      
-            <div class="input-field col s6">
-              <div class="col s6">
-              <select name="sel" id="sel_id "class="browser-default">
-                 <option value="" disabled selected>Choose Filter</option>
-                 <option value="1">Phase</option>
-                 <option value="2">Start Date</option>
-                 <option value="3">Due Date</option>
-              </select>
+        <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input name="name" type="text" class="validate">
+                  <label class="active" for="first_name">First Name</label>
+                </div>
               </div>
-            </div>
-          </div>
-               
-          <table>
-          <thead>
-            <tr>
-                <th data-field="status"><center>Task Name</center></th>
-                <th data-field="name"><center>Phase</center></th>
-                <th data-field="time_allotment"><center>Estimated Time Allotment</center></th>
-                <th data-field="start_date"><center>Start Date</center></th>
-                <th data-field="due_date"><center>Due Date</center></th>
-                <th data-field="action"><center>Action</center></th>
-            </tr>
-          </thead>
-          
-        </table>
-          <p>
-          	<div id="taskList">
-          	</div>
-          </p>
-          	  {{input.text}} is the value of the search bar.
-        </p>
-        <p>Select task to edit, delete or mark as done.</p>
-        <button  id="hehe" class="waves-effect waves-light btn"><i class="material-icons left">done</i>Done</button>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input name="name" type="text" class="validate">
+                  <label class="active" for="last_name">Last Name</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input name="name" type="text" class="validate">
+                  <label class="active" for="username">Username</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id ="password" name="name" type="password" class="validate">
+                  <label class="active" for="password">Password</label>
+                </div>
+              </div>
+       		</form>
+       	</div>
+        <button  id="" class="waves-effect waves-light btn"><i class="material-icons left">save</i>Save</button>
         &nbsp;&nbsp;&nbsp;
-        <a class="waves-effect waves-light btn"><i class="material-icons left">assignment</i>Edit</a>
-        &nbsp;&nbsp;&nbsp;
-        <a class="waves-effect waves-light btn"><i class="material-icons left">delete</i>Delete</a>
-        </p>
+        <button  id="" class="waves-effect waves-light btn"><i class="material-icons left">cancel</i>Cancel</button>
+       
         <br>
   </div>
+</div>
 </div>
 </main>
 

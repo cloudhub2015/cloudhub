@@ -1,4 +1,4 @@
-<!--
+ <!--
 /* Partial UI done. With homepage, view tasks page,
 * Add task page and search task page.
 * @author Janna Tapitha S. Pedrano
@@ -18,8 +18,8 @@
   <!-- CSS  -->
   <link rel="stylesheet" href="../css/base.css" type="text/css" media="screen,projection"/>
   <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="../css/materialize_content.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../material-icons/material-icons.css" rel="stylesheet" type="text/css">
   
 </head>
 
@@ -34,7 +34,7 @@
     <li class="bold"><a href="../task/masterlist">Masterlist</a></li>
     <li class="active"><a href="../taskstoday/" class="waves-effect waves-teal">Today's Tasks</a></li>
     <li class="bold"><a href="../task/addTask" class="waves-effect waves-teal">Create Task</a></li>
-    <li class="bold"><a href="../task/searchTask" class="waves-effect waves-teal">Search Task</a></li>
+    <li class="bold"><a href="../task/searchTask" class="waves-effect waves-teal">Settings</a></li>
     <li class="bold"><a href="../" class="waves-effect waves-teal">Log Out </a></li>
 </ul>
 </header>
@@ -45,6 +45,14 @@
     <div class="col s12 m9 l10">
       <div id="right" class="section scrollspy">
         <h2 class="header"><img src="../images/view.jpg" width="5%">&nbsp;&nbsp;Today's Tasks</h2>
+        
+        <div class="row">
+        	<div class="input-field col s6">
+              <input id="search_bar" type="text" class="validate">
+              <label for="search_bar"><i class="material-icon-legend left">search</i>Search Task Name</label>
+            </div>
+        </div>
+        
         <p class="caption">Here is a list of tasks you have to accomplish within this day.</p>
 		  <!-- mod start 0.0.3 -->
       <table class="table_wrapper table_even unfinished_tasks">

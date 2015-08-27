@@ -47,7 +47,7 @@
     <li class="active"><a href="../task/masterlist">Masterlist</a></li>
     <li class="bold"><a href="../taskstoday/" class="waves-effect waves-teal">Today's Tasks</a></li>
     <li class="bold"><a href="addTask" class="waves-effect waves-teal">Create Task</a></li>
-    <li class="bold"><a href="SearchTask" class="waves-effect waves-teal">Search Task</a></li>
+    <li class="bold"><a href="SearchTask" class="waves-effect waves-teal">Settings</a></li>
     <li class="bold"><a href="../" class="waves-effect waves-teal">Log Out </a></li>
 </ul>
 </header>
@@ -58,6 +58,14 @@
     <div class="col s12 m9 l10">
       <div id="right" class="section scrollspy">
         <h2 class="header"><img src="../images/view.jpg" width="5%">&nbsp;&nbsp;List of Tasks</h2>
+        <!-- mod start 0.0.4 -->
+        <div class="row">
+            <div class="input-field col s6">     
+              <input id="search_bar" type="text" class="validate">
+              <label for="search_bar"><i class="material-icon-legend left">search</i>Search Task Name</label>
+            </div>
+        </div>
+        <!-- mod start 0.0.4 -->
         <p class="caption">Here is a list of tasks you have to accomplish.
 				<p><b>Legend:</b> <br/><br/>
 						<i class="material-icon-action">done</i>&nbsp;&nbsp;&nbsp;Done

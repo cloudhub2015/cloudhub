@@ -53,45 +53,41 @@ $(function() {
 		});
 	});
 	
-	//Delete Tweet
-	$(document).on('click', '#tweetList .btnDelete', function(){
-		$('#errorDisplay').empty();
-		$('.updateErrorDisplay').empty();
+	//Delete Task
+	$(document).on('click', '#tasks .btnDelete', function(){
 		
-		//var errorDisplay = '';//TODO: (optional) use jQuery traversals to get the correct updateErrorDisplay div.
-		var errorDisplay = $(this).siblings().filter('.updateErrorDisplay');
-		
-		//var idValue = '';//TODO: use jQuery traversals to get correct id value to be passed in json object.
-		var idValue = $(this).siblings().filter('.id').val();
-
-		//var contentValue = '';//TODO: use jQuery traversals to get correct content value to be passed in json object.
-		var contentValue = $(this).siblings().filter('.content').val();
-		
-		//var createdDateValue = '';//TODO: use jQuery traversals to get correct createdDate value to be passed in json object.
-		var createdDateValue = $(this).siblings().filter('.createdDate').val();
+		var idValue = $(this).parent().siblings().filter('.id').val();
+		/*var nameValue = $(this).parent().siblings().filter('.taskName').val();
+		var phaseValue = $(this).parent().siblings().filter('.phase').val();
+		var estHoursValue = $(this).parent().siblings().filter('.estHours').val();
+		var startDateValue = $(this).parent().siblings().filter('.startDate').val();
+		var dueDateValue = $(this).parent().siblings().filter('.dueDate').val();*/
 		
 		jsonData = {
 				data: JSON.stringify({
-					id: idValue,
-					content: contentValue,
-					createdDate: createdDateValue,
+					id: idValue/*,
+					name: nameValue,
+					phase: phaseValue,
+					estHours: estHoursValue,
+					startDate: startDateValue,
+					dueDate: dueDateValue*/
 				})
 		};
 		
 		$.ajax({
-			url: 'delete',//TODO: Provide proper url to call for deleting a tweet
+			url: 'deleteTask',
 			type: 'POST',
 			data: jsonData,
 			dataType: 'json',
 			success: function(data, status, jqXHR){
 				if(data.errorList.length == 0) {
-					retrieveTweetList('Entry deleted successfully!');
+					retrieveTaskList('Task deleted successfully!');
 				} else {
 					var msg = "";
 					for (var i = 0; i < data.errorList.length; i++) {
 						msg += data.errorList[i] + "\n";
 					}
-					//TODO: (optional) use the errorDisplay to display the msg string there.
+					alert(msg);
 				}
 			},
 			error: function(jqXHR, status, error) {
@@ -102,9 +98,6 @@ $(function() {
 	
 	//Update Tweet
 	$(document).on('click', '#tweetList .btnUpdate', function(){
-		//TODO: code jQuery code for updating tweet. hint: refer to your code for deleting tweets.
-		$('#errorDisplay').empty();
-		$('.updateErrorDisplay').empty();
 		
 		var errorDisplay = $(this).siblings().filter('.updateErrorDisplay');
 		var idValue = $(this).siblings().filter('.id').val();
@@ -158,8 +151,8 @@ function retrieveTaskList(successMessage) {
 				var formattedTaskList = "";
 				$.each(data.taskList, function(index, value) {
 					formattedTaskList += '<tr>' +
-		              '<td>' +
-		              '  <input type="hidden" id="status" />' +
+		              '<input type="hidden" class="id" name="id" value="' + value.id + '"/>' +
+		              '<td  class="taskName">' +
 		              '  <label for="status">' + value.taskName + '</label>' +
 		              '</td>' +
 		              '<td>' + value.phase +
@@ -168,11 +161,11 @@ function retrieveTaskList(successMessage) {
 		              '<td>' + value.startDate + '</td>' +
 		              '<td>' + value.dueDate + '</td>' +
 		      		  '<td>' +
-		                '<a href="#"><i class="material-icon-action">done</i></a>' +
+		                '<a href="" class="btnDone"><i class="material-icon-action">done</i></a>' +
 		      				'&nbsp;&nbsp;&nbsp;' +
-		      			'<a href="editTask"><i class="material-icon-action">assignment</i></a>' +
+		      			'<a href="" class="btnEdit"><i class="material-icon-action">assignment</i></a>' +
 		      				'&nbsp;&nbsp;&nbsp;' +
-		      			'<a  href="#"><i class="material-icon-action">delete</i></a>' + 
+		      			'<a  href="" class="btnDelete"><i class="material-icon-action">delete</i></a>' + 
 		      				'&nbsp;&nbsp;&nbsp;' +
 		              '</td>' +
 		            '</tr>';

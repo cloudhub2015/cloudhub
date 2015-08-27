@@ -45,43 +45,14 @@
     <div class="col s12 m9 l10">
       <div id="right" class="section scrollspy">
         <h2 class="header"><img src="../images/view.jpg" width="5%">&nbsp;&nbsp;Today's Tasks</h2>
-        
         <div class="row">
         	<div class="input-field col s6">
               <input id="search_bar" type="text" class="validate">
               <label for="search_bar"><i class="material-icon-legend left">search</i>Search Task Name</label>
             </div>
         </div>
-        
         <p class="caption">Here is a list of tasks you have to accomplish within this day.</p>
-		  <!-- mod start 0.0.3 -->
-      <table class="table_wrapper table_even unfinished_tasks">
-      <!-- mod end 0.0.3 -->
-          <thead>
-            <p class="caption" style="color: red;"><b>Unfinished Tasks</b></p>
-            <tr>
-                <th data-field="status"><center>Task Name</center></th>
-                <th data-field="name"><center>Phase</center></th>
-                <th data-field="time_allotment"><center>Estimated Time Allotment</center></th>
-                <th data-field="start_date"><center>Start Date</center></th>
-                <th data-field="due_date"><center>Due Date</center></th>
-				        <th data-field="action"><center>Action</center></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <input type="checkbox" id="status1" />
-                <label for="status1">Tasm Management Design</label>
-              </td>
-              <td>Design</td>
-              <td><center>8 Hours</center></td>
-              <td>July 2, 2015</td>
-              <td>July 3, 2015</td>
-			         <td><a href="../taskstoday/updateTask">Update Task</a>
-					</tbody>
-        </table>
-
+		<!-- mod start 0.0.3 -->
          <table class="table_wrapper table_even todays_tasks">
           <thead>
             <p class="caption" style="color: blue;"><b>Today's Tasks</b></p>
@@ -107,37 +78,33 @@
                <td><a href="../taskstoday/updateTask">Update Task</a>
           </tbody>
         </table>
-
-        <table class="table_wrapper table_even pending_tasks">
-          <thead>
-            <p class="caption" style="color: violet;"><b>Pending Tasks</b></p>
-            <tr>
-                <th data-field="status"><center>Task Name</center></th>
-                <th data-field="name"><center>Phase</center></th>
-                <th data-field="time_allotment"><center>Estimated Time Allotment</center></th>
-                <th data-field="start_date"><center>Start Date</center></th>
-                <th data-field="due_date"><center>Due Date</center></th>
-                <th data-field="action"><center>Action</center></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <input type="checkbox" id="status3" />
-                <label for="status3">Tasm Management Design</label>
-              </td>
-              <td>Design</td>
-              <td><center>8 Hours</center></td>
-              <td>July 2, 2015</td>
-              <td>July 3, 2015</td>
-               <td><a href="#">Add to current Date</a>
-          </tbody>
-        </table>
-        </p>
         <br>
+       
   </div>
 </div>
+
+</div>
+<div class="row">
+	<a class="btn-floating btn-large waves-effect waves-light red right modal-trigger" href="#modal1"><i class="material-icon">add</i></a>
+ 	 <!-- Modal Structure -->
+	  <div id="modal1" class="modal">
+	    <div class="modal-content">
+	      <h4>Masterlist of Tasks</h4>
+	      <p>Select tasks to be added for today:</p>
+	      
+	    </div>
+	    <div class="modal-footer">
+	      <!--  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Add to Today's Task</a> -->
+	       <button class="btn waves-effect waves-light red" type="submit" ><i class="material-icon left">cancel</i>Cancel</button>
+	       <button class="btn waves-effect waves-light" type="submit" style="margin-right: 10px;"><i class="material-icon left">note_add</i>Add</button>
+	       
+	    </div>
+	  </div>
+</div>
+</div>
 </main>
+
+
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -162,6 +129,11 @@
         $(this).toggleClass('wrapper_action', 200);
       });
     });
+    
+    $(document).ready(function(){
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        $('.modal-trigger').leanModal();
+      });
   </script>
   <!-- mod end 0.0.3 -->
   </body>

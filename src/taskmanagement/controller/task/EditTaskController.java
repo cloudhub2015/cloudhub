@@ -13,7 +13,7 @@ import taskmanagement.service.TaskService;
  * @version 0.01
  * Version History
  * [07/27/2015] 0.01 - Jacquelyn Amaya - Initial codes
- * [08/07/2015] 0.02 - Jacquelyn Amaya - Implemented the function for updating the task using JSON
+ * [08/27/2015] 0.02 - Jacquelyn Amaya - Implemented the function for updating the task using JSON
  */
 public class EditTaskController extends Controller {
     /**

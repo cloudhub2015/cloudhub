@@ -68,7 +68,7 @@
         </div>
         <div class="row center">
           <div class="col s4">
-          <a href="task/masterlist" id="download-button" class="btn-large waves-effect waves-light purple">Log In</a>
+          <a href="user/logIn" id="download-button" class="btn-large waves-effect waves-light purple">Log In</a>
           </div>
         </div>
       </form>

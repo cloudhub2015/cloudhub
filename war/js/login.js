@@ -14,21 +14,19 @@ $(document).ready(function() {
 						password: $('#txtPassword').val()
 					})
 			};
-			//alert(jsonData.data);
 			$.ajax({
-				url: '/user/logIn',
+				url: '/user/verifyUser',
 				type: 'POST',
 				data: jsonData,
 				dataType: 'json',
 				success: function(data, status, jqXHR){
 					if(data.errorList.length == 0) {
-						console.log("User successfully logged in!");
-						alert("User successfully logged in!");
+						window.location.href="/user/logIn";
 					} else {
 						var msg = "";
 						for (var i = 0; i < data.errorList.length; i++)
 							msg += data.errorList[i] + "\n";
-						alert(msg);
+						$('#errorMessage').html(msg);
 					}
 				},
 				error: function(jqXHR, status, error) {

@@ -66,18 +66,5 @@ public class UserService {
     public List<User> getUsersList() {
         return this.dao.getAllUsers();
     }
-    
-    /**
-     * Method used to retrieve user
-     * @param input
-     * @return UserDto - if transaction was unsuccessful, contains list of errors.
-     */
-    public UserDto getUser(UserDto input) {        
-        User user = new User();
-        user.setUsername(input.getUsername());
-        user.setPassword(input.getPassword());
-        
-        return input;
-    }
 
 }

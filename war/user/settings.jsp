@@ -22,7 +22,7 @@
 
   <!-- CSS  -->
   <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="../material-icons/material-icons.css" rel="stylesheet" type="text/css">
   <link href="../css/materialize_content.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   
 </head>
@@ -79,9 +79,9 @@
               </div>
        		</form>
        	</div>
-        <button  id="" class="waves-effect waves-light btn"><i class="material-icons left">save</i>Save</button>
+        <button  id="" class="waves-effect waves-light btn"><i class="material-icon left">save</i>Save</button>
         &nbsp;&nbsp;&nbsp;
-        <button  id="" class="waves-effect waves-light btn"><i class="material-icons left">cancel</i>Cancel</button>
+        <button  id="" class="waves-effect waves-light btn"><i class="material-icon left">cancel</i>Cancel</button>
        
         <br>
   </div>

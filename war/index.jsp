@@ -98,6 +98,6 @@
   <script src="/js/materialize.js"></script>
   <script src="/js/angular.js"></script>
   <script src="/js/init.js"></script>
-  <script src="/js/login.js"></script>
+  <script src="/js/user.js"></script>
   </body>
 </html>

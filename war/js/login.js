@@ -21,11 +21,12 @@ $(document).ready(function() {
 				dataType: 'json',
 				success: function(data, status, jqXHR){
 					if(data.errorList.length == 0) {
-						window.location.href="/user/logIn";
+						window.location.href="/task/masterlist";
 					} else {
 						var msg = "";
 						for (var i = 0; i < data.errorList.length; i++)
 							msg += data.errorList[i] + "\n";
+						$('#txtPassword').val('');
 						$('#errorMessage').html(msg);
 					}
 				},

@@ -23,14 +23,11 @@ $(document).ready(function() {
 				success: function(data, status, jqXHR){
 					if(data.errorList.length == 0) {
 						console.log("User successfully logged in!");
-						//$('#messageDisplay').html("User successfully saved!");
-						$('#errorMessage').html("User successfully logged in!");
 						alert("User successfully logged in!");
 					} else {
 						var msg = "";
 						for (var i = 0; i < data.errorList.length; i++)
 							msg += data.errorList[i] + "\n";
-						//$('#messageDisplay').html(msg);
 						alert(msg);
 					}
 				},

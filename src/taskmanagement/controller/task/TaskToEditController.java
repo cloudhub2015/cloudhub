@@ -29,15 +29,35 @@ public class TaskToEditController extends Controller {
             json = new JSONObject((String)this.requestScope("data"));
             
             dto.setId(json.getLong("id"));
-            
+            dto.setTaskName(json.getString("name"));
+            dto.setName(json.getString("name"));
+            int phase = json.getInt("phase"); 
+            switch (phase) {
+                case 1:
+                    dto.setPhase("Testing");
+                    break;
+                case 2:
+                    dto.setPhase("Coding");
+                    break;
+                case 3:
+                    dto.setPhase("Design");
+                    break;
+                default:
+                    dto.setPhase("Testing");
+            }
+            dto.setEstHours(json.getDouble("estHours"));
+            dto.setStartDate(json.getString("startDate"));
+            dto.setDueDate(json.getString("dueDate"));
             //if () {
                 //dto.getErrorList().add("Some fields are blank. Please supply them.");
             //} else {
-                dto = this.service.selectTask(dto);
+        //        dto = this.service.selectTask(dto);
                 //json.
             //}
+            
+          //  dto = this.service.editTask(dto);
         } catch (Exception e) {
-            dto.getErrorList().add("Server controller error: " + e.getMessage());
+         //   dto.getErrorList().add("Server controller error: " + e.getMessage());
             if (json == null) {
                 json = new JSONObject();
             }

@@ -55,7 +55,7 @@
 
               <div class="row">
                 <div class="col s6">
-                  <select class="browser-default">
+                  <select class="browser-default" id="selectPhase">
                     <option value="" disabled selected>Choose Phase</option>
                     <option value="1">Testing</option>
                     <option value="2">Coding</option>
@@ -74,14 +74,14 @@
               <div class="row">
                 <div class="input-field col s6">
                   <input id="start_date" type="date" class="datepicker picker__input">
-                <label for="start_date"></label>
+                <label for="start_date">Start Date</label>
                 </div>
               </div>
 
               <div class="row">
                 <div class="input-field col s6">
                   <input id="due_date" type="date" class="datepicker picker__input">
-                 <label for="due_date"></label>
+                 <label for="due_date">Due Date</label>
                 </div>
               </div>
 
@@ -100,9 +100,11 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="../jquery/jquery-1.8.2.js"></script>
   <script src="../jquery/jquery.ui.effect.js"></script> 
-  <script src="../js/init.js"></script>
-  <script src="../js/angular.js"></script>
   <script src="../js/materialize.js"></script>
+  <script src="../js/init.js"></script>
+  <script src="../js/editTask.js"></script>
+  <script src="../js/angular.js"></script>
+  
  
    
 

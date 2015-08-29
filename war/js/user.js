@@ -11,7 +11,7 @@ $(document).ready(function() {
 		//Add User
 		$('#btnSignUp').click(function() {
 			var confirmPassword = $('#confirm_password').val();
-			
+			var msg = "Sign Up Completed ;)";
 			jsonData = {
 					data: JSON.stringify({
 					firstname: $('#txtFirstName').val(),
@@ -29,6 +29,7 @@ $(document).ready(function() {
 				success: function(data, status, jqXHR){
 					if(data.errorList.length == 0 && (confirmPassword == data.password)) {
 						alert("User successfully registered!");
+						alert(jsonData.data);
 					} else {
 						var msg = "";
 						for (var i = 0; i < data.errorList.length; i++)

@@ -214,9 +214,9 @@ public class TaskService {
         task.setToday(selectedTask.isToday());
         task.setPending(selectedTask.isPending());
         
-        if(!this.dao.updateTask(task)){
+        if(!this.dao.setCompletedTask(input.getId())){
             input.setErrorList(new ArrayList<String>());
-            input.getErrorList().add("database error!");
+            input.getErrorList().add("FINISH TASK database error!");
         }
 
         return input;

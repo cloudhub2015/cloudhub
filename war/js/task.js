@@ -88,9 +88,42 @@ $(function() {
 	 * finds the table which has an id 'tasks'
 	 */
 	$(document).on('click', '#tasks .btnEdit', function(){
-		
+		console.log("TASK TO EDIT!");
 		var idValue = $(this).parent().siblings().filter('.id').val();
-		window.location.href="taskToEdit";
+		
+		jsonData = {
+				data: JSON.stringify({
+					id: idValue,
+					name: $('#txtName').val(),
+					phase: $('#selectPhase').val(),
+					estHours: $('#txtEstHours').val(),
+					startDate: $('#startDate').val(),
+					dueDate: $('#dueDate').val()
+				})
+		};
+		
+		$.ajax({
+			url: 'taskToEdit',
+			type: 'POST',
+			data: jsonData,
+			dataType: 'json',
+			success: function(data, status, jqXHR){
+				if(data.errorList.length == 0) {
+				//	retrieveTaskList('Task edited successfully!');
+				} else {
+					var msg = "";
+					for (var i = 0; i < data.errorList.length; i++) {
+						msg += data.errorList[i] + "\n";
+					}
+					alert(msg);
+				}
+			},
+			error: function(jqXHR, status, error) {
+				
+			}
+		});
+		//window.location.href="/task/taskToEdit";
+	//	console.log(window.location.href);
 		/*var contentValue = $(this).siblings().filter('.content').val();
 		var createdDateValue = $(this).siblings().filter('.createdDate').val();
 		
@@ -130,24 +163,13 @@ $(function() {
 	$(document).on('click', '#tasks .btnDone', function(){
 		
 		var idValue = $(this).parent().siblings().filter('.id').val();
-		/*var taskNameValue = $(this).parent().siblings().filter('.taskName').html();
-		var phaseValue = $(this).parent().siblings().filter('.phase').html();
-		var estHoursValue = $(this).parent().siblings().filter('.estHours').html();
-		var startDateValue = $(this).parent().siblings().filter('.startDate').html();
-		var dueDateValue = $(this).parent().siblings().filter('.dueDate').html();*/
 		
 		jsonData = {
 				data: JSON.stringify({
-					id: idValue/*,
-					name: taskNameValue,
-					phase: phaseValue,
-					estHours: estHoursValue,
-					startDate: startDateValue,
-					dueDate: dueDateValue,*/
+					id: idValue
 				})
 		};
-		alert(jsonData.data);
-		
+
 		$.ajax({
 			url: 'completeTask',
 			type: 'POST',
@@ -155,12 +177,12 @@ $(function() {
 			dataType: 'json',
 			success: function(data, status, jqXHR){
 				if(data.errorList.length == 0) {
+					console.log("TASK COMPLETED!!!!!!!!");
 					retrieveCompletedTasks('Task updated successfully!');
 				} else {
 					var msg = "";
 					for (var i = 0; i < data.errorList.length; i++)
 						msg += data.errorList[i] + "\n";
-					errorDisplay.html(msg);
 				}
 			},
 			error: function(jqXHR, status, error) {
@@ -186,6 +208,7 @@ function retrieveTaskList(successMessage) {
 			if(data.errorList.length == 0) {
 				var formattedTaskList = "";
 				$.each(data.taskList, function(index, value) {
+					if(value.finished == false){
 					formattedTaskList += '<tr>' +
 		              '<input type="hidden" class="id" name="id" value="' + value.id + '"/>' +
 		              '<td  class="taskName">' +
@@ -199,13 +222,13 @@ function retrieveTaskList(successMessage) {
 		      		  '<td>' +
 		                '<a href="" class="btnDone"><i class="material-icon-action">done</i></a>' +
 		      				'&nbsp;&nbsp;&nbsp;' +
-		      			'<a href="" class="btnEdit"><i class="material-icon-action">assignment</i></a>' +
+		      			'<a href="/task/taskToEdit" class="btnEdit"><i class="material-icon-action">assignment</i></a>' +
 		      				'&nbsp;&nbsp;&nbsp;' +
 		      			'<a  href="" class="btnDelete"><i class="material-icon-action">delete</i></a>' + 
 		      				'&nbsp;&nbsp;&nbsp;' +
 		              '</td>' +
 		            '</tr>';
-					
+					}
 					//$('#taskList').append(formattedTaskList);
 					
 				});

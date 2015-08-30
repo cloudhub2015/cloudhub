@@ -29,7 +29,7 @@ public class TaskToEditController extends Controller {
             json = new JSONObject((String)this.requestScope("data"));
             
             dto.setId(json.getLong("id"));
-            dto.setTaskName(json.getString("name"));
+            /*dto.setTaskName(json.getString("name"));
             dto.setName(json.getString("name"));
             int phase = json.getInt("phase"); 
             switch (phase) {
@@ -47,12 +47,11 @@ public class TaskToEditController extends Controller {
             }
             dto.setEstHours(json.getDouble("estHours"));
             dto.setStartDate(json.getString("startDate"));
-            dto.setDueDate(json.getString("dueDate"));
+            dto.setDueDate(json.getString("dueDate"));*/
             //if () {
                 //dto.getErrorList().add("Some fields are blank. Please supply them.");
             //} else {
-        //        dto = this.service.selectTask(dto);
-                //json.
+                dto = this.service.selectTask(dto);
             //}
             
           //  dto = this.service.editTask(dto);
@@ -62,10 +61,14 @@ public class TaskToEditController extends Controller {
                 json = new JSONObject();
             }
         }
-
+        json.put("name", dto.getName());
+        json.put("phase", dto.getPhase());
+        json.put("estHours", dto.getEstHours());
+        json.put("startDate", dto.getStartDate());
+        json.put("dueDate", dto.getDueDate());
         json.put("errorList", dto.getErrorList());
         response.setContentType("application/json");
         response.getWriter().write(json.toString());
-        return forward("edit_task.jsp");
+        return null;
     }
 }

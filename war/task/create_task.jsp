@@ -91,8 +91,8 @@
                 </div>
               </div>
 
-               <!-- <a class="waves-effect waves-light btn"><i class="material-icons left">note_add</i>Create Task</a> -->
-             <button class="btn waves-effect waves-light" type="submit"  value="create_task" name="btnCreateTask" id="btnCreateTask"><i class="material-icon left">note_add</i>Create Task</button>
+             <a class="waves-effect waves-light btn" id="btnCreateTask"><i class="material-icon left">note_add</i>Create Task</a>
+             <!-- <button class="btn waves-effect waves-light" type="submit"  value="create_task" id="btnCreateTask"><i class="material-icon left">note_add</i>Create Task</button> -->
               &nbsp;&nbsp;&nbsp;
               <button class="waves-effect waves-light btn" name="clearField" value="Cancel"><i class="material-icon left" id="btnClearAllInfo">clear_all</i>Clear Fields</button>
             </form>

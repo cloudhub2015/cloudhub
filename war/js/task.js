@@ -89,8 +89,8 @@ $(function() {
 	 * finds the table which has an id 'tasks'
 	 */
 	$(document).on('click', '#tasks .btnEdit', function(){
-		console.log("TASK TO EDIT!");
 		var idValue = $(this).parent().siblings().filter('.id').val();
+		alert("TASK TO EDIT!");		
 		
 		jsonData = {
 				data: JSON.stringify({
@@ -104,11 +104,12 @@ $(function() {
 		};
 		
 		$.ajax({
-			url: 'taskToEdit',
+			url: '/task/taskToEdit',
 			type: 'POST',
 			data: jsonData,
 			dataType: 'json',
 			success: function(data, status, jqXHR){
+				alert(data.name+""+idValue);
 				if(data.errorList.length == 0) {
 				//	retrieveTaskList('Task edited successfully!');
 				} else {
@@ -223,7 +224,7 @@ function retrieveTaskList(successMessage) {
 		      		  '<td>' +
 		                '<a href="" class="btnDone"><i class="material-icon-action">done</i></a>' +
 		      				'&nbsp;&nbsp;&nbsp;' +
-		      			'<a href="/task/taskToEdit" class="btnEdit"><i class="material-icon-action">assignment</i></a>' +
+		      			'<a href="/task/displayTaskToEdit" class="btnEdit"><i class="material-icon-action">assignment</i></a>' +
 		      				'&nbsp;&nbsp;&nbsp;' +
 		      			'<a  href="" class="btnDelete"><i class="material-icon-action">delete</i></a>' + 
 		      				'&nbsp;&nbsp;&nbsp;' +

@@ -120,9 +120,9 @@ public class UserDao {
         return result;
     }
     
-    public User getUser(User userModel) {
+    public User getUser(String username) {
         UserMeta tm = new UserMeta();
-        Query.Filter userFilter = new Query.FilterPredicate("username", FilterOperator.EQUAL, userModel.getUsername());
+        Query.Filter userFilter = new Query.FilterPredicate("username", FilterOperator.EQUAL, username);
         return Datastore.query(tm).filter(userFilter).asSingle();
     }
 }

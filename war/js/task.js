@@ -11,6 +11,7 @@
 $(function() {
 	retrieveTaskList();
 	retrieveCompletedTasks();
+	retrieveTodaysTasks();
 	$('#btnCreateTask').click(function() {
 
 		jsonData = {
@@ -245,6 +246,43 @@ function retrieveTaskList(successMessage) {
 				}
 			} else {
 				alert('Failed to retrieve tasks!');
+			}
+		},
+		error: function(jqXHR, status, error) {
+			
+		}
+	});
+}
+
+function retrieveTodaysTasks(successMessage){
+	console.log("TODAYS TASKS LIST!!!");
+	$.ajax({
+		url: '/taskstoday/displayTodaysTasks',
+		type: 'GET',
+		success: function(data, status, jqXHR){
+			console.log(data);
+			if(data.errorList.length == 0) {
+				var formattedTaskList = "";
+				$.each(data.taskList, function(index, value) {
+					formattedTaskList += '<tr>' + '<td>' + '<input type="checkbox" id="status2" />' + 
+				     '<label for="status2">' +  value.taskName + '</label>'  +
+				     '</td>' + '<td>' + value.phase + '</td>' +
+				     '<td>' + '<center>' + value.estHours + ' hrs</center></td>' + 
+				     '<td>' + value.startDate + '</td>' +
+				     '<td>' + value.dueDate + '</td>' +
+				     '<td><a href="../taskstoday/updateTask">Update Task</a>';
+				});
+				if (formattedTaskList == "") {
+					formattedTaskList = "<div>Add tasks! :)</div>";
+				}
+				else{
+					$('#todays_tasks').find('tbody').append(formattedTaskList);
+				}
+				if (undefined != successMessage && "" != successMessage) {
+					alert(successMessage);
+				}
+			} else {
+				alert('Failed to retrieve todays tasks!');
 			}
 		},
 		error: function(jqXHR, status, error) {

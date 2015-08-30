@@ -57,7 +57,7 @@
         </div>
         <p class="caption">Here is a list of tasks you have to accomplish within this day.</p>
 		<!-- mod start 0.0.3 -->
-         <table class="table_wrapper table_even todays_tasks">
+         <table class="table_wrapper table_even todays_tasks" id="todays_tasks">
           <thead>
             <p class="caption" style="color: blue;"><b>Today's Tasks</b></p>
             <tr>
@@ -70,16 +70,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <input type="checkbox" id="status2" />
-                <label for="status2">Tasm Management Design</label>
-              </td>
-              <td>Design</td>
-              <td><center>8 Hours</center></td>
-              <td>July 2, 2015</td>
-              <td>July 3, 2015</td>
-               <td><a href="../taskstoday/updateTask">Update Task</a>
+           
           </tbody>
         </table>
         <br>
@@ -135,6 +126,7 @@
   <script src="../js/materialize.js"></script>
   <script src="../js/init.js"></script>
   <script src="../js/angular.js"></script>
+  <script src="../js/task.js"></script>
   
  
   

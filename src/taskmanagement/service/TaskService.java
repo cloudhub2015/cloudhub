@@ -1,6 +1,10 @@
 package taskmanagement.service;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import taskmanagement.dao.TaskDao;
@@ -82,6 +86,70 @@ public class TaskService {
             taskDto.setPending(task.isPending());
             taskDto.setToday(task.isToday());
             taskList.getTaskList().add(taskDto);
+        }
+
+        return taskList;
+    }
+    
+    /**
+     * Method used to check list of unfinished tasks.
+     * @return void
+     */
+    public void checkTodaysTask() {
+        List<Task> taskModels = this.dao.getAllTasks();
+        TaskClientDto taskList = new TaskClientDto();
+        TaskDto taskDto;
+        
+        for (Task task : taskModels) {
+            Date today = new Date();
+            Date start = null;
+            Date due = null;
+            DateFormat df = new SimpleDateFormat("dd MMMM, yyyy"); 
+            System.out.println("TODAY: " + today.toString());
+            try {
+                start = df.parse(task.getStartDate());
+                System.out.println("START: " + start.toString());
+                due = df.parse(task.getDueDate());
+                System.out.println("DUE: " + due.toString());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+          /*  String newDateString = df.format(startDate);
+            System.out.println(newDateString);*/
+            System.out.println("CONDITION: " +(today.after(start) && today.before(due)));
+            if((today.after(start) && today.before(due)) && !this.dao.setTodaysTask(task.getId())){
+                taskList.setErrorList(new ArrayList<String>());
+                taskList.getErrorList().add("Todays Task: database error!");
+            }
+        }
+    }
+    /**
+     * Method used to retrieve list of todays tasks.
+     * @return List<Task> - list of Tasks.
+     */
+    public TaskClientDto getTodaysTaskList() {
+        List<Task> taskModels = this.dao.getAllTasks();
+        TaskClientDto taskList = new TaskClientDto();
+        TaskDto taskDto;
+        checkTodaysTask();
+
+        for (Task task : taskModels) {
+
+            if(task.isToday()){
+            taskDto = new TaskDto();
+            taskDto.setId(task.getId());
+            taskDto.setUserId(task.getUserId());
+            taskDto.setName(task.getName());
+            taskDto.setPhase(task.getPhase());
+            taskDto.setEstHours(task.getEstHours());
+            taskDto.setStartDate(task.getStartDate());
+            taskDto.setDueDate(task.getDueDate());
+            taskDto.setSpentHours(task.getSpentHours());
+            taskDto.setFinished(task.isFinished());
+            taskDto.setPending(task.isPending());
+            taskDto.setToday(task.isToday());
+            taskList.getTaskList().add(taskDto);
+            }
         }
 
         return taskList;

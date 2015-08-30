@@ -13,6 +13,7 @@ import taskmanagement.service.TaskService;
  * @version 0.02
  * Version History
  * [08/27/2015] 0.01 - Jacquelyn Amaya - Set finished attribute of task
+ * [08/30/2015] 0.02 - David Ramirez   - Finish task function is now working 
  */
 public class CompleteTaskController extends Controller {
     /**
@@ -27,18 +28,8 @@ public class CompleteTaskController extends Controller {
         JSONObject json = null;
         try {
             json = new JSONObject((String)this.requestScope("data"));
-            
             dto.setId(json.getLong("id"));
-            /*dto.setName(json.getString("name"));
-            dto.setPhase(json.getString("phase"));
-            dto.setEstHours(json.getDouble("estHours"));
-            dto.setStartDate(json.getString("startDate"));
-            dto.setDueDate(json.getString("dueDate"));*/
-            //if ((dto.getName() == null) || (dto.getPhase() == null) || (dto.getEstHours() == 0.0) || (dto.getStartDate() == null) || (dto.getDueDate() == null) || (dto.getSpentHours() == 0.0)) {
-            //    dto.getErrorList().add("Some fields are blank. Please supply them.");
-            //} else {
-                dto = this.service.finishTask(dto);
-            //}
+            dto = this.service.finishTask(dto);
         } catch (Exception e) {
             dto.getErrorList().add("Server controller error: " + e.getMessage());
             if (json == null) {

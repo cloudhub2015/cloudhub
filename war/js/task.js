@@ -13,24 +13,23 @@ $(function() {
 	retrieveCompletedTasks();
 	retrieveTodaysTasks();
 	$('#btnCreateTask').click(function() {
-
 		jsonData = {
-				data: JSON.stringify({
-					name: $('#txtName').val(),
-					phase: $('#selectPhase').val(),
-					estHours: $('#txtEstHours').val(),
-					startDate: $('#startDate').val(),
-					dueDate: $('#dueDate').val(),
-				})
+			data: JSON.stringify({
+				name: $('#txtName').val(),
+				phase: $('#selectPhase').val(),
+				estHours: $('#txtEstHours').val(),
+				startDate: $('#startDate').val(),
+				dueDate: $('#dueDate').val(),
+			})
 		};
 		$.ajax({
-			url: '/task/addTask',
+			url: 'addTask',
 			type: 'POST',
 			data: jsonData,
 			dataType: 'json',
 			success: function(data, status, jqXHR){
-				console.log(data);
 				if(data.errorList.length == 0) {
+					//alert("Task has been successfully added");
 					$('#txtName').val('');
 					$('#selectPhase').val('');
 					$('#txtEstHours').val('');
@@ -40,6 +39,7 @@ $(function() {
 					var msg = "";
 					for (var i = 0; i < data.errorList.length; i++)
 						msg += data.errorList[i] + "\n";
+					alert("Invalid");
 				}
 			},
 			error: function(jqXHR, status, error) {
@@ -338,3 +338,4 @@ function retrieveCompletedTasks(successMessage) {
 		}
 	});
 }
+

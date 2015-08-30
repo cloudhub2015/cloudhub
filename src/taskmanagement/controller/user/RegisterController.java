@@ -22,6 +22,7 @@ public class RegisterController extends Controller {
     public Navigation run() throws Exception {
         UserDto dto = new UserDto();
         JSONObject json = null;
+        String confirmPassword;
         try {
             json = new JSONObject((String)this.requestScope("data"));
 
@@ -29,13 +30,24 @@ public class RegisterController extends Controller {
             dto.setLastName(json.getString("lastname"));
             dto.setUsername(json.getString("username"));
             dto.setPassword(json.getString("password"));
-            if ((dto.getFirstName() == null) || dto.getLastName() == null || dto.getUsername() == null || dto.getPassword() == null) {
-                dto.getErrorList().add("Some fields are blank. Please supply them.");
+            confirmPassword = json.getString("confirmPassword");
+            if (dto.getFirstName() == null) {
+              dto.getErrorList().add("First name cannot be blank.");
+            } if(dto.getLastName() == null) {
+                dto.getErrorList().add("Last name cannot be blank");  
+            } if(dto.getUsername() == null) {
+                dto.getErrorList().add("Username cannot be blank");  
+            } if(dto.getPassword() == null) {
+                dto.getErrorList().add("Password cannot be blank");  
+            } if(confirmPassword == null) {
+                dto.getErrorList().add("Confirm Password cannot be blank");  
+            } else if(!confirmPassword.equals(dto.getPassword())) {
+                dto.getErrorList().add("Passwords don't match");
             } else {
                 dto = this.service.addUser(dto);
             }
         } catch (Exception e) {
-    //        dto.getErrorList().add("Server controller error: " + e.getMessage());
+            dto.getErrorList().add("Server controller error: " + e.getMessage());
             if (json == null) {
                 json = new JSONObject();
             }
@@ -44,6 +56,6 @@ public class RegisterController extends Controller {
         json.put("errorList", dto.getErrorList());
         response.setContentType("application/json");
         response.getWriter().write(json.toString());
-        return forward("signup.jsp");
+        return null;
     }
 }

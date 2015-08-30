@@ -72,12 +72,14 @@ public class UserService {
      * @param input
      * @return UserDto - if transaction was unsuccessful, contains list of errors.
      */
-    public UserDto getUser(UserDto input) {        
-        User user = new User();
-        user.setUsername(input.getUsername());
-        user.setPassword(input.getPassword());
-        
-        return input;
+    public UserDto getUser(String username) {        
+        User user = this.dao.getUser(username);
+        UserDto userDto = new UserDto();
+        userDto.setId(user.getId());
+        userDto.setFirstName(user.getFirstName());
+        userDto.setLastName(user.getLastName());
+        userDto.setUsername(user.getUsername());
+        userDto.setPassword(user.getPassword());
+        return userDto;
     }
-
 }

@@ -102,6 +102,9 @@ public class TaskService {
         
         for (Task task : taskModels) {
             Date today = new Date();
+            today.setMinutes(0);
+            today.setHours(0);
+            today.setSeconds(0);
             Date start = null;
             Date due = null;
             DateFormat df = new SimpleDateFormat("dd MMMM, yyyy"); 
@@ -116,8 +119,8 @@ public class TaskService {
             }
           /*  String newDateString = df.format(startDate);
             System.out.println(newDateString);*/
-            System.out.println("CONDITION: " +(today.after(start) && today.before(due)));
-            if((today.after(start) && today.before(due)) && !this.dao.setTodaysTask(task.getId())){
+            System.out.println("CONDITION: " +((today.equals(start) && today.equals(due))));
+            if((today.equals(start) && today.equals(due) || (today.after(start) && today.before(due))) && !this.dao.setTodaysTask(task.getId())){
                 taskList.setErrorList(new ArrayList<String>());
                 taskList.getErrorList().add("Todays Task: database error!");
             }

@@ -57,23 +57,23 @@
         <div class="row">
           <div class="input-field col s4">
             <i class="material-icon prefix">perm_identity </i>
-              <label for="first_name">Name</label>
-            <input  placeholder="First Name" name="firstName" id="txtFirstName" type="text" class="validate">
-            <input  placeholder="Last Name" id="txtLastName" name="lastName" type="text" class="validate">
+            <label class="active" for="name">Name</label>
+            <input name="firstName" id="txtFirstName" type="text" class="validate" placeholder="First Name"/>
+            <input id="txtLastName" name="lastName" type="text" class="validate" placeholder="Last Name"/>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s4">
             <i class="material-icon prefix">account_circle </i>
-            <input placeholder="Username" id="txtUsername" name="username" type="text" class="validate">
-            <label for="user_name">Username</label>
+            <label class="active" for="username">Username</label>
+            <input id="txtUsername" name="username" type="text" class="validate" placeholder="Username">
           </div>
         </div>
         <div class="row">
           <div class="input-field col s4">
-            <i class="material-icon prefix">info</i>
-            <input id="txtPassword" type="password" class="validate" placeholder="Password" name="txtPassword">
-              <label for="password">Password</label>
+            <i class="material-icon prefix">lock</i>
+            <label class="active" for="password">Password</label>
+            <input id="txtPassword" type="password" class="validate" name="txtPassword" placeholder="Password">
             <input id="confirm_password" type="password" class="validate" placeholder="Confirm Password">
           </div>
         </div>
@@ -97,7 +97,8 @@
           <div class="input-field col s4">
           <!--  <a href="#" id="download-button" class="btn-large waves-effect waves-light purple">Sign Up</a> -->
           <!-- <button id="btnSignUp" class="waves-effect waves-light btn" value="Register User" name="registerUser"><i class="material-icons left">note_add</i>Sign Up</button> -->
-          <button id="btnSignUp" class="waves-effect waves-light btn" value="Register User" name="registerUser"><i class="material-icon left">note_add</i>Sign Up</button>
+          <!-- <button class="waves-effect waves-light btn" value="Register User" id="btnSignUp"><i class="material-icon left">note_add</i>Sign Up</button> -->
+          <a id="btnSignUp" class="btn-large waves-effect waves-light purple">Sign Up</a>
           </div>
         </div>
       <!-- </form> -->
@@ -123,7 +124,6 @@
   <script src="../js/angular.js"></script>
   <script src="../js/init.js"></script>
   <script src="../js/user.js"></script>
-  
 
 </html>
 <!-- mod end 0.0.1 -->

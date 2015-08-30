@@ -41,12 +41,13 @@
 <ul id="nav-mobile" class="side-nav fixed" style="left: 0px;">
     <li class="logo">
       <img src="../images/avatar.png" class="responsive-img">
-      <p><h4 class="header_name">Hey, Riri!</h4></p>
+      <input type="hidden" id="username"/>
+      <p><h4 class="header_name"></h4></p>
     </li>
 
     <li class="active"><a href="../task/masterlist">Masterlist</a></li>
     <li class="bold"><a href="../taskstoday/" class="waves-effect waves-teal">Today's Tasks</a></li>
-    <li class="bold"><a href="addTask" class="waves-effect waves-teal">Create Task</a></li>
+    <li class="bold"><a href="createTask" class="waves-effect waves-teal">Create Task</a></li>
     <li class="bold"><a href="../user/settings" class="waves-effect waves-teal">Settings</a></li>
     <li class="bold"><a href="../" class="waves-effect waves-teal">Log Out </a></li>
 </ul>
@@ -132,6 +133,7 @@
   <script src="../js/init.js"></script>
   <script src="../js/angular.js"></script>
   <script src="../js/task.js"></script>
+  <script src="../js/user.js"></script>
   
 
   

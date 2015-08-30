@@ -110,13 +110,6 @@
             </tr>
           </thead>
           <tbody>
-            <!-- <tr>
-              <td><center>Graphic User Interface Layout</center></td>
-              <td><center>Design</center></td>
-              <td><center>8 Hours</center></td>
-              <td><center>July 11, 2015</center></td>
-              <td><center>July 21, 2015</center></td>
-            </tr> -->
           </tbody>
           </table>
            
@@ -134,6 +127,7 @@
   <script src="../js/angular.js"></script>
   <script src="../js/task.js"></script>
   <script src="../js/user.js"></script>
+  <script src="../js/logged-in-user.js"></script>
   
 
   

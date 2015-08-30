@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -93,16 +94,30 @@ public class TaskService {
     
     /**
      * Method used to check list of unfinished tasks.
+     * @return Date - returns the date with time 00:00:00
+     */
+    
+    public Date trim(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(Calendar.MILLISECOND, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+
+        return calendar.getTime();
+    }
+    
+    /**
+     * Method used to check list of unfinished tasks.
      * @return void
      */
     public void checkTodaysTask() {
         List<Task> taskModels = this.dao.getAllTasks();
         TaskClientDto taskList = new TaskClientDto();
-        TaskDto taskDto;
-        
-        for (Task task : taskModels) {
-            Date today = new Date();
-           
+        Date today = new Date();
+        today = this.trim(today);
+        for (Task task : taskModels) {      
             Date start = null;
             Date due = null;
             DateFormat df = new SimpleDateFormat("dd MMMM, yyyy"); 
@@ -115,9 +130,7 @@ public class TaskService {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-          /*  String newDateString = df.format(startDate);
-            System.out.println(newDateString);*/
-            System.out.println("CONDITION: " +((today.equals(start) && today.equals(due))));
+            System.out.println("CONDITION: " +(today.equals(start) && today.equals(due) || (today.after(start) && today.before(due))));
             if((today.equals(start) && today.equals(due) || (today.after(start) && today.before(due))) && !this.dao.setTodaysTask(task.getId())){
                 taskList.setErrorList(new ArrayList<String>());
                 taskList.getErrorList().add("Todays Task: database error!");
@@ -135,7 +148,6 @@ public class TaskService {
         checkTodaysTask();
 
         for (Task task : taskModels) {
-
             if(task.isToday()){
             taskDto = new TaskDto();
             taskDto.setId(task.getId());

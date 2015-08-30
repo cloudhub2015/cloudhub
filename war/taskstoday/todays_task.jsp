@@ -86,26 +86,14 @@
 		    <div class="modal-content">
 		      <h4>Masterlist of Tasks</h4>
 		      <p>Select tasks to be added for today:</p>
-		      <table class ="tasklist" style = "width: 100%;">
+		      <table class ="tasklist" style = "width: 100%;" id="tasks">
 		      	<tr>
 		      		<td>
 	                	<input type="checkbox" id="status2" />
 	                	<label for="status2">Tasm Management Design</label>
 	              	</td>
 		      	</tr>
-		      	<tr>
-		      		<td>
-	                	<input type="checkbox" id="status2" />
-	                	<label for="status2">Tasm Management Design</label>
-	              	</td>
-		      	</tr>
-		      	<tr>
-		      		<td>
-	                	<input type="checkbox" id="status2" />
-	                	<label for="status2">Tasm Management Design</label>
-	              	</td>
-		      	</tr>
-		      
+		      <tbody></tbody>
 		      </table>
 		    </div>
 		    <div class="modal-footer">

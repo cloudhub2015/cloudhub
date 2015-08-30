@@ -28,23 +28,7 @@ public class IndexController extends Controller {
 
     @Override
     public Navigation run() throws Exception {
-        TaskClientDto taskList = new TaskClientDto();
-        JSONObject json = new JSONObject();
-        try {
-            taskList = service.getTasksTodayList();
-        } catch (Exception e) {
-            e.printStackTrace();
-            taskList.getErrorList().add("Server controller error: " + e.getMessage());
-        }
-        
-        json.put("taskList", taskList.getTaskList());
-        json.put("errorList", taskList.getErrorList());
-        response.setContentType("application/json");
-        response.getWriter().write(json.toString());
         return forward("todays_task.jsp");
-        /*List<TaskDay> tasksTodayList = service.getTasksTodayList();
-        requestScope("tasksTodayList", tasksTodayList);
-        return forward("todays_task.jsp");*/
     }
 
 }

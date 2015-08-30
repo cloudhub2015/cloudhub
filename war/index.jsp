@@ -72,7 +72,7 @@
         </div>
         <div class="row center">
           <div class="col s4">
-          	<a id="download-button" class="btn-large waves-effect waves-light purple">Log In</a>
+          	<a id="btnLogin" class="btn-large waves-effect waves-light purple">Log In</a>
           </div>
         </div>
       </form>

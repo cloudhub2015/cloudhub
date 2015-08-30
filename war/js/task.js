@@ -255,7 +255,6 @@ function retrieveTaskList(successMessage) {
 }
 
 function retrieveTodaysTasks(successMessage){
-	console.log("TODAYS TASKS LIST!!!");
 	$.ajax({
 		url: '/taskstoday/displayTodaysTasks',
 		type: 'GET',

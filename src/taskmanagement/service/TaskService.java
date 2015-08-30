@@ -121,16 +121,16 @@ public class TaskService {
             Date start = null;
             Date due = null;
             DateFormat df = new SimpleDateFormat("dd MMMM, yyyy"); 
-            System.out.println("TODAY: " + today.toString());
+            //System.out.println("TODAY: " + today.toString());
             try {
                 start = df.parse(task.getStartDate());
-                System.out.println("START: " + start.toString());
+                //System.out.println("START: " + start.toString());
                 due = df.parse(task.getDueDate());
-                System.out.println("DUE: " + due.toString());
+                //System.out.println("DUE: " + due.toString());
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            System.out.println("CONDITION: " +(today.equals(start) && today.equals(due) || (today.after(start) && today.before(due))));
+            //System.out.println("CONDITION: " +(today.equals(start) && today.equals(due) || (today.after(start) && today.before(due))));
             if((today.equals(start) && today.equals(due) || (today.after(start) && today.before(due))) && !this.dao.setTodaysTask(task.getId())){
                 taskList.setErrorList(new ArrayList<String>());
                 taskList.getErrorList().add("Todays Task: database error!");

@@ -5,9 +5,6 @@ package taskmanagement.controller.taskstoday;
 
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
-import org.slim3.repackaged.org.json.JSONObject;
-
-import taskmanagement.dto.TaskClientDto;
 import taskmanagement.service.TaskService;
 
 /**

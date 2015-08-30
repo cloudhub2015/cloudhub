@@ -102,9 +102,7 @@ public class TaskService {
         
         for (Task task : taskModels) {
             Date today = new Date();
-            today.setMinutes(0);
-            today.setHours(0);
-            today.setSeconds(0);
+           
             Date start = null;
             Date due = null;
             DateFormat df = new SimpleDateFormat("dd MMMM, yyyy"); 

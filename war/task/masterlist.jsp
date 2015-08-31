@@ -19,7 +19,7 @@
 <!-- mod start 0.0.1 -->
 
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="masterList">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
@@ -89,9 +89,26 @@
 				<th data-field="action"><center>Action</center></th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody ng-controller="displayTaskCtrl"> 
+			<tr ng-repeat="x in tasks"  ng-hide="{{x.finished}}">
+				   <td  class="taskName">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ x.name }}</td>
+				   <td class="phase">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ x.phase }}</td>
+				   <td class="estHours">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ x.estHours }}</td>
+				   <td class="startDate">{{ x.startDate }}</td>
+				   <td class="dueDate">{{ x.dueDate }}</td>
+				   <td>
+		                <a href="" class="btnDone"><i class="material-icon-action">done</i></a>
+		      				&nbsp;&nbsp;&nbsp;
+		      			<a href="/task/displayTaskToEdit" class="btnEdit"><i class="material-icon-action">assignment</i></a>
+		      				&nbsp;&nbsp;&nbsp;
+		      			<a  href="" class="btnDelete"><i class="material-icon-action">delete</i></a>
+		      				&nbsp;&nbsp;&nbsp;
+		              </td>
+  			</tr>
+		</tbody>
         </table>
         </div>
+      
 
         <br>
 
@@ -109,7 +126,14 @@
                 <th data-field="due_date"><center>Date of Completion</center></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody ng-controller="displayTaskCtrl">
+          <tr ng-repeat="task in tasks"  ng-show="{{task.finished}}">
+		        <td  class="taskName"> {{task.name}}</td>
+		         <td><center> {{task.phase}} </center></td>
+		         <td><center> {{task.estHours}} hrs </center></td>
+		         <td><center> {{task.startDate}}</center></td>
+		         <td><center> {{task.dueDate}}</center></td>
+		  </tr>
           </tbody>
           </table>
            
@@ -131,7 +155,7 @@
   
 
   
-  
+  <script src="../js/taskAngular.js"></script>
   <!-- mod start 0.0.2 -->
   <!-- jQuery -->
  

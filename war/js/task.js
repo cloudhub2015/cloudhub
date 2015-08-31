@@ -9,9 +9,9 @@
  * 
  * --------------------------------------------------------------------------- */
 $(function() {
-	retrieveTaskList();
-	retrieveCompletedTasks();
-	retrieveTodaysTasks();
+//	retrieveTaskList();
+//	retrieveCompletedTasks();
+//	retrieveTodaysTasks();
 	$('#btnCreateTask').click(function() {
 		jsonData = {
 			data: JSON.stringify({

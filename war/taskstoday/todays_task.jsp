@@ -13,7 +13,7 @@
 -->
 
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="todaysTask">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
@@ -69,8 +69,15 @@
                 <th data-field="action"><center>Action</center></th>
             </tr>
           </thead>
-          <tbody>
-           
+          <tbody ng-controller="displayTodaysTaskCtrl">
+           <tr ng-repeat="x in tasks">  
+           			<td>{{x.name}}</td> 
+				     <td> {{x.phase}} </td>
+				     <td><center> {{x.estHours}} hrs</center></td>
+				     <td> {{x.startDate}} </td>
+				     <td> {{x.dueDate}}</td>
+				     <td><a href="../taskstoday/updateTask">Update Task</a> </td>
+		  </tr>
           </tbody>
         </table>
         <br>
@@ -115,7 +122,7 @@
   <script src="../js/init.js"></script>
   <script src="../js/angular.js"></script>
   <script src="../js/task.js"></script>
-  
+  <script src="../js/taskAngular.js"></script>
  
   
    <!-- mod start 0.0.3 -->

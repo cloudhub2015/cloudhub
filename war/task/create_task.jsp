@@ -9,7 +9,7 @@
 -->
 
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
@@ -45,23 +45,23 @@
 <div class="container">
   <div class="row">
     <div class="col s12 m9 l10">
-      <div id="right" class="section scrollspy">
+      <div id="right"  ng-app="createTask" class="section scrollspy">
         <h2 class="header"><img src="../images/add.jpg" width="5%">&nbsp;&nbsp;Create Task</h2>
         <p class="caption">Complete all needed information to add task.
-          <div class="row">
-            <form class="col s12">
+          <div class="row" ng-controller="addTaskCtrl">
+            <form class="col s12" ng-submit="sendPost()">
               <div class="row">
               <!-- 0.0.1 mod start -->
                 <div class="input-field col s6">
                 <!-- 0.0.1 end start -->
-                  <input name="name" type="text" class="validate" id="txtName">
+                  <input name="name" type="text" class="validate" id="txtName" ng-model="taskName">
                   <label class="active" for="task_name">Task Name</label>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col s6">
-                  <select class="browser-default" name="phase" id="selectPhase">
+                  <select class="browser-default" name="phase" id="selectPhase" ng-model="taskPhase">
                     <option value="" disabled selected>Choose Phase</option>
                     <option value="1" name="testing">Testing</option>
                     <option value="2" name="coding">Coding</option>
@@ -72,26 +72,26 @@
 
               <div class="row">
                 <div class="input-field col s6">
-                  <input name="estHours" type="text" id="txtEstHours" class="validate" placeHolder="number of hours">
+                  <input name="estHours" type="text" ng-model="taskEstHours" id="txtEstHours" class="validate" placeHolder="number of hours">
                   <label class="active" for="txtEstHours" >Estimated Time Allotment</label>
                 </div>
               </div>
 
               <div class="row">
-                <div class="input-field col s6">
-                  <input id="startDate" name="startDate" type="date" class="datepicker picker__input" placeholder="Start Date">
+                <div class="input-field col s6" >
+                  <input id="startDate" name="startDate" ng-model="taskStartDate" type="date" class="datepicker picker__input" placeholder="Start Date">
                 <label for="startDate"></label>
                 </div>
               </div>
 
               <div class="row">
-                <div class="input-field col s6">
-                  <input id="dueDate" name="dueDate" id="dueDate" type="date" class="datepicker picker__input" placeholder="Due Date">
+                <div class="input-field col s6" >
+                  <input id="dueDate" name="dueDate" ng-model="taskDueDate" id="dueDate" type="date" class="datepicker picker__input" placeholder="Due Date">
                  <label for="dueDate"></label>
                 </div>
               </div>
 
-             <a class="waves-effect waves-light btn" id="btnCreateTask"><i class="material-icon left">note_add</i>Create Task</a>
+             <button class="waves-effect waves-light btn" id="btnCreateTask" type="submit" ng-click="sendPost()"><i class="material-icon left">note_add</i>Create Task</button>
              <!-- <button class="btn waves-effect waves-light" type="submit"  value="create_task" id="btnCreateTask"><i class="material-icon left">note_add</i>Create Task</button> -->
               &nbsp;&nbsp;&nbsp;
               <button class="waves-effect waves-light btn" name="clearField" value="Cancel"><i class="material-icon left" id="btnClearAllInfo">clear_all</i>Clear Fields</button>
@@ -110,7 +110,7 @@
    <script src="../js/materialize.js"></script>
   <script src="../js/init.js"></script>
   <script src="../js/angular.js"></script>
- 
+  <script src="../js/taskAngular.js"></script>
 
   <!-- 0.0.1 start mod -->
  

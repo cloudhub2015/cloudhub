@@ -26,8 +26,9 @@ public class AddTaskController extends Controller {
     public Navigation run() throws Exception {
         TaskDto dto = new TaskDto();
         JSONObject json = null;
+       
         try {
-            json = new JSONObject((String)this.requestScope("data"));
+            json = new JSONObject((String)this.requestScope("json"));
 
             dto.setName(json.getString("name"));
             int phase = json.getInt("phase"); 
@@ -47,6 +48,7 @@ public class AddTaskController extends Controller {
             dto.setEstHours(json.getDouble("estHours"));
             dto.setStartDate(json.getString("startDate"));
             dto.setDueDate(json.getString("dueDate"));
+            System.out.println("fasffasfasf"+dto.getDueDate());
             if ((dto.getName() == null) || (dto.getPhase() == null) || (dto.getEstHours() == 0.0) || (dto.getStartDate() == null) || (dto.getDueDate() == null)) {
                 dto.getErrorList().add("Some fields are blank. Please supply them.");
             } else {
@@ -58,7 +60,6 @@ public class AddTaskController extends Controller {
                 json = new JSONObject();
             }
         }
-
         json.put("errorList", dto.getErrorList());
         response.setContentType("application/json");
         response.getWriter().write(json.toString());

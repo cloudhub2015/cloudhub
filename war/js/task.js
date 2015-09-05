@@ -12,7 +12,7 @@ $(function() {
 //	retrieveTaskList();
 //	retrieveCompletedTasks();
 //	retrieveTodaysTasks();
-	$('#btnCreateTask').click(function() {
+/*	$('#btnCreateTask').click(function() {
 		jsonData = {
 			data: JSON.stringify({
 				name: $('#txtName').val(),
@@ -47,7 +47,7 @@ $(function() {
 			}
 		});
 	});
-	
+	*/
 	/**
 	 * Function to delete a task
 	 * finds the table which has an id 'tasks'

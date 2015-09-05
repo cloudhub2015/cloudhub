@@ -55,7 +55,7 @@ public class TaskService {
         task.setSpentHours(input.getSpentHours());
         task.setFinished(input.isFinished());
         task.setPending(input.isPending());
-        task.setToday(input.isToday());
+        task.setToday(true);
         
         if(!this.dao.saveTask(task)) {
             input.setErrorList(new ArrayList<String>());

@@ -52,7 +52,7 @@
         <h2 class="header"><img src="../images/view.jpg" width="5%">&nbsp;&nbsp;Today's Tasks</h2>
         <div class="row">
         	<div class="input-field col s6">
-              <input id="search_bar" type="text" class="validate" ng-model="$.search">
+              <input id="search_bar" type="text" class="validate" data-ng-model="search.name">
               <label for="search_bar"><i class="material-icon-legend left">search</i>Search Task Name</label>
             </div>
         </div>
@@ -71,7 +71,7 @@
             </tr>
           </thead>
           <tbody ng-controller="displayTodaysTaskCtrl">
-           <tr ng-repeat="x in tasks | filter: $.search">  
+           <tr data-ng-repeat="x in tasks | filter:search | orderBy:'startDate'" ng-hide="check(x.startDate)">  
            			<td>{{x.name}}</td> 
 				     <td> {{x.phase}} </td>
 				     <td><center> {{x.estHours}} hrs</center></td>

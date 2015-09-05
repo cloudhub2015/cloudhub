@@ -63,9 +63,9 @@
                 <div class="col s6">
                   <select class="browser-default" name="phase" id="selectPhase" ng-model="taskPhase">
                     <option value="" disabled selected>Choose Phase</option>
-                    <option value="1" name="testing">Testing</option>
-                    <option value="2" name="coding">Coding</option>
-                    <option value="3" name="design">Design</option>
+                    <option value="Testing" name="testing">Testing</option>
+                    <option value="Coding" name="coding">Coding</option>
+                    <option value="Design" name="design">Design</option>
                   </select>
                 </div>
               </div>

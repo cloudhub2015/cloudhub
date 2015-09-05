@@ -62,7 +62,7 @@
         <!-- mod start 0.0.4 -->
         <div class="row">
             <div class="input-field col s6">     
-              <input id="search_bar" type="text" class="validate" ng-model="$.search">
+              <input id="search_bar" type="text" class="validate" data-ng-model="search.name">
               <label for="search_bar"><i class="material-icon-legend left">search</i>Search Task Name</label>
             </div>
             <div class="col s6">
@@ -99,7 +99,7 @@
             </tr>
           </thead>
           <tbody ng-controller="displayTaskCtrl"> 
-			<tr ng-repeat="x in tasks | filter: $.search"  ng-hide="{{x.finished}}">
+			<tr data-ng-repeat="x in tasks | filter:search | orderBy:'name'"  ng-hide="{{x.finished}}">
 				<input type="hidden" class="id" name="id" value="{{ x.id }}"/>
 				   <td  class="taskName"><center>{{ x.name }}</center></td>
 				   <td class="phase"><center>{{ x.phase }}</center></td>

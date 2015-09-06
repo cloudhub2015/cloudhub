@@ -67,11 +67,11 @@
             </div>
             <div class="col s6">
             
-             	 <select class="browser-default">
-                 	<option value="" disabled selected>Filter by Phase</option>
-                    <option value="1">Testing</option>
-                    <option value="2">Coding</option>
-                    <option value="3">Design</option>
+             	 <select class="browser-default" ng-model="searchByPhase">
+                 	<option value="">Filter by Phase</option>
+                    <option value="Testing">Testing</option>
+                    <option value="Coding">Coding</option>
+                    <option value="Design">Design</option>
                  </select>
             </div>   
         </div>
@@ -99,7 +99,7 @@
             </tr>
           </thead>
           <tbody ng-controller="displayTaskCtrl"> 
-			<tr data-ng-repeat="x in tasks | filter:search | orderBy:'name'"  ng-hide="{{x.finished}}">
+			<tr data-ng-repeat="x in tasks| filter:searchByPhase | filter:search | orderBy:'name'"  ng-hide="{{x.finished}}">
 				<input type="hidden" class="id" name="id" value="{{ x.id }}"/>
 				   <td  class="taskName"><center>{{ x.name }}</center></td>
 				   <td class="phase"><center>{{ x.phase }}</center></td>
@@ -138,7 +138,7 @@
           </thead>
           <tbody ng-controller="displayTaskCtrl">
           <tr ng-repeat="task in tasks"  ng-show="{{task.finished}}">
-		        <td  class="taskName"> {{task.name}}</td>
+		         <td  class="taskName"> {{task.name}}</td>
 		         <td><center> {{task.phase}} </center></td>
 		         <td><center> {{task.estHours}} hrs </center></td>
 		         <td><center> {{task.startDate}}</center></td>

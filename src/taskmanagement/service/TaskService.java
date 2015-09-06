@@ -120,8 +120,8 @@ public class TaskService {
         for (Task task : taskModels) {      
             Date start = null;
             Date due = null;
-            DateFormat df = new SimpleDateFormat("dd MMMM, yyyy"); 
-            //System.out.println("TODAY: " + today.toString());
+            DateFormat df = new SimpleDateFormat("mm/dd/yyyy"); 
+            System.out.println("TODAY: " + today.toString());
             try {
                 start = df.parse(task.getStartDate());
                 //System.out.println("START: " + start.toString());

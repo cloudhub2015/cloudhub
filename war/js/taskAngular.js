@@ -7,7 +7,8 @@ app.controller('displayTaskCtrl', function($scope, $http) {
 var todaysTask = angular.module('todaysTask', []);
 todaysTask.controller('displayTodaysTaskCtrl', function($scope, $http) {
 	$scope.check = function(date){
-		return (new Date(date)>new Date());
+		//if true, then do not display invalid date entries
+		return (new Date(date)<new Date());
 	}
     $http.get("/taskstoday/displayTodaysTasks")
     .success(function(response) {$scope.tasks = response.taskList; console.log(response.taskList);});

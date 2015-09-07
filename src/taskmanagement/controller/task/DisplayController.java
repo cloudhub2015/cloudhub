@@ -22,6 +22,7 @@ import taskmanagement.service.TaskService;
  * Version History
  * [08/16/2015] 0.01 - David Ramirez - Display task working
  * [08/17/2015] 0.02 - David Ramirez - Code documentation
+ * [09/07/2015] 0.03 - Jacquelyn Amaya - Return session attribute for user's first name
  */
 public class DisplayController extends Controller {
 

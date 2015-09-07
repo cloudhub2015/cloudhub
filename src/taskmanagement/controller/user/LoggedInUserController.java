@@ -3,7 +3,13 @@ package taskmanagement.controller.user;
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 import org.slim3.repackaged.org.json.JSONObject;
-
+/**
+ * Controller to put the session attributes for the user
+ * @author Jacquelyn Amaya
+ * @version 0.02
+ * Version History
+ * [09/07/2015] 0.01 - Jacquelyn Amaya - Return session attributes for the user's information using JSON
+ */
 public class LoggedInUserController extends Controller {
 
     @Override

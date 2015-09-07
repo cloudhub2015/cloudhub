@@ -12,35 +12,45 @@ import taskmanagement.service.UserService;
  * @author Jacquelyn Amaya
  * @version 0.02
  * Version History
- * [08/28/2015] 0.01 - Jacquelyn Amaya - Get the details of the user after logging in
+ * [07/27/2015] 0.01 - Jacquelyn Amaya - Initial codes
+ * [08/17/2015] 0.02 - David Ramirez - Code documentation
+ * [08/27/2015] 0.03 - Jacquelyn Amaya - Implemented the function for logging in using JSON
+ * [09/07/2015] 0.04 - Jacquelyn Amaya - Added session attributes for the user's information
  */
 public class LoginController extends Controller {
     /**
      * The service class which holds the validateUser method
      */
     private UserService service = new UserService();
-    
     @Override
-    protected Navigation run() throws Exception {
+    
+    public Navigation run() throws Exception {
         UserDto dto = new UserDto();
         JSONObject json = null;
-        
         try {
             json = new JSONObject((String)this.requestScope("data"));
+
             dto.setUsername(json.getString("username"));
-            dto = this.service.getUser(dto.getUsername());
-            dto = this.service.updateUser(dto);
+            dto.setPassword(json.getString("password"));
+            if (dto.getUsername() == null || dto.getPassword() == null) {
+                dto.getErrorList().add("Invalid username or password.");
+            } else {
+                dto = this.service.validateUser(dto);
+                dto = this.service.getUser(dto.getUsername());
+                sessionScope("firstName", dto.getFirstName());
+                sessionScope("lastName", dto.getLastName());
+                sessionScope("username", dto.getUsername());
+            }
         } catch (Exception e) {
-            //dto.getErrorList().add("Server controller error: " + e.getMessage());
+            dto.getErrorList().add("Server controller error: " + e.getMessage());
             if (json == null) {
                 json = new JSONObject();
             }
         }
-        sessionScope("firstName", dto.getFirstName());
+        json.put("firstName", sessionScope("firstName"));
         json.put("errorList", dto.getErrorList());
         response.setContentType("application/json");
         response.getWriter().write(json.toString());
         return null;
     }
-
 }

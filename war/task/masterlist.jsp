@@ -5,6 +5,7 @@
 * 0.0.2 - August 04, 2015 2:15PM   - Vine Deiparine            - Added jquery codes with corresponding js.
 * 0.0.3 - August 04, 2015 2:15PM   - David Ramirez             - Integrate slim3 codes.
 * 0.0.4 - September 01,2015 1:02AM - David Ramirez			   - Display pending and finish tasks using AngularJS
+* 0.0.5 - September 07,2015 1:02AM - Jacquelyn Amaya		   - Display user's first name
 -->
 
 

@@ -6,7 +6,14 @@ import org.slim3.repackaged.org.json.JSONObject;
 
 import taskmanagement.dto.TaskClientDto;
 import taskmanagement.service.TaskService;
-
+/**
+ * Controller to add a task to Today's Tasks
+ * @author Jacquelyn Amaya
+ * @version 0.01
+ * [07/27/2015] 0.01 - Jacquelyn Amaya - Initial codes
+ * [08/08/2015] 0.02 - Jacquelyn Amaya - Implemented display tasks for today using JSON
+ * [09/07/2015] 0.03 - Jacquelyn Amaya - Return session attribute for user's first name
+ */
 public class DisplayTodaysTasksController extends Controller {
     TaskService service = new TaskService();
     @Override

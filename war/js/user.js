@@ -51,7 +51,7 @@ $(document).ready(function() {
 					})
 			};
 			$.ajax({
-				url: '/user/verifyUser',
+				url: '/user/login',
 				type: 'POST',
 				data: jsonData,
 				dataType: 'json',

@@ -5,6 +5,7 @@ import java.io.Serializable;
 import com.google.appengine.api.datastore.Key;
 
 import org.slim3.datastore.Attribute;
+import org.slim3.datastore.InverseModelListRef;
 import org.slim3.datastore.Model;
 
 @Model(schemaVersion = 1)
@@ -24,6 +25,11 @@ public class User implements Serializable {
     private String password;
     private String firstName;
     private String lastName;
+    private boolean loggedIn;
+    
+    @Attribute(persistent = false)
+    private InverseModelListRef<Task, User> taskListRef = 
+        new InverseModelListRef<Task, User>(Task.class, "userRef", this);
     
     
     public String getUsername(){
@@ -132,5 +138,21 @@ public class User implements Serializable {
             return false;
         }
         return true;
+    }
+
+    public boolean isLoggedIn() {
+        return loggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        this.loggedIn = loggedIn;
+    }
+
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
+
+    public InverseModelListRef<Task, User> getTaskListRef() {
+        return taskListRef;
     }
 }

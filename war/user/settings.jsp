@@ -14,7 +14,7 @@
 <%@taglib prefix="f" uri="http://www.slim3.org/functions"%>
 
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="user">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
@@ -27,12 +27,12 @@
   
 </head>
 
-<body>
+<body ng-controller="displayUserInfoCtrl">
 <header>
 <ul id="nav-mobile" class="side-nav fixed" style="left: 0px;">
     <li class="logo">   
       <img src="../images/avatar.png" class="responsive-img">
-      <p><h4 class="header_name">Hey, Riri!</h4></p>
+      <p><h4 class="header_name">Hey, {{ firstName }}!</h4></p>
     </li>
   
     <li class="bold"><a href="/task/masterlist" class="waves-effect waves-teal">Masterlist</a></li>
@@ -55,26 +55,26 @@
             <form class="col s12">
               <div class="row">
                 <div class="input-field col s6">
-                  <input name="name" type="text" class="validate">
-                  <label class="active" for="first_name">First Name</label>
+                  <input name="name" type="text" class="validate" value="{{ firstName }}" placeholder="First Name">
+                  <!-- <label class="active" for="first_name">First Name</label> -->
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s6">
-                  <input name="name" type="text" class="validate">
-                  <label class="active" for="last_name">Last Name</label>
+                  <input name="name" type="text" class="validate" value="{{ lastName }}" placeholder="Last Name">
+                  <!-- <label class="active" for="last_name">Last Name</label> -->
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s6">
-                  <input name="name" type="text" class="validate">
-                  <label class="active" for="username">Username</label>
+                  <input name="name" type="text" class="validate" value="{{ username }}" placeholder="Username">
+                  <!-- <label class="active" for="username">Username</label> -->
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s6">
-                  <input id ="password" name="name" type="password" class="validate">
-                  <label class="active" for="password">Password</label>
+                  <input id ="password" name="name" type="password" class="validate" placeholder="Password">
+                  <!-- <label class="active" for="password">Password</label> -->
                 </div>
               </div>
        		</form>
@@ -97,6 +97,7 @@
   <script src="../js/materialize.js"></script>
   <script src="../js/init.js"></script>
   <script src="../js/angular.js"></script>
+  <script src="../js/userAngular.js"></script>
   
   </body>
   </html>

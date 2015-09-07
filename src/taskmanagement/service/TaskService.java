@@ -121,7 +121,7 @@ public class TaskService {
             Date start = null;
             Date due = null;
             DateFormat df = new SimpleDateFormat("mm/dd/yyyy"); 
-            System.out.println("TODAY: " + today.toString());
+            //System.out.println("TODAY: " + today.toString());
             try {
                 start = df.parse(task.getStartDate());
                 //System.out.println("START: " + start.toString());
@@ -174,7 +174,7 @@ public class TaskService {
      */
     public TaskDto selectTask(TaskDto input) {
         Task taskModel = new Task();
-        taskModel = this.dao.selectTask(input.getId());
+        taskModel = this.dao.getTask(input.getId());
         input.setUserId(taskModel.getUserId());
         input.setName(taskModel.getName());
         input.setPhase(taskModel.getPhase());

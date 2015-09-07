@@ -82,4 +82,25 @@ public class UserService {
         userDto.setPassword(user.getPassword());
         return userDto;
     }
+    
+    /**
+     * Method used to update a task.
+     * @param input - task to update.
+     * @return TaskDto - if transaction was unsuccessful, contains list of errors.
+     */
+    public UserDto updateUser(UserDto input) {
+        User user = new User();
+        user.setId(input.getId());
+        user.setFirstName(input.getFirstName());
+        user.setLastName(input.getLastName());
+        user.setUsername(input.getUsername());
+        user.setPassword(input.getPassword());
+        
+        if(!this.dao.updateUser(user)){
+            input.setErrorList(new ArrayList<String>());
+            input.getErrorList().add("Database Error!");
+        }
+
+        return input;
+    }
 }

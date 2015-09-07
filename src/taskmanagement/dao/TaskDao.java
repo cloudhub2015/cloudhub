@@ -3,6 +3,7 @@ package taskmanagement.dao;
 import java.util.List;
 
 import org.slim3.datastore.Datastore;
+import org.slim3.datastore.FilterCriterion;
 
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
@@ -39,12 +40,12 @@ public class TaskDao {
     
     /**
      * Method used to retrieve a task to edit
-     * @return List<Task> - list of tasks.
+     * @return Task
      */
-    public Task selectTask(Long id) {
-        TaskMeta t = new TaskMeta();
-        Query.Filter mainFilter = new Query.FilterPredicate("id", FilterOperator.EQUAL, id);
-        return Datastore.query(t).filter(mainFilter).asSingle();
+    public Task getTask(long id) {
+        TaskMeta taskMeta = new TaskMeta();
+        FilterCriterion mainFilter = taskMeta.id.equal(id);
+        return Datastore.query(taskMeta).filter(mainFilter).asSingle();
     }
     
     /**
@@ -141,7 +142,7 @@ public class TaskDao {
     public boolean updateTask(Task taskModel) {
         boolean result = true;
         TaskMeta tm = new TaskMeta();
-        Query.Filter mainFilter = new Query.FilterPredicate("id", FilterOperator.EQUAL, taskModel.getId());
+        FilterCriterion mainFilter = tm.id.equal(taskModel.getId());
 
         try {
             Task originalTaskModel = Datastore.query(tm).filter(mainFilter).asSingle();

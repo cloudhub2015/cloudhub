@@ -29,11 +29,11 @@
 </head>
 
 <body>
-<header>
+<header ng-controller="displayTodaysTaskCtrl">
 <ul id="nav-mobile" class="side-nav fixed" style="left: 0px;">
     <li class="logo">   
       <img src="../images/avatar.png" class="responsive-img">
-      <p><h4 class="header_name">Hey, Riri!</h4></p>
+      <p><h4 class="header_name">Hey, {{ firstName }}!</h4></p>
     </li>
   
     <li class="bold"><a href="/task/masterlist">Masterlist</a></li>

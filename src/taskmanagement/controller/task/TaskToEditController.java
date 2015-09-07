@@ -51,7 +51,7 @@ public class TaskToEditController extends Controller {
             //if () {
                 //dto.getErrorList().add("Some fields are blank. Please supply them.");
             //} else {
-                dto = this.service.selectTask(dto);
+                //dto = this.service.getTask(dto);
             //}
             
           //  dto = this.service.editTask(dto);

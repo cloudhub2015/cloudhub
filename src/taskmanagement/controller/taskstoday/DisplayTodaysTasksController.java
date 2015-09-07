@@ -20,6 +20,7 @@ public class DisplayTodaysTasksController extends Controller {
             taskList.getErrorList().add("DISPLAY TODAYS - Server controller error: " + e.getMessage());
         }
         
+        json.put("firstName", sessionScope("firstName"));
         json.put("taskList", taskList.getTaskList());
         json.put("errorList", taskList.getErrorList());
         response.setContentType("application/json");

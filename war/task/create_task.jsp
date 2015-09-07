@@ -112,9 +112,9 @@
   <script src="../js/angular.js"></script>
   <script src="../js/taskAngular.js"></script>
 
-  <!-- 0.0.1 start mod -->
+  <!-- 0.0.1 start mod 
  
-  <script src="../js/task.js"></script>
+  <script src="../js/task.js"></script> -->
   <script>
   $(function() {	  
 	  $('button.btn').click(function(event) {

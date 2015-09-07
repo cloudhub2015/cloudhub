@@ -1,7 +1,10 @@
 var app = angular.module('masterList', []);
 app.controller('displayTaskCtrl', function($scope, $http) {
     $http.get("/task/display")
-    .success(function(response) {$scope.tasks = response.taskList; console.log(response.taskList);});
+    .success(function(response) {
+    	$scope.tasks = response.taskList;
+    	$scope.firstName = response.firstName;
+    });
 });
 
 var todaysTask = angular.module('todaysTask', []);
@@ -11,7 +14,11 @@ todaysTask.controller('displayTodaysTaskCtrl', function($scope, $http) {
 		return (new Date(date)<new Date());
 	}
     $http.get("/taskstoday/displayTodaysTasks")
-    .success(function(response) {$scope.tasks = response.taskList; console.log(response.taskList);});
+    .success(function(response) {
+    	$scope.tasks = response.taskList; 
+    	console.log(response.taskList);
+    	$scope.firstName = response.firstName;
+    });
 });
 
 var addTask = angular.module('createTask', [],function($httpProvider) {

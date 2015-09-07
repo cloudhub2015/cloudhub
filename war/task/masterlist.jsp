@@ -37,12 +37,12 @@
 </head>
 
 <body>
-<header>
+<header  ng-controller="displayTaskCtrl">
 <ul id="nav-mobile" class="side-nav fixed" style="left: 0px;">
     <li class="logo">
       <img src="../images/avatar.png" class="responsive-img">
       <input type="hidden" id="username"/>
-      <p><h4 class="header_name">Hey, Riri!</h4></p>
+      <p><h4 class="header_name">Hey, {{ firstName }}!</h4></p>
     </li>
 
     <li class="active"><a href="/task/masterlist">Masterlist</a></li>
@@ -161,9 +161,6 @@
   <script src="../js/angular.js"></script>
   <script src="../js/task.js"></script>
   <script src="../js/user.js"></script>
-  <script src="../js/logged-in-user.js"></script>
-  
-
   
   <script src="../js/taskAngular.js"></script>
   <!-- mod start 0.0.2 -->

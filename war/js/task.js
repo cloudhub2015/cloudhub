@@ -200,6 +200,7 @@ $(function() {
  * @param successMessage - success message to display
  * 		if the transaction is successful.
  */
+/*
 function retrieveTaskList(successMessage) {
 	$("#taskList").empty();
 	
@@ -254,7 +255,7 @@ function retrieveTaskList(successMessage) {
 			
 		}
 	});
-}
+}*/
 
 function retrieveTodaysTasks(successMessage){
 	$.ajax({

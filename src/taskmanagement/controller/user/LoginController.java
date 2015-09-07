@@ -37,6 +37,7 @@ public class LoginController extends Controller {
             } else {
                 dto = this.service.validateUser(dto);
                 dto = this.service.getUser(dto.getUsername());
+                sessionScope("userId", dto.getId());
                 sessionScope("firstName", dto.getFirstName());
                 sessionScope("lastName", dto.getLastName());
                 sessionScope("username", dto.getUsername());

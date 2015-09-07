@@ -32,10 +32,11 @@ public class TaskDao {
      * Method used to retrieve list of tasks.
      * @return List<Task> - list of tasks.
      */
-    public List<Task> getAllTasks() {
+    public List<Task> getAllTasks(long userId) {
         TaskMeta t = new TaskMeta();
         Key parentKey = KeyFactory.createKey("Account", "Default");
-        return Datastore.query(t ,parentKey).asList();
+        Query.Filter mainFilter = new Query.FilterPredicate("userId", FilterOperator.EQUAL, userId);
+        return Datastore.query(t, parentKey).filter(mainFilter).asList();        
     }
     
     /**

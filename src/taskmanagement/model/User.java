@@ -27,10 +27,7 @@ public class User implements Serializable {
     private String lastName;
     private boolean loggedIn;
     
-    @Attribute(persistent = false)
-    private InverseModelListRef<Task, User> taskListRef = 
-        new InverseModelListRef<Task, User>(Task.class, "userRef", this);
-    
+     
     
     public String getUsername(){
         return username;
@@ -152,7 +149,4 @@ public class User implements Serializable {
         return serialVersionUID;
     }
 
-    public InverseModelListRef<Task, User> getTaskListRef() {
-        return taskListRef;
-    }
 }

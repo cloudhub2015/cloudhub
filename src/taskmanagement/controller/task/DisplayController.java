@@ -32,7 +32,8 @@ public class DisplayController extends Controller {
         TaskClientDto taskList = new TaskClientDto();
         JSONObject json = new JSONObject();
         try {
-            taskList = service.getTaskList();
+            //System.out.print(sessionScope("userId"));
+            taskList = service.getTaskList(Long.parseLong(sessionScope("userId").toString()));
         } catch (Exception e) {
             e.printStackTrace();
             taskList.getErrorList().add("Server controller error: " + e.getMessage());

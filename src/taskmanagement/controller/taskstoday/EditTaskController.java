@@ -29,9 +29,9 @@ public class EditTaskController extends Controller {
         if(isGet()) {
             if(null != requestScope("id")) {
                 long id = asLong("id");
-                Task task = this.service.getTask(id);
+                //Task task = this.service.selectTask(id);
                 if(null != dto) {
-                    json = new JSONObject(TaskMeta.get().modelToJson(task));
+                    //json = new JSONObject(TaskMeta.get().modelToJson(task));
                 }
             }
         }

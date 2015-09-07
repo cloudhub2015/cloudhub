@@ -21,7 +21,7 @@ public class DisplayTodaysTasksController extends Controller {
         TaskClientDto taskList = new TaskClientDto();
         JSONObject json = new JSONObject();
         try {
-            taskList = service.getTodaysTaskList();
+            taskList = service.getTodaysTaskList(Long.parseLong(sessionScope("userId").toString()));
         } catch (Exception e) {
             e.printStackTrace();
             taskList.getErrorList().add("DISPLAY TODAYS - Server controller error: " + e.getMessage());

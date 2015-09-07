@@ -68,8 +68,8 @@ public class TaskService {
      * Method used to retrieve list of tasks.
      * @return List<Task> - list of Tasks.
      */
-    public TaskClientDto getTaskList() {
-        List<Task> taskModels = this.dao.getAllTasks();
+    public TaskClientDto getTaskList(long userId) {
+        List<Task> taskModels = this.dao.getAllTasks(userId);
         TaskClientDto taskList = new TaskClientDto();
         TaskDto taskDto;
 
@@ -112,8 +112,8 @@ public class TaskService {
      * Method used to check list of unfinished tasks.
      * @return void
      */
-    public void checkTodaysTask() {
-        List<Task> taskModels = this.dao.getAllTasks();
+    public void checkTodaysTask(long userId) {
+        List<Task> taskModels = this.dao.getAllTasks(userId);
         TaskClientDto taskList = new TaskClientDto();
         Date today = new Date();
         today = this.trim(today);
@@ -141,11 +141,11 @@ public class TaskService {
      * Method used to retrieve list of todays tasks.
      * @return List<Task> - list of Tasks.
      */
-    public TaskClientDto getTodaysTaskList() {
-        List<Task> taskModels = this.dao.getAllTasks();
+    public TaskClientDto getTodaysTaskList(long userId) {
+        List<Task> taskModels = this.dao.getAllTasks(userId);
         TaskClientDto taskList = new TaskClientDto();
         TaskDto taskDto;
-        checkTodaysTask();
+        checkTodaysTask(userId);
 
         for (Task task : taskModels) {
             if(task.isToday()){

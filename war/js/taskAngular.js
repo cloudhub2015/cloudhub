@@ -84,7 +84,7 @@ addTask.controller('addTaskCtrl', function($scope, $http) {
                 dueDate: $scope.taskDueDate,
             })
         });
-        $http.post("addTask", data).success(function(data, status) {
+        $http.post("/task/addTask", data).success(function(data, status) {
             console.log(data);
         	if(data.errorList.length == 0) {
 				//alert("Task has been successfully added");

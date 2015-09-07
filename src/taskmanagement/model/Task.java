@@ -6,7 +6,6 @@ import com.google.appengine.api.datastore.Key;
 
 import org.slim3.datastore.Attribute;
 import org.slim3.datastore.Model;
-import org.slim3.datastore.ModelRef;
 /**
  * Model for Task kind
  * @author David Ramirez
@@ -88,8 +87,7 @@ public class Task implements Serializable {
      */
     private boolean isToday;
     
-    @Attribute(persistent = true)
-    private ModelRef<User> userRef = new ModelRef<User>(User.class);
+       
 
 /**
  * -------------------------------------------------------
@@ -344,8 +342,5 @@ public class Task implements Serializable {
         return serialVersionUID;
     }
 
-    public ModelRef<User> getUserRef() {
-        return userRef;
-    }
 
 }

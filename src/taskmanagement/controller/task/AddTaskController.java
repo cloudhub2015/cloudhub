@@ -29,13 +29,16 @@ public class AddTaskController extends Controller {
        
         try {
             json = new JSONObject((String)this.requestScope("json"));
-
+            
+            String sessionUserId = sessionScope("userId").toString();
+            long userId = Long.parseLong(sessionUserId);
+            dto.setUserId(userId);
             dto.setName(json.getString("name"));
             dto.setPhase(json.getString("phase"));
             dto.setEstHours(json.getDouble("estHours"));
             dto.setStartDate(json.getString("startDate"));
             dto.setDueDate(json.getString("dueDate"));
-            System.out.println("fasffasfasf"+dto.getDueDate());
+            
             if ((dto.getName() == null) || (dto.getPhase() == null) || (dto.getEstHours() == 0.0) || (dto.getStartDate() == null) || (dto.getDueDate() == null)) {
                 dto.getErrorList().add("Some fields are blank. Please supply them.");
             } else {

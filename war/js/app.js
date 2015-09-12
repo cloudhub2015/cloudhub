@@ -18,7 +18,7 @@ app.config(['$routeProvider', function ($routeProvider) {
 			'templateUrl': '/task/create_task.html',
 			'controller': 'CreateTaskController'
 		})
-		.when('/tasks/:id', {
+		.when('/tasks/displayTaskToEdit/taskid:id', {
 			'templateUrl': '/task/edit_task.html',
 			'controller': 'EditTaskController'
 		})
@@ -31,34 +31,57 @@ app.config(['$routeProvider', function ($routeProvider) {
 		});
 }]);
 
+
 app.controller('TasksController', ['$scope', '$http', function($scope, $http) {
 	$http.get("/task/display")
     .success(function(response) {
     	$scope.tasks = response.taskList;
     	$scope.firstName = response.firstName;
     });
+	console.log("TASK CONTROLLER");
 	
 	$scope.deleteTask = function(id) {
 		var data = {
-                id: id
+				id: id
             };
+		console.log("DELETE TASK " +data.json);
         $http.post("/task/deleteTask", data)
         .success(function(data, status) {
             console.log(data);
         	if(data.errorList.length == 0) {
-				alert("Task has been successfully added");
-			/*	$('#txtName').val('');
-				$('#selectPhase').val('');
-				$('#txtEstHours').val('');
-				$('#startDate').val('');
-				$('#dueDate').val('');*/
-        		
+				alert("Task has been successfully removed");
+				location.reload(true);
 			} else {
 				var msg = "";
 				for (var i = 0; i < data.errorList.length; i++)
 					msg += data.errorList[i] + "\n";
 				alert("Invalid");
 			}
+        }).error(function(data, status, headers, config) {
+        	
+        });
+    };
+
+    
+    $scope.finishTask = function(id) {
+		var data = {
+                id: id
+            };
+		console.log("FINISH TASK " +data.id);
+        $http.post("/task/completeTask", data)
+        .success(function(data, status) {
+            console.log(data);
+        	if(data.errorList.length == 0) {
+				alert("Task has been successfully completed");
+				location.reload(true);
+			} else {
+				var msg = "";
+				for (var i = 0; i < data.errorList.length; i++)
+					msg += data.errorList[i] + "\n";
+				alert("Invalid");
+			}
+        }).error(function(data, status, headers, config) {
+        	
         });
     };
 }]);
@@ -114,7 +137,7 @@ app.controller('CreateTaskController', ['$scope', '$http', function($scope, $htt
     };
 }]);
 app.controller('EditTaskController', ['$scope', '$http', function($scope, $http) {
-	$scope.errorDisplay = "";
+/*	$scope.errorDisplay = "";
 	console.log(id+""+document.getElementById(content).value+""+createdDate);
 	var jsonData = {
 			id: id,
@@ -136,7 +159,13 @@ app.controller('EditTaskController', ['$scope', '$http', function($scope, $http)
 	});
 	tweetPromise.error(function(data, status, headers, config) {
 		alert("error");
-	});
+	});*/
+	
+	$http.get("/task/taskToEdit")
+	.success(function(response) {
+		console.log("EDITTASKCONTROLLER " +response);
+		$scope.taskName = response.name;
+    });
 }]);
 app.controller('SettingsController', ['$scope', '$http', function($scope, $http) {
 	$http.get("/user/loggedInUser")

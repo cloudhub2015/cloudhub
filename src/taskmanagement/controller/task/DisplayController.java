@@ -36,7 +36,7 @@ public class DisplayController extends Controller {
             
             if(service.getTaskList(Long.parseLong(sessionScope("userId").toString())).equals(null)){
                 taskList.getErrorList().add("No tasks found");
-            } else {
+            } else {    
                 taskList = service.getTaskList(Long.parseLong(sessionScope("userId").toString()));
             }
         } catch (Exception e) {

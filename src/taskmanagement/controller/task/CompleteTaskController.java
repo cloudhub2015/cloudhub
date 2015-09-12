@@ -27,11 +27,12 @@ public class CompleteTaskController extends Controller {
         TaskDto dto = new TaskDto();
         JSONObject json = null;
         try {
-            json = new JSONObject((String)this.requestScope("data"));
+            json = new JSONObject((String)this.request.getReader().readLine());
             dto.setId(json.getLong("id"));
             dto = this.service.finishTask(dto);
         } catch (Exception e) {
-            dto.getErrorList().add("Server controller error: " + e.getMessage());
+            System.out.println(e.getMessage());
+         //   dto.getErrorList().add("Server controller error: " + e.getMessage());
             if (json == null) {
                 json = new JSONObject();
             }

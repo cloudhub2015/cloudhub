@@ -50,9 +50,9 @@
 				   <td class="startDate"><center>{{ x.startDate }}</center></td>
 				   <td class="dueDate"><center>{{ x.dueDate }}</center></td>
 				   <td>
-		                <a href="" class="btnDone"><i class="material-icon-action">done</i></a>
+		                <a href="" ng-click="finishTask(x.id)" class="btnDone"><i class="material-icon-action">done</i></a>
 		      				&nbsp;&nbsp;&nbsp;
-		      			<a href="/tasks/{{x.id}}" class="btnEdit"><i class="material-icon-action">assignment</i></a>
+		      			<a href="#/tasks/displayTaskToEdit/taskid={{x.id}}" class="btnEdit"><i class="material-icon-action">assignment</i></a>
 		      				&nbsp;&nbsp;&nbsp;
 		      			<a  href="" ng-click="deleteTask(x.id)" class="btnDelete"><i class="material-icon-action">delete</i></a>
 		      				&nbsp;&nbsp;&nbsp;
@@ -79,7 +79,7 @@
                 <th data-field="due_date"><center>Date of Completion</center></th>
             </tr>
           </thead>
-          <tbody ng-controller="displayTaskCtrl">
+          <tbody>
           <tr ng-repeat="task in tasks"  ng-show="{{task.finished}}">
 		        <td  class="taskName"> {{task.name}}</td>
 		         <td><center> {{task.phase}} </center></td>

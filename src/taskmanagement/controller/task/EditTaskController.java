@@ -27,7 +27,7 @@ public class EditTaskController extends Controller {
         TaskDto dto = new TaskDto();
         JSONObject json = null;
         try {
-            json = new JSONObject((String)this.requestScope("data"));
+            json = new JSONObject((String)this.request.getReader().readLine());
             
             dto.setId(json.getLong("id"));
             dto.setName(json.getString("name"));

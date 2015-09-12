@@ -26,8 +26,8 @@ public class TaskToEditController extends Controller {
         TaskDto dto = new TaskDto();
         JSONObject json = null;
         try {
-            json = new JSONObject((String)this.requestScope("data"));
-            
+            json = new JSONObject((String)this.request.getReader().readLine());
+            System.out.println("json: " +json);
             dto.setId(json.getLong("id"));
             /*dto.setTaskName(json.getString("name"));
             dto.setName(json.getString("name"));
@@ -51,21 +51,22 @@ public class TaskToEditController extends Controller {
             //if () {
                 //dto.getErrorList().add("Some fields are blank. Please supply them.");
             //} else {
-                //dto = this.service.getTask(dto);
+                dto = this.service.selectTask(dto);
             //}
-            
+                json.put("name", dto.getName());
+                json.put("phase", dto.getPhase());
+                json.put("estHours", dto.getEstHours());
+                json.put("startDate", dto.getStartDate());
+                json.put("dueDate", dto.getDueDate());
+                System.out.println("TASK TO EDIT");
           //  dto = this.service.editTask(dto);
         } catch (Exception e) {
+            System.out.println(e.getMessage());
          //   dto.getErrorList().add("Server controller error: " + e.getMessage());
             if (json == null) {
                 json = new JSONObject();
             }
         }
-        json.put("name", dto.getName());
-        json.put("phase", dto.getPhase());
-        json.put("estHours", dto.getEstHours());
-        json.put("startDate", dto.getStartDate());
-        json.put("dueDate", dto.getDueDate());
         json.put("errorList", dto.getErrorList());
         response.setContentType("application/json");
         response.getWriter().write(json.toString());

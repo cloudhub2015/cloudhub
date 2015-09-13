@@ -24,7 +24,10 @@ public class EditTaskController extends Controller {
      * Holds the method updateTask()
      */
     private TaskService service = new TaskService();
-    
+    /**
+     * The TaskMeta to use
+     * Holds the method get()
+     */
     private TaskMeta meta = TaskMeta.get();
     
     @Override
@@ -44,7 +47,6 @@ public class EditTaskController extends Controller {
         } else if(isPost()) {
             try {
                 json = new JSONObject((String)this.request.getReader().readLine());
-                System.out.print(json.getString("name"));
                 dto.setName(json.getString("name"));
                 dto.setPhase(json.getString("phase"));
                 dto.setEstHours(json.getDouble("estHours"));

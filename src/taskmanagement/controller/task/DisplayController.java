@@ -31,9 +31,7 @@ public class DisplayController extends Controller {
     public Navigation run() throws Exception {
         TaskClientDto taskList = new TaskClientDto();
         JSONObject json = new JSONObject();
-        try {
-            //System.out.print(sessionScope("userId"));
-            
+        try {            
             if(service.getTaskList(Long.parseLong(sessionScope("userId").toString())).equals(null)){
                 taskList.getErrorList().add("No tasks found");
             } else {    

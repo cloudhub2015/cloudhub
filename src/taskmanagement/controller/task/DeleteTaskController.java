@@ -37,7 +37,7 @@ public class DeleteTaskController extends Controller {
             dto = this.service.deleteTask(dto);
             
         } catch (Exception e) {
-           // dto.getErrorList().add("Server controller error: " + e.getMessage());
+            dto.getErrorList().add("Server controller error: " + e.getMessage());
             System.out.println(e.getMessage());
             if (json == null) {
                 json = new JSONObject();

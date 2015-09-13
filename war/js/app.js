@@ -10,7 +10,7 @@ app.config(['$routeProvider', function ($routeProvider) {
 			'templateUrl': '/taskstoday/todays_task.html',
 			'controller': 'TodaysTaskController'
 		})
-		.when('/tasks/today/:id', {
+		.when('/tasks/today/:taskId', {
 			'templateUrl': '/taskstoday/update_task.html',
 			'controller': 'UpdateTaskController'
 		})
@@ -96,9 +96,39 @@ app.controller('TodaysTaskController', ['$scope', '$http', function($scope, $htt
     	$scope.tasks = response.taskList;
     	$scope.firstName = response.firstName;
     });
+    
+    $scope.updateTask = function(task) {
+    	window.location = window.location.href.split('#')[0] + '#/tasks/today/' + task.id;
+    }
 }]);
-app.controller('UpdateTaskController', ['$scope', function($scope) {
-	alert('inside UpdateTaskController');
+app.controller('UpdateTaskController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+	var taskId = $routeParams.taskId;
+
+    $http({
+        url : '/taskstoday/editTask', 
+        method : 'GET',
+        params : {id : taskId}
+    }).success(function (response) {
+        var task = response;
+        $scope.taskName = task.name;
+        $scope.taskPhase = task.phase;
+    });
+    /*
+    $scope.updateTask = function(){
+    	var data =
+        {
+            id: taskId,
+            name : $scope.taskName,
+            phase : $scope.taskPhase,
+            estHours : $scope.taskEstHours,
+            startDate : $scope.taskStartDate,
+            dueDate : $scope.taskDueDate
+        };
+    	$http.post("/task/editTask", data)
+    	.success(function (data, status, headers, config) {
+            window.location = window.location.href.split('#')[0] + '#/tasks';
+        });
+    }*/
 }]);
 app.controller('CreateTaskController', ['$scope', '$http', function($scope, $http) {
 	$scope.taskName ="";
@@ -137,7 +167,7 @@ app.controller('CreateTaskController', ['$scope', '$http', function($scope, $htt
         });
     };
 }]);
-app.controller('EditTaskController', ['$scope', '$http', '$httpParamSerializerJQLike', '$routeParams', function($scope, $http, $httpParamSerializerJQLike, $routeParams) {
+app.controller('EditTaskController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
 	var taskId = $routeParams.taskId;
 
     $http({

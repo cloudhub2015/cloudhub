@@ -24,14 +24,14 @@
             </tr>
           </thead>
           <tbody>
-           <tr ng-repeat="x in tasks | filter: $.search">  
-           			<td>{{x.name}}</td> 
-				     <td> {{x.phase}} </td>
-				     <td><center> {{x.estHours}} hrs</center></td>
-				     <td> {{x.startDate}} </td>
-				     <td> {{x.dueDate}}</td>
-				     <td><a href="/tasks/today/:id">Update Task</a> </td>
-		  </tr>
+			<tr ng-repeat="task in tasks | filter: $.search">  
+				<td>{{task.name}}</td> 
+				<td> {{task.phase}} </td>
+				<td><center> {{task.estHours}} hrs</center></td>
+				<td> {{task.startDate}} </td>
+				<td> {{task.dueDate}}</td>
+				<td><a href="" ng-click="updateTask(task)">Update Task</a> </td>
+			</tr>
           </tbody>
         </table>
         <br>

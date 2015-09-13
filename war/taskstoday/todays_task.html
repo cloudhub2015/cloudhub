@@ -5,6 +5,7 @@
  * [09/08/2015] 0.01 - David Ramirez   		- Display today's tasks
  * [09/08/2015] 0.02 - Prince Niko Garces   - Search task by name
  * [09/13/2015] 0.03 - Jacquelyn Amaya 		- Update Task and Delete Task functions
+ 											- Added tooltips for icons
 -->
 <div class="container">
   <div class="row">
@@ -38,9 +39,9 @@
 				<td><center>{{task.startDate}}</center></td>
 				<td><center>{{task.dueDate}}</center></td>
 				<td><center>
-					<a href="" ng-click="updateTask(task)" class="btnEdit"><i class="material-icon-action">assignment</i></a>
+					<a href="" ng-click="updateTask(task)" title="Edit Spent Time"><i class="material-icon-action">assignment</i></a>
 					&nbsp;&nbsp;&nbsp;
-					<a  href="" ng-click="deleteTaskToday(task.id)" class="btnDelete"><i class="material-icon-action">delete</i></a>
+					<a  href="" ng-click="deleteTaskToday(task.id)" title="Remove Today's Task"><i class="material-icon-action">delete</i></a>
 					&nbsp;&nbsp;&nbsp;
 				</center>
 				</td>

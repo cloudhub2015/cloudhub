@@ -2,7 +2,13 @@
  * Masterlist page
  * @version 0.01
  * Version History
- * [09/13/2015] 0.01 - Jacquelyn Amaya - Replace Legends with tooltips for icons | Added "Add Task Today" anchor tag | Edit Task function | Added "All" option for filter by phase
+ * [09/08/2015] 0.01 - David Ramirez   		- Display tasks and completed tasks
+ * [09/08/2015] 0.02 - Prince Niko Garces   - Search tasks and filter by phase
+ * [09/13/2015] 0.03 - Jacquelyn Amaya 		- Replace Legends with tooltips for icons 
+ 											- Added "Add Task Today" anchor tag 
+ 											- Edit Task function
+ 											- Added "All" option for filter by phase
+ 											- Display Total Spent Time instead of Estimated Hours
 -->
 <div class="container">
   <div class="row">
@@ -73,7 +79,7 @@
           <tr ng-repeat="task in tasks"  ng-show="{{task.finished}}">
 		        <td  class="taskName"> {{task.name}}</td>
 		         <td><center> {{task.phase}} </center></td>
-		         <td><center> {{task.estHours}} hrs </center></td>
+		         <td><center> {{task.spentHours | number:2}} hrs </center></td>
 		         <td><center> {{task.startDate}}</center></td>
 		         <td><center> {{task.dueDate}}</center></td>
 		  </tr>

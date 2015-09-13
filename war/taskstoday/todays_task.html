@@ -1,8 +1,15 @@
+<!-- REVISION HISTORY
+ * Today's Tasks page
+ * @version 0.01
+ * Version History
+ * [09/08/2015] 0.02 - David Ramirez   - Display today's tasks
+ * [09/13/2015] 0.01 - Jacquelyn Amaya - Update Task and Delete Task functions
+-->
 <div class="container">
   <div class="row">
     <div class="col s12 m9 l10">
       <div id="right" class="section scrollspy">
-        <h2 class="header"><img src="../images/view.jpg" width="5%">&nbsp;&nbsp;Today's Tasks</h2>
+        <h2 class="header"><img src="/images/view.jpg" width="5%">&nbsp;&nbsp;Today's Tasks</h2>
         <div class="row">
         	<div class="input-field col s6">
               <input id="search_bar" type="text" class="validate" ng-model="$.search">
@@ -10,7 +17,6 @@
             </div>
         </div>
         <p class="caption">Here is a list of tasks you have to accomplish within this day.</p>
-		<!-- mod start 0.0.3 -->
          <table class="table_wrapper table_even todays_tasks" id="todays_tasks">
           <thead>
             <p class="caption" style="color: blue;"><b>Today's Tasks</b></p>

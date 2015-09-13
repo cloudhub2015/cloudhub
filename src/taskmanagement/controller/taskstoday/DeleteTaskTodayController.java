@@ -29,8 +29,7 @@ public class DeleteTaskTodayController extends Controller {
         try {
             json = new JSONObject((String)this.request.getReader().readLine());
             dto.setId(json.getLong("id"));
-            dto.setToday(false);
-            dto = this.service.updateTask(dto);
+            dto = this.service.deleteTaskToday(dto);
         } catch (Exception e) {
             dto.getErrorList().add("Server controller error: " + e.getMessage());
             if (json == null) {

@@ -127,7 +127,7 @@ app.controller('TodaysTaskController', ['$scope', '$http', function($scope, $htt
         };
         $http.post("/taskstoday/deleteTaskToday", data)
         .success(function(data, status) {
-            console.log(data);
+        	console.log(data.id);
         	if(data.errorList.length == 0) {
 				alert("Task has been successfully removed from Today's Tasks");
 				location.reload(true);
@@ -154,7 +154,7 @@ app.controller('UpdateTaskController', ['$scope', '$http', '$routeParams', funct
         var task = response;
         $scope.taskName = task.name;
         $scope.taskPhase = task.phase;
-        $scope.taskSpentTime = task.spentHours;
+        $scope.taskSpentHours = task.spentHours;
         $scope.taskStatus = "Pending";
     });
     
@@ -211,6 +211,14 @@ app.controller('CreateTaskController', ['$scope', '$http', function($scope, $htt
         .error(function(data, status, headers, config) {
         	
         });
+    };
+    
+    $scope.clearFields = function(){
+    	$scope.taskName ="";
+        $scope.taskPhase ="";
+        $scope.taskEstHours ="";
+        $scope.taskStartDate ="";
+        $scope.taskDueDate ="";
     };
 }]);
 app.controller('EditTaskController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {

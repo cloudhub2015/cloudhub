@@ -1,15 +1,19 @@
+<!-- REVISION HISTORY
+ * Create Task page
+ * @version 0.01
+ * Version History
+ * [09/13/2015] 0.01 - Jacquelyn Amaya - Clear Fields function
+-->
 <div class="container">
   <div class="row">
     <div class="col s12 m9 l10">
       <div id="right" class="section scrollspy">
-        <h2 class="header"><img src="../images/add.jpg" width="5%">&nbsp;&nbsp;Create Task</h2>
-        <p class="caption">Complete all needed information to add task.
+        <h2 class="header"><img src="/images/add.jpg" width="5%">&nbsp;&nbsp;Create Task</h2>
+        <p class="caption">Complete all needed information to add task.</p>
           <div class="row">
             <form class="col s12">
               <div class="row">
-              <!-- 0.0.1 mod start -->
                 <div class="input-field col s6">
-                <!-- 0.0.1 end start -->
                   <input name="name" type="text" class="validate" id="txtName" ng-model="taskName">
                   <label class="active" for="task_name">Task Name</label>
                 </div>
@@ -52,10 +56,11 @@
              <a class="waves-effect waves-light btn" id="btnCreateTask" ng-click="sendPost()"><i class="material-icon left">note_add</i>Create Task</a>
              <!-- <button class="btn waves-effect waves-light" type="submit"  value="create_task" id="btnCreateTask"><i class="material-icon left">note_add</i>Create Task</button> -->
               &nbsp;&nbsp;&nbsp;
-              <button class="waves-effect waves-light btn" name="clearField" value="Cancel"><i class="material-icon left" id="btnClearAllInfo">clear_all</i>Clear Fields</button>
+              <button ng-click="clearFields()" class="waves-effect waves-light btn" name="clearField" value="Cancel"><i class="material-icon left" id="btnClearAllInfo">clear_all</i>Clear Fields</button>
             </form>
           </div>
-        </p>
         <br>
+      </div>
+    </div>
   </div>
 </div>

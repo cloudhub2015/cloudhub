@@ -105,6 +105,60 @@ public class TaskDao {
     }
     
     /**
+     * Method used to set isToday attribute of task to false
+     * @return boolean
+     */
+    public boolean deleteTodaysTask(Long id) {
+        boolean result=true;
+        TaskMeta t = new TaskMeta();
+        Task task = new Task();
+        Query.Filter mainFilter = new Query.FilterPredicate("id", FilterOperator.EQUAL, id);
+        
+        try {
+            task = Datastore.query(t).filter(mainFilter).asSingle();
+            
+            if (task != null) {
+                Transaction tx = Datastore.beginTransaction();
+                task.setToday(false);
+                Datastore.put(task);
+                tx.commit();
+            } else {
+                result = false;
+            }
+        } catch (Exception e) {
+            result = false;
+        }
+        return result;
+    }
+    
+    /**
+     * Method used to update today's task
+     * @return boolean
+     */
+    public boolean updateTaskToday(Task taskModel) {
+        boolean result = true;
+        TaskMeta tm = new TaskMeta();
+        FilterCriterion mainFilter = tm.id.equal(taskModel.getId());
+
+        try {
+            Task originalTaskModel = Datastore.query(tm).filter(mainFilter).asSingle();
+            if (originalTaskModel != null) {
+                originalTaskModel.setSpentHours(originalTaskModel.getSpentHours() + taskModel.getSpentHours());
+                originalTaskModel.setFinished(taskModel.isFinished());
+                originalTaskModel.setPending(taskModel.isPending());
+                Transaction tx = Datastore.beginTransaction();
+                Datastore.put(originalTaskModel);
+                tx.commit();
+            } else {
+                result = false;
+            }
+        } catch (Exception e) {
+            result = false;
+        }
+        return result;
+    }
+    
+    /**
      * Method used to retrieve tasks searched by the client.
      * @return List<Task> - list of tasks.
      */

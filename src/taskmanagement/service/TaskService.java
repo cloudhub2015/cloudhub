@@ -276,6 +276,40 @@ public class TaskService {
 
         return input;
     }
+    
+    /**
+     * Method used to delete a today's task
+     * @param input - task to be deleted
+     * @return TaskDto - if transaction was unsuccessful, contains list of errors.
+     */
+    public TaskDto deleteTaskToday(TaskDto input) {
+        if(!this.dao.deleteTodaysTask(input.getId())){
+            input.setErrorList(new ArrayList<String>());
+            input.getErrorList().add("Delete Task Today database error!");
+        }
+
+        return input;
+    }
+    
+    /**
+     * Method used to update today's task
+     * @param input 
+     * @return TaskDto - if transaction was unsuccessful, contains list of errors.
+     */
+    public TaskDto updateTaskToday(TaskDto input) {
+        Task task = new Task();
+        task.setId(input.getId());
+        task.setSpentHours(task.getSpentHours() + input.getSpentHours());
+        task.setFinished(input.isFinished());
+        task.setPending(input.isPending());
+        
+        if(!this.dao.updateTaskToday(task)){
+            input.setErrorList(new ArrayList<String>());
+            input.getErrorList().add("Update Task Todaydatabase error!");
+        }
+
+        return input;
+    }
 /**
  * --------------------------------------------------------------------
  * For Tasks Today Controllers

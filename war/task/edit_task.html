@@ -1,56 +1,61 @@
+<!-- REVISION HISTORY
+ * Edit task from Masterlist page
+ * @version 0.01
+ * Version History
+ * [09/13/2015] 0.01 - Jacquelyn Amaya - Update Task function
+-->
 <div class="container">
   <div class="row">
     <div class="col s12 m9 l10">
       <div id="right" class="section scrollspy">
-        <h2 class="header"><img src="../images/edit.jpg" width="5%">&nbsp;&nbsp;Edit Task Information</h2>
-        <p class="caption">Edit fields to edit task information.
+        <h2 class="header"><img src="/images/edit.jpg" width="5%">&nbsp;&nbsp;Edit Task Information</h2>
+        <p class="caption">Edit fields to edit task information.</p>
           <div class="row">
-            <form class="col s12">
-              <div class="row">
-                <div class="input-field col s6">
-                  <input ng-model="taskName" id="taskName" type="text" class="validate" placeholder="Task Name">
-                </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <input ng-model="taskName" id="taskName" type="text" class="validate" placeholder="Task Name">
               </div>
+            </div>
 
-              <div class="row">
-                <div class="col s6">
-                  <select class="browser-default" id="selectPhase" ng-model="taskPhase">
-                    <option value="" disabled selected>Choose Phase</option>
-                    <option value="Testing">Testing</option>
-                    <option value="Coding">Coding</option>
-                    <option value="Design">Design</option>
-                  </select>
-                </div>
+            <div class="row">
+              <div class="col s6">
+                <select class="browser-default" id="selectPhase" ng-model="taskPhase">
+                  <option value="" disabled selected>Choose Phase</option>
+                  <option value="Testing">Testing</option>
+                  <option value="Coding">Coding</option>
+                  <option value="Design">Design</option>
+                </select>
               </div>
+            </div>
 
-              <div class="row">
-                <div class="input-field col s6">
-                  <input id="estimated_time" type="text" class="validate" ng-model="taskEstHours" placeholder="Estimated Time Allotment">
-                </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="estimated_time" type="text" class="validate" ng-model="taskEstHours" placeholder="Estimated Time Allotment">
               </div>
+            </div>
 
-              <div class="row">
-                <div class="input-field col s6">
-                  <!-- <input id="start_date" type="date" class="datepicker picker__input">
-                <label for="start_date">Start Date</label> -->
-                	<input name="startDate" type="text" id="startDate" class="validate" placeHolder="Start Date" ng-model="taskStartDate"/>
-                </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <!-- <input id="start_date" type="date" class="datepicker picker__input">
+              <label for="start_date">Start Date</label> -->
+              	<input name="startDate" type="text" id="startDate" class="validate" placeHolder="Start Date" ng-model="taskStartDate"/>
               </div>
+            </div>
 
-              <div class="row">
-                <div class="input-field col s6">
-                  <!-- <input id="due_date" type="date" class="datepicker picker__input">
-                 <label for="due_date">Due Date</label> -->
-                 	<input name="dueDate" type="text" id="dueDate" class="validate" placeHolder="Due Date" ng-model="taskDueDate"/>
-                </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <!-- <input id="due_date" type="date" class="datepicker picker__input">
+               <label for="due_date">Due Date</label> -->
+               	<input name="dueDate" type="text" id="dueDate" class="validate" placeHolder="Due Date" ng-model="taskDueDate"/>
               </div>
+            </div>
 
-              <a href="" ng-click="updateTask()" class="waves-effect waves-light btn"><i class="material-icon left">edit</i>Edit Task</a>
-              &nbsp;&nbsp;&nbsp;
-              <a href ="#/tasks" class="waves-effect waves-light btn"><i class="material-icon left">clear_all</i>Go Back to Masterlist</a>
-            </form>
+            <a href="" ng-click="updateTask()" class="waves-effect waves-light btn"><i class="material-icon left">edit</i>Edit Task</a>
+            &nbsp;&nbsp;&nbsp;
+            <a href ="#/tasks" class="waves-effect waves-light btn"><i class="material-icon left">clear_all</i>Go Back to Masterlist</a>
           </div>
-        </p>
         <br>
+      </div>
+    </div>
   </div>
 </div>

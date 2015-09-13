@@ -62,7 +62,6 @@ public class AddTaskTodayController extends Controller {
                 dto.getErrorList().add("The task has already been added to Today's Tasks");
             } else {
                 dto = this.service.addTaskToday(dto);
-                System.out.println("Add Task to Today");
             }
             
         } catch (Exception e) {

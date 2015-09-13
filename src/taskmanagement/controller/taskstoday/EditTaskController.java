@@ -66,8 +66,7 @@ public class EditTaskController extends Controller {
                 else {
                     dto.setFinished(true);
                 }
-                dto = this.service.updateTask(dto);
-                System.out.println("Updated Task");
+                dto = this.service.updateTaskToday(dto);
             } catch (Exception e) {
                 dto.getErrorList().add("Server controller error: " + e.getMessage());
                 if (json == null) {

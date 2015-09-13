@@ -45,8 +45,8 @@ public class TaskDao {
      */
     public Task getTask(long id) {
         TaskMeta taskMeta = new TaskMeta();
-        FilterCriterion mainFilter = taskMeta.id.equal(id);
-        return Datastore.query(taskMeta).filter(mainFilter).asSingle();
+        FilterCriterion taskFilter = taskMeta.id.equal(id);
+        return Datastore.query(taskMeta).filter(taskFilter).asSingle();
     }
     
     /**

@@ -18,7 +18,7 @@ app.config(['$routeProvider', function ($routeProvider) {
 			'templateUrl': '/task/create_task.html',
 			'controller': 'CreateTaskController'
 		})
-		.when('/tasks/displayTaskToEdit/taskid:id', {
+		.when('/tasks/:taskId', {
 			'templateUrl': '/task/edit_task.html',
 			'controller': 'EditTaskController'
 		})
@@ -38,13 +38,11 @@ app.controller('TasksController', ['$scope', '$http', function($scope, $http) {
     	$scope.tasks = response.taskList;
     	$scope.firstName = response.firstName;
     });
-	console.log("TASK CONTROLLER");
 	
 	$scope.deleteTask = function(id) {
 		var data = {
 				id: id
             };
-		console.log("DELETE TASK " +data.json);
         $http.post("/task/deleteTask", data)
         .success(function(data, status) {
             console.log(data);
@@ -61,6 +59,10 @@ app.controller('TasksController', ['$scope', '$http', function($scope, $http) {
         	
         });
     };
+    
+    $scope.editTask = function(task) {
+    	window.location = window.location.href.split('#')[0] + '#/tasks/' + task.id;
+    }
 
     
     $scope.finishTask = function(id) {
@@ -70,7 +72,6 @@ app.controller('TasksController', ['$scope', '$http', function($scope, $http) {
 		console.log("FINISH TASK " +data.id);
         $http.post("/task/completeTask", data)
         .success(function(data, status) {
-            console.log(data);
         	if(data.errorList.length == 0) {
 				alert("Task has been successfully completed");
 				location.reload(true);
@@ -136,36 +137,27 @@ app.controller('CreateTaskController', ['$scope', '$http', function($scope, $htt
         });
     };
 }]);
-app.controller('EditTaskController', ['$scope', '$http', function($scope, $http) {
-/*	$scope.errorDisplay = "";
-	console.log(id+""+document.getElementById(content).value+""+createdDate);
-	var jsonData = {
-			id: id,
-			content: document.getElementById(content).value,
-			createdDate: createdDate
-	};
-	//TODO: Code ajax call for updating tweet, use the tweetClick function as guide.
-	var tweetPromise = $http.post("update", jsonData);
-	tweetPromise.success(function(data, status, headers, config) {
-		if(data.errorList.length == 0) {
-			alert('Entry updated successfully!');
-			$scope.loadTweet();
-		} else {
-			var msg = "";
-			for (var i = 0; i < data.errorList.length; i++)
-				msg += data.errorList[i] + "\n";
-			$scope.errorDisplay = msg;
-		}
-	});
-	tweetPromise.error(function(data, status, headers, config) {
-		alert("error");
-	});*/
+app.controller('EditTaskController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+	var taskId = $routeParams.taskId;
+
+    $http({
+        url : '/task/editTask', 
+        method : 'GET',
+        params : {id : taskId}
+    }).success(function (response) {
+        var task = response;
+        $scope.taskName = task.name;
+        $scope.taskPhase = task.phase;
+        $scope.taskEstHours = task.estHours;
+        $scope.taskStartDate = task.startDate;
+        $scope.taskDueDate = task.dueDate;
+    });
 	
-	$http.get("/task/taskToEdit")
+	/*$http.get("/task/taskToEdit")
 	.success(function(response) {
 		console.log("EDITTASKCONTROLLER " +response);
 		$scope.taskName = response.name;
-    });
+    });*/
 }]);
 app.controller('SettingsController', ['$scope', '$http', function($scope, $http) {
 	$http.get("/user/loggedInUser")

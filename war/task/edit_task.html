@@ -8,14 +8,13 @@
             <form class="col s12">
               <div class="row">
                 <div class="input-field col s6">
-                  <input ng-model="taskName" id="taskName" type="text" class="validate">
-                  <label for="task_name">Task Name</label>
+                  <input ng-model="taskName" id="taskName" type="text" class="validate" placeholder="Task Name">
                 </div>
               </div>
 
               <div class="row">
                 <div class="col s6">
-                  <select class="browser-default" id="selectPhase" ng-model="selectPhase">
+                  <select class="browser-default" id="selectPhase" ng-model="taskPhase">
                     <option value="" disabled selected>Choose Phase</option>
                     <option value="Testing">Testing</option>
                     <option value="Coding">Coding</option>
@@ -26,8 +25,7 @@
 
               <div class="row">
                 <div class="input-field col s6">
-                  <input id="estimated_time" type="text" class="validate" ng-model="estHours">
-                  <label for="estimated_time">Estimated Time Allotment</label>
+                  <input id="estimated_time" type="text" class="validate" ng-model="taskEstHours" placeholder="Estimated Time Allotment">
                 </div>
               </div>
 

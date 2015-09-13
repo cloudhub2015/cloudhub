@@ -171,7 +171,7 @@ public class TaskService {
     /**
      * Method used to retrieve a task.
      * @return Task
-     */
+     
     public TaskDto selectTask(TaskDto input) {
         Task taskModel = new Task();
         taskModel = this.dao.getTask(input.getId());
@@ -186,6 +186,10 @@ public class TaskService {
         input.setPending(taskModel.isPending());
         input.setToday(taskModel.isToday());
         return input;
+    }*/
+    
+    public Task getTask(long id) {
+        return this.dao.getTask(id);
     }
         
     /**
@@ -284,16 +288,8 @@ public class TaskService {
      */
     public TaskDto finishTask(TaskDto input) {
         Task task = new Task();
-        TaskDto selectedTask = selectTask(input);
+        task = getTask(input.getId());
         task.setFinished(true);
-        task.setName(selectedTask.getName());
-        task.setEstHours(selectedTask.getEstHours());
-        task.setPhase(selectedTask.getPhase());
-        task.setStartDate(selectedTask.getStartDate());
-        task.setDueDate(selectedTask.getDueDate());
-        task.setSpentHours(selectedTask.getSpentHours());
-        task.setToday(selectedTask.isToday());
-        task.setPending(selectedTask.isPending());
         
         if(!this.dao.setCompletedTask(input.getId())){
             input.setErrorList(new ArrayList<String>());

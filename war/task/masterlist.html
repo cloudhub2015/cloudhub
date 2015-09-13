@@ -42,19 +42,19 @@
             </tr>
           </thead>
           <tbody> 
-			<tr data-ng-repeat="x in tasks | filter:searchByPhase | filter:search | orderBy:'name'"  ng-hide="{{x.finished}}">
-				<input type="hidden" class="id" name="id" value="{{ x.id }}"/>
-				   <td  class="taskName"><center>{{ x.name }}</center></td>
-				   <td class="phase"><center>{{ x.phase }}</center></td>
-				   <td class="estHours"><center>{{ x.estHours }}</center></td>
-				   <td class="startDate"><center>{{ x.startDate }}</center></td>
-				   <td class="dueDate"><center>{{ x.dueDate }}</center></td>
+			<tr data-ng-repeat="task in tasks | filter:searchByPhase | filter:search | orderBy:'name'"  ng-hide="{{task.finished}}">
+				<input type="hidden" class="id" name="id" value="{{ task.id }}"/>
+				   <td  class="taskName"><center>{{ task.name }}</center></td>
+				   <td class="phase"><center>{{ task.phase }}</center></td>
+				   <td class="estHours"><center>{{ task.estHours }}</center></td>
+				   <td class="startDate"><center>{{ task.startDate }}</center></td>
+				   <td class="dueDate"><center>{{ task.dueDate }}</center></td>
 				   <td>
-		                <a href="" ng-click="finishTask(x.id)" class="btnDone"><i class="material-icon-action">done</i></a>
+		                <a href="" ng-click="finishTask(task.id)" class="btnDone"><i class="material-icon-action">done</i></a>
 		      				&nbsp;&nbsp;&nbsp;
-		      			<a href="#/tasks/displayTaskToEdit/taskid={{x.id}}" class="btnEdit"><i class="material-icon-action">assignment</i></a>
+		      			<a ng-click="editTask(task)" class="btnEdit"><i class="material-icon-action">assignment</i></a>
 		      				&nbsp;&nbsp;&nbsp;
-		      			<a  href="" ng-click="deleteTask(x.id)" class="btnDelete"><i class="material-icon-action">delete</i></a>
+		      			<a  href="" ng-click="deleteTask(task.id)" class="btnDelete"><i class="material-icon-action">delete</i></a>
 		      				&nbsp;&nbsp;&nbsp;
 		              </td>
   			</tr>

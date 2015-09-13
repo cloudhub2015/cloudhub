@@ -137,7 +137,7 @@ app.controller('CreateTaskController', ['$scope', '$http', function($scope, $htt
         });
     };
 }]);
-app.controller('EditTaskController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+app.controller('EditTaskController', ['$scope', '$http', '$httpParamSerializerJQLike', '$routeParams', function($scope, $http, $httpParamSerializerJQLike, $routeParams) {
 	var taskId = $routeParams.taskId;
 
     $http({
@@ -152,12 +152,23 @@ app.controller('EditTaskController', ['$scope', '$http', '$routeParams', functio
         $scope.taskStartDate = task.startDate;
         $scope.taskDueDate = task.dueDate;
     });
-	
-	/*$http.get("/task/taskToEdit")
-	.success(function(response) {
-		console.log("EDITTASKCONTROLLER " +response);
-		$scope.taskName = response.name;
-    });*/
+    
+    $scope.updateTask = function(){
+    	var data =
+        {
+            id: taskId,
+            name : $scope.taskName,
+            phase : $scope.taskPhase,
+            estHours : $scope.taskEstHours,
+            startDate : $scope.taskStartDate,
+            dueDate : $scope.taskDueDate
+        };
+    	$http.post("/task/editTask", data)
+    	.success(function (data, status, headers, config) {
+            window.location = window.location.href.split('#')[0] + '#/tasks';
+        });
+    }
+
 }]);
 app.controller('SettingsController', ['$scope', '$http', function($scope, $http) {
 	$http.get("/user/loggedInUser")

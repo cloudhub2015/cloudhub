@@ -16,6 +16,7 @@ import taskmanagement.service.TaskService;
  * Version History
  * [07/27/2015] 0.01 - Jacquelyn Amaya - Initial codes
  * [08/27/2015] 0.02 - Jacquelyn Amaya - Implemented the function for updating the task using JSON
+ * [09/13/2015] 0.03 - Jacquelyn Amaya - Added conditional statement for "GET" and "PUT" method to display and to edit task, respectively
  */
 public class EditTaskController extends Controller {
     /**
@@ -40,9 +41,10 @@ public class EditTaskController extends Controller {
                     json = new JSONObject(meta.modelToJson(task));
                 }
             }
-        } else if(isPut()) {
+        } else if(isPost()) {
             try {
-                json = new JSONObject((String) this.requestScope("data"));
+                json = new JSONObject((String)this.request.getReader().readLine());
+                System.out.print(json.getString("name"));
                 dto.setName(json.getString("name"));
                 dto.setPhase(json.getString("phase"));
                 dto.setEstHours(json.getDouble("estHours"));
@@ -57,31 +59,7 @@ public class EditTaskController extends Controller {
                     json.put("errorList", dto.getErrorList());
                 }
             }
-            
         }
-        
-        /*
-        try {
-            json = new JSONObject((String)this.request.getReader().readLine());
-            
-            dto.setId(json.getLong("id"));
-            dto.setName(json.getString("name"));
-            dto.setPhase(json.getString("phase"));
-            dto.setEstHours(json.getDouble("estHours"));
-            dto.setStartDate(json.getString("startDate"));
-            dto.setDueDate(json.getString("dueDate"));
-            dto.setSpentHours(json.getDouble("spentHours"));
-            if ((dto.getName() == null) || (dto.getPhase() == null) || (dto.getEstHours() == 0.0) || (dto.getStartDate() == null) || (dto.getDueDate() == null) || (dto.getSpentHours() == 0.0)) {
-                dto.getErrorList().add("Some fields are blank. Please supply them.");
-            } else {
-                dto = this.service.updateTask(dto);
-            }
-        } catch (Exception e) {
-            dto.getErrorList().add("Server controller error: " + e.getMessage());
-            if (json == null) {
-                json = new JSONObject();
-            }
-        }*/
         
         response.getWriter().write(json.toString());
         return null;

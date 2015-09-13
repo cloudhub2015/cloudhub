@@ -23,6 +23,7 @@ import taskmanagement.model.Task;
  * [08/08/2015] 0.03 - Jacquelyn Amaya - Updated addTask function, modified getTaskList method,
  *                                     - Added methods to retrieve today's, pending, and finished tasks
  * [08/17/2015] 0.04 - David Ramirez   - Code Documentation
+ * [09/13/2015] 0.05 - Jacquelyn Amaya - Replaced selectTask method with getTask method to return Task instead of TaskDto
  */
 public class TaskService {
 /**
@@ -169,25 +170,10 @@ public class TaskService {
     }
     
     /**
-     * Method used to retrieve a task.
+     * Method used to retrieve a specific task
+     * @param id
      * @return Task
-     
-    public TaskDto selectTask(TaskDto input) {
-        Task taskModel = new Task();
-        taskModel = this.dao.getTask(input.getId());
-        input.setUserId(taskModel.getUserId());
-        input.setName(taskModel.getName());
-        input.setPhase(taskModel.getPhase());
-        input.setEstHours(taskModel.getEstHours());
-        input.setStartDate(taskModel.getStartDate());
-        input.setDueDate(taskModel.getDueDate());
-        input.setSpentHours(taskModel.getSpentHours());
-        input.setFinished(taskModel.isFinished());
-        input.setPending(taskModel.isPending());
-        input.setToday(taskModel.isToday());
-        return input;
-    }*/
-    
+     */
     public Task getTask(long id) {
         return this.dao.getTask(id);
     }

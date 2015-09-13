@@ -34,12 +34,10 @@ public class EditTaskController extends Controller {
         JSONObject json = null;
         if(isGet()) {
             if(null != requestScope("id")) {
-                System.out.println("Id: " + requestScope("id"));
                 long taskId = asLong("id");
                 Task task = service.getTask(taskId);
                 if(null != task) {
                     json = new JSONObject(meta.modelToJson(task));
-                    System.out.println("Task Name: " + task.getName());
                 }
             }
         } else if(isPut()) {

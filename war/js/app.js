@@ -1,3 +1,15 @@
+/**
+ * AngularJS for Task Management App
+ * @author Jacquelyn Amaya
+ * @version 0.01
+ * [09/08/2015] 0.01 - Janna Tapitha Pedrano - Initial codes | Routes for each link
+ * [09/08/2015] 0.02 - David Ramirez 		 - Display today's tasks and tasks in masterlist page | CreateTaskController
+ * [09/08/2015] 0.03 - Jacquelyn Amaya 		 - SettingsController: display user's information
+ * [09/13/2015] 0.04 - Jacquelyn Amaya 		 - TasksController: addTaskToday(), finishTask(), editTask()
+ * [09/13/2015] 0.05 - Jacquelyn Amaya 		 - TodaysTaskController: updateTask(), deleteTaskToday()
+ * [09/13/2015] 0.06 - Jacquelyn Amaya 		 - UpdateTaskController: display details of the selected task, update today's task
+ * [09/13/2015] 0.07 - Jacquelyn Amaya 		 - EditTaskController: display details of the selected task, edit task in Masterlist
+ */
 var app = angular.module('TaskManagementApp', ['ngRoute']);
 
 app.config(['$routeProvider', function ($routeProvider) {

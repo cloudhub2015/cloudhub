@@ -24,6 +24,7 @@ import taskmanagement.model.Task;
  *                                     - Added methods to retrieve today's, pending, and finished tasks
  * [08/17/2015] 0.04 - David Ramirez   - Code Documentation
  * [09/13/2015] 0.05 - Jacquelyn Amaya - Replaced selectTask method with getTask method to return Task instead of TaskDto
+ *                                     - Added deleteTaskToday() and updateTaskToday() methods
  */
 public class TaskService {
 /**

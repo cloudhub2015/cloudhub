@@ -21,6 +21,7 @@ import taskmanagement.model.Task;
  * Version History
  * [07/27/2015] 0.01 - Jacquelyn Amaya - Initial codes
  * [08/07/2015] 0.02 - Jacquelyn Amaya - Added searchTasks method and methods for taskstoday controllers
+ * [09/13/2015] 0.03 - Jacquelyn Amaya - Added updateTaskToday(), deleteTodaysTask() and setTodaysTask() methods
  */
 public class TaskDao {
 /**

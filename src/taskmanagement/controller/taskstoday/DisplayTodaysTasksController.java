@@ -13,6 +13,7 @@ import taskmanagement.service.TaskService;
  * [07/27/2015] 0.01 - Jacquelyn Amaya - Initial codes
  * [08/08/2015] 0.02 - Jacquelyn Amaya - Implemented display tasks for today using JSON
  * [09/07/2015] 0.03 - Jacquelyn Amaya - Return session attribute for user's first name
+ * [09/13/2015] 0.04 - Jacquelyn Amaya - Removed session attribute for user's first name
  */
 public class DisplayTodaysTasksController extends Controller {
     TaskService service = new TaskService();

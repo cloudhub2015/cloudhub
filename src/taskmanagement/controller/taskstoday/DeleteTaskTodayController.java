@@ -13,12 +13,13 @@ import taskmanagement.service.TaskService;
  * @version 0.01
  * [07/27/2015] 0.01 - Jacquelyn Amaya - Initial codes
  * [08/08/2015] 0.02 - Jacquelyn Amaya - Implemented deleting task for today using JSON
+ * [09/13/2015] 0.03 - Jacquelyn Amaya - Used deleteTaskToday method of the TaskService class
  */
 public class DeleteTaskTodayController extends Controller {
 
     /**
      * The TaskService to use.
-     * Holds the method for adding a task.
+     * Holds the method for deleting today's task
      */
     private TaskService service = new TaskService();
     

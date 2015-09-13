@@ -13,6 +13,10 @@
 * @author Janna Tapitha S. Pedrano
 * @version 0.03
 * @as of July 13,2015 10:37PM
+* Login function with error message if invalid username and password
+* @author Jacquelyn Amaya
+* @version 0.04
+* @as of September 7, 2015
 */
 -->
 
@@ -63,11 +67,9 @@
           <div class="input-field col s4">
             <i class="material-icon prefix">account_circle </i>
             <input id="txtUsername" type="text" class="validate" placeholder="Username">
-            <!--<label for="icon_prefix">Username</label>-->
             <br>
             <i class="material-icon prefix">lock</i>
             <input id="txtPassword" type="password" class="validate" placeholder="Password">
-             <!--<label for="icon_telephone">Password</label>-->
           </div>
         </div>
         <div class="row center">

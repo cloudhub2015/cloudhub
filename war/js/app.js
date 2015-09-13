@@ -250,6 +250,7 @@ app.controller('EditTaskController', ['$scope', '$http', '$routeParams', functio
     });
     
     $scope.updateTask = function(){
+    	
     	var data =
         {
             id: taskId,
@@ -267,10 +268,26 @@ app.controller('EditTaskController', ['$scope', '$http', '$routeParams', functio
 
 }]);
 app.controller('SettingsController', ['$scope', '$http', function($scope, $http) {
+	console.log("SETTINGS CONTROLLER!");
 	$http.get("/user/loggedInUser")
     .success(function(response) {
     	$scope.firstName = response.firstName;
     	$scope.lastName = response.lastName;
     	$scope.username = response.username;
     });
+	
+	$scope.updateSettings = function(){
+		console.log("update USER");
+    	var data =
+        {
+            username: $scope.username,
+            firstName : $scope.firstName,
+            lastName : $scope.lastName,
+            password : $scope.password
+        };
+    	$http.post("/user/loggedInUser", data)
+    	.success(function (data, status, headers, config) {
+            window.location = window.location.href.split('#')[0] + '#/tasks';
+        });
+    }
 }]);

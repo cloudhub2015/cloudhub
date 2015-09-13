@@ -37,6 +37,7 @@ public class AddTaskController extends Controller {
             dto.setEstHours(json.getDouble("estHours"));
             dto.setStartDate(json.getString("startDate"));
             dto.setDueDate(json.getString("dueDate"));
+            dto.setPending(true);
             
             if ((dto.getName() == null) || (dto.getPhase() == null) || (dto.getEstHours() == 0.0) || (dto.getStartDate() == null) || (dto.getDueDate() == null)) {
                 dto.getErrorList().add("Some fields are blank. Please supply them.");

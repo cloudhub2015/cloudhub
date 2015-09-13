@@ -56,7 +56,7 @@ public class TaskService {
         task.setSpentHours(input.getSpentHours());
         task.setFinished(input.isFinished());
         task.setPending(input.isPending());
-        task.setToday(true);
+        task.setToday(input.isToday());
         
         if(!this.dao.saveTask(task)) {
             input.setErrorList(new ArrayList<String>());
@@ -146,23 +146,23 @@ public class TaskService {
         List<Task> taskModels = this.dao.getAllTasks(userId);
         TaskClientDto taskList = new TaskClientDto();
         TaskDto taskDto;
-        checkTodaysTask(userId);
+        //checkTodaysTask(userId);
 
         for (Task task : taskModels) {
-            if(task.isToday()){
-            taskDto = new TaskDto();
-            taskDto.setId(task.getId());
-            taskDto.setUserId(task.getUserId());
-            taskDto.setName(task.getName());
-            taskDto.setPhase(task.getPhase());
-            taskDto.setEstHours(task.getEstHours());
-            taskDto.setStartDate(task.getStartDate());
-            taskDto.setDueDate(task.getDueDate());
-            taskDto.setSpentHours(task.getSpentHours());
-            taskDto.setFinished(task.isFinished());
-            taskDto.setPending(task.isPending());
-            taskDto.setToday(task.isToday());
-            taskList.getTaskList().add(taskDto);
+            if(task.isToday() && !(task.isFinished())){
+                taskDto = new TaskDto();
+                taskDto.setId(task.getId());
+                taskDto.setUserId(task.getUserId());
+                taskDto.setName(task.getName());
+                taskDto.setPhase(task.getPhase());
+                taskDto.setEstHours(task.getEstHours());
+                taskDto.setStartDate(task.getStartDate());
+                taskDto.setDueDate(task.getDueDate());
+                taskDto.setSpentHours(task.getSpentHours());
+                taskDto.setFinished(task.isFinished());
+                taskDto.setPending(task.isPending());
+                taskDto.setToday(task.isToday());
+                taskList.getTaskList().add(taskDto);
             }
         }
 
@@ -251,17 +251,13 @@ public class TaskService {
     }
     /**
      * Method used to set a today's task
-     * @param input - task to delete.
+     * @param input - task to be added to today's tasks.
      * @return TaskDto - if transaction was unsuccessful, contains list of errors.
      */
     public TaskDto addTaskToday(TaskDto input) {
-        Task task = new Task();
-        task.setId(input.getId());
-        task.setToday(input.isToday());
-        
-        if(!this.dao.updateTask(task)){
+        if(!this.dao.setTodaysTask(input.getId())){
             input.setErrorList(new ArrayList<String>());
-            input.getErrorList().add("database error!");
+            input.getErrorList().add("Add Task Today database error!");
         }
 
         return input;
@@ -272,11 +268,7 @@ public class TaskService {
      * @param input - task to be finished.
      * @return TaskDto - if transaction was unsuccessful, contains list of errors.
      */
-    public TaskDto finishTask(TaskDto input) {
-        Task task = new Task();
-        task = getTask(input.getId());
-        task.setFinished(true);
-        
+    public TaskDto finishTask(TaskDto input) {        
         if(!this.dao.setCompletedTask(input.getId())){
             input.setErrorList(new ArrayList<String>());
             input.getErrorList().add("FINISH TASK database error!");

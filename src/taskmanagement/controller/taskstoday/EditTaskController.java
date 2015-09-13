@@ -48,7 +48,6 @@ public class EditTaskController extends Controller {
                 json = new JSONObject((String)this.request.getReader().readLine());
                 
                 dto.setId(json.getLong("id"));
-                dto.setPhase(json.getString("phase"));
                 
                 if (json.getDouble("spentHours") == 0.0) {
                     dto.getErrorList().add("Provide a value for Spent Time field.");
@@ -62,11 +61,13 @@ public class EditTaskController extends Controller {
                 
                 if(json.getString("status").equals("Pending")) {
                     dto.setPending(true);
+                    dto.setToday(true);
                 }
                 else {
                     dto.setFinished(true);
                 }
                 dto = this.service.updateTask(dto);
+                System.out.println("Updated Task");
             } catch (Exception e) {
                 dto.getErrorList().add("Server controller error: " + e.getMessage());
                 if (json == null) {

@@ -24,6 +24,8 @@ public class CompleteTaskController extends Controller {
     
     @Override
     protected Navigation run() throws Exception {
+        response.setContentType("application/json");
+        
         TaskDto dto = new TaskDto();
         JSONObject json = null;
         try {
@@ -32,14 +34,13 @@ public class CompleteTaskController extends Controller {
             dto = this.service.finishTask(dto);
         } catch (Exception e) {
             System.out.println(e.getMessage());
-         //   dto.getErrorList().add("Server controller error: " + e.getMessage());
+            dto.getErrorList().add("Server controller error: " + e.getMessage());
             if (json == null) {
                 json = new JSONObject();
+                json.put("errorList", dto.getErrorList());
             }
         }
-
-        json.put("errorList", dto.getErrorList());
-        response.setContentType("application/json");
+        
         response.getWriter().write(json.toString());
         return null;
     }

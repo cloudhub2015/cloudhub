@@ -57,7 +57,7 @@
 </body>
   <!--  Scripts-->
   
-  <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
+  <script src="/jquery/jquery-2.1.1.min.js"></script>
   <script src="/jquery/jquery-1.8.2.js"></script>
   <script src="/jquery/jquery.ui.effect.js"></script> 
   <script src="/js/materialize.js"></script>

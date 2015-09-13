@@ -64,6 +64,7 @@ public class TaskDao {
             
             if (task != null) {
                 Transaction tx = Datastore.beginTransaction();
+                task.setPending(false);
                 task.setFinished(true);
                 Datastore.put(task);
                 tx.commit();

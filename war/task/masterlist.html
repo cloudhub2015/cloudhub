@@ -3,7 +3,6 @@
     <div class="col s12 m9 l10">
       <div id="right" class="section scrollspy">
         <h2 class="header"><img src="../images/view.jpg" width="5%">&nbsp;&nbsp;List of Tasks</h2>
-        <!-- mod start 0.0.4 -->
         <div class="row">
             <div class="input-field col s6">     
               <input id="search_bar" type="text" class="validate" data-ng-model="search.name">
@@ -18,17 +17,7 @@
                  </select>
             </div>   
         </div>
-        <!-- mod start 0.0.4 -->
         <p class="caption">Here is a list of tasks you have to accomplish.
-				<p><b>Legend:</b> <br/><br/>
-						<i class="material-icon-action">done</i>&nbsp;&nbsp;&nbsp;Done
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<i class="material-icon-action">assignment</i>&nbsp;&nbsp;&nbsp;Edit
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<i class="material-icon-action">delete</i>&nbsp;&nbsp;&nbsp;Delete
-            			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-       			</p>
-      <!-- mod start 0.0.2 -->
       <div class="table_wrapper table_even">
 		  <table class="unfinished_tasks" id="tasks"> <!-- mod start 0.0.2 -->
           <thead>
@@ -44,29 +33,23 @@
           <tbody> 
 			<tr data-ng-repeat="task in tasks | filter:searchByPhase | filter:search | orderBy:'name'"  ng-hide="{{task.finished}}">
 				<input type="hidden" class="id" name="id" value="{{ task.id }}"/>
-				   <td  class="taskName"><center>{{ task.name }}</center></td>
-				   <td class="phase"><center>{{ task.phase }}</center></td>
-				   <td class="estHours"><center>{{ task.estHours }}</center></td>
-				   <td class="startDate"><center>{{ task.startDate }}</center></td>
-				   <td class="dueDate"><center>{{ task.dueDate }}</center></td>
-				   <td>
-		                <a href="" ng-click="finishTask(task.id)" class="btnDone"><i class="material-icon-action">done</i></a>
-		      				&nbsp;&nbsp;&nbsp;
-		      			<a href="" ng-click="editTask(task)" class="btnEdit"><i class="material-icon-action">assignment</i></a>
-		      				&nbsp;&nbsp;&nbsp;
-		      			<a  href="" ng-click="deleteTask(task.id)" class="btnDelete"><i class="material-icon-action">delete</i></a>
-		      				&nbsp;&nbsp;&nbsp;
-		              </td>
+					<td  class="taskName"><center>{{ task.name }}</center></td>
+					<td class="phase"><center>{{ task.phase }}</center></td>
+					<td class="estHours"><center>{{ task.estHours | number : 2}} hrs</center></td>
+					<td class="startDate"><center>{{ task.startDate }}</center></td>
+					<td class="dueDate"><center>{{ task.dueDate }}</center></td>
+					<td>
+						<a href="" ng-click="addTaskToday(task.id)" title="Add to Today's Tasks"><i class="material-icon-action">add</i></a>
+						<a href="" ng-click="finishTask(task.id)" title="Finish Task"><i class="material-icon-action">done</i></a>
+						<a href="" ng-click="editTask(task)" title="Edit Task"><i class="material-icon-action">assignment</i></a>
+						<a  href="" ng-click="deleteTask(task.id)" title="Delete Task"><i class="material-icon-action">delete</i></a>
+					</td>
   			</tr>
 		</tbody>
         </table>
         </div>
-      
-
         <br>
-
-
-        <h2 class="header" style="color: green;"><img src="../images/view.jpg" width="5%">&nbsp;&nbsp;Completed Tasks</h2>
+        <h2 class="header" style="color: green;"><img src="/images/view.jpg" width="5%">&nbsp;&nbsp;Completed Tasks</h2>
         <p class="caption">Here is a list of tasks you have accomplished.
 
           <table class="finished_tasks table_wrapper table_even" id="finished_tasks">

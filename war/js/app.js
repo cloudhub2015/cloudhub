@@ -39,6 +39,51 @@ app.controller('TasksController', ['$scope', '$http', function($scope, $http) {
     	$scope.firstName = response.firstName;
     });
 	
+	$scope.addTaskToday = function(id) {
+		var data = {
+                id: id
+            };
+        $http.post("/taskstoday/addTaskToday", data)
+        .success(function(data, status) {
+        	if(data.errorList.length == 0) {
+				alert("Task has been successfully added to Today's Tasks");
+				window.location = window.location.href.split('#')[0] + '#/tasks/today';
+			} else {
+				var msg = "";
+				for (var i = 0; i < data.errorList.length; i++)
+					msg += data.errorList[i] + "\n";
+				alert("Invalid");
+			}
+        }).error(function(data, status, headers, config) {
+        	
+        });
+    };
+	
+	$scope.finishTask = function(id) {
+		var data = {
+                id: id
+            };
+		
+        $http.post("/task/completeTask", data)
+        .success(function(data, status) {
+        	if(data.errorList.length == 0) {
+				alert("Task has been successfully completed");
+				location.reload(true);
+			} else {
+				var msg = "";
+				for (var i = 0; i < data.errorList.length; i++)
+					msg += data.errorList[i] + "\n";
+				alert("Invalid");
+			}
+        }).error(function(data, status, headers, config) {
+        	
+        });
+    };
+    
+    $scope.editTask = function(task) {
+    	window.location = window.location.href.split('#')[0] + '#/tasks/' + task.id;
+    }; 
+	
 	$scope.deleteTask = function(id) {
 		var data = {
 				id: id
@@ -55,33 +100,8 @@ app.controller('TasksController', ['$scope', '$http', function($scope, $http) {
 					msg += data.errorList[i] + "\n";
 				alert("Invalid");
 			}
-        }).error(function(data, status, headers, config) {
-        	
-        });
-    };
-    
-    $scope.editTask = function(task) {
-    	window.location = window.location.href.split('#')[0] + '#/tasks/' + task.id;
-    }
-
-    
-    $scope.finishTask = function(id) {
-		var data = {
-                id: id
-            };
-		console.log("FINISH TASK " +data.id);
-        $http.post("/task/completeTask", data)
-        .success(function(data, status) {
-        	if(data.errorList.length == 0) {
-				alert("Task has been successfully completed");
-				location.reload(true);
-			} else {
-				var msg = "";
-				for (var i = 0; i < data.errorList.length; i++)
-					msg += data.errorList[i] + "\n";
-				alert("Invalid");
-			}
-        }).error(function(data, status, headers, config) {
+        })
+        .error(function(data, status, headers, config) {
         	
         });
     };
@@ -100,6 +120,28 @@ app.controller('TodaysTaskController', ['$scope', '$http', function($scope, $htt
     $scope.updateTask = function(task) {
     	window.location = window.location.href.split('#')[0] + '#/tasks/today/' + task.id;
     }
+    
+    $scope.deleteTaskToday = function(id){
+    	var data = {
+    		id: id
+        };
+        $http.post("/taskstoday/deleteTaskToday", data)
+        .success(function(data, status) {
+            console.log(data);
+        	if(data.errorList.length == 0) {
+				alert("Task has been successfully removed from Today's Tasks");
+				location.reload(true);
+			} else {
+				var msg = "";
+				for (var i = 0; i < data.errorList.length; i++)
+					msg += data.errorList[i] + "\n";
+				alert("Invalid");
+			}
+        })
+        .error(function(data, status, headers, config) {
+        	
+        });    	
+    }
 }]);
 app.controller('UpdateTaskController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
 	var taskId = $routeParams.taskId;
@@ -112,23 +154,27 @@ app.controller('UpdateTaskController', ['$scope', '$http', '$routeParams', funct
         var task = response;
         $scope.taskName = task.name;
         $scope.taskPhase = task.phase;
+        $scope.taskSpentTime = task.spentHours;
+        $scope.taskStatus = "Pending";
     });
-    /*
-    $scope.updateTask = function(){
-    	var data =
-        {
+    
+    $scope.updateTaskToday = function(){
+    	console.log("Update Task Today function");
+    	var data = {
             id: taskId,
-            name : $scope.taskName,
-            phase : $scope.taskPhase,
-            estHours : $scope.taskEstHours,
-            startDate : $scope.taskStartDate,
-            dueDate : $scope.taskDueDate
+            spentHours : $scope.taskSpentHours,
+            status : $scope.taskStatus
         };
-    	$http.post("/task/editTask", data)
+    	$http.post("/taskstoday/editTask", data)
     	.success(function (data, status, headers, config) {
-            window.location = window.location.href.split('#')[0] + '#/tasks';
+            window.location = window.location.href.split('#')[0] + '#/tasks/today';
         });
-    }*/
+    }
+        
+    $scope.backToTodaysTasks = function(){
+    	window.location = window.location.href.split('#')[0] + '#/tasks/today';
+    	console.log("Back to Todays tasks");
+    }
 }]);
 app.controller('CreateTaskController', ['$scope', '$http', function($scope, $http) {
 	$scope.taskName ="";

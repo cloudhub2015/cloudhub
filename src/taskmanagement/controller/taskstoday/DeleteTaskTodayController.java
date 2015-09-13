@@ -27,8 +27,8 @@ public class DeleteTaskTodayController extends Controller {
         TaskDto dto = new TaskDto();
         JSONObject json = null;
         try {
-            json = new JSONObject((String)this.requestScope("data"));
-
+            json = new JSONObject((String)this.request.getReader().readLine());
+            dto.setId(json.getLong("id"));
             dto.setToday(false);
             dto = this.service.updateTask(dto);
         } catch (Exception e) {

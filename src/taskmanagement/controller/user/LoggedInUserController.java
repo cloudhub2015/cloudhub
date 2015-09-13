@@ -4,13 +4,9 @@ import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 import org.slim3.repackaged.org.json.JSONObject;
 
-import taskmanagement.dto.TaskDto;
 import taskmanagement.dto.UserDto;
-import taskmanagement.meta.TaskMeta;
 import taskmanagement.meta.UserMeta;
-import taskmanagement.model.Task;
 import taskmanagement.model.User;
-import taskmanagement.service.TaskService;
 import taskmanagement.service.UserService;
 /**
  * Controller to put the session attributes for the user
@@ -18,6 +14,7 @@ import taskmanagement.service.UserService;
  * @version 0.02
  * Version History
  * [09/07/2015] 0.01 - Jacquelyn Amaya - Return session attributes for the user's information using JSON
+ * [09/13/2015] 0.02 - Jacquelyn Amaya - Retrieve and update user's information
  */
 public class LoggedInUserController extends Controller {
 
@@ -26,31 +23,29 @@ public class LoggedInUserController extends Controller {
      * Holds the method updateTask()
      */
     private UserService service = new UserService();
+    
     /**
      * The UserMeta to use
      * Holds the method get()
      */
     private UserMeta meta = UserMeta.get();
-    
     @Override
     protected Navigation run() throws Exception {
-        // TODO Auto-generated method stub
+        
         UserDto dto = new UserDto();
         JSONObject json = null;
         
         response.setContentType("application/json");
         
         if(isGet()) {
-            if(null != requestScope("username")) {
-                String userId = asString("username");
-                UserDto user = service.getUser(userId);
-                if(null != user) {
-                    json = new JSONObject(meta.modelToJson(user));
-                }
-            }
-        } else if(isPost()) {
+            long id = Long.parseLong(sessionScope("userId").toString());
+            User user = service.getUser(id);
+            json = new JSONObject(meta.modelToJson(user));
+        } else {
+            
             try {
                 json = new JSONObject((String)this.request.getReader().readLine());
+                dto.setId(Long.parseLong(sessionScope("userId").toString()));
                 dto.setUsername(json.getString("username"));
                 dto.setFirstName(json.getString("firstName"));
                 dto.setLastName(json.getString("lastName"));
@@ -64,12 +59,6 @@ public class LoggedInUserController extends Controller {
                 }
             }
         }
-       /* 
-        json.put("firstName", sessionScope("firstName"));
-        json.put("lastName", sessionScope("lastName"));
-        json.put("username", sessionScope("username"));
-        json.put("userId", sessionScope("userId"));
-        */
         response.getWriter().write(json.toString());
         return null;
     }

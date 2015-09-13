@@ -10,9 +10,7 @@ import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Transaction;
 import com.google.appengine.api.datastore.Query.FilterOperator;
 
-import taskmanagement.meta.TaskMeta;
 import taskmanagement.meta.UserMeta;
-import taskmanagement.model.Task;
 import taskmanagement.model.User;
 
 /**
@@ -21,6 +19,7 @@ import taskmanagement.model.User;
  * @version 0.01 
  * Version History
  * [07/27/2015] 0.01 - Jacquelyn Amaya - Initial codes
+ * [09/13/2015] 0.02 - Jacquelyn Amaya - Code Documentation
  */
 public class UserDao {
     /**
@@ -52,14 +51,16 @@ public class UserDao {
     
     public boolean updateUser(User userModel) {
         boolean result = true;
-        TaskMeta tm = new TaskMeta();
+        UserMeta tm = new UserMeta();
         Query.Filter mainFilter = new Query.FilterPredicate("id", FilterOperator.EQUAL, userModel.getId());
 
         try {
-            Task originalUserModel = Datastore.query(tm).filter(mainFilter).asSingle();
+            User originalUserModel = Datastore.query(tm).filter(mainFilter).asSingle();
             if (originalUserModel != null) {
-          //      originalUserModel.setCreatedDate(userModel.getCreatedDate());
-          //      originalUserModel.setContent(userModel.getContent());
+                originalUserModel.setFirstName(userModel.getFirstName());
+                originalUserModel.setLastName(userModel.getLastName());
+                originalUserModel.setUsername(userModel.getUsername());
+                originalUserModel.setPassword(userModel.getPassword());
                 Transaction tx = Datastore.beginTransaction();
                 Datastore.put(originalUserModel);
                 tx.commit();
@@ -103,6 +104,11 @@ public class UserDao {
         return Datastore.query(t ,parentKey).asList();
     }
     
+    /**
+     * Method used to validate the user
+     * @param userModel
+     * @return boolean result
+     */
     public boolean checkUser(User userModel) {
         boolean result = false;
         UserMeta tm = new UserMeta();
@@ -120,9 +126,25 @@ public class UserDao {
         return result;
     }
     
+    /**
+     * Method used to retrieve user using username
+     * @param username
+     * @return User
+     */
     public User getUser(String username) {
         UserMeta tm = new UserMeta();
         Query.Filter userFilter = new Query.FilterPredicate("username", FilterOperator.EQUAL, username);
+        return Datastore.query(tm).filter(userFilter).asSingle();
+    }
+    
+    /**
+     * Method used to retrieve using id
+     * @param id
+     * @return User
+     */
+    public User getUser(long id) {
+        UserMeta tm = new UserMeta();
+        Query.Filter userFilter = new Query.FilterPredicate("id", FilterOperator.EQUAL, id);
         return Datastore.query(tm).filter(userFilter).asSingle();
     }
 }

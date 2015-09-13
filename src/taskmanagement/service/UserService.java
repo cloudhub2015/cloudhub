@@ -14,6 +14,7 @@ import taskmanagement.model.User;
  * Version History
  * [07/27/2015] 0.01 - Jacquelyn Amaya - Initial codes
  * [08/27/2015] 0.02 - Jacquelyn Amaya - Edited validateUser() method
+ * [09/13/2015] 0.03 - Jacquelyn Amaya - Added getUser() method with id as parameter
  */
 public class UserService {
     /**
@@ -81,6 +82,15 @@ public class UserService {
         userDto.setUsername(user.getUsername());
         userDto.setPassword(user.getPassword());
         return userDto;
+    }
+    
+    /**
+     * Method used to retrieve user using id
+     * @param id
+     * @return User
+     */
+    public User getUser(long id) {
+        return this.dao.getUser(id);
     }
     
     /**

@@ -9,6 +9,7 @@
  * [09/13/2015] 0.05 - Jacquelyn Amaya 		 - TodaysTaskController: updateTask(), deleteTaskToday()
  * [09/13/2015] 0.06 - Jacquelyn Amaya 		 - UpdateTaskController: display details of the selected task, update today's task
  * [09/13/2015] 0.07 - Jacquelyn Amaya 		 - EditTaskController: display details of the selected task, edit task in Masterlist
+ * [09/13/2015] 0.08 - Jacquelyn Amaya 		 - SettingsController: display and update user's information, cancel function
  */
 var app = angular.module('TaskManagementApp', ['ngRoute']);
 
@@ -251,8 +252,7 @@ app.controller('EditTaskController', ['$scope', '$http', '$routeParams', functio
     
     $scope.updateTask = function(){
     	
-    	var data =
-        {
+    	var data = {
             id: taskId,
             name : $scope.taskName,
             phase : $scope.taskPhase,
@@ -264,11 +264,10 @@ app.controller('EditTaskController', ['$scope', '$http', '$routeParams', functio
     	.success(function (data, status, headers, config) {
             window.location = window.location.href.split('#')[0] + '#/tasks';
         });
-    }
+    };
 
 }]);
 app.controller('SettingsController', ['$scope', '$http', function($scope, $http) {
-	console.log("SETTINGS CONTROLLER!");
 	$http.get("/user/loggedInUser")
     .success(function(response) {
     	$scope.firstName = response.firstName;
@@ -278,8 +277,7 @@ app.controller('SettingsController', ['$scope', '$http', function($scope, $http)
 	
 	$scope.updateSettings = function(){
 		console.log("update USER");
-    	var data =
-        {
+    	var data = {
             username: $scope.username,
             firstName : $scope.firstName,
             lastName : $scope.lastName,
@@ -287,7 +285,12 @@ app.controller('SettingsController', ['$scope', '$http', function($scope, $http)
         };
     	$http.post("/user/loggedInUser", data)
     	.success(function (data, status, headers, config) {
-            window.location = window.location.href.split('#')[0] + '#/tasks';
+            alert("User information has been succesfully updated");
+            location.reload(true);
         });
-    }
+    };
+    
+    $scope.cancel = function() {
+    	location.reload(true);
+    };
 }]);

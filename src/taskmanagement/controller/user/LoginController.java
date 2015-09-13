@@ -16,6 +16,7 @@ import taskmanagement.service.UserService;
  * [08/17/2015] 0.02 - David Ramirez - Code documentation
  * [08/27/2015] 0.03 - Jacquelyn Amaya - Implemented the function for logging in using JSON
  * [09/07/2015] 0.04 - Jacquelyn Amaya - Added session attributes for the user's information
+ * [09/07/2015] 0.02 - Jacquelyn Amaya - Removed lastname, username, and password session attributes
  */
 public class LoginController extends Controller {
     /**
@@ -39,8 +40,6 @@ public class LoginController extends Controller {
                 dto = this.service.getUser(dto.getUsername());
                 sessionScope("userId", dto.getId());
                 sessionScope("firstName", dto.getFirstName());
-                sessionScope("lastName", dto.getLastName());
-                sessionScope("username", dto.getUsername());
             }
         } catch (Exception e) {
             dto.getErrorList().add("Server controller error: " + e.getMessage());

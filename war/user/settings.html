@@ -1,42 +1,45 @@
+<!-- REVISION HISTORY
+ * Settings of user
+ * @version 0.01
+ * Version History
+ * [09/13/2015] 0.01 - Jacquelyn Amaya - Display and update user's information | Cancel function
+-->
 <div class="container">
   <div class="row">
     <div class="col s12 m9 l10">
       <div id="right" class="section scrollspy">
-        <h2 class="header"><img src="../images/settings.png" width="5%">&nbsp;&nbsp;Settings</h2>
+        <h2 class="header"><img src="/images/settings.png" width="5%">&nbsp;&nbsp;Settings</h2>
         <p class="caption">View / edit account information.</p>
         
         <div class="row">
             <div class="row">
               <div class="input-field col s6">
-                <input name="name" type="text" class="validate" ng-model="firstName" value="{{ firstName }}" placeholder="First Name">
-                <!-- <label class="active" for="first_name">First Name</label> -->
+                <input name="name" type="text" class="validate" ng-model="firstName" placeholder="First Name">
               </div>
             </div>
             <div class="row">
               <div class="input-field col s6">
-                <input name="name" type="text" class="validate" ng-model="lastName" value="{{ lastName }}" placeholder="Last Name">
-                <!-- <label class="active" for="last_name">Last Name</label> -->
+                <input name="name" type="text" class="validate" ng-model="lastName" placeholder="Last Name">
               </div>
             </div>
             <div class="row">
               <div class="input-field col s6">
-                <input name="name" type="text" class="validate" ng-model="username" value="{{ username }}" placeholder="Username">
-                <!-- <label class="active" for="username">Username</label> -->
+                <input name="name" type="text" class="validate" ng-model="username" placeholder="Username">
               </div>
             </div>
             <div class="row">
               <div class="input-field col s6">
                 <input id ="password" name="name" type="password" ng-model="password" class="validate" placeholder="Password">
-                <!-- <label class="active" for="password">Password</label> -->
               </div>
             </div>
        	</div>
-        <button ngclick="updateSettings()" id="" class="waves-effect waves-light btn"><i class="material-icon left">save</i>Save</button>
+        <button ng-click="updateSettings()" class="waves-effect waves-light btn"><i class="material-icon left">save</i>Save</button>
         &nbsp;&nbsp;&nbsp;
-        <button  id="" class="waves-effect waves-light btn"><i class="material-icon left">cancel</i>Cancel</button>
+        <button ng-click="cancel()" id="" class="waves-effect waves-light btn"><i class="material-icon left">cancel</i>Cancel</button>
        
         <br>
   </div>
+</div>
 </div>
 </div>
 

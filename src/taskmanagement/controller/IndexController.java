@@ -8,15 +8,14 @@ import org.slim3.controller.Navigation;
  * @version 0.02
  * Version History
  * [09/07/2015] 0.01 - Jacquelyn Amaya - Removes session attributes
+ * [09/07/2015] 0.02 - Jacquelyn Amaya - Removed lastname, username, and password session attributes
  */
 public class IndexController extends Controller {
 
     @Override
     public Navigation run() throws Exception {
+        removeSessionScope("userId");
         removeSessionScope("firstName");
-        removeSessionScope("lastName");
-        removeSessionScope("username");
-        removeSessionScope("password");
         return forward("index.jsp");
     }
 }

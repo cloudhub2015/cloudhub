@@ -20,7 +20,7 @@
               <input id="search_bar" type="text" class="validate" data-ng-model="search.name">
               <label for="search_bar"><i class="material-icon-legend left">search</i>Search Task Name</label>
             </div>
-            <div class="col s6">
+            <div class="input-field col s6">
              	 <select class="browser-default" ng-model="searchByPhase">
                  	<option value="" disabled>Filter by Phase</option>
                     <option value="">All</option>
@@ -30,7 +30,6 @@
                  </select>
             </div>   
         </div>
-        <p class="caption">Here is a list of tasks you have to accomplish.
       <div class="table_wrapper table_even">
 		  <table class="unfinished_tasks" id="tasks"> <!-- mod start 0.0.2 -->
           <thead>
@@ -63,7 +62,6 @@
         </div>
         <br>
         <h2 class="header" style="color: green;"><img src="/images/view.jpg" width="5%">&nbsp;&nbsp;Completed Tasks</h2>
-        <p class="caption">Here is a list of tasks you have accomplished.
 
           <table class="finished_tasks table_wrapper table_even" id="finished_tasks">
           <thead>

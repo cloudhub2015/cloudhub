@@ -2,7 +2,7 @@
  * AngularJS for Task Management App
  * @author Jacquelyn Amaya
  * @version 0.01
- * [09/08/2015] 0.01 - Janna Tapitha Pedrano - Initial codes | Routes for each link
+ * [09/08/2015] 0.01 - Janna Tapitha Pedrano - Initial codes | Routes for each link | Skeleton for Controllers
  * [09/08/2015] 0.02 - David Ramirez 		 - Display today's tasks and tasks in masterlist page | CreateTaskController
  * [09/08/2015] 0.03 - Jacquelyn Amaya 		 - SettingsController: display user's information
  * [09/13/2015] 0.04 - Jacquelyn Amaya 		 - TasksController: addTaskToday(), finishTask(), editTask()
@@ -10,7 +10,11 @@
  * [09/13/2015] 0.06 - Jacquelyn Amaya 		 - UpdateTaskController: display details of the selected task, update today's task
  * [09/13/2015] 0.07 - Jacquelyn Amaya 		 - EditTaskController: display details of the selected task, edit task in Masterlist
  * [09/13/2015] 0.08 - Jacquelyn Amaya 		 - SettingsController: display and update user's information, cancel function
+ * [09/15/2015] 0.09 - Janna Tapitha Pedrano - CompletedTasksController
+ * [09/15/2015] 0.10 - Janna Tapitha Pedrano - Set active tabs
  */
+
+
 var app = angular.module('TaskManagementApp', ['ngRoute']);
 
 app.config(['$routeProvider', function ($routeProvider) {
@@ -18,10 +22,17 @@ app.config(['$routeProvider', function ($routeProvider) {
 		.when('/tasks', {
 			'templateUrl': '/task/masterlist.html',
 			'controller': 'TasksController'
+			'activetab': 'tasks'
+		})
+		.when('/tasks/completed', {
+			'templateUrl': '/task/completed_tasks.html',
+			'controller': 'CompletedTasksController'
+			'activetab': 'tasks/completed'
 		})
 		.when('/tasks/today', {
 			'templateUrl': '/taskstoday/todays_task.html',
 			'controller': 'TodaysTaskController'
+			'activetab': 'tasks/today'
 		})
 		.when('/tasks/today/:taskId', {
 			'templateUrl': '/taskstoday/update_task.html',
@@ -30,6 +41,7 @@ app.config(['$routeProvider', function ($routeProvider) {
 		.when('/tasks/add', {
 			'templateUrl': '/task/create_task.html',
 			'controller': 'CreateTaskController'
+			'activetab': 'tasks/add'
 		})
 		.when('/tasks/:taskId', {
 			'templateUrl': '/task/edit_task.html',
@@ -38,6 +50,7 @@ app.config(['$routeProvider', function ($routeProvider) {
 		.when('/user/settings', {
 			'templateUrl': '/user/settings.html',
 			'controller': 'SettingsController'
+			'activetab': 'user/settings'
 		})
 		.otherwise({
 			'redirectTo': '/'
@@ -50,6 +63,7 @@ app.controller('TasksController', ['$scope', '$http', function($scope, $http) {
     .success(function(response) {
     	$scope.tasks = response.taskList;
     	$scope.firstName = response.firstName;
+    	$scope.$route = $route;
     });
 	
 	$scope.addTaskToday = function(id) {
@@ -61,27 +75,6 @@ app.controller('TasksController', ['$scope', '$http', function($scope, $http) {
         	if(data.errorList.length == 0) {
 				alert("Task has been successfully added to Today's Tasks");
 				window.location = window.location.href.split('#')[0] + '#/tasks/today';
-			} else {
-				var msg = "";
-				for (var i = 0; i < data.errorList.length; i++)
-					msg += data.errorList[i] + "\n";
-				alert("Invalid");
-			}
-        }).error(function(data, status, headers, config) {
-        	
-        });
-    };
-	
-	$scope.finishTask = function(id) {
-		var data = {
-                id: id
-            };
-		
-        $http.post("/task/completeTask", data)
-        .success(function(data, status) {
-        	if(data.errorList.length == 0) {
-				alert("Task has been successfully completed");
-				location.reload(true);
 			} else {
 				var msg = "";
 				for (var i = 0; i < data.errorList.length; i++)
@@ -118,6 +111,52 @@ app.controller('TasksController', ['$scope', '$http', function($scope, $http) {
         	
         });
     };
+    $scope.finishTask = function(id) {
+		var data = {
+                id: id
+            };
+        $http.post("/task/completeTask", data)
+        .success(function(data, status) {
+        	if(data.errorList.length == 0) {
+				alert("Task has been successfully completed");
+				location.reload(true);
+			} else {
+				var msg = "";
+				for (var i = 0; i < data.errorList.length; i++)
+					msg += data.errorList[i] + "\n";
+				alert("Invalid");
+			}
+        }).error(function(data, status, headers, config) {
+        	
+        });
+    };
+}]);
+app.controller('CompletedTasksController', ['$scope', '$http', function($scope, $http) {
+	$http.get("/task/display")
+    .success(function(response) {
+    	$scope.tasks = response.taskList;
+    	$scope.firstName = response.firstName;
+    	$scope.$route = $route;
+    });
+    $scope.finishTask = function(id) {
+		var data = {
+                id: id
+            };
+        $http.post("/task/completeTask", data)
+        .success(function(data, status) {
+        	if(data.errorList.length == 0) {
+				alert("Task has been successfully completed");
+				location.reload(true);
+			} else {
+				var msg = "";
+				for (var i = 0; i < data.errorList.length; i++)
+					msg += data.errorList[i] + "\n";
+				alert("Invalid");
+			}
+        }).error(function(data, status, headers, config) {
+        	
+        });
+    };
 }]);
 app.controller('TodaysTaskController', ['$scope', '$http', function($scope, $http) {
 	$scope.check = function(date){
@@ -128,6 +167,7 @@ app.controller('TodaysTaskController', ['$scope', '$http', function($scope, $htt
     .success(function(response) {
     	$scope.tasks = response.taskList;
     	$scope.firstName = response.firstName;
+    	$scope.$route = $route;
     });
     
     $scope.updateTask = function(task) {
@@ -273,6 +313,7 @@ app.controller('SettingsController', ['$scope', '$http', function($scope, $http)
     	$scope.firstName = response.firstName;
     	$scope.lastName = response.lastName;
     	$scope.username = response.username;
+    	$scope.$route = $route;
     });
 	
 	$scope.updateSettings = function(){

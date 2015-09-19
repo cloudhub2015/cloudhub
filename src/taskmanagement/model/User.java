@@ -1,11 +1,19 @@
 package taskmanagement.model;
 
+
+/**
+ * Model for User kind
+ * @author David Ramirez
+ * @version 0.01
+ * Version History
+ * [07/26/2015] 0.01 – David Ramirez – Initial codes
+ **/
+
 import java.io.Serializable;
 
 import com.google.appengine.api.datastore.Key;
 
 import org.slim3.datastore.Attribute;
-import org.slim3.datastore.InverseModelListRef;
 import org.slim3.datastore.Model;
 
 @Model(schemaVersion = 1)

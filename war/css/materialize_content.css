@@ -5822,8 +5822,11 @@ small {
   .btn-floating:before {
     border-radius: 0; }
   .btn-floating.btn-large {
-    width: 55.5px;
-    height: 55.5px; }
+    width: 50.5px;
+    height: 50.5px; 
+    position: relative;
+	margin-right: -130px;
+	margin-top: -50px;}
     .btn-floating.btn-large i {
       line-height: 55.5px; }
 
@@ -6187,18 +6190,18 @@ label {
    Text Inputs + Textarea
 ****************************/
 ::-webkit-input-placeholder {
-  color: #d1d1d1; }
+  color: #d3d3d3; }
 
 :-moz-placeholder {
   /* Firefox 18- */
-  color: #d1d1d1; }
+  color: #d3d3d3; }
 
 ::-moz-placeholder {
   /* Firefox 19+ */
-  color: #d1d1d1; }
+  color: #d3d3d3; }
 
 :-ms-input-placeholder {
-  color: #d1d1d1; }
+  color: #d3d3d3; }
 
 input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea {
   background-color: transparent;

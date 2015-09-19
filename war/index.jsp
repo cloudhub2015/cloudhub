@@ -57,14 +57,14 @@
   </div>
   <!--Form-->
   <div class="container">
-    <div class="row center">
-      <form class="col s12 offset-s4" method="post" action="verifyUser">
+    <div class="my-row center">
+      <form class="my-col my-s12 my-offset-s4" method="post" action="verifyUser">
       	<div class="row center">
       		<div class="col s4 materialize-red-text" id="errorMessage">
       		</div>
       	</div>
-        <div class="row center">
-          <div class="input-field col s4">
+        <div class="my-row center">
+          <div class="input-field my-col my-s4">
             <i class="material-icon prefix">account_circle </i>
             <input id="txtUsername" type="text" class="validate" placeholder="Username">
             <br>
@@ -72,8 +72,8 @@
             <input id="txtPassword" type="password" class="validate" placeholder="Password">
           </div>
         </div>
-        <div class="row center">
-          <div class="col s4">
+        <div class="my-row center">
+          <div class="my-col my-s4">
           	<a id="btnLogin" class="btn-large waves-effect waves-light purple">Log In</a>
           </div>
         </div>

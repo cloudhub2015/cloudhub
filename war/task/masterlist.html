@@ -9,6 +9,10 @@
  											- Edit Task function
  											- Added "All" option for filter by phase
  											- Display Total Spent Time instead of Estimated Hours
+ * [09/15/2015] 0.04 - Janna Tapitha		- Separated screen for List of Tasks and Completed Tasks
+ 											- Aligned the input field for search and the dropdown for filtering phase
+ 											- Added Create New Task button linking to the Create Task Page
+ * [09/15/2015] 0.05 - Jacquelyn Amaya 		- Removed check icon to finish task
 -->
 <div class="container">
   <div class="row">
@@ -29,6 +33,12 @@
                     <option value="Design">Design</option>
                  </select>
             </div>   
+            <div class="col s6">
+				<a class="btn-floating btn-large waves-effect waves-light red right" href="#/tasks/add" title = "Create New Task">
+					<i class="material-icon">add</i>
+				</a>
+				
+        	</div>
         </div>
       <div class="table_wrapper table_even">
 		  <table class="unfinished_tasks" id="tasks"> <!-- mod start 0.0.2 -->
@@ -51,8 +61,7 @@
 					<td class="startDate"><center>{{ task.startDate }}</center></td>
 					<td class="dueDate"><center>{{ task.dueDate }}</center></td>
 					<td>
-						<a href="" ng-click="addTaskToday(task.id)" title="Add to Today's Tasks"><i class="material-icon-action">add</i></a>
-						<a href="" ng-click="finishTask(task.id)" title="Finish Task"><i class="material-icon-action">done</i></a>
+						<a href="" ng-click="addTaskToday(task.id)" title="Add to Pending Tasks"><i class="material-icon-action">add</i></a>
 						<a href="" ng-click="editTask(task)" title="Edit Task"><i class="material-icon-action">assignment</i></a>
 						<a  href="" ng-click="deleteTask(task.id)" title="Delete Task"><i class="material-icon-action">delete</i></a>
 					</td>
@@ -61,29 +70,11 @@
         </table>
         </div>
         <br>
-        <h2 class="header" style="color: green;"><img src="/images/view.jpg" width="5%">&nbsp;&nbsp;Completed Tasks</h2>
-
-          <table class="finished_tasks table_wrapper table_even" id="finished_tasks">
-          <thead>
-            <tr>
-                <th data-field="status"><center>Task Name</center></th>
-                <th data-field="name"><center>Phase</center></th>
-                <th data-field="time_allotment"><center>Total Spent Time</center></th>
-                <th data-field="start_date"><center>Start Date</center></th>
-                <th data-field="due_date"><center>Date of Completion</center></th>
-            </tr>
-          </thead>
-          <tbody>
-          <tr ng-repeat="task in tasks"  ng-show="{{task.finished}}">
-		        <td  class="taskName"> {{task.name}}</td>
-		         <td><center> {{task.phase}} </center></td>
-		         <td><center> {{task.spentHours | number:2}} hrs </center></td>
-		         <td><center> {{task.startDate}}</center></td>
-		         <td><center> {{task.dueDate}}</center></td>
-		  </tr>
-          </tbody>
-          </table>
-           
   </div>
 </div>
+</div>
+</div>
+
+
+
 

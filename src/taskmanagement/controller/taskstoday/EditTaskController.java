@@ -1,5 +1,7 @@
 package taskmanagement.controller.taskstoday;
 
+import java.util.ArrayList;
+
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 import org.slim3.repackaged.org.json.JSONObject;
@@ -15,6 +17,7 @@ import taskmanagement.service.TaskService;
  * Version History
  * [09/05/2015] 0.01 - Jacquelyn Amaya - Implemented the function to display the details of the task to edit
  * [09/13/2015] 0.02 - Jacquelyn Amaya - Added conditional statement for "GET" and "PUT" method to display and to edit task, respectively
+ * [09/15/2015] 0.03 - Jacquelyn Amaya - Added validation for updating spent time
  */
 public class EditTaskController extends Controller {
     /**
@@ -45,6 +48,9 @@ public class EditTaskController extends Controller {
         }
         else if(isPost()) {
             try {
+                if(null == dto.getErrorList()) {
+                    dto.setErrorList(new ArrayList<String>());
+                } 
                 json = new JSONObject((String)this.request.getReader().readLine());
                 
                 dto.setId(json.getLong("id"));
@@ -59,23 +65,22 @@ public class EditTaskController extends Controller {
                     dto.setSpentHours(json.getDouble("spentHours"));
                 }
                 
-                if(json.getString("status").equals("Pending")) {
-                    dto.setPending(true);
-                    dto.setToday(true);
+                if(dto.getSpentHours() <= 8.0) {
+                    dto = this.service.updateTaskToday(dto);
+                } else {
+                    dto.getErrorList().add("Spent Hours should not exceed 8.0 hrs");
                 }
-                else {
-                    dto.setFinished(true);
-                }
-                dto = this.service.updateTaskToday(dto);
+                    
+                
             } catch (Exception e) {
                 dto.getErrorList().add("Server controller error: " + e.getMessage());
                 if (json == null) {
                     json = new JSONObject();
-                    json.put("errorList", dto.getErrorList());
+                    
                 }
             }
         }
-        
+        json.put("errorList", dto.getErrorList());
         response.getWriter().write(json.toString());
         return null;
     }

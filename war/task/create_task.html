@@ -3,6 +3,7 @@
  * @version 0.01
  * Version History
  * [09/13/2015] 0.01 - Jacquelyn Amaya - Clear Fields function
+ * [09/15/2015] 0.02 - Vine Deiparine - Validations
 -->
 <div class="container">
   <div class="row">
@@ -11,50 +12,68 @@
         <h2 class="header"><img src="/images/add.jpg" width="5%">&nbsp;&nbsp;Create Task</h2>
         <p class="caption">Complete all needed information to add task.</p>
           <div class="row">
-            <form class="col s12">
+            <form class="col s12" name="createTask" novalidate ng-submit="sendPost()">
               <div class="row">
                 <div class="input-field col s6">
-                  <input name="name" type="text" class="validate" id="txtName" ng-model="taskName">
+                  <input name="name" type="text" class="validate" id="txtName" ng-model="taskName" ng-minlength=3 ng-maxlength=50 required>
                   <label class="active" for="task_name">Task Name</label>
+                  <div class="error-container" ng-show="(createTask.name.$dirty && createTask.name.$invalid && createTask.submitted) || (createTask.name.$pristine && createTask.name.$invalid && createTask.submitted)">
+                  	<small class="error" ng-show="createTask.name.$error.required" color="red">Task Name is required.</small>
+                  	<small class="error" ng-show="createTask.name.$error.minlength" color="red">Task Name is required to be at least 3 characters.</small>
+                  	<small class="error" ng-show="createTask.name.$error.maxlength" color="red">Task Name cannot be longer than 50 characters.</small>
+                  </div>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col s6">
-                  <select class="browser-default" name="phase" id="selectPhase" ng-model="taskPhase">
+                  <select class="browser-default" name="phase" id="selectPhase" ng-model="taskPhase" required>
                     <option value="" disabled selected>Choose Phase</option>
                     <option value="Testing" name="testing">Testing</option>
                     <option value="Coding" name="coding">Coding</option>
                     <option value="Design" name="design">Design</option>
                   </select>
+                  <div class="error-container" ng-show="(createTask.name.$dirty && createTask.name.$invalid && createTask.submitted) || (createTask.name.$pristine && createTask.name.$invalid && createTask.submitted)">
+                  	<small class="error" ng-show="createTask.phase.$error.required" color="red">Task Phase is required.</small>
+                  </div>
                 </div>
               </div>
 
               <div class="row">
                 <div class="input-field col s6">
-                  <input name="estHours" type="text" id="txtEstHours" class="validate" placeHolder="number of hours" ng-model="taskEstHours">
+                  <input name="estHours" type="number" id="txtEstHours" class="validate" placeHolder="number of hours" ng-model="taskEstHours" required && double />
                   <label class="active" for="txtEstHours" >Estimated Time Allotment</label>
+                  <div class="error-container" ng-show="(createTask.name.$dirty && createTask.name.$invalid && createTask.submitted) || (createTask.name.$pristine && createTask.name.$invalid && createTask.submitted)">
+                  	<small class="error" ng-show="createTask.estHours.$error.required" color="red">Estimated Time allotment is required.</small>
+                  	<small class="error" ng-show="createTask.estHours.$error.integer" color="red">The value is invalid.</small>
+                  </div>
                 </div>
               </div>
 
               <div class="row">
                 <div class="input-field col s6">
                   <!-- <input id="startDate" name="startDate" type="date" class="datepicker picker__input" placeholder="Start Date" ng-model="taskStartDate"> -->
-                  <input name="startDate" type="text" id="startDate" class="validate" placeholder="MM/DD/YYYY" ng-model="taskStartDate"/>
-                <label for="startDate"></label>
+                  <input name="startDate" type="text" id="startDate" class="validate" placeholder="MM/DD/YYYY" ng-model="taskStartDate" required/>
+                  <label for="startDate">Start Date</label>
+                  <div class="error-container" ng-show="(createTask.name.$dirty && createTask.name.$invalid && createTask.submitted) || (createTask.name.$pristine && createTask.name.$invalid && createTask.submitted)">
+                  	<small class="error" ng-show="createTask.startDate.$error.required" color="red">Start Date is required.</small>
+                  </div>
                 </div>
               </div>
 
               <div class="row">
                 <div class="input-field col s6">
                   <!-- <input id="dueDate" name="dueDate" id="dueDate" type="date" class="datepicker picker__input" placeholder="Due Date" ng-model="taskDueDate"> -->
-                  <input name="dueDate" type="text" id="dueDate" class="validate" placeholder="MM/DD/YYYY" ng-model="taskDueDate"/>
-                 <label for="dueDate"></label>
+                  <input name="dueDate" type="text" id="dueDate" class="validate" placeholder="MM/DD/YYYY" ng-model="taskDueDate" required/>
+                 <label for="dueDate">Due Date</label>
+                 <div class="error-container" ng-show="(createTask.name.$dirty && createTask.name.$invalid && createTask.submitted) || (createTask.name.$pristine && createTask.name.$invalid && createTask.submitted)">
+                  	<small class="error" ng-show="createTask.dueDate.$error.required" color="red">Due Date is required.</small>
+                 </div>
                 </div>
               </div>
 
-             <a class="waves-effect waves-light btn" id="btnCreateTask" ng-click="sendPost()"><i class="material-icon left">note_add</i>Create Task</a>
-             <!-- <button class="btn waves-effect waves-light" type="submit"  value="create_task" id="btnCreateTask"><i class="material-icon left">note_add</i>Create Task</button> -->
+             <!-- <a class="waves-effect waves-light btn" id="btnCreateTask" ng-click="sendPost()"><i class="material-icon left">note_add</i>Create Task</a> -->
+             <button class="btn waves-effect waves-light" type="submit" value="create_task" id="btnCreateTask"><i class="material-icon left">note_add</i>Create Task</button>
               &nbsp;&nbsp;&nbsp;
               <button ng-click="clearFields()" class="waves-effect waves-light btn" name="clearField" value="Cancel"><i class="material-icon left" id="btnClearAllInfo">clear_all</i>Clear Fields</button>
             </form>

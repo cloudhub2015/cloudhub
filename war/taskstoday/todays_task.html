@@ -6,12 +6,13 @@
  * [09/08/2015] 0.02 - Prince Niko Garces   - Search task by name
  * [09/13/2015] 0.03 - Jacquelyn Amaya 		- Update Task and Delete Task functions
  											- Added tooltips for icons
+ * [09/15/2015] 0.04 - Jacquelyn Amaya 		- Added check icon to finish task
 -->
 <div class="container">
   <div class="row">
     <div class="col s12 m9 l10">
       <div id="right" class="section scrollspy">
-        <h2 class="header"><img src="/images/view.jpg" width="5%">&nbsp;&nbsp;Today's Tasks</h2>
+        <h2 class="header"><img src="/images/view.jpg" width="5%">&nbsp;&nbsp;Pending Tasks</h2>
         <div class="row">
         	<div class="input-field col s6">
               <input id="search_bar" type="text" class="validate" ng-model="$.search">
@@ -20,7 +21,6 @@
         </div>
          <table class="table_wrapper table_even todays_tasks" id="todays_tasks">
           <thead>
-            <p class="caption" style="color: blue;"><b>Today's Tasks</b></p>
             <tr>
                 <th data-field="status"><center>Task Name</center></th>
                 <th data-field="name"><center>Phase</center></th>
@@ -31,17 +31,16 @@
             </tr>
           </thead>
           <tbody>
-			<tr ng-repeat="task in tasks | filter: $.search">  
+			<tr data-ng-repeat="task in tasks | filter: $.search | orderBy: 'startDate'" ng-hide="{{task.finished}}">  
 				<td><center>{{task.name}}</center></td> 
 				<td><center>{{task.phase}}</center></td>
 				<td><center> {{task.spentHours | number:2}} hrs</center></td>
 				<td><center>{{task.startDate}}</center></td>
 				<td><center>{{task.dueDate}}</center></td>
 				<td><center>
+					<a href="" ng-click="finishTask(task.id)" title="Finish Task"><i class="material-icon-action">done</i></a>
 					<a href="" ng-click="updateTask(task)" title="Edit Spent Time"><i class="material-icon-action">assignment</i></a>
-					&nbsp;&nbsp;&nbsp;
-					<a  href="" ng-click="deleteTaskToday(task.id)" title="Remove Today's Task"><i class="material-icon-action">delete</i></a>
-					&nbsp;&nbsp;&nbsp;
+					<a  href="" ng-click="deleteTaskToday(task.id)" title="Remove Pending Task"><i class="material-icon-action">delete</i></a>
 				</center>
 				</td>
 			</tr>

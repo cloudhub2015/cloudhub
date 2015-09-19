@@ -34,9 +34,48 @@
 .tasklist td {
 	padding: 0px;
 }
+.my-container {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 90%; }
 
-.my-offset-s4 {
-	margin-right: 33.3333%;
-}
+@media only screen and (min-width : 601px) {
+  .my-container {
+    width: 85%; } }
+
+@media only screen and (min-width : 993px) {
+  .my-container {
+    width: 70%; } }
+
+.my-container .my-row {
+  margin-left: -0.75rem;
+  margin-right: -0.75rem; }
+.my-row {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px; }
+.my-row:after {
+    content: "";
+    display: table;
+    clear: both; }
+.my-row .my-col {
+    float: right;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 0.75rem; }  
+    
+.my-row .my-col.my-s12 {
+      width: 100%;
+      margin-right: 0; }
+      
+      .my-row .my-col.my-s4 {
+      width: 33.33333%;
+      margin-left: 0; }
+      
+.my-row .my-col.my-offset-s4 {
+      margin-right: 33.33333%; } 
+      
+          
 
 /**Mod 0.2 End**/

@@ -47,10 +47,11 @@ public class AddTaskTodayController extends Controller {
             dto.getErrorList().add("Server controller error: " + e.getMessage());
             if (json == null) {
                 json = new JSONObject();
-                json.put("errorList", dto.getErrorList());
+                
             }
         }
-
+        
+        json.put("errorList", dto.getErrorList());
         response.getWriter().write(json.toString());
         return null;
     }

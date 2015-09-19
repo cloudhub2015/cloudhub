@@ -1,7 +1,10 @@
 package taskmanagement.controller.task;
 
+import java.io.IOException;
+
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
+import org.slim3.repackaged.org.json.JSONException;
 import org.slim3.repackaged.org.json.JSONObject;
 import taskmanagement.dto.TaskDto;
 import taskmanagement.service.TaskService;
@@ -23,7 +26,7 @@ public class AddTaskController extends Controller {
     private TaskService service = new TaskService();
     
     @Override
-    public Navigation run() throws Exception {
+    public Navigation run()  {
         TaskDto dto = new TaskDto();
         JSONObject json = null;
        
@@ -45,14 +48,21 @@ public class AddTaskController extends Controller {
                 dto = this.service.addTask(dto);
             }
         } catch (Exception e) {
-            //dto.getErrorList().add("Server controller error: " + e.getMessage());
+            dto.getErrorList().add("Server controller error: " + "Task Already Added");
             if (json == null) {
                 json = new JSONObject();
             }
         }
-        json.put("errorList", dto.getErrorList());
-        response.setContentType("application/json");
-        response.getWriter().write(json.toString());
+        try {
+            json.put("errorList", dto.getErrorList());
+            response.setContentType("application/json");
+            response.getWriter().write(json.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 }

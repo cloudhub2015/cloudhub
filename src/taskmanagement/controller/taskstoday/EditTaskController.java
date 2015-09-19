@@ -31,6 +31,8 @@ public class EditTaskController extends Controller {
      */
     private TaskMeta meta = TaskMeta.get();
     
+    private final double MAX_TASK_HOURS_PER_DAY = 8;
+    
     @Override
     protected Navigation run() throws Exception {
         response.setContentType("application/json");
@@ -59,13 +61,13 @@ public class EditTaskController extends Controller {
                     dto.getErrorList().add("Provide a value for Spent Time field.");
                 } else if(json.getDouble("spentHours") <= 0.0){
                     dto.getErrorList().add("Spent time should not be less than or equal to 0.0 hrs");
-                } else if(json.getDouble("spentHours") > 8.0){
+                } else if(json.getDouble("spentHours") > MAX_TASK_HOURS_PER_DAY){
                     dto.getErrorList().add("Spent time should not exceed 8.0 hrs");
                 } else {
                     dto.setSpentHours(json.getDouble("spentHours"));
                 }
                 
-                if(dto.getSpentHours() <= 8.0) {
+                if(dto.getSpentHours() <= MAX_TASK_HOURS_PER_DAY) {
                     dto = this.service.updateTaskToday(dto);
                 } else {
                     dto.getErrorList().add("Spent Hours should not exceed 8.0 hrs");

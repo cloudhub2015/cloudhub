@@ -10,5 +10,4 @@ public class CreateTaskController extends Controller {
         // TODO Auto-generated method stub
         return forward("create_task.jsp");
     }
-
 }

@@ -42,12 +42,24 @@ public class TaskDao {
     
     /**
      * Method used to retrieve a task to edit
+     * @param id - get task by ID
      * @return Task
      */
     public Task getTask(long id) {
         TaskMeta taskMeta = new TaskMeta();
         FilterCriterion taskFilter = taskMeta.id.equal(id);
         return Datastore.query(taskMeta).filter(taskFilter).asSingle();
+    }
+    
+    /**
+     * Method used to retrieve a task to edit
+     * @param name - get Task by name
+     * @return Task
+     */
+    public Task getTask(String name) {
+        TaskMeta taskMeta = new TaskMeta();
+        Query.Filter mainFilter = new Query.FilterPredicate("name", FilterOperator.EQUAL, name);
+        return Datastore.query(taskMeta).filter(mainFilter).asSingle();
     }
     
     /**
@@ -174,9 +186,10 @@ public class TaskDao {
      * @param taskModel - task to be saved
      * @return Boolean - true, if task is saved; otherwise, false.
      */
-    public boolean saveTask(Task taskModel) {
+    public boolean saveTask(Task taskModel) throws Exception{
         boolean result = true;
         try {
+            if(getTask(taskModel.getName()) == null){
             Transaction tx = Datastore.beginTransaction();
             //Manually allocate key
             Key key = Datastore.allocateId(KeyFactory.createKey("Account", "Default"), "Task");
@@ -184,6 +197,10 @@ public class TaskDao {
             taskModel.setId(key.getId());
             Datastore.put(taskModel);
             tx.commit();
+            }
+            
+            else
+                throw new Exception("Task Already Added");
         } catch (Exception e) {
             result = false;
         }

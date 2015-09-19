@@ -253,7 +253,7 @@ app.controller('CreateTaskController', ['$scope', '$http', function($scope, $htt
 				}
 	        })
 	        .error(function(data, status, headers, config) {
-	        	
+	        	alert("Task already exists!");
 	        });
     	} else {
     		$scope.createTask.submitted = true;

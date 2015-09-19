@@ -1,8 +1,5 @@
 package taskmanagement.service;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -36,33 +33,35 @@ public class TaskService {
      * The TaskDao to use.
      * Holds the method for transacting with the datastore.
      */
-    TaskDao dao = new TaskDao();
+    private TaskDao dao = new TaskDao();
     
     
+
     /**
      * Method used to add a task.
      * @param input - taskDto to add.
      * @return TaskDto - if transaction was unsuccessful, contains list of errors.
+     * @throws Exception 
      */
-    public TaskDto addTask(TaskDto input) {
+    public TaskDto addTask(TaskDto input) throws Exception {
         Task task = new Task();
-        
-        task.setId(input.getId());
-        task.setUserId(input.getUserId());
-        task.setName(input.getName());
-        task.setPhase(input.getPhase());
-        task.setEstHours(input.getEstHours());
-        task.setStartDate(input.getStartDate());
-        task.setDueDate(input.getDueDate());
-        task.setSpentHours(input.getSpentHours());
-        task.setFinished(input.isFinished());
-        task.setPending(input.isPending());
-        task.setToday(input.isToday());
-        
-        if(!this.dao.saveTask(task)) {
-            input.setErrorList(new ArrayList<String>());
-            input.getErrorList().add("database error!");
-        }
+
+            task.setId(input.getId());
+            task.setUserId(input.getUserId());
+            task.setName(input.getName());
+            task.setPhase(input.getPhase());
+            task.setEstHours(input.getEstHours());
+            task.setStartDate(input.getStartDate());
+            task.setDueDate(input.getDueDate());
+            task.setSpentHours(input.getSpentHours());
+            task.setFinished(input.isFinished());
+            task.setPending(input.isPending());
+            task.setToday(input.isToday());
+            
+            if(!this.dao.saveTask(task)) {
+                input.setErrorList(new ArrayList<String>());
+                input.getErrorList().add("Task Already Added");
+            }
         return input;
     }
 
@@ -111,35 +110,6 @@ public class TaskService {
     }
     
     /**
-     * Method used to check list of unfinished tasks.
-     * @return void
-     */
-    public void checkTodaysTask(long userId) {
-        List<Task> taskModels = this.dao.getAllTasks(userId);
-        TaskClientDto taskList = new TaskClientDto();
-        Date today = new Date();
-        today = this.trim(today);
-        for (Task task : taskModels) {      
-            Date start = null;
-            Date due = null;
-            DateFormat df = new SimpleDateFormat("mm/dd/yyyy"); 
-            //System.out.println("TODAY: " + today.toString());
-            try {
-                start = df.parse(task.getStartDate());
-                //System.out.println("START: " + start.toString());
-                due = df.parse(task.getDueDate());
-                //System.out.println("DUE: " + due.toString());
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            //System.out.println("CONDITION: " +(today.equals(start) && today.equals(due) || (today.after(start) && today.before(due))));
-            if((today.equals(start) && today.equals(due) || (today.after(start) && today.before(due))) && !this.dao.setTodaysTask(task.getId())){
-                taskList.setErrorList(new ArrayList<String>());
-                taskList.getErrorList().add("Todays Task: database error!");
-            }
-        }
-    }
-    /**
      * Method used to retrieve list of todays tasks.
      * @return List<Task> - list of Tasks.
      */
@@ -147,8 +117,7 @@ public class TaskService {
         List<Task> taskModels = this.dao.getAllTasks(userId);
         TaskClientDto taskList = new TaskClientDto();
         TaskDto taskDto;
-        //checkTodaysTask(userId);
-
+        
         for (Task task : taskModels) {
             if(task.isToday() && !(task.isFinished())){
                 taskDto = new TaskDto();
@@ -206,6 +175,32 @@ public class TaskService {
 
         return taskList;
     }
+    
+    /**
+     * Method used to retrieve a specific task.
+     * @return List<Task> - list of Tasks.
+     */
+    public Task searchTask(String name) {
+        System.out.println(name+"  aaaHAHHA");
+        Task task = this.dao.getTask(name);
+        Task taskDto = new Task();
+
+            taskDto.setId(task.getId());
+            taskDto.setUserId(task.getUserId());
+            taskDto.setName(task.getName());
+            taskDto.setPhase(task.getPhase());
+            taskDto.setEstHours(task.getEstHours());
+            taskDto.setStartDate(task.getStartDate());
+            taskDto.setDueDate(task.getDueDate());
+            taskDto.setSpentHours(task.getSpentHours());
+            taskDto.setFinished(task.isFinished());
+            taskDto.setPending(task.isPending());
+            taskDto.setToday(task.isToday());
+
+            System.out.println(task+"task     aaaHAHHA");
+        return task;
+    }
+
 
     /**
      * Method used to update a task.
@@ -215,18 +210,19 @@ public class TaskService {
     public TaskDto updateTask(TaskDto input) {
         Task task = new Task();
         task.setId(input.getId());
-        //task.setCreatedDate(Calendar.getInstance().getTime().toString());
         task.setName(input.getName());
         task.setEstHours(input.getEstHours());
         task.setPhase(input.getPhase());
         task.setStartDate(input.getStartDate());
         task.setDueDate(input.getDueDate());
+        
         task.setSpentHours(task.getSpentHours() + input.getSpentHours());
+        System.out.println("TASK GET SPENT HOURS: " + task.getSpentHours());
         task.setFinished(input.isFinished());
         task.setPending(input.isPending());
         task.setToday(input.isToday());
         
-        if(!this.dao.updateTask(task)){
+        if(task.getSpentHours() <= task.getEstHours() && !this.dao.updateTask(task)){
             input.setErrorList(new ArrayList<String>());
             input.getErrorList().add("database error!");
         }

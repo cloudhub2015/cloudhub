@@ -1,5 +1,6 @@
 package taskmanagement.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,7 +27,7 @@ public class TaskDto {
     /*
      *  List of Errors
      */
-    private List<String>  errorList;
+    private List<String>  errorList = new ArrayList<String>();
     /*
      *  Task Name
      */

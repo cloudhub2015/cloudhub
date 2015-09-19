@@ -11,7 +11,7 @@ import org.slim3.repackaged.org.json.JSONException;
 import org.slim3.repackaged.org.json.JSONObject;
 
 /**
- * Utility used to perform certain functions that are not supplied by the framework. 
+ * Library used to perform certain functions that are not supplied by the framework. 
  * @author Nelson Ruiz Jr.
  * @version 0.01 
  * Version History
@@ -21,8 +21,7 @@ import org.slim3.repackaged.org.json.JSONObject;
 public class Util {
     
     /**
-     * Method used to convert a JSONObject into a HashMap.
-     * Uses recursion implementation.
+     * Method used to convert a JSONObject into a Map.
      * @param JSONObject json - JSON to be converted.
      * @return Map<String, Object> - the result Map.
      */
@@ -37,9 +36,9 @@ public class Util {
     }
     
     /**
-     * Method used to push the object into the Map, if the object is a JSONObject.
-     * @param JSONObject json - JSON to be converted.
-     * @return Map<String, Object> - the result Map.
+     * Parse the JSONObject to its equivalent Map
+     * @param JSONObject json - JSON object.
+     * @return Map<String, Object> - Mapped from JSON.
      */
     @SuppressWarnings("unchecked")
     protected static Map<String, Object> toMap(JSONObject object) throws JSONException {
@@ -58,20 +57,19 @@ public class Util {
             
             map.put(key, value);
         }
-        
+       
         return map;
     }
 
     /**
      * Method used to return the list of Objects, if the object is a JSONArray.
-     * @param JSONArray array - JSON to be converted.
+     * @param JSONArray array - JSONArray object.
      * @return List<Object> - the result List.
      */
     protected static List<Object> toList(JSONArray array) throws JSONException {
         List<Object> list = new ArrayList<Object>();
         for(int i = 0; i < array.length(); i++) {
             Object value = array.get(i);
-            
             if (value instanceof JSONArray) {
                 value = toList((JSONArray) value);
             } else if (value instanceof JSONObject) {

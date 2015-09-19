@@ -29,7 +29,8 @@
   <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="../css/materialize_content.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="../material-icons/material-icons.css" rel="stylesheet" type="text/css">
-
+  <link href="../jquery/jquery-ui-1.11.4/jquery-ui.structure.css" rel="stylesheet" type="text/css"/>
+  <link href="../jquery/jquery-ui-1.11.4/jquery-ui.theme.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body>
@@ -53,8 +54,8 @@
 </body>
   <!--  Scripts-->
   
-  <script src="/jquery/jquery-2.1.1.min.js"></script>
   <script src="/jquery/jquery-1.8.2.js"></script>
+  <script src="/jquery/jquery-ui-1.11.4/jquery-ui.js"></script>
   <script src="/jquery/jquery.ui.effect.js"></script> 
   <script src="/js/materialize.js"></script>
   <script src="/js/init.js"></script>
@@ -62,6 +63,7 @@
   <script src="/js/angular-route.js"></script>
   <script src="/js/user.js"></script>
   <script src="/js/app.js"></script>
+  
   
   <script>
     $(function() {

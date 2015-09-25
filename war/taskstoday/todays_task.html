@@ -24,7 +24,7 @@
             <tr>
                 <th data-field="status"><center>Task Name</center></th>
                 <th data-field="name"><center>Phase</center></th>
-                <th data-field="spent_time"><center>Spent Time</center></th>
+                <th data-field="total_spent_time"><center>Total Spent Time</center></th>
                 <th data-field="start_date"><center>Start Date</center></th>
                 <th data-field="due_date"><center>Due Date</center></th>
                 <th data-field="action"><center>Action</center></th>
@@ -39,7 +39,7 @@
 				<td><center>{{task.dueDate}}</center></td>
 				<td><center>
 					<a href="" ng-click="finishTask(task.id)" title="Finish Task"><i class="material-icon-action">done</i></a>
-					<a href="" ng-click="updateTask(task)" title="Edit Spent Time"><i class="material-icon-action">assignment</i></a>
+					<a href="" ng-click="updateTask(task)" title="Log Task"><i class="material-icon-action">assignment</i></a>
 					<a  href="" ng-click="deleteTaskToday(task.id)" title="Remove Pending Task"><i class="material-icon-action">delete</i></a>
 				</center>
 				</td>

@@ -3,6 +3,7 @@
  * @version 0.01
  * Version History
  * [09/08/2015] 0.01 - Janna Tapitha S. Pedrano	- Display all completed tasks
+ * [09/22/2015] 0.02 - Jacquelyn Amaya			- Added Estimated Hours column
 -->
 <div class="container">
   <div class="row">
@@ -20,7 +21,8 @@
             <tr>
                 <th data-field="status"><center>Task Name</center></th>
                 <th data-field="name"><center>Phase</center></th>
-                <th data-field="time_allotment"><center>Total Spent Time</center></th>
+                <th data-field="time_allotment"><center>Estimated Hours</center></th>
+                <th data-field="total_spent_time"><center>Total Spent Time</center></th>
                 <th data-field="start_date"><center>Start Date</center></th>
                 <th data-field="due_date"><center>Date of Completion</center></th>
             </tr>
@@ -29,6 +31,7 @@
           <tr ng-repeat="task in tasks | filter: $.search"  ng-show="{{task.finished}}">
 		        <td  class="taskName"> {{task.name}}</td>
 		         <td><center> {{task.phase}} </center></td>
+		         <td><center> {{task.estHours | number:2}} hrs </center></td>
 		         <td><center> {{task.spentHours | number:2}} hrs </center></td>
 		         <td><center> {{task.startDate}}</center></td>
 		         <td><center> {{task.dueDate}}</center></td>

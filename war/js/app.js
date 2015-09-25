@@ -13,6 +13,7 @@
  * [09/15/2015] 0.09 - Janna Tapitha Pedrano - Defined active tab rootscope. 
  * [09/15/2015] 0.10 - Vine Deiparine		 - Added Validations
  * [09/15/2015] 0.11 - Jacquelyn Amaya		 - Added Validations for updating spent time
+ * [09/22/2015] 0.12 - Jacquelyn Amaya		 - Alert error messages
  */
 var app = angular.module('TaskManagementApp', ['ngRoute']);
 
@@ -74,7 +75,7 @@ app.controller('TasksController', ['$rootScope', '$scope', '$http', function($ro
 				var msg = "";
 				for (var i = 0; i < data.errorList.length; i++)
 					msg += data.errorList[i] + "\n";
-				alert("Invalid");
+				alert(msg);
 			}
         }).error(function(data, status, headers, config) {
         	
@@ -100,7 +101,7 @@ app.controller('TasksController', ['$rootScope', '$scope', '$http', function($ro
 				var msg = "";
 				for (var i = 0; i < data.errorList.length; i++)
 					msg += data.errorList[i] + "\n";
-				alert("Invalid");
+				alert(msg);
 			}
         })
         .error(function(data, status, headers, config) {
@@ -143,7 +144,7 @@ app.controller('TodaysTaskController', ['$rootScope', '$scope', '$http', functio
 				var msg = "";
 				for (var i = 0; i < data.errorList.length; i++)
 					msg += data.errorList[i] + "\n";
-				alert("Invalid");
+				alert(msg);
 			}
         }).error(function(data, status, headers, config) {
         	
@@ -168,7 +169,7 @@ app.controller('TodaysTaskController', ['$rootScope', '$scope', '$http', functio
 				var msg = "";
 				for (var i = 0; i < data.errorList.length; i++)
 					msg += data.errorList[i] + "\n";
-				alert("Invalid");
+				alert(msg);
 			}
         })
         .error(function(data, status, headers, config) {
@@ -187,16 +188,14 @@ app.controller('UpdateTaskController', ['$scope', '$http', '$routeParams', funct
         var task = response;
         $scope.taskName = task.name;
         $scope.taskPhase = task.phase;
-        $scope.taskSpentHours = task.spentHours;
-        $scope.taskStatus = "Pending";
+        $scope.taskSpentHours = 0;
     });
     
     $scope.updateTaskToday = function(){
     	console.log("Update Task Today function");
     	var data = {
             id: taskId,
-            spentHours : $scope.taskSpentHours,
-            status : $scope.taskStatus
+            spentHours : $scope.taskSpentHours
         };
     	$http.post("/taskstoday/editTask", data)
     	.success(function (data, status, headers, config) {

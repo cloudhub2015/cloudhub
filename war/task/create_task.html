@@ -4,6 +4,7 @@
  * Version History
  * [09/13/2015] 0.01 - Jacquelyn Amaya - Clear Fields function
  * [09/15/2015] 0.02 - Vine Deiparine - Validations
+ * [09/20/2015] 0.03 - David Ramirez  - Added datepicker function
 -->
 <div class="container">
   <div class="row">
@@ -18,9 +19,9 @@
                   <input name="name" type="text" class="validate" id="txtName" ng-model="taskName" ng-minlength=3 ng-maxlength=50 required>
                   <label class="active" for="task_name">Task Name</label>
                   <div class="error-container" ng-show="(createTask.name.$dirty && createTask.name.$invalid && createTask.submitted) || (createTask.name.$pristine && createTask.name.$invalid && createTask.submitted)">
-                  	<small class="error" ng-show="createTask.name.$error.required" color="red">Task Name is required.</small>
-                  	<small class="error" ng-show="createTask.name.$error.minlength" color="red">Task Name is required to be at least 3 characters.</small>
-                  	<small class="error" ng-show="createTask.name.$error.maxlength" color="red">Task Name cannot be longer than 50 characters.</small>
+                  	<small class="error" ng-show="createTask.name.$error.required" style="color: red;">Task Name is required.</small>
+                  	<small class="error" ng-show="createTask.name.$error.minlength" style="color: red;">Task Name is required to be at least 3 characters.</small>
+                  	<small class="error" ng-show="createTask.name.$error.maxlength" style="color: red;">Task Name cannot be longer than 50 characters.</small>
                   </div>
                 </div>
               </div>
@@ -33,41 +34,39 @@
                     <option value="Coding" name="coding">Coding</option>
                     <option value="Design" name="design">Design</option>
                   </select>
-                  <div class="error-container" ng-show="(createTask.name.$dirty && createTask.name.$invalid && createTask.submitted) || (createTask.name.$pristine && createTask.name.$invalid && createTask.submitted)">
-                  	<small class="error" ng-show="createTask.phase.$error.required" color="red">Task Phase is required.</small>
+                  <div class="error-container" ng-show="(createTask.phase.$dirty && createTask.phase.$invalid && createTask.submitted) || (createTask.phase.$pristine && createTask.phase.$invalid && createTask.submitted)">
+                  	<small class="error" ng-show="createTask.phase.$error.required" style="color: red;">Task Phase is required.</small>
                   </div>
                 </div>
               </div>
 
               <div class="row">
                 <div class="input-field col s6">
-                  <input name="estHours" type="number" id="txtEstHours" class="validate" placeHolder="number of hours" ng-model="taskEstHours" required && double />
+                  <input name="estHours" type="number" id="txtEstHours" class="validate" placeHolder="number of hours" ng-model="taskEstHours" required integer />
                   <label class="active" for="txtEstHours" >Estimated Time Allotment</label>
-                  <div class="error-container" ng-show="(createTask.name.$dirty && createTask.name.$invalid && createTask.submitted) || (createTask.name.$pristine && createTask.name.$invalid && createTask.submitted)">
-                  	<small class="error" ng-show="createTask.estHours.$error.required" color="red">Estimated Time allotment is required.</small>
-                  	<small class="error" ng-show="createTask.estHours.$error.integer" color="red">The value is invalid.</small>
+                  <div class="error-container" ng-show="(createTask.estHours.$dirty && createTask.estHours.$invalid && createTask.submitted) || (createTask.estHours.$pristine && createTask.estHours.$invalid && createTask.submitted)">
+                  	<small class="error" ng-show="createTask.estHours.$error.required" style="color: red;">Estimated Time allotment is required.</small>
+                  	<small class="error" ng-show="createTask.estHours.$error.integer" style="color: red;">The value is invalid.</small>
                   </div>
                 </div>
               </div>
 
               <div class="row">
                 <div class="input-field col s6">
-                  <!-- <input id="startDate" name="startDate" type="date" class="datepicker picker__input" placeholder="Start Date" ng-model="taskStartDate"> -->
                   <input name="startDate" type="text" id="startDate" class="validate" placeholder="MM/DD/YYYY" ng-model="taskStartDate" required/>
-                  <label for="startDate">Start Date</label>
-                  <div class="error-container" ng-show="(createTask.name.$dirty && createTask.name.$invalid && createTask.submitted) || (createTask.name.$pristine && createTask.name.$invalid && createTask.submitted)">
-                  	<small class="error" ng-show="createTask.startDate.$error.required" color="red">Start Date is required.</small>
+                  <label class="active" for="startDate">Start Date</label>
+                  <div class="error-container" ng-show="(createTask.startDate.$dirty && createTask.startDate.$invalid && createTask.submitted) || (createTask.startDate.$pristine && createTask.startDate.$invalid && createTask.submitted)">
+                  	<small class="error" ng-show="createTask.startDate.$error.required" style="color: red;">Start Date is required.</small>
                   </div>
                 </div>
               </div>
 
               <div class="row">
                 <div class="input-field col s6">
-                  <!-- <input id="dueDate" name="dueDate" id="dueDate" type="date" class="datepicker picker__input" placeholder="Due Date" ng-model="taskDueDate"> -->
                   <input name="dueDate" type="text" id="dueDate" class="validate" placeholder="MM/DD/YYYY" ng-model="taskDueDate" required/>
-                 <label for="dueDate">Due Date</label>
-                 <div class="error-container" ng-show="(createTask.name.$dirty && createTask.name.$invalid && createTask.submitted) || (createTask.name.$pristine && createTask.name.$invalid && createTask.submitted)">
-                  	<small class="error" ng-show="createTask.dueDate.$error.required" color="red">Due Date is required.</small>
+                 <label class="active" for="dueDate">Due Date</label>
+                 <div class="error-container" ng-show="(createTask.dueDate.$dirty && createTask.dueDate.$invalid && createTask.submitted) || (createTask.dueDate.$pristine && createTask.dueDate.$invalid && createTask.submitted)">
+                  	<small class="error" ng-show="createTask.dueDate.$error.required" style="color: red;">Due Date is required.</small>
                  </div>
                 </div>
               </div>

@@ -5,6 +5,7 @@ import org.slim3.controller.Navigation;
 import org.slim3.repackaged.org.json.JSONObject;
 
 import taskmanagement.dto.TaskDto;
+import taskmanagement.model.Task;
 import taskmanagement.service.TaskService;
 
 /**
@@ -13,7 +14,8 @@ import taskmanagement.service.TaskService;
  * @version 0.02
  * Version History
  * [08/27/2015] 0.01 - Jacquelyn Amaya - Set finished attribute of task
- * [08/30/2015] 0.02 - David Ramirez   - Finish task function is now working 
+ * [08/30/2015] 0.02 - David Ramirez   - Finish task function is now working
+ * [09/22/2015] 0.03 - Jacquelyn Amaya - Added error if task has zero spent hours
  */
 public class CompleteTaskController extends Controller {
     /**
@@ -31,7 +33,13 @@ public class CompleteTaskController extends Controller {
         try {
             json = new JSONObject((String)this.request.getReader().readLine());
             dto.setId(json.getLong("id"));
-            dto = this.service.finishTask(dto);
+            Task task = service.getTask(dto.getId());
+            if(task.getSpentHours() != 0.0) {
+                dto = this.service.finishTask(dto);
+            } else {
+                dto.getErrorList().add("You have not set spent hours for this task.");
+            }
+            
         } catch (Exception e) {
             System.out.println(e.getMessage());
             dto.getErrorList().add("Server controller error: " + e.getMessage());

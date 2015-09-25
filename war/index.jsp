@@ -17,6 +17,10 @@
 * @author Jacquelyn Amaya
 * @version 0.04
 * @as of September 7, 2015
+* Fixed width issue
+* @author Nelson Ruiz Jr.
+* @version 0.05
+* @as of September 9, 2015
 */
 -->
 
@@ -59,7 +63,7 @@
   <div class="container">
     <div class="my-row center">
       <form class="my-col my-s12 my-offset-s4" method="post" action="verifyUser">
-      	<div class="row center">
+      	<div class="my-row center">
       		<div class="col s4 materialize-red-text" id="errorMessage">
       		</div>
       	</div>
@@ -87,7 +91,7 @@
       <div class="row">
       </div>
     </div>
-    <div class="footer-copyright">
+    <div class="footer-copyright center">
       <div class="container">Copyright 2015</div>
     </div>
   </footer>

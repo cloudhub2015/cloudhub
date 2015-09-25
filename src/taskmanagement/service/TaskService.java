@@ -60,7 +60,7 @@ public class TaskService {
             
             if(!this.dao.saveTask(task)) {
                 input.setErrorList(new ArrayList<String>());
-                input.getErrorList().add("Task Already Added");
+                input.getErrorList().add("Error: Task Already Added");
             }
         return input;
     }

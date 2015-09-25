@@ -190,13 +190,13 @@ public class TaskDao {
         boolean result = true;
         try {
             if(getTask(taskModel.getName()) == null){
-            Transaction tx = Datastore.beginTransaction();
-            //Manually allocate key
-            Key key = Datastore.allocateId(KeyFactory.createKey("Account", "Default"), "Task");
-            taskModel.setKey(key);
-            taskModel.setId(key.getId());
-            Datastore.put(taskModel);
-            tx.commit();
+                Transaction tx = Datastore.beginTransaction();
+                //Manually allocate key
+                Key key = Datastore.allocateId(KeyFactory.createKey("Account", "Default"), "Task");
+                taskModel.setKey(key);
+                taskModel.setId(key.getId());
+                Datastore.put(taskModel);
+                tx.commit();
             }
             
             else

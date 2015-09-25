@@ -33,8 +33,8 @@
 	                	<input id="task_name" type="text" class="validate" ng-model="taskSpentHours">     
 	                </div>
               	</div>
-              	<div class="row">
-		     		<div  ng-if="errorMessage != null" class="col materialize-red-text" id="errorMessage">
+              	<div ng-if="errorMessage != null" class="row">
+		     		<div class="col materialize-red-text" id="errorMessage">
 		     			{{ errorMessage }}
 		     		</div>
 		     	</div>

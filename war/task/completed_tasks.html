@@ -15,6 +15,15 @@
               <input id="search_bar" type="text" class="validate" ng-model="$.search">
               <label for="search_bar"><i class="material-icon-legend left">search</i>Search Task Name</label>
             </div>
+            <div class="input-field col s6">
+             	 <select class="browser-default" ng-model="searchByPhase">
+                 	<option value="" disabled>Filter by Phase</option>
+                    <option value="">All</option>
+                    <option value="Testing">Testing</option>
+                    <option value="Coding">Coding</option>
+                    <option value="Design">Design</option>
+                 </select>
+            </div>   
         </div>
           <table class="finished_tasks table_wrapper table_even" id="finished_tasks">
           <thead>
@@ -28,7 +37,7 @@
             </tr>
           </thead>
           <tbody>
-          <tr ng-repeat="task in tasks | filter: $.search"  ng-show="{{task.finished}}">
+          <tr ng-repeat="task in tasks | filter: searchByPhase | filter: $.search"  ng-show="{{task.finished}}">
 		        <td  class="taskName"> {{task.name}}</td>
 		         <td><center> {{task.phase}} </center></td>
 		         <td><center> {{task.estHours | number:2}} hrs </center></td>

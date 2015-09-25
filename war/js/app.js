@@ -14,6 +14,7 @@
  * [09/15/2015] 0.10 - Vine Deiparine		 - Added Validations
  * [09/15/2015] 0.11 - Jacquelyn Amaya		 - Added Validations for updating spent time
  * [09/22/2015] 0.12 - Jacquelyn Amaya		 - Alert error messages
+ * [09/25/2015] 0.13 - Jacquelyn Amaya		 - Reload masterlist after adding task to pending tasks | Return to masterlist after creating task
  */
 var app = angular.module('TaskManagementApp', ['ngRoute']);
 
@@ -70,7 +71,7 @@ app.controller('TasksController', ['$rootScope', '$scope', '$http', function($ro
         .success(function(data, status) {
         	if(data.errorList.length == 0) {
 				alert("Task has been successfully added to Pending Tasks");
-				window.location = window.location.href.split('#')[0] + '#/tasks/today';
+				location.reload(true);
 			} else {
 				var msg = "";
 				for (var i = 0; i < data.errorList.length; i++)
@@ -179,7 +180,6 @@ app.controller('TodaysTaskController', ['$rootScope', '$scope', '$http', functio
 }]);
 app.controller('UpdateTaskController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
 	var taskId = $routeParams.taskId;
-
     $http({
         url : '/taskstoday/editTask', 
         method : 'GET',
@@ -192,7 +192,6 @@ app.controller('UpdateTaskController', ['$scope', '$http', '$routeParams', funct
     });
     
     $scope.updateTaskToday = function(){
-    	console.log("Update Task Today function");
     	var data = {
             id: taskId,
             spentHours : $scope.taskSpentHours
@@ -206,7 +205,7 @@ app.controller('UpdateTaskController', ['$scope', '$http', '$routeParams', funct
 				var msg = "";
 				for (var i = 0; i < data.errorList.length; i++)
 					msg += data.errorList[i] + "\n";
-				alert(msg);
+				$scope.errorMessage = msg;
 			}
         });
     }
@@ -243,7 +242,7 @@ app.controller('CreateTaskController', ['$scope', '$http', function($scope, $htt
 				    $scope.taskEstHours ="";
 				    $scope.taskStartDate ="";
 				    $scope.taskDueDate ="";
-	        		
+				    window.location = window.location.href.split('#')[0] + '#/tasks';
 				} else {
 					var msg = "";
 					for (var i = 0; i < data.errorList.length; i++)

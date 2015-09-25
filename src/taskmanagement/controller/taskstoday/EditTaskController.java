@@ -18,6 +18,7 @@ import taskmanagement.service.TaskService;
  * [09/05/2015] 0.01 - Jacquelyn Amaya - Implemented the function to display the details of the task to edit
  * [09/13/2015] 0.02 - Jacquelyn Amaya - Added conditional statement for "GET" and "PUT" method to display and to edit task, respectively
  * [09/15/2015] 0.03 - Jacquelyn Amaya - Added validation for updating spent time
+ * [09/25/2015] 0.04 - Jacquelyn Amaya - Changed error messages
  */
 public class EditTaskController extends Controller {
     /**
@@ -58,12 +59,12 @@ public class EditTaskController extends Controller {
                 dto.setId(json.getLong("id"));
                 
                 if (json.getDouble("spentHours") == 0.0) {
-                    dto.getErrorList().add("Provide a value for Spent Time field.");
-                } else if(json.getDouble("spentHours") <= 0.0){
-                    dto.getErrorList().add("Spent time should not be less than or equal to 0.0 hrs");
+                    dto.getErrorList().add("Spent Time cannot be 0 or empty");
+                } else if(json.getDouble("spentHours") < 0.0){
+                    dto.getErrorList().add("Spent Time should not be less than 0");
                 } else if(json.getDouble("spentHours") > MAX_TASK_HOURS_PER_DAY){
-                    dto.getErrorList().add("Spent time should not exceed 8.0 hrs");
-                } else {
+                    dto.getErrorList().add("Spent Time should not exceed 8.0 hrs");
+                } else if(json.getDouble("spentHours") <= 8.0){
                     dto.setSpentHours(json.getDouble("spentHours"));
                 }
                 
@@ -75,7 +76,7 @@ public class EditTaskController extends Controller {
                     
                 
             } catch (Exception e) {
-                dto.getErrorList().add("Server controller error: " + e.getMessage());
+                dto.getErrorList().add("Spent Time contains non-numeric values");
                 if (json == null) {
                     json = new JSONObject();
                     

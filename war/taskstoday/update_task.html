@@ -5,14 +5,14 @@
  * [09/13/2015] 0.01 - Jacquelyn Amaya - Display details of selected task | Update Task Today function
  * [09/15/2015] 0.02 - Jacquelyn Amaya - Removed status selection
  * [09/22/2015] 0.03 - Jacquelyn Amaya - Replaced "Update" to "Log"
+ * [09/25/2015] 0.04 - Jacquelyn Amaya - Replaced "Log Task" to "Log Today's Task"
 -->
 <div class="container">
   <div class="row">
     <div class="col s12 m9 l10">
       <div id="right" class="section scrollspy">
-        <h2 class="header"><img src="/images/edit.jpg" width="5%">&nbsp;&nbsp;Log Task</h2>
-        <p class="caption">Update today's tasks.</p>
-
+        <h2 class="header"><img src="/images/edit.jpg" width="5%">&nbsp;&nbsp;Log Today's Task</h2>
+		
         <table class="unfinished_tasks">
           <tbody>
             <tr>
@@ -29,18 +29,23 @@
               <td><b>Set Spent Time</b></td>
               <td>
                 <div class="row">
-                <div class="input-field col s6">
-                <input id="task_name" type="text" class="validate" ng-model="taskSpentHours">     
-                </div>
-              </div>
-            </td>
+	                <div class="input-field col s6">
+	                	<input id="task_name" type="text" class="validate" ng-model="taskSpentHours">     
+	                </div>
+              	</div>
+              	<div class="row">
+		     		<div  ng-if="errorMessage != null" class="col materialize-red-text" id="errorMessage">
+		     			{{ errorMessage }}
+		     		</div>
+		     	</div>
+              </td>
             </tr>
           </tbody>
         </table>
 		
-        <a href="" ng-click="updateTaskToday()" class="waves-effect waves-light btn"><i class="material-icon left">edit</i>Log Task</a>
+        <a href="" ng-click="updateTaskToday()" class="waves-effect waves-light btn"><i class="material-icon left">edit</i>Log Today's Task</a>
         &nbsp;&nbsp;&nbsp;
-        <a href ="" ng-click="backToTodaysTasks()" class="waves-effect waves-light btn"><i class="material-icon left">clear_all</i>Go Back to Today's Tasks</a>
+        <a href ="" ng-click="backToTodaysTasks()" class="waves-effect waves-light btn"><i class="material-icon left">clear_all</i>Go Back to Pending Tasks</a>
         <br>
   </div>
 </div>

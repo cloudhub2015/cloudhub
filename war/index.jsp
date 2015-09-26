@@ -64,7 +64,7 @@
     <div class="my-row center">
       <form class="my-col my-s12 my-offset-s4" method="post" action="verifyUser">
       	<div class="my-row center">
-      		<div class="col s4 materialize-red-text" id="errorMessage">
+      		<div class="col s7 materialize-red-text" id="errorMessage">
       		</div>
       	</div>
         <div class="my-row center">

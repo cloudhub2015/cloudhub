@@ -7,11 +7,11 @@ var app = angular.module('RegistrationApp', []);
 app.controller('SignUpController', ['$scope', '$http', function($scope, $http) {
 	console.log ("J-dar is stupid");
 	$scope.submitted = false;
-	$scope.firstName="Janna";
-    $scope.lastName ="Gwapa";
-    $scope.username ="Potato";
-    $scope.password="Janna";
-    $scope.confirmPassword ="Janna";
+	$scope.firstName="";
+    $scope.lastName ="";
+    $scope.username ="";
+    $scope.password="";
+    $scope.confirmPassword ="";
     $scope.sendPost = function() {
     	if($scope.signup.$valid)
     	{

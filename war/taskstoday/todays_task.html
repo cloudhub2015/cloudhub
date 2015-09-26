@@ -8,6 +8,7 @@
  											- Added tooltips for icons
  * [09/15/2015] 0.04 - Jacquelyn Amaya 		- Added check icon to finish task
  * [09/25/2015] 0.05 - Jacquelyn Amaya 		- Change "Log Task" to "Log Today's Task"
+ * [09/26/2015] 0.06 - David Ramirez	    - Display ERROR message in search task, if task is not found (AngularJS)
 -->
 <div class="container">
   <div class="row">
@@ -41,19 +42,26 @@
             </tr>
           </thead>
           <tbody>
-			<tr data-ng-repeat="task in tasks | filter: searchByPhase | filter: $.search | orderBy: 'startDate'" ng-hide="{{task.finished}}">  
+			<tr data-ng-repeat="task in values=(tasks | filter: searchByPhase | filter: $.search | orderBy: 'startDate')" ng-hide="{{task.finished}}">  
 				<td><center>{{task.name}}</center></td> 
 				<td><center>{{task.phase}}</center></td>
 				<td><center> {{task.spentHours | number:2}} hrs</center></td>
 				<td><center>{{task.startDate}}</center></td>
 				<td><center>{{task.dueDate}}</center></td>
 				<td><center>
-					<a href="" ng-click="finishTask(task.id)" title="Finish Task"><i class="material-icon-action">done</i></a>
-					<a href="" ng-click="updateTask(task)" title="Log Today's Task"><i class="material-icon-action">assignment</i></a>
-					<a  href="" ng-click="deleteTaskToday(task.id)" title="Remove Pending Task"><i class="material-icon-action">delete</i></a>
+					<a ng-click="finishTask(task.id)" title="Finish Task"><i class="material-icon-action">done</i></a>
+					<a ng-click="updateTask(task)" title="Log Today's Task"><i class="material-icon-action">assignment</i></a>
+					<a ng-click="deleteTaskToday(task.id)" title="Remove Pending Task"><i class="material-icon-action">delete</i></a>
 				</center>
 				</td>
 			</tr>
+			<tr>
+		  		<td></td>
+		  		<td></td>
+		  		<td>
+		  			<center><p style="color: red;" ng-show="!values.length">Task Not Found!</p></center>
+		  		</td>
+		    </tr>
           </tbody>
         </table>
         <br>

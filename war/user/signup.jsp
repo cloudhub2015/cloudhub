@@ -91,11 +91,11 @@
                <div class="input-field my-col my-s4">
                  <i class="material-icon prefix">lock</i>
                  <label class="active" for="password">Password</label>
-            	 <input id="txtPassword" type="password" class="validate" name="password" ng-model="password" ng-minlength=8 maxlength=50 placeholder="Password" required>
+            	 <input id="txtPassword" type="password" class="validate" name="password" ng-model="password" ng-minlength=6 maxlength=50 placeholder="Password" required>
 	             <div class="error-container" ng-show="(signup.password.$dirty && signup.password.$invalid && signup.submitted) || 
 	            									  (signup.password.$pristine && signup.password.$invalid && signup.submitted)">
 	                	<small class="error" ng-show="signup.password.$error.required" style="color: red;">Password is required.</small>
-	                  	<small class="error" ng-show="signup.password.$error.minlength" style="color: red;">Password is required to be at least 8 characters.</small>
+	                  	<small class="error" ng-show="signup.password.$error.minlength" style="color: red;">Password is required to be at least 6 characters.</small>
 	                  	<small class="error" ng-show="signup.password.$error.maxlength" style="color: red;">Password cannot be longer than 50 characters.</small>
 	           	 </div>
 			     

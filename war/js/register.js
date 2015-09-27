@@ -1,11 +1,12 @@
 /* ------------------------------------------------------------------------------
  * Javascript for user registration (AngularJS)
  * @author Janna Pedrano
- * @version 0.01
+ * @version 0.01 - Added validation on the form fields except password confirmation
+ * @version 0.02 - Added validation for password confirmation
  * --------------------------------------------------------------------------- */
 var app = angular.module('RegistrationApp', []);
 app.controller('SignUpController', ['$scope', '$http', function($scope, $http) {
-	console.log ("J-dar is stupid");
+	console.log ("I was here.");
 	$scope.submitted = false;
 	$scope.firstName="";
     $scope.lastName ="";

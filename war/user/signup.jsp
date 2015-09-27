@@ -2,6 +2,7 @@
 
 <!-- 0.0.1 - July 06, 2015 - Vine Deiparine - Initial Draft -->
 <!-- 0.0.2 - September 22, 2015 - Nelson Ruiz Jr. - UI Fix -->
+<!-- 0.0.3 - September 27, 2015 - Janna Pedrano - Validation -->
 
 <!------------------------------------------------------------------------------------------------------------------------------>
 
@@ -97,12 +98,12 @@
 	                  	<small class="error" ng-show="signup.password.$error.minlength" style="color: red;">Password is required to be at least 8 characters.</small>
 	                  	<small class="error" ng-show="signup.password.$error.maxlength" style="color: red;">Password cannot be longer than 50 characters.</small>
 	           	 </div>
-                 <input id="confirm_password" type="password" class="validate" name="confirmPassword" ng-model="confirmPassword" placeholder="Confirm Password" required>
-          		 <div class="error-container" ng-show="(signup.password.$dirty && signup.password.$invalid && signup.submitted) || 
-	            									  (signup.password.$pristine && signup.password.$invalid && signup.submitted)">
-	                	<small class="error" ng-show="signup.password.$error.required" style="color: red;">Password is required.</small>
-	                  	<small class="error" ng-show="signup.password.$error.minlength" style="color: red;">Password is required to be at least 8 characters.</small>
-	                  	<small class="error" ng-show="signup.password.$error.maxlength" style="color: red;">Password cannot be longer than 50 characters.</small>
+			     
+                 <input id="confirm_password" type="password" class="validate" name="confirmPassword" placeholder="Confirm Password" ng-model="confirmPassword" required pw-check="password">
+          		 <div class="error-container" ng-show="(signup.confirmPassword.$dirty && signup.confirmPassword.$invalid && signup.submitted) || 
+	            									  (signup.confirmPassword.$pristine && signup.confirmPassword.$invalid && signup.submitted)">
+	                	<small class="error" ng-show="signup.confirmPassword.$error.required" style="color: red;">Confirmation is required.</small>
+	                  	<small class="error" ng-show="signup.confirmPassword.$error.noMatch" style="color: red;">Password does not match with previous entry.</small>
 	           	 </div>
               </div>
            </div>

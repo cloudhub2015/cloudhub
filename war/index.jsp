@@ -62,11 +62,11 @@
   <!--Form-->
   <div class="container">
     <div class="my-row center">
-      <form class="my-col my-s12 my-offset-s4" method="post" action="verifyUser">
-      	<div class="my-row center">
-      		<div class="col s4 materialize-red-text" id="errorMessage">
+    	<div class="my-row center">
+      		<div class="col s7 materialize-red-text" id="errorMessage">
       		</div>
       	</div>
+      <form class="my-col my-s12 my-offset-s4" method="post" action="verifyUser">
         <div class="my-row center">
           <div class="input-field my-col my-s4">
             <i class="material-icon prefix">account_circle </i>

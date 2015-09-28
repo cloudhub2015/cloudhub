@@ -1,17 +1,18 @@
 /* ------------------------------------------------------------------------------
  * Javascript for user registration (AngularJS)
  * @author Janna Pedrano
- * @version 0.01
+ * @version 0.01 - Added validation on the form fields except password confirmation
+ * @version 0.02 - Added validation for password confirmation
  * --------------------------------------------------------------------------- */
 var app = angular.module('RegistrationApp', []);
 app.controller('SignUpController', ['$scope', '$http', function($scope, $http) {
-	console.log ("J-dar is stupid");
+	console.log ("I was here.");
 	$scope.submitted = false;
-	$scope.firstName="Janna";
-    $scope.lastName ="Gwapa";
-    $scope.username ="Potato";
-    $scope.password="Janna";
-    $scope.confirmPassword ="Janna";
+	$scope.firstName="";
+    $scope.lastName ="";
+    $scope.username ="";
+    $scope.password="";
+    $scope.confirmPassword ="";
     $scope.sendPost = function() {
     	if($scope.signup.$valid)
     	{
@@ -56,3 +57,26 @@ app.controller('SignUpController', ['$scope', '$http', function($scope, $http) {
         $scope.confirmPassword ="";
     };
 }]);
+app.directive('pwCheck', function() {
+	  return {
+	    require: 'ngModel',
+	    scope: {
+
+	      reference: '=pwCheck'
+
+	    },
+	    link: function(scope, elm, attrs, ctrl) {
+	        ctrl.$parsers.unshift(function(viewValue, $scope) {
+
+	        var noMatch = viewValue != scope.reference
+	        ctrl.$setValidity('noMatch', !noMatch);
+	        return (noMatch)?noMatch:undefined;
+	      });
+
+	      scope.$watch("reference", function(value) {;
+	        ctrl.$setValidity('noMatch', value === ctrl.$viewValue);
+
+	      });
+	    }
+	  }
+	});

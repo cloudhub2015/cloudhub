@@ -1,6 +1,5 @@
 <!-- REVISION HISTORY
  * Masterlist page
- * @version 0.01
  * Version History
  * [09/08/2015] 0.01 - David Ramirez   		- Display tasks and completed tasks
  * [09/08/2015] 0.02 - Prince Niko Garces   - Search tasks and filter by phase
@@ -13,6 +12,7 @@
  											- Aligned the input field for search and the dropdown for filtering phase
  											- Added Create New Task button linking to the Create Task Page
  * [09/15/2015] 0.05 - Jacquelyn Amaya 		- Removed check icon to finish task
+ * [09/26/2015] 0.06 - David Ramirez	    - Display ERROR message in search task if task is not found (AngularJS)
 -->
 <div class="container">
   <div class="row">
@@ -52,7 +52,7 @@
             </tr>
           </thead>
           <tbody> 
-			<tr data-ng-repeat="task in tasks | filter:searchByPhase | filter:search | orderBy:'name'"  ng-hide="{{task.finished}}">
+			<tr data-ng-repeat="task in values = (tasks | filter:searchByPhase | filter:search | orderBy:'name')"  ng-hide="{{task.finished}}">
 				<input type="hidden" class="id" name="id" value="{{ task.id }}"/>
 					<td  class="taskName"><center>{{ task.name }}</center></td>
 					<td class="phase"><center>{{ task.phase }}</center></td>
@@ -64,6 +64,13 @@
 						<a  href="" ng-click="deleteTask(task.id)" title="Delete Task"><i class="material-icon-action">delete</i></a>
 					</center>
 					</td>
+  			</tr>
+  			<tr>
+  				<td></td>
+  				<td></td>
+  				<td>
+  					<center><p style="color: red;" ng-show="!values.length">Task Not Found!</p></center>
+  				</td>
   			</tr>
 		</tbody>
         </table>

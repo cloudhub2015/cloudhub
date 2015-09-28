@@ -48,7 +48,7 @@ public class AddTaskController extends Controller {
                 dto.setEstHours(json.getDouble("estHours"));
                 dto.setPending(true);
                 
-                if(dto.getName() == null || dto.getName().length() < 4) {
+                if(dto.getName() == null || dto.getName().length() < 3) {
                     dto.getErrorList().add("Task name is too short or empty");
                 } else {
                     this.service.addTask(dto);

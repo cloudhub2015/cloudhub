@@ -13,6 +13,7 @@
  											- Added Create New Task button linking to the Create Task Page
  * [09/15/2015] 0.05 - Jacquelyn Amaya 		- Removed check icon to finish task
  * [09/26/2015] 0.06 - David Ramirez	    - Display ERROR message in search task if task is not found (AngularJS)
+ * [09/28/2015] 0.07 - Jacquelyn Amaya 		- Display error message from slim3 controller
 -->
 <div class="container">
   <div class="row">
@@ -54,10 +55,10 @@
           <tbody> 
 			<tr data-ng-repeat="task in values = (tasks | filter:searchByPhase | filter:search | orderBy:'name')"  ng-hide="{{task.finished}}">
 				<input type="hidden" class="id" name="id" value="{{ task.id }}"/>
-					<td  class="taskName"><center>{{ task.name }}</center></td>
+					<td  class="taskName">{{ task.name }}</td>
 					<td class="phase"><center>{{ task.phase }}</center></td>
 					<td class="estHours"><center>{{ task.estHours | number : 2}} hrs</center></td>
-					<td class="startDate"><center>{{ task.spentHours | number : 2 }}</center></td>
+					<td class="startDate"><center>{{ task.spentHours | number : 2 }} hrs</center></td>
 					<td><center>
 						<a href="" ng-click="addTaskToday(task.id)" title="Add to Pending Tasks"><i class="material-icon-action">add</i></a>
 						<a href="" ng-click="editTask(task)" title="Edit Task"><i class="material-icon-action">assignment</i></a>
@@ -66,12 +67,12 @@
 					</td>
   			</tr>
   			<tr>
-  				<td></td>
-  				<td></td>
-  				<td>
-  					<center><p style="color: red;" ng-show="!values.length">Task Not Found!</p></center>
-  				</td>
-  			</tr>
+				<center>
+			  		<td ng-if="errorMessage!=null" colspan="5">
+			  			<p style="color: red;">{{errorMessage}}</p>
+			  		</td>
+		  		</center>
+		    </tr>
 		</tbody>
         </table>
         </div>

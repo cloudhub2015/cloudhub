@@ -22,7 +22,7 @@ $(document).ready(function() {
 				dataType: 'json',
 				success: function(data, status, jqXHR){
 					if(data.errorList.length == 0) {
-						window.location.href = "/singlePage#/tasks";
+						window.location.href = "/";
 					} else {
 						var msg = "";
 						for (var i = 0; i < data.errorList.length; i++)

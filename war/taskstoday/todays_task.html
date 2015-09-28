@@ -10,6 +10,8 @@
  * [09/25/2015] 0.05 - Jacquelyn Amaya 		- Change "Log Task" to "Log Today's Task"
  * [09/26/2015] 0.06 - David Ramirez	    - Display ERROR message in search task, if task is not found (AngularJS)
  * [09/28/2015] 0.07 - Jacquelyn Amaya 		- Removed Start Date and Due Date | Added Logged Date column with date filter
+ 											- Display error message from Slim3 Controller
+ 											- Group pending tasks by date
 -->
 <div class="container">
   <div class="row">
@@ -41,9 +43,12 @@
                 <th data-field="action"><center>Action</center></th>
             </tr>
           </thead>
-          <tbody>
-			<tr data-ng-repeat="task in tasks  | filter: searchByPhase | filter: $.search" ng-hide="{{task.finished}}">
-					<td><center>{{task.name}}</center></td> 
+          <tbody data-ng-repeat="(currentDate, currentTasks) in tasks | orderBy: 'currentDate':true">
+          	<tr>
+          		<td colspan="5"><b>{{currentDate | date}}</b></td>
+          	</tr>
+			<tr data-ng-repeat="task in currentTasks  | filter: searchByPhase | filter: $.search" ng-hide="{{task.finished}}">
+					<td>{{task.name}}</td> 
 					<td><center>{{task.phase}}</center></td>
 					<td><center> {{task.spentHours | number:2}} hrs</center></td>
 					<td><center>{{task.currentDate | date}}</center></td>
@@ -53,13 +58,12 @@
 						<a  href="" ng-click="deleteTaskToday(task.id)" title="Remove Pending Task"><i class="material-icon-action">delete</i></a>
 					</center>
 					</td>
-				</div>
 			<tr>
-		  		<td></td>
-		  		<td></td>
-		  		<td>
-		  			<center><p style="color: red;" ng-show="!values.length">Task Not Found!</p></center>
-		  		</td>
+				<center>
+			  		<td ng-if="errorMessage!=null" colspan="5">
+			  			<p style="color: red;">{{errorMessage}}</p>
+			  		</td>
+		  		</center>
 		    </tr>
           </tbody>
         </table>

@@ -15,6 +15,7 @@
  * [09/15/2015] 0.11 - Jacquelyn Amaya		 - Added Validations for updating spent time
  * [09/22/2015] 0.12 - Jacquelyn Amaya		 - Alert error messages
  * [09/25/2015] 0.13 - Jacquelyn Amaya		 - Reload masterlist after adding task to pending tasks | Return to masterlist after creating task
+ * [09/28/2015] 0.14 - Jacquelyn Amaya		 - Group pending tasks by date
  */
 var app = angular.module('TaskManagementApp', ['ngRoute']);
 
@@ -68,7 +69,6 @@ app.controller('TasksController', ['$rootScope', '$scope', '$http', function($ro
 			for (var i = 0; i < data.errorList.length; i++)
 				msg += data.errorList[i] + "\n";
 			alert(msg);
-			console.log(msg);
     	}
     });
 	
@@ -123,8 +123,7 @@ app.controller('CompletedTasksController', ['$rootScope', '$scope', '$http', fun
 	$http.get("/task/display")
     .success(function(data, status) {
     	if(data.errorList.length == 0) {
-    		$scope.tasks = response.taskList;
-        	$scope.firstName = response.firstName;
+    		$scope.tasks = data.taskList;
     	} else {
     		var msg = "";
 			for (var i = 0; i < data.errorList.length; i++)
@@ -137,16 +136,18 @@ app.controller('CompletedTasksController', ['$rootScope', '$scope', '$http', fun
 }]);
 app.controller('TodaysTaskController', ['$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
 	$rootScope.activeTab = 3;
-	$scope.check = function(date){
-		//if true, then do not display invalid date entries
-		return (new Date(date) < new Date());
-	}
 	
     $http.get("/taskstoday/displayTodaysTasks")
     .success(function(response) {
-    	$scope.tasks = response.taskList;
-    });
-    
+    	if(response.errorList.length == 0) {
+    		$scope.tasks = _.groupBy(response.taskList, 'currentDate');
+    	} else {
+			var msg = "";
+			for (var i = 0; i < response.errorList.length; i++)
+				msg += response.errorList[i] + "\n";
+			$scope.errorMessage = msg;
+		}
+    });    
     
     $scope.finishTask = function(id) {
 		var data = {
@@ -289,8 +290,6 @@ app.controller('EditTaskController', ['$scope', '$http', '$routeParams', functio
         $scope.taskName = task.name;
         $scope.taskPhase = task.phase;
         $scope.taskEstHours = task.estHours;
-        $scope.taskStartDate = task.startDate;
-        $scope.taskDueDate = task.dueDate;
     });
     
     $scope.updateTask = function(){
@@ -299,13 +298,18 @@ app.controller('EditTaskController', ['$scope', '$http', '$routeParams', functio
             id: taskId,
             name : $scope.taskName,
             phase : $scope.taskPhase,
-            estHours : $scope.taskEstHours,
-            startDate : $scope.taskStartDate,
-            dueDate : $scope.taskDueDate
+            estHours : $scope.taskEstHours
         };
     	$http.post("/task/editTask", data)
     	.success(function (data, status, headers, config) {
-            window.location = window.location.href.split('#')[0] + '#/tasks';
+    		if(response.errorList.length == 0) {
+    			alert("Task has been successfully updated");
+    		} else {
+    			var msg = "";
+    			for (var i = 0; i < data.errorList.length; i++)
+    				msg += data.errorList[i] + "\n";
+    			alert(msg);
+    		}
         });
     };
 
@@ -327,7 +331,6 @@ app.controller('SettingsController', ['$rootScope', '$scope', '$http', function(
     });
 	
 	$scope.updateSettings = function(){
-		console.log("update USER");
     	var data = {
             username: $scope.username,
             firstName : $scope.firstName,
@@ -337,11 +340,13 @@ app.controller('SettingsController', ['$rootScope', '$scope', '$http', function(
     	$http.post("/user/loggedInUser", data)
     	.success(function (data, status, headers, config) {
             alert("User information has been succesfully updated");
-            console.log("NISUD SIYA DIRI");
             location.reload(true);
         })
     	.error(function(data, status, headers, config) {
+<<<<<<< HEAD
     		console.log("ERROR SIYA ");
+=======
+>>>>>>> 7acb3676d08ab8e5f9eb9d6dcb4e83ab36554af5
     		var msg = "";
 			for (var i = 0; i < data.errorList.length; i++)
 				msg += data.errorList[i] + "\n";

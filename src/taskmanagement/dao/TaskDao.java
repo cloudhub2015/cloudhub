@@ -226,21 +226,23 @@ public class TaskDao {
         FilterCriterion mainFilter = tm.id.equal(taskModel.getId());
 
         try {
-            Task originalTaskModel = Datastore.query(tm).filter(mainFilter).asSingle();
-            if (originalTaskModel != null) {
-                originalTaskModel.setName(taskModel.getName());
-                originalTaskModel.setPhase(taskModel.getPhase());
-                originalTaskModel.setEstHours(taskModel.getEstHours());
-                originalTaskModel.setCurrentDate(taskModel.getCurrentDate());
-                originalTaskModel.setSpentHours(taskModel.getSpentHours());
-                originalTaskModel.setFinished(taskModel.isFinished());
-                originalTaskModel.setPending(taskModel.isPending());
-                originalTaskModel.setToday(taskModel.isToday());
-                Transaction tx = Datastore.beginTransaction();
-                Datastore.put(originalTaskModel);
-                tx.commit();
-            } else {
-                result = false;
+            if(getTask(taskModel.getName()) == null){
+                Task originalTaskModel = Datastore.query(tm).filter(mainFilter).asSingle();
+                if (originalTaskModel != null) {
+                    originalTaskModel.setName(taskModel.getName());
+                    originalTaskModel.setPhase(taskModel.getPhase());
+                    originalTaskModel.setEstHours(taskModel.getEstHours());
+                    originalTaskModel.setCurrentDate(taskModel.getCurrentDate());
+                    originalTaskModel.setSpentHours(taskModel.getSpentHours());
+                    originalTaskModel.setFinished(taskModel.isFinished());
+                    originalTaskModel.setPending(taskModel.isPending());
+                    originalTaskModel.setToday(taskModel.isToday());
+                    Transaction tx = Datastore.beginTransaction();
+                    Datastore.put(originalTaskModel);
+                    tx.commit();
+                } else {
+                    result = false;
+                }
             }
         } catch (Exception e) {
             result = false;

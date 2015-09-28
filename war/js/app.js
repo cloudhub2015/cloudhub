@@ -340,8 +340,4 @@ app.controller('SettingsController', ['$rootScope', '$scope', '$http', function(
             location.reload(true);
         });
     };
-    
-    $scope.cancel = function() {
-    	location.reload(true);
-    };
 }]);

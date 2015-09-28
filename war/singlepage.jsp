@@ -45,7 +45,7 @@
     <li ng-class="{active: activeTab == 2}" class="bold"><a href="#/tasks/completed" class="waves-effect waves-teal">Completed Tasks</a></li>
     <li ng-class="{active: activeTab == 3}" class="bold"><a href="#/tasks/today" class="waves-effect waves-teal">Pending Tasks</a></li>
     <li ng-class="{active: activeTab == 4}" class="bold"><a href="#/user/settings" class="waves-effect waves-teal">Settings</a></li>
-    <li class="bold"><a href="/" class="waves-effect waves-teal">Log Out </a></li>
+    <li class="bold"><a href="/user/logout" class="waves-effect waves-teal">Log Out </a></li>
 </ul>
 </header>
 

@@ -14,8 +14,9 @@ public class IndexController extends Controller {
 
     @Override
     public Navigation run() throws Exception {
-        removeSessionScope("userId");
-        removeSessionScope("firstName");
-        return forward("index.jsp");
+        if (null == sessionScope("userId"))
+            return forward("index.jsp");
+        else
+            return forward("singlepage.jsp");
     }
 }

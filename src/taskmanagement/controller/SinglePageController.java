@@ -7,8 +7,13 @@ public class SinglePageController extends Controller {
 
     @Override
     protected Navigation run() throws Exception {
-        // TODO Auto-generated method stub
-        return forward("singlepage.jsp");
+        System.out.println(sessionScope("userId"));
+        if (null != sessionScope("userId")) {
+            return forward("singlepage.jsp");
+        } else {
+            return forward("index.jsp");
+        }
+        
     }
 
 }

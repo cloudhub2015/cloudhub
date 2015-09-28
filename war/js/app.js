@@ -340,18 +340,25 @@ app.controller('SettingsController', ['$rootScope', '$scope', '$http', function(
     	$http.post("/user/loggedInUser", data)
     	.success(function (data, status, headers, config) {
             alert("User information has been succesfully updated");
+            console.log("NISUD SIYA DIRI");
             location.reload(true);
         })
     	.error(function(data, status, headers, config) {
+<<<<<<< Updated upstream
 <<<<<<< HEAD
     		console.log("ERROR SIYA ");
 =======
 >>>>>>> 7acb3676d08ab8e5f9eb9d6dcb4e83ab36554af5
+=======
+>>>>>>> Stashed changes
     		var msg = "";
 			for (var i = 0; i < data.errorList.length; i++)
 				msg += data.errorList[i] + "\n";
 			alert(msg);
+<<<<<<< Updated upstream
 			console.log(msg);
+=======
+>>>>>>> Stashed changes
         });
     };
 }]);

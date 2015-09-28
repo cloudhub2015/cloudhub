@@ -49,7 +49,7 @@ app.config(['$routeProvider', function ($routeProvider) {
 			'controller': 'SettingsController'
 		})
 		.otherwise({
-			'redirectTo': '/'
+			'redirectTo': '/tasks'
 		});
 }]);
 

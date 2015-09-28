@@ -9,6 +9,7 @@ import org.slim3.controller.Navigation;
  * Version History
  * [09/07/2015] 0.01 - Jacquelyn Amaya - Removes session attributes
  * [09/07/2015] 0.02 - Jacquelyn Amaya - Removed lastname, username, and password session attributes
+ * [09/28/2015] 0.03 - Jacquelyn Amaya - Forwards Single Page if session exists; otherwise, return to index
  */
 public class IndexController extends Controller {
 

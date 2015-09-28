@@ -55,7 +55,7 @@ public class LoggedInUserController extends Controller {
                     json = new JSONObject(meta.modelToJson(user));
                     json.put("errorList", dto.getErrorList());
                     response.getWriter().write(json.toString());
-                }
+                }                
             } else {
                 try {                    
                     json = new JSONObject((String)this.request.getReader().readLine());

@@ -332,7 +332,7 @@ app.controller('SettingsController', ['$rootScope', '$scope', '$http', function(
             username: $scope.username,
             firstName : $scope.firstName,
             lastName : $scope.lastName,
-            password : $scope.password
+            password : $('input#password').val()
         };
     	$http.post("/user/loggedInUser", data)
     	.success(function (data, status, headers, config) {
@@ -341,11 +341,12 @@ app.controller('SettingsController', ['$rootScope', '$scope', '$http', function(
             location.reload(true);
         })
     	.error(function(data, status, headers, config) {
-    		console.log("ERROR SIYA");
+    		console.log("ERROR SIYA ");
     		var msg = "";
 			for (var i = 0; i < data.errorList.length; i++)
 				msg += data.errorList[i] + "\n";
 			alert(msg);
+			console.log(msg);
         });
     };
 }]);

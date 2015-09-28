@@ -2,12 +2,14 @@ package taskmanagement.controller.task;
 
 import java.io.IOException;
 
+
 import org.slim3.controller.Controller;
 import org.slim3.controller.Navigation;
 import org.slim3.repackaged.org.json.JSONException;
 import org.slim3.repackaged.org.json.JSONObject;
 import taskmanagement.dto.TaskDto;
 import taskmanagement.service.TaskService;
+import validator.JSONValidators;
 
 /**
  * Controller to add task
@@ -17,6 +19,8 @@ import taskmanagement.service.TaskService;
  * [07/27/2015] 0.01 - Jacquelyn Amaya - Initial codes
  * [08/02/2015] 0.02 - David Ramirez - added the addTask function
  * [08/07/2015] 0.03 - Jacquelyn Amaya - Implemented add task function using JSON
+ * [09/29/2015] 0.04 - Vine Deiparine - Modified post implementation. Added Validations.
+ 
  */
 public class AddTaskController extends Controller {
     /**
@@ -33,7 +37,10 @@ public class AddTaskController extends Controller {
         try {
             json = new JSONObject(this.request.getReader().readLine());
             String sessionUserId = sessionScope("userId").toString();
+            JSONValidators validator = new JSONValidators(json);            
+            
             if(null != sessionUserId) {
+                /**
                 long userId = Long.parseLong(sessionUserId);
                 dto.setUserId(userId);
                 dto.setName(json.getString("name"));
@@ -45,6 +52,26 @@ public class AddTaskController extends Controller {
                     dto.getErrorList().add("Task name is too short or empty");
                 } else {
                     this.service.addTask(dto);
+                }**/
+                validator.add("name", validator.required(), validator.minlength(3));
+                validator.add("phase", validator.required());
+                validator.add("estHours", validator.required());
+                
+                if (validator.validate()) {
+                    long userId = Long.parseLong(sessionUserId);
+                    dto.setUserId(userId);
+                    dto.setName(json.getString("name"));
+                    dto.setPhase(json.getString("phase"));
+                    dto.setEstHours(json.getDouble("estHours"));
+                    dto.setPending(true);
+                    this.service.addTask(dto);
+                    System.out.println("VALIDATE");
+                } else {                 
+                    System.out.println("NOT VALIDATE");
+                    for(int i=0; i<validator.getErrors().size(); i++) {
+                        System.out.println(""+ validator.getErrors().get(i));
+                        dto.getErrorList().add(""+ validator.getErrors().get(i));
+                    }
                 }
             } else {
                 dto.getErrorList().add("No user to refer to");

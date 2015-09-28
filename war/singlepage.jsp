@@ -56,25 +56,9 @@
   
   <script src="/jquery/jquery-1.8.2.js"></script>
   <script src="/jquery/jquery-ui-1.11.4/jquery-ui.js"></script>
-  <script src="/jquery/jquery.ui.effect.js"></script> 
   <script src="/js/materialize.js"></script>
-  <script src="/js/init.js"></script>
   <script src="/js/angular.js"></script>
   <script src="/js/angular-route.js"></script>
   <script src="/js/user.js"></script>
   <script src="/js/app.js"></script>
-  
-  
-  <script>
-    $(function() {
-      
-      $('.table_wrapper').find('tr').on('hover', function() {
-        $(this).toggleClass('wrapper_odd', 200);
-      });
-      
-      $('.table_wrapper').find('tr').on('click', function() {
-        $(this).toggleClass('wrapper_action', 200);
-      });
-    });
-  </script>
 </html>

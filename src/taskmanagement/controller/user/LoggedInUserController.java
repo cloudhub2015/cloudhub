@@ -36,29 +36,34 @@ public class LoggedInUserController extends Controller {
         JSONObject json = null;
         
         response.setContentType("application/json");
-        
-        if(isGet()) {
-            long id = Long.parseLong(sessionScope("userId").toString());
-            User user = service.getUser(id);
-            json = new JSONObject(meta.modelToJson(user));
-        } else {
-            
-            try {
-                json = new JSONObject((String)this.request.getReader().readLine());
-                dto.setId(Long.parseLong(sessionScope("userId").toString()));
-                dto.setUsername(json.getString("username"));
-                dto.setFirstName(json.getString("firstName"));
-                dto.setLastName(json.getString("lastName"));
-                dto.setPassword(json.getString("password"));
-                dto = service.updateUser(dto);
-            } catch (Exception e) {
-                dto.getErrorList().add("Server controller error: " + e.getMessage());
-                if (json == null) {
-                    json = new JSONObject();
-                    json.put("errorList", dto.getErrorList());
+        if(null != sessionScope("userId")) {
+            if(isGet()) {
+                if(null != sessionScope("userId")) {
+                    long id = Long.parseLong(sessionScope("userId").toString());
+                    User user = service.getUser(id);
+                    json = new JSONObject(meta.modelToJson(user));
+                }
+            } else {
+                try {
+                    
+                    json = new JSONObject((String)this.request.getReader().readLine());
+                    dto.setId(Long.parseLong(sessionScope("userId").toString()));
+                    dto.setUsername(json.getString("username"));
+                    dto.setFirstName(json.getString("firstName"));
+                    dto.setLastName(json.getString("lastName"));
+                    dto.setPassword(json.getString("password"));
+                    dto = service.updateUser(dto);
+                } catch (Exception e) {
+                    dto.getErrorList().add("Server controller error: " + e.getMessage());
+                    if (json == null) {
+                        json = new JSONObject();
+                    }
                 }
             }
+        } else {
+            dto.getErrorList().add("No user to refer to");
         }
+        json.put("errorList", dto.getErrorList());
         response.getWriter().write(json.toString());
         return null;
     }

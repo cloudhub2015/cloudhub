@@ -16,7 +16,8 @@ import taskmanagement.service.UserService;
  * [08/17/2015] 0.02 - David Ramirez - Code documentation
  * [08/27/2015] 0.03 - Jacquelyn Amaya - Implemented the function for logging in using JSON
  * [09/07/2015] 0.04 - Jacquelyn Amaya - Added session attributes for the user's information
- * [09/07/2015] 0.02 - Jacquelyn Amaya - Removed lastname, username, and password session attributes
+ * [09/07/2015] 0.05 - Jacquelyn Amaya - Removed lastname, username, and password session attributes
+ * [09/28/2015] 0.05 - Jacquelyn Amaya - Fixed validating user
  */
 public class LoginController extends Controller {
     /**
@@ -33,10 +34,11 @@ public class LoginController extends Controller {
 
             dto.setUsername(json.getString("username"));
             dto.setPassword(json.getString("password"));
-            if (dto.getUsername() == null || dto.getPassword() == null) {
+            dto = this.service.validateUser(dto);
+            if (dto.getErrorList() != null) {
                 dto.getErrorList().add("Invalid username or password.");
             } else {
-                dto = this.service.validateUser(dto);
+                
                 dto = this.service.getUser(dto.getUsername());
                 sessionScope("userId", dto.getId());
                 sessionScope("firstName", dto.getFirstName());

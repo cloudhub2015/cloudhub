@@ -47,8 +47,7 @@
                 <th data-field="name"><center>Task Name</center></th>
                 <th data-field="phase"><center>Phase</center></th>
                 <th data-field="time_allotment"><center>Estimated Time Allotment</center></th>
-                <th data-field="start_date"><center>Start Date</center></th>
-                <th data-field="due_date"><center>Due Date</center></th>
+                <th data-field="start_date"><center>Spent Time</center></th>
 				<th data-field="action"><center>Action</center></th>
             </tr>
           </thead>
@@ -58,12 +57,12 @@
 					<td  class="taskName"><center>{{ task.name }}</center></td>
 					<td class="phase"><center>{{ task.phase }}</center></td>
 					<td class="estHours"><center>{{ task.estHours | number : 2}} hrs</center></td>
-					<td class="startDate"><center>{{ task.startDate }}</center></td>
-					<td class="dueDate"><center>{{ task.dueDate }}</center></td>
-					<td>
+					<td class="startDate"><center>{{ task.spentHours | number : 2 }}</center></td>
+					<td><center>
 						<a href="" ng-click="addTaskToday(task.id)" title="Add to Pending Tasks"><i class="material-icon-action">add</i></a>
 						<a href="" ng-click="editTask(task)" title="Edit Task"><i class="material-icon-action">assignment</i></a>
 						<a  href="" ng-click="deleteTask(task.id)" title="Delete Task"><i class="material-icon-action">delete</i></a>
+					</center>
 					</td>
   			</tr>
 		</tbody>

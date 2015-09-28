@@ -33,20 +33,23 @@ public class AddTaskController extends Controller {
         try {
             json = new JSONObject(this.request.getReader().readLine());
             String sessionUserId = sessionScope("userId").toString();
-            long userId = Long.parseLong(sessionUserId);
-            dto.setUserId(userId);
-            dto.setName(json.getString("name"));
-            dto.setPhase(json.getString("phase"));
-            dto.setEstHours(json.getDouble("estHours"));
-            dto.setStartDate(json.getString("startDate"));
-            dto.setDueDate(json.getString("dueDate"));
-            dto.setPending(true);
-            
-            if ((dto.getName() == null) || (dto.getPhase() == null) || (dto.getEstHours() == 0.0) || (dto.getStartDate() == null) || (dto.getDueDate() == null)) {
-                dto.getErrorList().add("Some fields are blank. Please supply them.");
+            if(null != sessionUserId) {
+                long userId = Long.parseLong(sessionUserId);
+                dto.setUserId(userId);
+                dto.setName(json.getString("name"));
+                dto.setPhase(json.getString("phase"));
+                dto.setEstHours(json.getDouble("estHours"));
+                dto.setPending(true);
+                
+                if(dto.getName() == null || dto.getName().length() < 4) {
+                    dto.getErrorList().add("Task name is too short or empty");
+                } else {
+                    this.service.addTask(dto);
+                }
             } else {
-                dto = this.service.addTask(dto);
-            }
+                dto.getErrorList().add("No user to refer to");
+            }           
+            
         } catch (Exception e) {
             dto.getErrorList().add("Server controller error: " + "Task Already Added");
             if (json == null) {

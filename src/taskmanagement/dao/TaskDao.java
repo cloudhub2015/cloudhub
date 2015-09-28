@@ -1,5 +1,6 @@
 package taskmanagement.dao;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.slim3.datastore.Datastore;
@@ -157,6 +158,7 @@ public class TaskDao {
             Task originalTaskModel = Datastore.query(tm).filter(mainFilter).asSingle();
             if (originalTaskModel != null) {
                 originalTaskModel.setSpentHours(originalTaskModel.getSpentHours() + taskModel.getSpentHours());
+                originalTaskModel.setCurrentDate(getCurrentDate());
                 originalTaskModel.setFinished(taskModel.isFinished());
                 originalTaskModel.setPending(taskModel.isPending());
                 Transaction tx = Datastore.beginTransaction();
@@ -172,13 +174,17 @@ public class TaskDao {
     }
     
     /**
-     * Method used to retrieve tasks searched by the client.
-     * @return List<Task> - list of tasks.
+     * Returns a Date object that doesn't contain time information
+     * @return the date today
      */
-    public List<Task> searchTasks(String name) {
-        TaskMeta t = new TaskMeta();
-        Query.Filter mainFilter = new Query.FilterPredicate("name", FilterOperator.IN, name);
-        return Datastore.query(t).filter(mainFilter).asList();
+    public static long getCurrentDate () {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.AM_PM, Calendar.AM);
+        calendar.set(Calendar.HOUR, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        return calendar.getTimeInMillis();
     }
     
     /**
@@ -206,7 +212,6 @@ public class TaskDao {
         }
         return result;
     }
-    
 
     /**
      * Method used to update a task
@@ -224,8 +229,7 @@ public class TaskDao {
                 originalTaskModel.setName(taskModel.getName());
                 originalTaskModel.setPhase(taskModel.getPhase());
                 originalTaskModel.setEstHours(taskModel.getEstHours());
-                originalTaskModel.setStartDate(taskModel.getStartDate());
-                originalTaskModel.setDueDate(taskModel.getDueDate());
+                originalTaskModel.setCurrentDate(taskModel.getCurrentDate());
                 originalTaskModel.setSpentHours(taskModel.getSpentHours());
                 originalTaskModel.setFinished(taskModel.isFinished());
                 originalTaskModel.setPending(taskModel.isPending());
@@ -241,7 +245,7 @@ public class TaskDao {
         }
         return result;
     }
-    
+        
     /**
      * Method used to delete a task
      * @param taskModel - task to be deleted

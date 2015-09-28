@@ -55,7 +55,7 @@ public class UserService {
         
         if(!this.dao.checkUser(user)) {
             input.setErrorList(new ArrayList<String>());
-            input.getErrorList().add("Invalid username or password");
+            input.getErrorList().add("User Validation Error: ");
         }
         return input;
     }

@@ -36,7 +36,6 @@ public class TaskService {
     private TaskDao dao = new TaskDao();
     
     
-
     /**
      * Method used to add a task.
      * @param input - taskDto to add.
@@ -51,9 +50,6 @@ public class TaskService {
             task.setName(input.getName());
             task.setPhase(input.getPhase());
             task.setEstHours(input.getEstHours());
-            task.setStartDate(input.getStartDate());
-            task.setDueDate(input.getDueDate());
-            task.setSpentHours(input.getSpentHours());
             task.setFinished(input.isFinished());
             task.setPending(input.isPending());
             task.setToday(input.isToday());
@@ -81,8 +77,7 @@ public class TaskService {
             taskDto.setName(task.getName());
             taskDto.setPhase(task.getPhase());
             taskDto.setEstHours(task.getEstHours());
-            taskDto.setStartDate(task.getStartDate());
-            taskDto.setDueDate(task.getDueDate());
+            taskDto.setCurrentDate(task.getCurrentDate());
             taskDto.setSpentHours(task.getSpentHours());
             taskDto.setFinished(task.isFinished());
             taskDto.setPending(task.isPending());
@@ -126,8 +121,7 @@ public class TaskService {
                 taskDto.setName(task.getName());
                 taskDto.setPhase(task.getPhase());
                 taskDto.setEstHours(task.getEstHours());
-                taskDto.setStartDate(task.getStartDate());
-                taskDto.setDueDate(task.getDueDate());
+                taskDto.setCurrentDate(task.getCurrentDate());
                 taskDto.setSpentHours(task.getSpentHours());
                 taskDto.setFinished(task.isFinished());
                 taskDto.setPending(task.isPending());
@@ -147,60 +141,6 @@ public class TaskService {
     public Task getTask(long id) {
         return this.dao.getTask(id);
     }
-        
-    /**
-     * Method used to retrieve list of tasks.
-     * @return List<Task> - list of Tasks.
-     */
-    public TaskClientDto searchTasks(String name) {
-        List<Task> taskModels = this.dao.searchTasks(name);
-        TaskClientDto taskList = new TaskClientDto();
-        TaskDto taskDto;
-
-        for (Task task : taskModels) {
-            taskDto = new TaskDto();
-            taskDto.setId(task.getId());
-            taskDto.setUserId(task.getUserId());
-            taskDto.setName(task.getName());
-            taskDto.setPhase(task.getPhase());
-            taskDto.setEstHours(task.getEstHours());
-            taskDto.setStartDate(task.getStartDate());
-            taskDto.setDueDate(task.getDueDate());
-            taskDto.setSpentHours(task.getSpentHours());
-            taskDto.setFinished(task.isFinished());
-            taskDto.setPending(task.isPending());
-            taskDto.setToday(task.isToday());
-            taskList.getTaskList().add(taskDto);
-        }
-
-        return taskList;
-    }
-    
-    /**
-     * Method used to retrieve a specific task.
-     * @return List<Task> - list of Tasks.
-     */
-    public Task searchTask(String name) {
-        System.out.println(name+"  aaaHAHHA");
-        Task task = this.dao.getTask(name);
-        Task taskDto = new Task();
-
-            taskDto.setId(task.getId());
-            taskDto.setUserId(task.getUserId());
-            taskDto.setName(task.getName());
-            taskDto.setPhase(task.getPhase());
-            taskDto.setEstHours(task.getEstHours());
-            taskDto.setStartDate(task.getStartDate());
-            taskDto.setDueDate(task.getDueDate());
-            taskDto.setSpentHours(task.getSpentHours());
-            taskDto.setFinished(task.isFinished());
-            taskDto.setPending(task.isPending());
-            taskDto.setToday(task.isToday());
-
-            System.out.println(task+"task     aaaHAHHA");
-        return task;
-    }
-
 
     /**
      * Method used to update a task.
@@ -213,11 +153,9 @@ public class TaskService {
         task.setName(input.getName());
         task.setEstHours(input.getEstHours());
         task.setPhase(input.getPhase());
-        task.setStartDate(input.getStartDate());
-        task.setDueDate(input.getDueDate());
+        task.setCurrentDate(task.getCurrentDate());
         
         task.setSpentHours(task.getSpentHours() + input.getSpentHours());
-        System.out.println("TASK GET SPENT HOURS: " + task.getSpentHours());
         task.setFinished(input.isFinished());
         task.setPending(input.isPending());
         task.setToday(input.isToday());
@@ -328,8 +266,7 @@ public class TaskService {
             taskDto.setName(task.getName());
             taskDto.setPhase(task.getPhase());
             taskDto.setEstHours(task.getEstHours());
-            taskDto.setStartDate(task.getStartDate());
-            taskDto.setDueDate(task.getDueDate());
+            taskDto.setCurrentDate(task.getCurrentDate());
             taskDto.setSpentHours(task.getSpentHours());
             taskDto.setFinished(task.isFinished());
             taskDto.setPending(task.isPending());
@@ -356,8 +293,7 @@ public class TaskService {
             taskDto.setName(task.getName());
             taskDto.setPhase(task.getPhase());
             taskDto.setEstHours(task.getEstHours());
-            taskDto.setStartDate(task.getStartDate());
-            taskDto.setDueDate(task.getDueDate());
+            taskDto.setCurrentDate(task.getCurrentDate());
             taskDto.setSpentHours(task.getSpentHours());
             taskDto.setFinished(task.isFinished());
             taskDto.setPending(task.isPending());
@@ -384,8 +320,7 @@ public class TaskService {
             taskDto.setName(task.getName());
             taskDto.setPhase(task.getPhase());
             taskDto.setEstHours(task.getEstHours());
-            taskDto.setStartDate(task.getStartDate());
-            taskDto.setDueDate(task.getDueDate());
+            taskDto.setCurrentDate(task.getCurrentDate());
             taskDto.setSpentHours(task.getSpentHours());
             taskDto.setFinished(task.isFinished());
             taskDto.setPending(task.isPending());

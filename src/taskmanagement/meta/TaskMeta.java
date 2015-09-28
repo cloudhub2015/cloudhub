@@ -1,11 +1,11 @@
 package taskmanagement.meta;
 
-//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-09-01 00:35:45")
+//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-09-28 20:09:17")
 /** */
 public final class TaskMeta extends org.slim3.datastore.ModelMeta<taskmanagement.model.Task> {
 
     /** */
-    public final org.slim3.datastore.StringAttributeMeta<taskmanagement.model.Task> dueDate = new org.slim3.datastore.StringAttributeMeta<taskmanagement.model.Task>(this, "dueDate", "dueDate");
+    public final org.slim3.datastore.CoreAttributeMeta<taskmanagement.model.Task, java.lang.Long> currentDate = new org.slim3.datastore.CoreAttributeMeta<taskmanagement.model.Task, java.lang.Long>(this, "currentDate", "currentDate", long.class);
 
     /** */
     public final org.slim3.datastore.CoreAttributeMeta<taskmanagement.model.Task, java.lang.Double> estHours = new org.slim3.datastore.CoreAttributeMeta<taskmanagement.model.Task, java.lang.Double>(this, "estHours", "estHours", double.class);
@@ -35,9 +35,6 @@ public final class TaskMeta extends org.slim3.datastore.ModelMeta<taskmanagement
     public final org.slim3.datastore.CoreAttributeMeta<taskmanagement.model.Task, java.lang.Double> spentHours = new org.slim3.datastore.CoreAttributeMeta<taskmanagement.model.Task, java.lang.Double>(this, "spentHours", "spentHours", double.class);
 
     /** */
-    public final org.slim3.datastore.StringAttributeMeta<taskmanagement.model.Task> startDate = new org.slim3.datastore.StringAttributeMeta<taskmanagement.model.Task>(this, "startDate", "startDate");
-
-    /** */
     public final org.slim3.datastore.CoreAttributeMeta<taskmanagement.model.Task, java.lang.Long> userId = new org.slim3.datastore.CoreAttributeMeta<taskmanagement.model.Task, java.lang.Long>(this, "userId", "userId", long.class);
 
     /** */
@@ -60,7 +57,7 @@ public final class TaskMeta extends org.slim3.datastore.ModelMeta<taskmanagement
     @Override
     public taskmanagement.model.Task entityToModel(com.google.appengine.api.datastore.Entity entity) {
         taskmanagement.model.Task model = new taskmanagement.model.Task();
-        model.setDueDate((java.lang.String) entity.getProperty("dueDate"));
+        model.setCurrentDate(longToPrimitiveLong((java.lang.Long) entity.getProperty("currentDate")));
         model.setEstHours(doubleToPrimitiveDouble((java.lang.Double) entity.getProperty("estHours")));
         model.setId((java.lang.Long) entity.getProperty("id"));
         model.setFinished(booleanToPrimitiveBoolean((java.lang.Boolean) entity.getProperty("finished")));
@@ -70,7 +67,6 @@ public final class TaskMeta extends org.slim3.datastore.ModelMeta<taskmanagement
         model.setName((java.lang.String) entity.getProperty("name"));
         model.setPhase((java.lang.String) entity.getProperty("phase"));
         model.setSpentHours(doubleToPrimitiveDouble((java.lang.Double) entity.getProperty("spentHours")));
-        model.setStartDate((java.lang.String) entity.getProperty("startDate"));
         model.setUserId(longToPrimitiveLong((java.lang.Long) entity.getProperty("userId")));
         model.setVersion((java.lang.Long) entity.getProperty("version"));
         return model;
@@ -85,7 +81,7 @@ public final class TaskMeta extends org.slim3.datastore.ModelMeta<taskmanagement
         } else {
             entity = new com.google.appengine.api.datastore.Entity(kind);
         }
-        entity.setProperty("dueDate", m.getDueDate());
+        entity.setProperty("currentDate", m.getCurrentDate());
         entity.setProperty("estHours", m.getEstHours());
         entity.setProperty("id", m.getId());
         entity.setProperty("finished", m.isFinished());
@@ -94,7 +90,6 @@ public final class TaskMeta extends org.slim3.datastore.ModelMeta<taskmanagement
         entity.setProperty("name", m.getName());
         entity.setProperty("phase", m.getPhase());
         entity.setProperty("spentHours", m.getSpentHours());
-        entity.setProperty("startDate", m.getStartDate());
         entity.setProperty("userId", m.getUserId());
         entity.setProperty("version", m.getVersion());
         entity.setProperty("slim3.schemaVersion", 1);
@@ -159,10 +154,8 @@ public final class TaskMeta extends org.slim3.datastore.ModelMeta<taskmanagement
         taskmanagement.model.Task m = (taskmanagement.model.Task) model;
         writer.beginObject();
         org.slim3.datastore.json.Default encoder0 = new org.slim3.datastore.json.Default();
-        if(m.getDueDate() != null){
-            writer.setNextPropertyName("dueDate");
-            encoder0.encode(writer, m.getDueDate());
-        }
+        writer.setNextPropertyName("currentDate");
+        encoder0.encode(writer, m.getCurrentDate());
         writer.setNextPropertyName("estHours");
         encoder0.encode(writer, m.getEstHours());
         if(m.getId() != null){
@@ -189,10 +182,6 @@ public final class TaskMeta extends org.slim3.datastore.ModelMeta<taskmanagement
         }
         writer.setNextPropertyName("spentHours");
         encoder0.encode(writer, m.getSpentHours());
-        if(m.getStartDate() != null){
-            writer.setNextPropertyName("startDate");
-            encoder0.encode(writer, m.getStartDate());
-        }
         writer.setNextPropertyName("userId");
         encoder0.encode(writer, m.getUserId());
         if(m.getVersion() != null){
@@ -207,8 +196,8 @@ public final class TaskMeta extends org.slim3.datastore.ModelMeta<taskmanagement
         taskmanagement.model.Task m = new taskmanagement.model.Task();
         org.slim3.datastore.json.JsonReader reader = null;
         org.slim3.datastore.json.Default decoder0 = new org.slim3.datastore.json.Default();
-        reader = rootReader.newObjectReader("dueDate");
-        m.setDueDate(decoder0.decode(reader, m.getDueDate()));
+        reader = rootReader.newObjectReader("currentDate");
+        m.setCurrentDate(decoder0.decode(reader, m.getCurrentDate()));
         reader = rootReader.newObjectReader("estHours");
         m.setEstHours(decoder0.decode(reader, m.getEstHours()));
         reader = rootReader.newObjectReader("id");
@@ -227,8 +216,6 @@ public final class TaskMeta extends org.slim3.datastore.ModelMeta<taskmanagement
         m.setPhase(decoder0.decode(reader, m.getPhase()));
         reader = rootReader.newObjectReader("spentHours");
         m.setSpentHours(decoder0.decode(reader, m.getSpentHours()));
-        reader = rootReader.newObjectReader("startDate");
-        m.setStartDate(decoder0.decode(reader, m.getStartDate()));
         reader = rootReader.newObjectReader("userId");
         m.setUserId(decoder0.decode(reader, m.getUserId()));
         reader = rootReader.newObjectReader("version");

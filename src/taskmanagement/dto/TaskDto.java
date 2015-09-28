@@ -44,15 +44,6 @@ public class TaskDto {
      *  Estimated Hours to Accomplish
      */
     private double estHours;
-    
-    /*
-     *  Date Started
-     */
-    private String  startDate;
-    /*
-     *  Expected Due Date
-     */
-    private String  dueDate;
     /*
      * Hours spent by this task
      */
@@ -69,6 +60,8 @@ public class TaskDto {
      *  Today Flag
      */
     private boolean isToday;
+    
+    private long currentDate;
 
  /**
  * -------------------------------------------------------
@@ -139,30 +132,6 @@ public class TaskDto {
      */
     public String getPhase(){
         return phase;
-    }
-    /*
-     *  @return startDate - retrieves the start date of a task
-     */
-    public String getStartDate(){
-        return startDate;
-    }
-    /*
-     *  @return dueDate - retrieves the end date of a task
-     */
-    public String getDueDate(){
-        return dueDate;
-    }
-    /*
-     *  @param startDate - sets the start date of a task
-     */
-    public void setStartDate(String startDate){
-        this.startDate = startDate;
-    }
-    /*
-     *  @param dueDate - sets the end date of a task
-     */
-    public void setDueDate(String dueDate){
-        this.dueDate = dueDate;
     }
     /*
      *  @param phase - sets the current phase of the task
@@ -236,5 +205,11 @@ public class TaskDto {
      */
     public void setSpentHours(double spentHours) {
         this.spentHours = spentHours;
+    }
+    public long getCurrentDate() {
+        return currentDate;
+    }
+    public void setCurrentDate(long currentDate) {
+        this.currentDate = currentDate;
     }
 }

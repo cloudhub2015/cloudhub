@@ -32,8 +32,6 @@
                 <th data-field="name"><center>Phase</center></th>
                 <th data-field="time_allotment"><center>Estimated Hours</center></th>
                 <th data-field="total_spent_time"><center>Total Spent Time</center></th>
-                <th data-field="start_date"><center>Start Date</center></th>
-                <th data-field="due_date"><center>Date of Completion</center></th>
             </tr>
           </thead>
           <tbody>
@@ -42,8 +40,6 @@
 		         <td><center> {{task.phase}} </center></td>
 		         <td><center> {{task.estHours | number:2}} hrs </center></td>
 		         <td><center> {{task.spentHours | number:2}} hrs </center></td>
-		         <td><center> {{task.startDate}}</center></td>
-		         <td><center> {{task.dueDate}}</center></td>
 		  </tr>
           </tbody>
           </table>

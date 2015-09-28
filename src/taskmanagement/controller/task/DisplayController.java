@@ -32,16 +32,21 @@ public class DisplayController extends Controller {
         TaskClientDto taskList = new TaskClientDto();
         JSONObject json = new JSONObject();
         try {            
-            if(service.getTaskList(Long.parseLong(sessionScope("userId").toString())).equals(null)){
-                taskList.getErrorList().add("No tasks found");
-            } else {    
-                taskList = service.getTaskList(Long.parseLong(sessionScope("userId").toString()));
+            if(null != sessionScope("userId")) {
+                long userId = Long.parseLong(sessionScope("userId").toString());
+                if(service.getTaskList(userId).equals(null)){
+                    taskList.getErrorList().add("No tasks found");
+                } else {    
+                    taskList = service.getTaskList(Long.parseLong(sessionScope("userId").toString()));
+                }
+            } else {
+                taskList.getErrorList().add("No user to refer to");
             }
+            
         } catch (Exception e) {
             e.printStackTrace();
             taskList.getErrorList().add("Server controller error: " + e.getMessage());
         }
-        
         json.put("firstName", sessionScope("firstName"));
         json.put("taskList", taskList.getTaskList());
         json.put("errorList", taskList.getErrorList());

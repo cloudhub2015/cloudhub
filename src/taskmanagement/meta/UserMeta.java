@@ -1,6 +1,6 @@
 package taskmanagement.meta;
 
-//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-09-01 00:35:45")
+//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-09-28 18:52:33")
 /** */
 public final class UserMeta extends org.slim3.datastore.ModelMeta<taskmanagement.model.User> {
 
@@ -15,6 +15,9 @@ public final class UserMeta extends org.slim3.datastore.ModelMeta<taskmanagement
 
     /** */
     public final org.slim3.datastore.StringAttributeMeta<taskmanagement.model.User> lastName = new org.slim3.datastore.StringAttributeMeta<taskmanagement.model.User>(this, "lastName", "lastName");
+
+    /** */
+    public final org.slim3.datastore.CoreAttributeMeta<taskmanagement.model.User, java.lang.Boolean> loggedIn = new org.slim3.datastore.CoreAttributeMeta<taskmanagement.model.User, java.lang.Boolean>(this, "loggedIn", "loggedIn", boolean.class);
 
     /** */
     public final org.slim3.datastore.StringAttributeMeta<taskmanagement.model.User> password = new org.slim3.datastore.StringAttributeMeta<taskmanagement.model.User>(this, "password", "password");
@@ -46,6 +49,7 @@ public final class UserMeta extends org.slim3.datastore.ModelMeta<taskmanagement
         model.setId(longToPrimitiveLong((java.lang.Long) entity.getProperty("id")));
         model.setKey(entity.getKey());
         model.setLastName((java.lang.String) entity.getProperty("lastName"));
+        model.setLoggedIn(booleanToPrimitiveBoolean((java.lang.Boolean) entity.getProperty("loggedIn")));
         model.setPassword((java.lang.String) entity.getProperty("password"));
         model.setUsername((java.lang.String) entity.getProperty("username"));
         model.setVersion((java.lang.Long) entity.getProperty("version"));
@@ -64,6 +68,7 @@ public final class UserMeta extends org.slim3.datastore.ModelMeta<taskmanagement
         entity.setProperty("firstName", m.getFirstName());
         entity.setProperty("id", m.getId());
         entity.setProperty("lastName", m.getLastName());
+        entity.setProperty("loggedIn", m.isLoggedIn());
         entity.setProperty("password", m.getPassword());
         entity.setProperty("username", m.getUsername());
         entity.setProperty("version", m.getVersion());
@@ -143,6 +148,8 @@ public final class UserMeta extends org.slim3.datastore.ModelMeta<taskmanagement
             writer.setNextPropertyName("lastName");
             encoder0.encode(writer, m.getLastName());
         }
+        writer.setNextPropertyName("loggedIn");
+        encoder0.encode(writer, m.isLoggedIn());
         if(m.getPassword() != null){
             writer.setNextPropertyName("password");
             encoder0.encode(writer, m.getPassword());
@@ -171,6 +178,8 @@ public final class UserMeta extends org.slim3.datastore.ModelMeta<taskmanagement
         m.setKey(decoder0.decode(reader, m.getKey()));
         reader = rootReader.newObjectReader("lastName");
         m.setLastName(decoder0.decode(reader, m.getLastName()));
+        reader = rootReader.newObjectReader("loggedIn");
+        m.setLoggedIn(decoder0.decode(reader, m.isLoggedIn()));
         reader = rootReader.newObjectReader("password");
         m.setPassword(decoder0.decode(reader, m.getPassword()));
         reader = rootReader.newObjectReader("username");

@@ -51,30 +51,9 @@
                 </div>
               </div>
 
-              <div class="row">
-                <div class="input-field col s6">
-                  <input name="startDate" type="text" id="startDate" class="validate" placeholder="MM/DD/YYYY" ng-model="taskStartDate" required/>
-                  <label class="active" for="startDate">Start Date</label>
-                  <div class="error-container" ng-show="(createTask.startDate.$dirty && createTask.startDate.$invalid && createTask.submitted) || (createTask.startDate.$pristine && createTask.startDate.$invalid && createTask.submitted)">
-                  	<small class="error" ng-show="createTask.startDate.$error.required" style="color: red;">Start Date is required.</small>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="input-field col s6">
-                  <input name="dueDate" type="text" id="dueDate" class="validate" placeholder="MM/DD/YYYY" ng-model="taskDueDate" required/>
-                 <label class="active" for="dueDate">Due Date</label>
-                 <div class="error-container" ng-show="(createTask.dueDate.$dirty && createTask.dueDate.$invalid && createTask.submitted) || (createTask.dueDate.$pristine && createTask.dueDate.$invalid && createTask.submitted)">
-                  	<small class="error" ng-show="createTask.dueDate.$error.required" style="color: red;">Due Date is required.</small>
-                 </div>
-                </div>
-              </div>
-
-             <!-- <a class="waves-effect waves-light btn" id="btnCreateTask" ng-click="sendPost()"><i class="material-icon left">note_add</i>Create Task</a> -->
-             <button class="btn waves-effect waves-light" type="submit" value="create_task" id="btnCreateTask"><i class="material-icon left">note_add</i>Create Task</button>
+             <button class="btn waves-effect waves-light" type="submit" id="btnCreateTask"><i class="material-icon left">note_add</i>Create Task</button>
               &nbsp;&nbsp;&nbsp;
-              <button ng-click="clearFields()" class="waves-effect waves-light btn" name="clearField" value="Cancel"><i class="material-icon left" id="btnClearAllInfo">clear_all</i>Clear Fields</button>
+              <a ng-click="clearFields()" class="waves-effect waves-light btn"><i class="material-icon left" id="btnClearAllInfo">clear_all</i>Clear Fields</a>
             </form>
           </div>
         <br>
@@ -82,10 +61,3 @@
     </div>
   </div>
 </div>
-
-<script>
-$(function() {
-    $( "#startDate" ).datepicker();
-    $( "#dueDate" ).datepicker();
-  });
-</script>

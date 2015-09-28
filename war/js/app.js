@@ -57,10 +57,19 @@ app.config(['$routeProvider', function ($routeProvider) {
 app.controller('TasksController', ['$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
 	$rootScope.activeTab = 1;
 	$http.get("/task/display")
-    .success(function(response) {
-    	$scope.tasks = response.taskList;
-    	$scope.firstName = response.firstName;
-    	
+    .success(function(data) {
+    	$scope.tasks = data.taskList;
+    	$scope.firstName = data.firstName;
+    	if(data.errorList.length == 0) {
+    		$scope.tasks = data.taskList;
+        	$scope.firstName = data.firstName;
+    	} else {
+    		var msg = "";
+			for (var i = 0; i < data.errorList.length; i++)
+				msg += data.errorList[i] + "\n";
+			alert(msg);
+			console.log(msg);
+    	}
     });
 	
 	$scope.addTaskToday = function(id) {
@@ -71,7 +80,6 @@ app.controller('TasksController', ['$rootScope', '$scope', '$http', function($ro
         .success(function(data, status) {
         	if(data.errorList.length == 0) {
 				alert("Task has been successfully added to Pending Tasks");
-				location.reload(true);
 			} else {
 				var msg = "";
 				for (var i = 0; i < data.errorList.length; i++)
@@ -113,9 +121,17 @@ app.controller('TasksController', ['$rootScope', '$scope', '$http', function($ro
 app.controller('CompletedTasksController', ['$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
 	$rootScope.activeTab = 2;
 	$http.get("/task/display")
-    .success(function(response) {
-    	$scope.tasks = response.taskList;
-    	$scope.firstName = response.firstName;
+    .success(function(data, status) {
+    	if(data.errorList.length == 0) {
+    		$scope.tasks = response.taskList;
+        	$scope.firstName = response.firstName;
+    	} else {
+    		var msg = "";
+			for (var i = 0; i < data.errorList.length; i++)
+				msg += data.errorList[i] + "\n";
+			alert(msg);
+			console.log(msg);
+    	}
     	
     });
 }]);
@@ -125,11 +141,12 @@ app.controller('TodaysTaskController', ['$rootScope', '$scope', '$http', functio
 		//if true, then do not display invalid date entries
 		return (new Date(date) < new Date());
 	}
+	
     $http.get("/taskstoday/displayTodaysTasks")
     .success(function(response) {
     	$scope.tasks = response.taskList;
-    	$scope.firstName = response.firstName;
     });
+    
     
     $scope.finishTask = function(id) {
 		var data = {
@@ -220,17 +237,13 @@ app.controller('CreateTaskController', ['$scope', '$http', function($scope, $htt
 	$scope.taskName ="";
     $scope.taskPhase ="";
     $scope.taskEstHours ="";
-    $scope.taskStartDate ="";
-    $scope.taskDueDate ="";
     $scope.sendPost = function() {
     	if($scope.createTask.$valid)
     	{
 	        var data = {
 	                name: $scope.taskName,
 	                phase: $scope.taskPhase,
-	                estHours: $scope.taskEstHours,
-	                startDate: $scope.taskStartDate,
-	                dueDate: $scope.taskDueDate
+	                estHours: $scope.taskEstHours
 	            };
 	        $http.post("/task/addTask", data)
 	        .success(function(data, status, headers, config) {
@@ -240,8 +253,6 @@ app.controller('CreateTaskController', ['$scope', '$http', function($scope, $htt
 					$scope.taskName ="";
 				    $scope.taskPhase ="";
 				    $scope.taskEstHours ="";
-				    $scope.taskStartDate ="";
-				    $scope.taskDueDate ="";
 				    window.location = window.location.href.split('#')[0] + '#/tasks';
 				} else {
 					var msg = "";
@@ -303,9 +314,16 @@ app.controller('SettingsController', ['$rootScope', '$scope', '$http', function(
 	$rootScope.activeTab = 4;
 	$http.get("/user/loggedInUser")
     .success(function(response) {
-    	$scope.firstName = response.firstName;
-    	$scope.lastName = response.lastName;
-    	$scope.username = response.username;
+    	if(response.errorList.length == 0) {
+    		$scope.firstName = response.firstName;
+        	$scope.lastName = response.lastName;
+        	$scope.username = response.username;
+    	} else {
+    		var msg = "";
+			for (var i = 0; i < data.errorList.length; i++)
+				msg += data.errorList[i] + "\n";
+			alert(msg);
+    	}    	
     });
 	
 	$scope.updateSettings = function(){

@@ -50,8 +50,6 @@ public class EditTaskController extends Controller {
                 dto.setName(json.getString("name"));
                 dto.setPhase(json.getString("phase"));
                 dto.setEstHours(json.getDouble("estHours"));
-                dto.setStartDate(json.getString("startDate"));
-                dto.setDueDate(json.getString("dueDate"));
                 dto.setId(json.getLong("id"));
                 dto = service.updateTask(dto);
             } catch (Exception e) {

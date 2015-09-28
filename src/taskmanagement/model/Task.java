@@ -58,14 +58,9 @@ public class Task implements Serializable {
     private double estHours;
     
     /**
-     * Start Date of Task
+     * Logged Date of Task
      */
-    private String startDate;
-    
-    /**
-     * Due Date of Task
-     */
-    private String dueDate;
+    private long currentDate;
     
     /**
      * Task spent hours
@@ -243,38 +238,6 @@ public class Task implements Serializable {
     }
     
     /**
-     * returns start date of task
-     * @return startDate
-     */
-    public String getStartDate() {
-        return startDate;
-    }
-    
-    /**
-     * sets start date of task
-     * @param startDate
-     */
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
-    }
-    
-    /**
-     * returns due date of task
-     * @return dueDate
-     */
-    public String getDueDate() {
-        return dueDate;
-    }
-    
-    /**
-     * sets due date of task
-     * @param dueDate
-     */
-    public void setDueDate(String dueDate) {
-        this.dueDate = dueDate;
-    }
-    
-    /**
      * returns spent hours of task
      * @return spentHours
      */
@@ -341,6 +304,15 @@ public class Task implements Serializable {
     public static long getSerialversionuid() {
         return serialVersionUID;
     }
+
+    public long getCurrentDate() {
+        return currentDate;
+    }
+
+    public void setCurrentDate(long currentDate) {
+        this.currentDate = currentDate;
+    }
+
 
 
 }

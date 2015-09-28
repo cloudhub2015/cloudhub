@@ -35,24 +35,23 @@
                 <th data-field="status"><center>Task Name</center></th>
                 <th data-field="name"><center>Phase</center></th>
                 <th data-field="total_spent_time"><center>Total Spent Time</center></th>
-                <th data-field="start_date"><center>Start Date</center></th>
-                <th data-field="due_date"><center>Due Date</center></th>
+                <th data-field="currentDate"><center>Logged Date</center></th>
                 <th data-field="action"><center>Action</center></th>
             </tr>
           </thead>
           <tbody>
-			<tr data-ng-repeat="task in tasks | filter: searchByPhase | filter: $.search | orderBy: 'startDate'" ng-hide="{{task.finished}}">  
-				<td><center>{{task.name}}</center></td> 
-				<td><center>{{task.phase}}</center></td>
-				<td><center> {{task.spentHours | number:2}} hrs</center></td>
-				<td><center>{{task.startDate}}</center></td>
-				<td><center>{{task.dueDate}}</center></td>
-				<td><center>
-					<a href="" ng-click="finishTask(task.id)" title="Finish Task"><i class="material-icon-action">done</i></a>
-					<a href="" ng-click="updateTask(task)" title="Log Today's Task"><i class="material-icon-action">assignment</i></a>
-					<a  href="" ng-click="deleteTaskToday(task.id)" title="Remove Pending Task"><i class="material-icon-action">delete</i></a>
-				</center>
-				</td>
+			<tr data-ng-repeat="task in tasks  | filter: searchByPhase | filter: $.search" ng-hide="{{task.finished}}">
+					<td><center>{{task.name}}</center></td> 
+					<td><center>{{task.phase}}</center></td>
+					<td><center> {{task.spentHours | number:2}} hrs</center></td>
+					<td><center>{{task.currentDate | date}}</center></td>
+					<td><center>
+						<a href="" ng-click="finishTask(task.id)" title="Finish Task"><i class="material-icon-action">done</i></a>
+						<a href="" ng-click="updateTask(task)" title="Log Today's Task"><i class="material-icon-action">assignment</i></a>
+						<a  href="" ng-click="deleteTaskToday(task.id)" title="Remove Pending Task"><i class="material-icon-action">delete</i></a>
+					</center>
+					</td>
+				</div>
 			</tr>
           </tbody>
         </table>

@@ -14,6 +14,7 @@ import org.slim3.datastore.Model;
  * [07/26/2015] 0.01 – David Ramirez – Initial codes
  * [07/27/2015] 0.02 - Jacquelyn Amaya - Added userId, doneRatio, and estRatio members with getters and setters
  * [08/07/2015] 0.03 - Jacquelyn Amaya - Added data members (spentHours, isFinished, isPending, isToday) and comments
+ * [09/28/2015] 0.04 - Jacquelyn Amaya - Replaced start date and due date with current date
  **/
 @Model(schemaVersion = 1)
 public class Task implements Serializable {
@@ -58,7 +59,7 @@ public class Task implements Serializable {
     private double estHours;
     
     /**
-     * Logged Date of Task
+     * Current Date of Task
      */
     private long currentDate;
     
@@ -304,11 +305,19 @@ public class Task implements Serializable {
     public static long getSerialversionuid() {
         return serialVersionUID;
     }
-
+    
+    /**
+     * returns current date
+     * @return
+     */
     public long getCurrentDate() {
         return currentDate;
     }
-
+    
+    /**
+     * sets the current date of the task
+     * @param currentDate
+     */
     public void setCurrentDate(long currentDate) {
         this.currentDate = currentDate;
     }

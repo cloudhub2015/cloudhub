@@ -22,6 +22,7 @@ import taskmanagement.model.Task;
  * [08/17/2015] 0.04 - David Ramirez   - Code Documentation
  * [09/13/2015] 0.05 - Jacquelyn Amaya - Replaced selectTask method with getTask method to return Task instead of TaskDto
  *                                     - Added deleteTaskToday() and updateTaskToday() methods
+ * [09/28/2015] 0.06 - Jacquelyn Amaya - Maximum spent hours per day: 8                                     
  */
 public class TaskService {
 /**
@@ -233,8 +234,13 @@ public class TaskService {
      */
     public TaskDto updateTaskToday(TaskDto input) {
         Task task = new Task();
+        double hours = hoursPerDay() + input.getSpentHours();
         task.setId(input.getId());
-        task.setSpentHours(task.getSpentHours() + input.getSpentHours());
+        if(hours <= 8.0) {
+            task.setSpentHours(input.getSpentHours());
+        } else {
+            input.getErrorList().add("Total Spent Time Per Day: 8.0 hrs");
+        }        
         task.setFinished(input.isFinished());
         task.setPending(input.isPending());
         
@@ -275,6 +281,21 @@ public class TaskService {
         }
 
         return taskList;
+    }
+    
+    /**
+     * Method used to retrieve list of today's tasks.
+     * @return List<Task> - list of Tasks.
+     */
+    public double hoursPerDay() {
+        double hours = 0;
+        List<Task> taskModels = this.dao.getTasksForToday();
+
+        for (Task task : taskModels) {
+            hours += task.getSpentHours();
+        }
+
+        return hours;
     }
     
     /**

@@ -23,6 +23,8 @@ import taskmanagement.model.Task;
  * [07/27/2015] 0.01 - Jacquelyn Amaya - Initial codes
  * [08/07/2015] 0.02 - Jacquelyn Amaya - Added searchTasks method and methods for taskstoday controllers
  * [09/13/2015] 0.03 - Jacquelyn Amaya - Added updateTaskToday(), deleteTodaysTask() and setTodaysTask() methods
+ * [09/28/2015] 0.04 - Jacquelyn Amaya - Add task to current date
+ *                                     - Maximum spent hours per day: 8
  */
 public class TaskDao {
 /**
@@ -276,6 +278,15 @@ public class TaskDao {
  * For Tasks Today Controllers
  * --------------------------------------------------------------------
  */
+    /**
+     * Method used to retrieve tasks for today
+     * @return List<Task> - list of tasks.
+     */
+    public List<Task> getTasksForToday() {
+        TaskMeta t = new TaskMeta();
+        Query.Filter mainFilter = new Query.FilterPredicate("currentDate", FilterOperator.EQUAL, getCurrentDate());
+        return Datastore.query(t).filter(mainFilter).asList();
+    }
     /**
      * Method used to retrieve tasks for today
      * @return List<Task> - list of tasks.

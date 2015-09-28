@@ -24,6 +24,8 @@ import validator.JSONValidators;
  * Version History
  * [09/07/2015] 0.01 - Jacquelyn Amaya - Return session attributes for the user's information using JSON
  * [09/13/2015] 0.02 - Jacquelyn Amaya - Retrieve and update user's information
+ * [09/29/2015] 0.03 - Vine Deiparine - Modified get and post implementation. Added validations.
+ 
  */
 public class LoggedInUserController extends Controller {
 
@@ -45,93 +47,71 @@ public class LoggedInUserController extends Controller {
         JSONObject json = null;
         
         response.setContentType("application/json");
-<<<<<<< Updated upstream
         if(null != sessionScope("userId")) {
             if(isGet()) {
                 if(null != sessionScope("userId")) {
                     long id = Long.parseLong(sessionScope("userId").toString());
                     User user = service.getUser(id);
                     json = new JSONObject(meta.modelToJson(user));
+                    json.put("errorList", dto.getErrorList());
+                    response.getWriter().write(json.toString());
                 }
             } else {
-                try {
-                    
+                try {                    
                     json = new JSONObject((String)this.request.getReader().readLine());
-=======
         
-        if(isGet()) {
-            long id = Long.parseLong(sessionScope("userId").toString());
-            User user = service.getUser(id);
-            json = new JSONObject(meta.modelToJson(user));
-            json.put("errorList", dto.getErrorList());
-            response.getWriter().write(json.toString());
-            
-        } else {
-            
-            try {
-                json = new JSONObject((String)this.request.getReader().readLine());
-                JSONValidators validator = new JSONValidators(json);
+                    JSONValidators validator = new JSONValidators(json);
                 
-                //validator.add("userId", validator.required(), validator.longType());
-                validator.add("username", validator.required());
-                validator.add("firstName", validator.required());
-                validator.add("lastName", validator.required());
-                validator.add("password", validator.required(), validator.minlength(6));
-                
-                if (validator.validate()) {
->>>>>>> Stashed changes
-                    dto.setId(Long.parseLong(sessionScope("userId").toString()));
-                    dto.setUsername(json.getString("username"));
-                    dto.setFirstName(json.getString("firstName"));
-                    dto.setLastName(json.getString("lastName"));
-                    dto.setPassword(json.getString("password"));
-                    dto = service.updateUser(dto);
-<<<<<<< Updated upstream
-                } catch (Exception e) {
-                    dto.getErrorList().add("Server controller error: " + e.getMessage());
-                    if (json == null) {
-                        json = new JSONObject();
+                    //validator.add("userId", validator.required(), validator.longType());
+                    validator.add("username", validator.required());
+                    validator.add("firstName", validator.required());
+                    validator.add("lastName", validator.required());
+                    validator.add("password", validator.required(), validator.minlength(6));
+                    
+                    if (validator.validate()) {
+                        dto.setId(Long.parseLong(sessionScope("userId").toString()));
+                        dto.setUsername(json.getString("username"));
+                        dto.setFirstName(json.getString("firstName"));
+                        dto.setLastName(json.getString("lastName"));
+                        dto.setPassword(json.getString("password"));
+                        dto = service.updateUser(dto);
+                        System.out.println("VALIDATE");
+                    } else { 
+                        List<String> errorList = new ArrayList<String>(); 
+                        validator.addErrorsTo(errorList);
+                        
+                        System.out.println("NOT VALIDATE");
+                        for(int i=0; i<validator.getErrors().size(); i++) {
+                            System.out.println(""+ validator.getErrors().get(i));
+                            dto.getErrorList().add(""+ validator.getErrors().get(i));
+                        }
+
+                        JSONObject r = new JSONObject(); 
+                        JSONArray errors = Utils.listToJson(errorList); 
+                        r.put("errors", errors); 
+                         
+                        response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Input Validation Error"); 
+                        response.setContentType("application/json"); 
+                        json.put("errorList", dto.getErrorList());
+                        response.getWriter().write(r.toString()); 
                     }
+                } catch (Exception e) {
+                    /**dto.getErrorList().add("Server controller error: " + e.getMessage());
+                    if (json == null) {
+                        json = new JSONObject();                    
+                    }**/
+                    response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Request body must be JSON");
+    
                 }
-=======
-                    System.out.println("VALIDATE");
-                }else { 
-                     List<String> errorList = new ArrayList<String>(); 
-                     validator.addErrorsTo(errorList);
-                     
-                     System.out.println("NOT VALIDATE");
-                     for(int i=0; i<validator.getErrors().size(); i++) {
-                         System.out.println(""+ validator.getErrors().get(i));
-                         dto.getErrorList().add(""+ validator.getErrors().get(i));
-                     }
-
-                     JSONObject r = new JSONObject(); 
-                     JSONArray errors = Utils.listToJson(errorList); 
-                     r.put("errors", errors); 
-                      
-                     response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Input Validation Error"); 
-                     response.setContentType("application/json"); 
-                     json.put("errorList", dto.getErrorList());
-                     response.getWriter().write(r.toString()); 
-
-                } 
-
-            } catch (Exception e) {
-                /**dto.getErrorList().add("Server controller error: " + e.getMessage());
-                if (json == null) {
-                    json = new JSONObject();                    
-                }**/
-                response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Request body must be JSON");
->>>>>>> Stashed changes
             }
         } else {
             dto.getErrorList().add("No user to refer to");
-        }
-<<<<<<< Updated upstream
-        json.put("errorList", dto.getErrorList());
-        response.getWriter().write(json.toString());
-=======
->>>>>>> Stashed changes
+            if (json == null) {
+                json = new JSONObject();                    
+            }
+            json.put("errorList", dto.getErrorList());
+            response.getWriter().write(json.toString());
+        }        
         return null;
     }
 

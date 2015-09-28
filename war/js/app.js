@@ -341,6 +341,7 @@ app.controller('SettingsController', ['$rootScope', '$scope', '$http', function(
             location.reload(true);
         })
     	.error(function(data, status, headers, config) {
+    		console.log("ERROR SIYA");
     		var msg = "";
 			for (var i = 0; i < data.errorList.length; i++)
 				msg += data.errorList[i] + "\n";

@@ -43,7 +43,7 @@
           </thead>
           <tbody>
 			<tr data-ng-repeat="task in tasks  | filter: searchByPhase | filter: $.search" ng-hide="{{task.finished}}">
-					<td><center>{{task.name}}</center></td> 
+					<td>{{task.name}}</td> 
 					<td><center>{{task.phase}}</center></td>
 					<td><center> {{task.spentHours | number:2}} hrs</center></td>
 					<td><center>{{task.currentDate | date}}</center></td>
@@ -55,11 +55,11 @@
 					</td>
 				</div>
 			<tr>
-		  		<td></td>
-		  		<td></td>
-		  		<td>
-		  			<center><p style="color: red;" ng-show="!values.length">Task Not Found!</p></center>
-		  		</td>
+				<center>
+			  		<td ng-if="errorMessage!=null" colspan="5">
+			  			<p style="color: red;">{{errorMessage}}</p>
+			  		</td>
+		  		</center>
 		    </tr>
           </tbody>
         </table>

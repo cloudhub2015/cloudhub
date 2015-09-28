@@ -68,7 +68,6 @@ app.controller('TasksController', ['$rootScope', '$scope', '$http', function($ro
 			for (var i = 0; i < data.errorList.length; i++)
 				msg += data.errorList[i] + "\n";
 			alert(msg);
-			console.log(msg);
     	}
     });
 	
@@ -123,8 +122,7 @@ app.controller('CompletedTasksController', ['$rootScope', '$scope', '$http', fun
 	$http.get("/task/display")
     .success(function(data, status) {
     	if(data.errorList.length == 0) {
-    		$scope.tasks = response.taskList;
-        	$scope.firstName = response.firstName;
+    		$scope.tasks = data.taskList;
     	} else {
     		var msg = "";
 			for (var i = 0; i < data.errorList.length; i++)
@@ -137,14 +135,17 @@ app.controller('CompletedTasksController', ['$rootScope', '$scope', '$http', fun
 }]);
 app.controller('TodaysTaskController', ['$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
 	$rootScope.activeTab = 3;
-	$scope.check = function(date){
-		//if true, then do not display invalid date entries
-		return (new Date(date) < new Date());
-	}
 	
     $http.get("/taskstoday/displayTodaysTasks")
     .success(function(response) {
-    	$scope.tasks = response.taskList;
+    	if(response.errorList.length == 0) {
+    		$scope.tasks = response.taskList;
+    	} else {
+			var msg = "";
+			for (var i = 0; i < response.errorList.length; i++)
+				msg += response.errorList[i] + "\n";
+			$scope.errorMessage = msg;
+		}
     });
     
     
@@ -327,7 +328,6 @@ app.controller('SettingsController', ['$rootScope', '$scope', '$http', function(
     });
 	
 	$scope.updateSettings = function(){
-		console.log("update USER");
     	var data = {
             username: $scope.username,
             firstName : $scope.firstName,
@@ -337,11 +337,9 @@ app.controller('SettingsController', ['$rootScope', '$scope', '$http', function(
     	$http.post("/user/loggedInUser", data)
     	.success(function (data, status, headers, config) {
             alert("User information has been succesfully updated");
-            console.log("NISUD SIYA DIRI");
             location.reload(true);
         })
     	.error(function(data, status, headers, config) {
-    		console.log("ERROR SIYA");
     		var msg = "";
 			for (var i = 0; i < data.errorList.length; i++)
 				msg += data.errorList[i] + "\n";

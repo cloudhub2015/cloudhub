@@ -22,7 +22,9 @@ public class CompletedTasksController extends Controller {
         TaskClientDto taskList = new TaskClientDto();
         JSONObject json = new JSONObject();
         try {
+            System.out.println("Tasks List before");
             taskList = service.getFinishedTasksList();
+            System.out.println("Tasks List");
         } catch (Exception e) {
             e.printStackTrace();
             taskList.getErrorList().add("Server controller error: " + e.getMessage());

@@ -37,16 +37,14 @@
           </thead>
           <tbody>
           <tr ng-repeat="task in values = (tasks | filter: searchByPhase | filter: $.search)"  ng-show="{{task.finished}}">
-		        <td  class="taskName"> {{task.name}}</td>
+		        <td  class="taskName">{{task.name}}</td>
 		         <td><center> {{task.phase}} </center></td>
 		         <td><center> {{task.estHours | number:2}} hrs </center></td>
 		         <td><center> {{task.spentHours | number:2}} hrs </center></td>
 		  </tr>
 		  <tr>
-		  	<td></td>
-		  	<td></td>
-		    <td>
-		  		   <center><p style="color: red;" ng-show="!values.length">Task Not Found!</p></center>
+		    <td ng-if="errorMessage!=null" align="center">
+		  		<p style="color: red;">{{errorMessage}}</p>
 		  	</td>
 		  </tr>
           </tbody>

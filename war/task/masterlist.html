@@ -54,7 +54,7 @@
           <tbody> 
 			<tr data-ng-repeat="task in values = (tasks | filter:searchByPhase | filter:search | orderBy:'name')"  ng-hide="{{task.finished}}">
 				<input type="hidden" class="id" name="id" value="{{ task.id }}"/>
-					<td  class="taskName"><center>{{ task.name }}</center></td>
+					<td  class="taskName">{{ task.name }}</td>
 					<td class="phase"><center>{{ task.phase }}</center></td>
 					<td class="estHours"><center>{{ task.estHours | number : 2}} hrs</center></td>
 					<td class="startDate"><center>{{ task.spentHours | number : 2 }}</center></td>
@@ -66,12 +66,12 @@
 					</td>
   			</tr>
   			<tr>
-  				<td></td>
-  				<td></td>
-  				<td>
-  					<center><p style="color: red;" ng-show="!values.length">Task Not Found!</p></center>
-  				</td>
-  			</tr>
+				<center>
+			  		<td ng-if="errorMessage!=null" colspan="5">
+			  			<p style="color: red;">{{errorMessage}}</p>
+			  		</td>
+		  		</center>
+		    </tr>
 		</tbody>
         </table>
         </div>

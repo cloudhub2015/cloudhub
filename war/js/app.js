@@ -15,6 +15,7 @@
  * [09/15/2015] 0.11 - Jacquelyn Amaya		 - Added Validations for updating spent time
  * [09/22/2015] 0.12 - Jacquelyn Amaya		 - Alert error messages
  * [09/25/2015] 0.13 - Jacquelyn Amaya		 - Reload masterlist after adding task to pending tasks | Return to masterlist after creating task
+ * [09/28/2015] 0.14 - Jacquelyn Amaya		 - Group pending tasks by date
  */
 var app = angular.module('TaskManagementApp', ['ngRoute']);
 
@@ -139,15 +140,14 @@ app.controller('TodaysTaskController', ['$rootScope', '$scope', '$http', functio
     $http.get("/taskstoday/displayTodaysTasks")
     .success(function(response) {
     	if(response.errorList.length == 0) {
-    		$scope.tasks = response.taskList;
+    		$scope.tasks = _.groupBy(response.taskList, 'currentDate');
     	} else {
 			var msg = "";
 			for (var i = 0; i < response.errorList.length; i++)
 				msg += response.errorList[i] + "\n";
 			$scope.errorMessage = msg;
 		}
-    });
-    
+    });    
     
     $scope.finishTask = function(id) {
 		var data = {

@@ -239,7 +239,7 @@ public class TaskService {
         if(hours <= 8.0) {
             task.setSpentHours(input.getSpentHours());
         } else {
-            input.getErrorList().add("Total Spent Time Per Day: 8.0 hrs");
+            input.getErrorList().add("Maximum Spent Hours Per Day: 8.0 hrs");
         }        
         task.setFinished(input.isFinished());
         task.setPending(input.isPending());

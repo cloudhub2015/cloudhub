@@ -8,6 +8,7 @@
 * 0.0.6 - September 08, 2015	   - Jacquelyn Amaya		   - Display first name of the user
 * 0.0.7 - September 13, 2015	   - Jacquelyn Amaya		   - Import jquery-2.1.1.min.js | Removed active class for Masterlist tab
 * 0.0.8 - September 15, 2015	   - Janna Tapitha S. Pedrano  - Added active linking using AngularJS 
+* 0.0.9 - September 28, 2015	   - Jacquelyn Amaya		   - Import lodash.min.js | Changed url for logout to /user/logout
 -->
 
 <%@page pageEncoding="UTF-8" isELIgnored="false"%>
@@ -61,4 +62,5 @@
   <script src="/js/angular-route.js"></script>
   <script src="/js/user.js"></script>
   <script src="/js/app.js"></script>
+  <script src="/js/lodash.min.js"></script>
 </html>

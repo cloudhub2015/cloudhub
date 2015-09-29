@@ -43,7 +43,7 @@
 
               <div class="row">
                 <div class="input-field col s6">
-                  <input name="estHours" type="number" id="txtEstHours" class="validate" placeHolder="number of hours" ng-model="taskEstHours" required integer />
+                  <input name="estHours" type="number" min="1" id="txtEstHours" class="validate" placeHolder="number of hours" ng-model="taskEstHours" required integer />
                   <label class="active" for="txtEstHours" >Estimated Time Allotment</label>
                   <div class="error-container" ng-show="(createTask.estHours.$dirty && createTask.estHours.$invalid && createTask.submitted) || (createTask.estHours.$pristine && createTask.estHours.$invalid && createTask.submitted)">
                   	<small class="error" ng-show="createTask.estHours.$error.required" style="color: red;">Estimated Time allotment is required.</small>

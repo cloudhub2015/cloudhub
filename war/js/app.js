@@ -290,8 +290,6 @@ app.controller('EditTaskController', ['$scope', '$http', '$routeParams', functio
         $scope.taskName = task.name;
         $scope.taskPhase = task.phase;
         $scope.taskEstHours = task.estHours;
-        $scope.taskStartDate = task.startDate;
-        $scope.taskDueDate = task.dueDate;
     });
     
     $scope.updateTask = function(){
@@ -300,13 +298,18 @@ app.controller('EditTaskController', ['$scope', '$http', '$routeParams', functio
             id: taskId,
             name : $scope.taskName,
             phase : $scope.taskPhase,
-            estHours : $scope.taskEstHours,
-            startDate : $scope.taskStartDate,
-            dueDate : $scope.taskDueDate
+            estHours : $scope.taskEstHours
         };
     	$http.post("/task/editTask", data)
     	.success(function (data, status, headers, config) {
-            window.location = window.location.href.split('#')[0] + '#/tasks';
+    		if(response.errorList.length == 0) {
+    			alert("Task has been successfully updated");
+    		} else {
+    			var msg = "";
+    			for (var i = 0; i < data.errorList.length; i++)
+    				msg += data.errorList[i] + "\n";
+    			alert(msg);
+    		}
         });
     };
 

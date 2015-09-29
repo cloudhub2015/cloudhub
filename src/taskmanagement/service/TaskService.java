@@ -156,12 +156,12 @@ public class TaskService {
         task.setPhase(input.getPhase());
         task.setCurrentDate(task.getCurrentDate());
         
-        task.setSpentHours(task.getSpentHours() + input.getSpentHours());
+        task.setSpentHours(input.getSpentHours());
         task.setFinished(input.isFinished());
         task.setPending(input.isPending());
         task.setToday(input.isToday());
         
-        if(task.getSpentHours() <= task.getEstHours() && !this.dao.updateTask(task)){
+        if(!this.dao.updateTask(task)){
             input.setErrorList(new ArrayList<String>());
             input.getErrorList().add("database error!");
         }

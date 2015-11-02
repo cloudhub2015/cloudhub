@@ -17,10 +17,17 @@ package util;
  
  /** 
   * Utility used to perform certain functions that are not supplied by the framework. 
+<<<<<<< Updated upstream
+  * @author Vine Deiparine 
+  * @version 0.01 
+  * Version History 
+  * [08/31/2015] 0.01 – Vine Deiparine – Initial codes. 
+=======
   * @author Kim Agustin 
   * @version 0.01 
   * Version History 
   * [08/31/2015] 0.01 – Kim Agustin – Initial codes. 
+>>>>>>> Stashed changes
   */ 
  public class Utils { 
  

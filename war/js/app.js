@@ -16,6 +16,8 @@
  * [09/22/2015] 0.12 - Jacquelyn Amaya		 - Alert error messages
  * [09/25/2015] 0.13 - Jacquelyn Amaya		 - Reload masterlist after adding task to pending tasks | Return to masterlist after creating task
  * [09/28/2015] 0.14 - Jacquelyn Amaya		 - Group pending tasks by date
+ * [09/29/2015] 0.14 - Vine Deiparine		 - Modified TasksController and SettingsController
+ *
  */
 var app = angular.module('TaskManagementApp', ['ngRoute']);
 
@@ -335,18 +337,21 @@ app.controller('SettingsController', ['$rootScope', '$scope', '$http', function(
             username: $scope.username,
             firstName : $scope.firstName,
             lastName : $scope.lastName,
-            password : $scope.password
+            password : $('input#password').val()
         };
     	$http.post("/user/loggedInUser", data)
     	.success(function (data, status, headers, config) {
             alert("User information has been succesfully updated");
+            console.log("NISUD SIYA DIRI");
             location.reload(true);
         })
     	.error(function(data, status, headers, config) {
+    		console.log("ERROR SIYA ");
     		var msg = "";
 			for (var i = 0; i < data.errorList.length; i++)
 				msg += data.errorList[i] + "\n";
 			alert(msg);
+			console.log(msg);
         });
     };
 }]);

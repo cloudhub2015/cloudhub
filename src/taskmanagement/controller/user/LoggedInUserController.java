@@ -1,5 +1,6 @@
 package taskmanagement.controller.user;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,74 +46,72 @@ public class LoggedInUserController extends Controller {
         
         UserDto dto = new UserDto();
         JSONObject json = null;
+        dto.setErrorList(new ArrayList<String>());
         
-        response.setContentType("application/json");
         if(null != sessionScope("userId")) {
             if(isGet()) {
                 if(null != sessionScope("userId")) {
                     long id = Long.parseLong(sessionScope("userId").toString());
                     User user = service.getUser(id);
-                    json = new JSONObject(meta.modelToJson(user));
-                    json.put("errorList", dto.getErrorList());
-                    response.getWriter().write(json.toString());
+                    json = new JSONObject(meta.modelToJson(user));                    
                 }                
             } else {
                 try {                    
                     json = new JSONObject((String)this.request.getReader().readLine());
-        
                     JSONValidators validator = new JSONValidators(json);
-                
-                    //validator.add("userId", validator.required(), validator.longType());
+                    long id = Long.parseLong(sessionScope("userId").toString());
+                    
+                    
                     validator.add("username", validator.required());
                     validator.add("firstName", validator.required());
                     validator.add("lastName", validator.required());
-                    validator.add("password", validator.required(), validator.minlength(6));
+                    validator.add("password", validator.required());
                     
                     if (validator.validate()) {
-                        dto.setId(Long.parseLong(sessionScope("userId").toString()));
                         dto.setUsername(json.getString("username"));
                         dto.setFirstName(json.getString("firstName"));
                         dto.setLastName(json.getString("lastName"));
                         dto.setPassword(json.getString("password"));
                         dto = service.updateUser(dto);
                         System.out.println("VALIDATE");
-                    } else { 
-                        List<String> errorList = new ArrayList<String>(); 
-                        validator.addErrorsTo(errorList);
-                        
+                    } else {                         
                         System.out.println("NOT VALIDATE");
                         for(int i=0; i<validator.getErrors().size(); i++) {
-                            System.out.println(""+ validator.getErrors().get(i));
+                            //System.out.println(""+ validator.getErrors().get(i));
                             dto.getErrorList().add(""+ validator.getErrors().get(i));
+                            //System.out.println(dto.getErrorList().get(i));                            
                         }
-
-                        JSONObject r = new JSONObject(); 
-                        JSONArray errors = Utils.listToJson(errorList); 
-                        r.put("errors", errors); 
-                         
-                        response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Input Validation Error"); 
-                        response.setContentType("application/json"); 
-                        json.put("errorList", dto.getErrorList());
-                        response.getWriter().write(r.toString()); 
+                        //response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Input Validation Error"); 
                     }
-                } catch (Exception e) {
-                    /**dto.getErrorList().add("Server controller error: " + e.getMessage());
+                } catch (Exception e) {  
+                    dto.getErrorList().add("Server controller error: " + e.getMessage());
                     if (json == null) {
                         json = new JSONObject();                    
-                    }**/
-                    response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Request body must be JSON");
-    
+                    }                 
+                    //response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Request body must be JSON");
+                    
                 }
             }
         } else {
             dto.getErrorList().add("No user to refer to");
-            if (json == null) {
-                json = new JSONObject();                    
-            }
+        } 
+        try {
+            for(int i=0; i<dto.getErrorList().size(); i++)                         
+                System.out.println(dto.getErrorList().get(i));
             json.put("errorList", dto.getErrorList());
+            response.setContentType("application/json");
             response.getWriter().write(json.toString());
-        }        
+        } catch (JSONException e) {
+            e.printStackTrace();
+            System.out.println("JSONException");
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("JSONException");
+        }
         return null;
     }
 
 }
+
+

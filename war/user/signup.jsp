@@ -110,7 +110,7 @@
            <div class="my-row">
               <div class="input-field my-col my-s4">       
               <!--  <a id="btnSignUp" class="btn-large waves-effect waves-light purple">Sign Up</a>-->
-              <button class="btn waves-effect waves-light" type="submit" value="Signup" id="btnSignup">SIGNUP</button>
+              <button class="btn waves-effect waves-light" type="submit" value="Signup" id="btnSignup" ng-click="sendPost()">SIGNUP</button>
               </div>
            </div>
        </form> 
